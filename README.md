@@ -1,5 +1,5 @@
 # Centry REST API Docs
 
-Repository of documentation REST API Centry.
+Repositorio de la documentación de la API REST de Centry.
 
-This project is based on [Slate](https://github.com/tripit/slate).
+Este proyecto está basando en [Slate](https://github.com/tripit/slate).
