@@ -9,13 +9,13 @@ toc_footers:
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - products
+  - products 
   - orders
   - categories
   - brands
   - colors
   - sizes
-  - doorkeeper_apps
+  - doorkeeperapps
   - webhooks
   - errors
 
