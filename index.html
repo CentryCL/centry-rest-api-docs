@@ -245,8 +245,6 @@ Dicho lo anterior se deben realizar los siguientes pasos.</p>
 <p>Ingresaremos a nuestro panel de <a href="https://www.centry.cl/oauth/applications">aplicaciones externas desde centry</a>
 Y le damos click a Nueva Aplicación.</p>
 
-<p>Ingresaremos a nuestro panel de <a href="http://localhost:3000/oauth/applications">aplicaciones externas desde centry</a><strong>borrame</strong></p>
-
 <p><img src="images/appCentry1.png" alt="Configuración de llaves Centry REST API" /></p>
 
 <p>Se rellena el formulario que aparecerá para obtener las llaves de acceso. </p>
@@ -803,7 +801,7 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>El identificador del producto a eliminar.</td>
+<td>El identificador del producto a <eliminar class=""></eliminar></td>
 </tr>
 </tbody></table>
 
@@ -876,7 +874,7 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 <tr>
 <td><code class="prettyprint">id_origin</code></td>
 <td>string</td>
-<td>Identificador de Algo a Revisar</td>
+<td>Identificador de Origen de donde fue importada</td>
 </tr>
 <tr>
 <td><code class="prettyprint">id_woocommerce</code></td>
@@ -891,12 +889,12 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 <tr>
 <td><code class="prettyprint">origin</code></td>
 <td>string</td>
-<td>A Revisar</td>
+<td>Origen de donde fue importada la orden</td>
 </tr>
 <tr>
 <td><code class="prettyprint">original_data</code></td>
 <td>string</td>
-<td>A Revisar</td>
+<td>Datos sin editar que fueron importados</td>
 </tr>
 <tr>
 <td><code class="prettyprint">received_date</code></td>
@@ -1312,10 +1310,6 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 </tr>
 </tbody></table>
 
-<h2 id="todos-los-productos-de-la-cuenta">Todos los Productos de la cuenta</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/products"</span>
-  -H <span class="s2">"Authorization: tu_centry_api_key"</span>
-</code></pre>
           <h1 id="colors">Colors</h1>
 
 <h2 id="par-metros">Parámetros</h2>
