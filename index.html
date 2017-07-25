@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>API de Centry</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -200,7 +200,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;php&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,8 +211,6 @@
       <img src="images/logo.png" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">cURL</a>
-              <a href="#" data-language-name="ruby">Ruby</a>
-              <a href="#" data-language-name="php">PHP</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -221,7 +219,7 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='https://www.centry.cl'>Log in to get an API Key</a></li>
+            <li><a href='https://www.centry.cl'>Iniciar sesión para obtener una API Key</a></li>
             <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -230,62 +228,470 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to Centry API. You can use our API to access Centry API endpoints, which can get information on various resources in our database.</p>
+<p>Bienvenido a la API de Centry. Puedes usar nuestra API para acceder a los endpoints, los que entregan variada
+información sobre los recursos registrados en nuestra base de datos.</p>
 
-<p>You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>Puedes ver los códigos de ejemplo en la región oscura de la derecha y seleccionar el lenguaje de programación
+que más te acomode en las pestañas que se encuentran en la parte superior.</p>
 
 <h1 id="authentication">Authentication</h1>
 
+<p>Para poder interactuar desde tu aplicación con centry se debe solicitar las credenciales necesarias para que 
+dicha conexión sea exitosa.
+Dicho lo anterior se deben realizar los siguientes pasos.</p>
+
+<h2 id="primer-paso">Primer paso</h2>
+
+<p>Ingresaremos a nuestro panel de <a href="https://www.centry.cl/oauth/applications">aplicaciones externas desde centry</a>
+Y le damos click a Nueva Aplicación.</p>
+
+<p>Ingresaremos a nuestro panel de <a href="http://localhost:3000/oauth/applications">aplicaciones externas desde centry</a><strong>borrame</strong></p>
+
+<p><img src="images/appCentry1.png" alt="Configuración de llaves Centry REST API" /></p>
+
+<p>Se rellena el formulario que aparecerá para obtener las llaves de acceso. </p>
+
+<p><img src="images/appCentry2.png" alt="Configuración de llaves Centry REST API" /></p>
+
+<p>Finalizado este paso tendremos las llaves necesarias para la conexión </p>
+
+<p><img src="images/appCentry3.png" alt="Configuración de llaves Centry REST API" /></p>
+
+<p>Procedemos a autorizar estas credenciales, para obtener la llave de autorización</p>
+
+<p><img src="images/appCentry4.png" alt="Configuración de llaves Centry REST API" /></p>
+
+<h2 id="segundo-paso">Segundo paso</h2>
+
+<p>Configurar la conexión en nuestra app.</p>
+
+<h4 id="url-parameters">URL parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">client_id</code></td>
+<td>string</td>
+<td>Tu id de cliente visto en el paso anterior <i class="label label-info">mandatory</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">client_secret</code></td>
+<td>string</td>
+<td>Id Secreto visto en el paso anterior <i class="label label-info">mandatory</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">redirect_uri</code></td>
+<td>string</td>
+<td>Dirección de redirección luego de consulta <i class="label label-info">mandatory</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">grant_type</code></td>
+<td>string</td>
+<td>Llave de autorización (authorization_code)<i class="label label-info">mandatory</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">code</code></td>
+<td>string</td>
+<td>Llave de autorización (authorization_code) <i class="label label-info">mandatory</i></td>
+</tr>
+</tbody></table>
+
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>Para autorizar nuestra aplicación:</p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'Centry'</span>
+<pre class="highlight shell tab-shell"><code>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Centry</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'your_centry_api_key'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">Centry</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">Centry</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'your_centry_api_key'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+
+
+
+<span class="gp">&gt; </span>To authorize, use this code:
+
+<span class="sb">```</span>shell
+<span class="c"># With shell, you can just pass the correct header with each request</span>
 curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: your_centry_api_key"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">Centry</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'Centry'</span><span class="p">);</span>
+  -H <span class="s2">"Authorization: tu_centry_api_key"</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">Centry</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'your_centry_api_key'</span><span class="p">);</span>
+<span class="gp">&gt; </span>Asegúrate de reemplazar <span class="sb">`</span>tu_centry_api_key<span class="sb">`</span> con tu API key.
+
+Centry usa llaves para permitir el acceso a la API. Puedes registrar una nueva API key en nuestro 
+<span class="o">[</span>portal de desarrolladores]<span class="o">(</span>https://www.centry.cl/oauth/applications<span class="o">)</span>.
+
+Centry espera que una API key sea incluída en todas las llamadas a la API en la cabecera de cada request tal como
+lo muestra el ejemplo siguiente:
+
+<span class="sb">`</span>Authorization: tu_centry_api_key<span class="sb">`</span>
+
+&lt;aside <span class="nv">class</span><span class="o">=</span><span class="s2">"notice"</span>&gt;
+Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key personal.
+&lt;/aside&gt;
+
 </code></pre>
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">your_centry_api_key</code> with your API key.</p>
-</blockquote>
-
-<p>Centry uses API keys to allow access to the API. You can register a new Centry API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Centry expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: your_centry_api_key</code></p>
-
-<aside class="notice">
-You must replace <code>your_centry_api_key</code> with your personal API key.
-</aside>
-
           <h1 id="products">Products</h1>
 
-<h2 id="get-all-products">Get All Products</h2>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'centry'</span>
+<h2 id="par-metros">Parámetros</h2>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Centry</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'your_centry_api_key'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">products</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">centry</span>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td>string</td>
+<td>Identificador del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">barcode</code></td>
+<td>string</td>
+<td>Información almacenada en el codigo de barras</td>
+</tr>
+<tr>
+<td><code class="prettyprint">brand_id</code></td>
+<td>string</td>
+<td>Identificador de la marca</td>
+</tr>
+<tr>
+<td><code class="prettyprint">bulk_upload</code></td>
+<td>boolean</td>
+<td>Valor sensible en carga masiva** default: false</td>
+</tr>
+<tr>
+<td><code class="prettyprint">category_id</code></td>
+<td>integer</td>
+<td>Identificador de categoría a la que pertenece</td>
+</tr>
+<tr>
+<td><code class="prettyprint">color</code></td>
+<td>string</td>
+<td>Describe el color del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">company_id</code></td>
+<td>integer</td>
+<td>Identificador de la compañia a la que pertenece el producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">condition</code></td>
+<td>string</td>
+<td>Describe la condición del producto (Nuevo, usado,renovado)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">cover_content_type</code></td>
+<td>string</td>
+<td>Almacena extensión de la imagen de cover</td>
+</tr>
+<tr>
+<td><code class="prettyprint">cover_file_name</code></td>
+<td>string</td>
+<td>Nombre de imagen de cover</td>
+</tr>
+<tr>
+<td><code class="prettyprint">cover_file_size</code></td>
+<td>integer</td>
+<td>Tamaño de imagen de cover</td>
+</tr>
+<tr>
+<td><code class="prettyprint">cover_fingerprint</code></td>
+<td>string</td>
+<td>CheckSum  de cover de imagen</td>
+</tr>
+<tr>
+<td><code class="prettyprint">cover_updated_at</code></td>
+<td>date-time</td>
+<td>Almacena fecha en formato UTC de actualización de la imagen de cover</td>
+</tr>
+<tr>
+<td><code class="prettyprint">cover_url</code></td>
+<td>string</td>
+<td>Almacena url de imagen descruptiva del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>date-time</td>
+<td>Almacena fecha en formato UTC de creación de producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">deliverytimesupplier</code></td>
+<td>integer</td>
+<td>Valor aproximado en días, de la llegada del producto al cliente</td>
+</tr>
+<tr>
+<td><code class="prettyprint">description</code></td>
+<td>string</td>
+<td>Descripción del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">gender_id</code></td>
+<td>integer</td>
+<td>Identificador del genero del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">id_mercadolibre</code></td>
+<td>integer</td>
+<td>Identificador de producto en integración mercadolibre</td>
+</tr>
+<tr>
+<td><code class="prettyprint">id_shopify</code></td>
+<td>integer</td>
+<td>Identificador de producto en integración shopify</td>
+</tr>
+<tr>
+<td><code class="prettyprint">id_woocommerce</code></td>
+<td>integer</td>
+<td>Identificador de producto en integración woocommerce</td>
+</tr>
+<tr>
+<td><code class="prettyprint">is_fullproductname</code></td>
+<td>boolean</td>
+<td>Indica si el nombre del producto está completo o acortado</td>
+</tr>
+<tr>
+<td><code class="prettyprint">listing_type</code></td>
+<td>string</td>
+<td>Valor usado para integración de mercadolibre</td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>string</td>
+<td>Nombre del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">options</code></td>
+<td>string</td>
+<td>Opciones del producto (talla, color, etc)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">original_data</code></td>
+<td>string</td>
+<td>Valor usado en integración Woocommerce</td>
+</tr>
+<tr>
+<td><code class="prettyprint">packageheight</code></td>
+<td>integer</td>
+<td>Valor en centimetros de la altura del paquete</td>
+</tr>
+<tr>
+<td><code class="prettyprint">packagelength</code></td>
+<td>integer</td>
+<td>Valor en centimetros del largo del paquete</td>
+</tr>
+<tr>
+<td><code class="prettyprint">packageweight</code></td>
+<td>integer</td>
+<td>Valor en centimetros del ancho del paquete</td>
+</tr>
+<tr>
+<td><code class="prettyprint">packagewidth</code></td>
+<td>integer</td>
+<td>Valor en kilogramos del peso del paquete</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price</code></td>
+<td>integer</td>
+<td>Valor monetario del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price_compare</code></td>
+<td>integer</td>
+<td>Valor monetario de comparación del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">publish</code></td>
+<td>boolean</td>
+<td>Describe si el producto ha sido publicado para la venta. Default true</td>
+</tr>
+<tr>
+<td><code class="prettyprint">quantity</code></td>
+<td>integer</td>
+<td>Stock del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">saleenddate</code></td>
+<td>date-time</td>
+<td>Fecha en formato UTC que indica el fin de oferta</td>
+</tr>
+<tr>
+<td><code class="prettyprint">salestartdate</code></td>
+<td>date-time</td>
+<td>Fecha en formato UTC que indica el inicio de oferta</td>
+</tr>
+<tr>
+<td><code class="prettyprint">season</code></td>
+<td>string</td>
+<td>Describe temporada a la que pertenece el producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">seasonyear</code></td>
+<td>integer</td>
+<td>Indica el año del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">seo_description</code></td>
+<td>string</td>
+<td>Descripción extendida del la temporada</td>
+</tr>
+<tr>
+<td><code class="prettyprint">seo_title</code></td>
+<td>string</td>
+<td>Título de la temporada</td>
+</tr>
+<tr>
+<td><code class="prettyprint">shortdescription</code></td>
+<td>string</td>
+<td>Descripción acotada del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sku</code></td>
+<td>string</td>
+<td>sku del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">skusupplierconfig</code></td>
+<td>string</td>
+<td>Shows the quantity of products in this term</td>
+</tr>
+<tr>
+<td><code class="prettyprint">status</code></td>
+<td>boolean</td>
+<td>Shows the quantity of products in this term</td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>date-time</td>
+<td>Fecha de última actualización del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">variants</code></td>
+<td>array</td>
+<td>Lista de variantes del producto. Ver <a href="#atributos-de-variantes">Atributos de variantes</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">warranty</code></td>
+<td>integer</td>
+<td>Valor en meses de la garantía del producto</td>
+</tr>
+</tbody></table>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">centry</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'your_centry_api_key'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">products</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/products"</span>
-  -H <span class="s2">"Authorization: your_centry_api_key"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">centry</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'centry'</span><span class="p">);</span>
+<h3 id="atributos-de-variantes">Atributos de variantes</h3>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">centry</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'your_centry_api_key'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">products</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">products</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador de la variante</td>
+</tr>
+<tr>
+<td><code class="prettyprint">barcode</code></td>
+<td>string</td>
+<td>Información del código de barras</td>
+</tr>
+<tr>
+<td><code class="prettyprint">bulk_upload</code></td>
+<td>boolean</td>
+<td>Carga masiva</td>
+</tr>
+<tr>
+<td><code class="prettyprint">color_id</code></td>
+<td>integer</td>
+<td>Identificador del color</td>
+</tr>
+<tr>
+<td><code class="prettyprint">company_id</code></td>
+<td>integer</td>
+<td>Identificador de compañia</td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>date-time</td>
+<td>Fecha en formato UTC de la creación de la variante</td>
+</tr>
+<tr>
+<td><code class="prettyprint">description</code></td>
+<td>string</td>
+<td>Descripción de la variante</td>
+</tr>
+<tr>
+<td><code class="prettyprint">id_b_sale</code></td>
+<td>integer</td>
+<td>Identificador de variante Bsale en caso de ser Importada</td>
+</tr>
+<tr>
+<td><code class="prettyprint">id_mercadolibre</code></td>
+<td>string</td>
+<td>Identificador de variante Mercado libre en caso de ser importada</td>
+</tr>
+<tr>
+<td><code class="prettyprint">id_shopify</code></td>
+<td>string</td>
+<td>Identificador de variante Shopify en caso de ser importada</td>
+</tr>
+<tr>
+<td><code class="prettyprint">id_woocommerce</code></td>
+<td>integer</td>
+<td>Identificador de variante Woocommerce en caso de ser importada</td>
+</tr>
+<tr>
+<td><code class="prettyprint">original_data</code></td>
+<td>string</td>
+<td>Información total entregada por una variente en caso de ser importada</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price</code></td>
+<td>integer</td>
+<td>Valor monetario real del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price_compare</code></td>
+<td>integer</td>
+<td>Valor monetario de comparación del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">product_id</code></td>
+<td>integer</td>
+<td>Identificador del Producto en Centry</td>
+</tr>
+<tr>
+<td><code class="prettyprint">quantity</code></td>
+<td>integer</td>
+<td>Stock de productos de esta variante</td>
+</tr>
+<tr>
+<td><code class="prettyprint">size_id</code></td>
+<td>integer</td>
+<td>Identificador de las dimensiones del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sku</code></td>
+<td>string</td>
+<td>Información de sku</td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>date-time</td>
+<td>Registro de actualización en fecha formato UTC</td>
+</tr>
+</tbody></table>
+
+<h2 id="todos-los-productos-de-la-cuenta">Todos los Productos de la cuenta</h2>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/products"</span>
+  -H <span class="s2">"Authorization: tu_centry_api_key"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -304,71 +710,18 @@ You must replace <code>your_centry_api_key</code> with your personal API key.
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves all products.</p>
+<p>Este endpoint entrega todos los productos de la cuenta.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://www.centry.cl/conexion/v1/products</code></p>
+<p><code class="prettyprint">GET https://www.centry.cl/conexion/v1/products.json</code></p>
 
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include products that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<h2 id="create-a-product">Create a Product</h2>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST https://www.centry.cl/conexion/v1/products</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the products to retrieve</td>
-</tr>
-</tbody></table>
-
-<h2 id="retrieve-a-product">Retrieve a Product</h2>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'centry'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Centry</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'your_centry_api_key'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">products</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">centry</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">centry</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'your_centry_api_key'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">products</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/products/2"</span>
-  -H <span class="s2">"Authorization: your_centry_api_key"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">centry</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'centry'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">centry</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'your_centry_api_key'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">products</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<h2 id="obtener-un-producto-espec-fico">Obtener un Producto específico</h2>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;.json"</span>
+  -H <span class="s2">"Authorization: tu_centry_api_key"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -378,73 +731,797 @@ You must replace <code>your_centry_api_key</code> with your personal API key.
   </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a specific product.</p>
+<p>Este endpoint entrega un producto específico.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">GET https://www.centry.cl/conexion/v1/products/&lt;ID&gt;</code></p>
 
-<h3 id="url-parameters">URL Parameters</h3>
+<h3 id="par-metros-url">Parámetros URL</h3>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Parámtetro</th>
+<th>Descripción</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the product to retrieve</td>
+<td>El identificador del producto a recuperar</td>
 </tr>
 </tbody></table>
 
-<h2 id="update-a-product">Update a Product</h2>
+<h2 id="crear-un-product">Crear un Product</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://www.centry.cl/conexion/v1/products</code></p>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámtetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<h2 id="actualizar-un-product">Actualizar un Product</h2>
 
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">PUT https://www.centry.cl/conexion/v1/products</code></p>
 
-<h3 id="url-parameters">URL Parameters</h3>
+<h3 id="par-metros-url">Parámetros URL</h3>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Parámtetro</th>
+<th>Descripción</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the products to retrieve</td>
+<td>_id</td>
+<td>El identificador del producto a actualizar</td>
 </tr>
 </tbody></table>
 
-<h2 id="delete-a-product">Delete a Product</h2>
+<h2 id="eliminar-un-product">Eliminar un Product</h2>
 
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">DELETE https://www.centry.cl/conexion/v1/products/&lt;ID&gt;</code></p>
 
-<h3 id="url-parameters">URL Parameters</h3>
+<h3 id="par-metros-url">Parámetros URL</h3>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Parámtetro</th>
+<th>Descripción</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the product to delete</td>
+<td>El identificador del producto a eliminar</td>
 </tr>
 </tbody></table>
 
           <h1 id="orders">Orders</h1>
 
-<h2 id="get-all">Get All</h2>
+<h2 id="par-metros">Parámetros</h2>
 
-<h2 id="get-a-specific-order">Get a Specific Order</h2>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td>string</td>
+<td>Identificador de orden</td>
+</tr>
+<tr>
+<td><code class="prettyprint">_status</code></td>
+<td>string</td>
+<td>Descripción del estado de la orden</td>
+</tr>
+<tr>
+<td><code class="prettyprint">address_billing</code></td>
+<td>object</td>
+<td>Información del pago. Ver <a href="#formulario-de-direcciones">Formulario de direcciones</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">address_shipping</code></td>
+<td>object</td>
+<td>Información de envío. Ver <a href="#formulario-de-direcciones">Formulario de direcciones</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">buyer_email</code></td>
+<td>string</td>
+<td>Email de Cliente</td>
+</tr>
+<tr>
+<td><code class="prettyprint">buyer_first_name</code></td>
+<td>string</td>
+<td>Nombre de Cliente</td>
+</tr>
+<tr>
+<td><code class="prettyprint">buyer_last_name</code></td>
+<td>string</td>
+<td>Apellido de Cliente</td>
+</tr>
+<tr>
+<td><code class="prettyprint">cancelled_date</code></td>
+<td>date-time</td>
+<td>Fecha en formato UTC de Pago de la orden</td>
+</tr>
+<tr>
+<td><code class="prettyprint">company_id</code></td>
+<td>integer</td>
+<td>Identificador de la empresa</td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>date-time</td>
+<td>Fecha en formato UTC que registra la realizacion de la orden</td>
+</tr>
+<tr>
+<td><code class="prettyprint">id_b_sale</code></td>
+<td>integer</td>
+<td>Identificador de la orden en caso de realizarse por Bsale</td>
+</tr>
+<tr>
+<td><code class="prettyprint">id_origin</code></td>
+<td>string</td>
+<td>Identificador de Algo a Revisar</td>
+</tr>
+<tr>
+<td><code class="prettyprint">id_woocommerce</code></td>
+<td>integer</td>
+<td>Identificador de la orden en caso de realizarse por Woocommerce</td>
+</tr>
+<tr>
+<td><code class="prettyprint">items</code></td>
+<td>array</td>
+<td>Lista de items a comprar. Ver <a href="#atributos-de-los-items">Atributos de los items</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">origin</code></td>
+<td>string</td>
+<td>A Revisar</td>
+</tr>
+<tr>
+<td><code class="prettyprint">original_data</code></td>
+<td>string</td>
+<td>A Revisar</td>
+</tr>
+<tr>
+<td><code class="prettyprint">received_date</code></td>
+<td>date-time</td>
+<td>Fecha en el que el cliente recibe su orden</td>
+</tr>
+<tr>
+<td><code class="prettyprint">shipped_date</code></td>
+<td>date-time</td>
+<td>Fecha en el que se despacha la orden</td>
+</tr>
+<tr>
+<td><code class="prettyprint">total_amount</code></td>
+<td>float</td>
+<td>Valor monetario del monto total de la orden</td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>date-time</td>
+<td>Fecha en el que se realizó una actualización a la orden</td>
+</tr>
+<tr>
+<td><code class="prettyprint">quantity</code></td>
+<td>integer</td>
+<td>Cantidad de items en la orden</td>
+</tr>
+</tbody></table>
+
+<h3 id="formulario-de-direcciones">Formulario de direcciones</h3>
+
+<h4 id="estos-datos-pueden-variar-y-son-consistentes-para-los-parametros-address_billing-y-address_shipping">Estos datos pueden variar y son consistentes para los parametros address_billing y address_shipping</h4>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador de formulario</td>
+</tr>
+<tr>
+<td><code class="prettyprint">city</code></td>
+<td>string</td>
+<td>Nombre de la ciudad</td>
+</tr>
+<tr>
+<td><code class="prettyprint">country</code></td>
+<td>string</td>
+<td>Nombre del País</td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>string</td>
+<td>Fecha de la realización del formulario</td>
+</tr>
+<tr>
+<td><code class="prettyprint">email</code></td>
+<td>string</td>
+<td>Email del cliente</td>
+</tr>
+<tr>
+<td><code class="prettyprint">first_name</code></td>
+<td>string</td>
+<td>Nombre(s) del cliente</td>
+</tr>
+<tr>
+<td><code class="prettyprint">last_name</code></td>
+<td>string</td>
+<td>Apellido(s) del cliente</td>
+</tr>
+<tr>
+<td><code class="prettyprint">line1</code></td>
+<td>string</td>
+<td>Dirección principal del cliente</td>
+</tr>
+<tr>
+<td><code class="prettyprint">line2</code></td>
+<td>string</td>
+<td>Dirección alternativa del cliente</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phone1</code></td>
+<td>string</td>
+<td>Numero telefónico principal</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phone2</code></td>
+<td>string</td>
+<td>Número telefónico Alternativo del cliente</td>
+</tr>
+<tr>
+<td><code class="prettyprint">state</code></td>
+<td>string</td>
+<td>Estado del Cliente</td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>date-time</td>
+<td>Fecha de actualización de formulario</td>
+</tr>
+<tr>
+<td><code class="prettyprint">zip_code</code></td>
+<td>string</td>
+<td>Numero del código postal</td>
+</tr>
+</tbody></table>
+
+<h3 id="atributos-de-los-items">Atributos de los items</h3>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador de conjunto de items</td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>date-time</td>
+<td>Fecha de creación de este elemento</td>
+</tr>
+<tr>
+<td><code class="prettyprint">currency</code></td>
+<td>string</td>
+<td>Tipo de moneda en el que se pagará</td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>string</td>
+<td>Nombre del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">paid_price</code></td>
+<td>float</td>
+<td>Monto a pagar</td>
+</tr>
+<tr>
+<td><code class="prettyprint">quantity</code></td>
+<td>integer</td>
+<td>Cantidad de items</td>
+</tr>
+<tr>
+<td><code class="prettyprint">shipment_provider</code></td>
+<td>string</td>
+<td>Empresa encargada del despacho</td>
+</tr>
+<tr>
+<td><code class="prettyprint">shipping_amount</code></td>
+<td>float</td>
+<td>Valor monetario del despacho</td>
+</tr>
+<tr>
+<td><code class="prettyprint">shipping_type</code></td>
+<td>string</td>
+<td>Tipo de despacho</td>
+</tr>
+<tr>
+<td><code class="prettyprint">tax_amount</code></td>
+<td>float</td>
+<td>Cantidad de impuesto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">tracking_code</code></td>
+<td>string</td>
+<td>Código de rastreo</td>
+</tr>
+<tr>
+<td><code class="prettyprint">tracking_code_pre</code></td>
+<td>string</td>
+<td>Código de rastreo</td>
+</tr>
+<tr>
+<td><code class="prettyprint">unit_price</code></td>
+<td>float</td>
+<td>Precio unitario</td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>date-time</td>
+<td>Fecha de actualización</td>
+</tr>
+<tr>
+<td><code class="prettyprint">variant_id</code></td>
+<td>integer</td>
+<td>Identificador de variante registrada en Centry</td>
+</tr>
+</tbody></table>
+
+<h2 id="todas-las-rdenes-de-la-cuenta">Todas las Órdenes de la cuenta</h2>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/orders"</span>
+  -H <span class="s2">"Authorization: tu_centry_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Este endpoint entrega todas las órdenes de la cuenta.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://www.centry.cl/conexion/v1/orders/</code></p>
+
+<h2 id="obtener-una-orden-espec-fica">Obtener una Orden específica</h2>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/orders/2"</span>
+  -H <span class="s2">"Authorization: tu_centry_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Este endpoint entrega un producto específico.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://www.centry.cl/conexion/v1/products/&lt;ID&gt;</code></p>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámtetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>El identificador de la orden a recuperar</td>
+</tr>
+</tbody></table>
+
+<h2 id="crear-una-orden">Crear una Orden</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://www.centry.cl/conexion/v1/orders</code></p>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámtetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<h2 id="actualizar-una-orden">Actualizar una Orden</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT https://www.centry.cl/conexion/v1/orders</code></p>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámtetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>El identificador de la orden a actualizar</td>
+</tr>
+</tbody></table>
+
+<h2 id="eliminar-una-orden">Eliminar una Orden</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE https://www.centry.cl/conexion/v1/orders/&lt;ID&gt;</code></p>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámtetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>El identificador de la Orden a eliminar</td>
+</tr>
+</tbody></table>
+
+          <h1 id="categories">Categories</h1>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador de la categoría</td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>string</td>
+<td>Regristro de creación de la categoría</td>
+</tr>
+<tr>
+<td><code class="prettyprint">dafiti</code></td>
+<td>string</td>
+<td>Identificador de categoría en Dafiti</td>
+</tr>
+<tr>
+<td><code class="prettyprint">dafiti_name_in_product</code></td>
+<td>string</td>
+<td>Nombre de la categoría en Dafiti</td>
+</tr>
+<tr>
+<td><code class="prettyprint">linio</code></td>
+<td>string</td>
+<td>Identificador de categoría en Linio</td>
+</tr>
+<tr>
+<td><code class="prettyprint">linio_name_in_product</code></td>
+<td>string</td>
+<td>Nombre de la categoría en Linio</td>
+</tr>
+<tr>
+<td><code class="prettyprint">mercadolibre</code></td>
+<td>string</td>
+<td>Identificador de la categoría en mercadoLibre</td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>string</td>
+<td>Nombre de la categoría en Centry</td>
+</tr>
+<tr>
+<td><code class="prettyprint">options</code></td>
+<td>string</td>
+<td>Opciones de la categoría</td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>string</td>
+<td>Registro de última actualización</td>
+</tr>
+<tr>
+<td><code class="prettyprint">vestirsebien</code></td>
+<td>string</td>
+<td>Nombre de la categoría en VestirseBien</td>
+</tr>
+</tbody></table>
+
+          <h1 id="brands">Brands</h1>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador de la marca</td>
+</tr>
+<tr>
+<td><code class="prettyprint">dafiti</code></td>
+<td>string</td>
+<td>Nombre de la marca en Dafiti</td>
+</tr>
+<tr>
+<td><code class="prettyprint">linio</code></td>
+<td>string</td>
+<td>Nombre de la marca en Linio</td>
+</tr>
+<tr>
+<td><code class="prettyprint">mercadolibre</code></td>
+<td>string</td>
+<td>Nombre de la marca en Mercado Libre</td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>string</td>
+<td>Nombre de la marca en Centry</td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>string</td>
+<td>Registro de última actualización</td>
+</tr>
+<tr>
+<td><code class="prettyprint">vestirsebien</code></td>
+<td>string</td>
+<td>Nombre de la marca en VestirseBien</td>
+</tr>
+</tbody></table>
+
+<h2 id="todos-los-productos-de-la-cuenta">Todos los Productos de la cuenta</h2>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/products"</span>
+  -H <span class="s2">"Authorization: tu_centry_api_key"</span>
+</code></pre>
+          <h1 id="colors">Colors</h1>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador del color</td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>string</td>
+<td>Regristro de creación de color en Centry</td>
+</tr>
+<tr>
+<td><code class="prettyprint">dafiti</code></td>
+<td>string</td>
+<td>Identificador de color equivalente  en Dafiti</td>
+</tr>
+<tr>
+<td><code class="prettyprint">linio</code></td>
+<td>string</td>
+<td>Identificador de color equivalente en Linio</td>
+</tr>
+<tr>
+<td><code class="prettyprint">mercadolibre</code></td>
+<td>string</td>
+<td>Identificador de color equivalente en mercadoLibre</td>
+</tr>
+<tr>
+<td><code class="prettyprint">mercadolibre_attr_id</code></td>
+<td>string</td>
+<td>Atributo color en mercadoLibre</td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>string</td>
+<td>Nombre de color en Centry</td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>string</td>
+<td>Registro de última actualización</td>
+</tr>
+<tr>
+<td><code class="prettyprint">vestirsebien</code></td>
+<td>string</td>
+<td>Nombre de color equivalente en VestirseBien</td>
+</tr>
+</tbody></table>
+
+          <h1 id="sizes">Sizes</h1>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador del tamaño</td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>string</td>
+<td>Regristro de creación del tamaño en Centry</td>
+</tr>
+<tr>
+<td><code class="prettyprint">dafiti</code></td>
+<td>string</td>
+<td>Identificador de tamaño equivalente  en Dafiti</td>
+</tr>
+<tr>
+<td><code class="prettyprint">linio</code></td>
+<td>string</td>
+<td>Identificador de tamaño equivalente en Linio</td>
+</tr>
+<tr>
+<td><code class="prettyprint">mercadolibre</code></td>
+<td>string</td>
+<td>Identificador de tamaño equivalente en mercadoLibre</td>
+</tr>
+<tr>
+<td><code class="prettyprint">mercadolibre_attr_id</code></td>
+<td>string</td>
+<td>Atributo tamaño en mercadoLibre</td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>string</td>
+<td>Nombre de tamaño en Centry</td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>string</td>
+<td>Registro de última actualización</td>
+</tr>
+<tr>
+<td><code class="prettyprint">vestirsebien</code></td>
+<td>string</td>
+<td>Nombre de tamaño equivalente en VestirseBien</td>
+</tr>
+</tbody></table>
+
+          <h1 id="doorkeeperapps">Doorkeeperapps</h1>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador del Aplicación</td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>string</td>
+<td>Regristro de creación del Aplicación en Centry</td>
+</tr>
+<tr>
+<td><code class="prettyprint">callback_url</code></td>
+<td>string</td>
+<td>Url de retorno</td>
+</tr>
+<tr>
+<td><code class="prettyprint">platform</code></td>
+<td>string</td>
+<td>Plataforma de aplicación</td>
+</tr>
+<tr>
+<td><code class="prettyprint">master</code></td>
+<td>Boolean</td>
+<td>Describe si aplicación está actuando o no como maestro</td>
+</tr>
+<tr>
+<td><code class="prettyprint">app_id</code></td>
+<td>string</td>
+<td>Identificador de aplicación asociada</td>
+</tr>
+<tr>
+<td><code class="prettyprint">company_id</code></td>
+<td>string</td>
+<td>Identificador de empresa</td>
+</tr>
+</tbody></table>
 
           <h1 id="webhooks">Webhooks</h1>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador del webhook</td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>string</td>
+<td>Regristro de creación del webhook en Centry</td>
+</tr>
+<tr>
+<td><code class="prettyprint">callback_url</code></td>
+<td>string</td>
+<td>Url de retorno</td>
+</tr>
+<tr>
+<td><code class="prettyprint">events</code></td>
+<td>string</td>
+<td>Eventos pendientes a describir</td>
+</tr>
+<tr>
+<td><code class="prettyprint">app_id</code></td>
+<td>string</td>
+<td>Identificador de aplicación asociada</td>
+</tr>
+<tr>
+<td><code class="prettyprint">company_id</code></td>
+<td>string</td>
+<td>Identificador de empresa</td>
+</tr>
+</tbody></table>
 
           <h1 id="errors">Errors</h1>
 
@@ -506,8 +1583,6 @@ You must replace <code>your_centry_api_key</code> with your personal API key.
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">cURL</a>
-                <a href="#" data-language-name="ruby">Ruby</a>
-                <a href="#" data-language-name="php">PHP</a>
           </div>
       </div>
     </div>
