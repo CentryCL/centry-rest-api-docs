@@ -1,5 +1,5 @@
 ---
-title: API de Centry
+title: Centry REST Api
 
 language_tabs:
   - shell: cURL
@@ -61,6 +61,28 @@ Procedemos a autorizar estas credenciales, para obtener la llave de autorizació
 
 Configurar la conexión en nuestra app.
 
+>Para autorizar nuestra aplicación:
+Debe realizar un Request POST a la url https://www.centry.cl/oauth/token
+
+```shell
+#comando para obtener codigo de autorización 
+
+curl --data "client_id=<My_client_id>&client_secret=<My_client_secret>&redirect_uri<My_redirect_uri>&grant_type=authorization_code&code=<My_authorization_code>" https://www.centry.cl/oauth/token
+
+```
+> Ejemplo de respuesta JSON luego de ejecutar el comando anterior
+
+```
+{
+"access_token":"fa56dff5a29c8...",
+"token_type":"bearer",
+"expires_in":7200,
+"refresh_token":"c38eabc8f00...",
+"created_at":1501020167
+}
+```
+
+
 #### URL parameters ####
 
 |   Parameter    |  Type  | Description                                                      |
@@ -71,33 +93,6 @@ Configurar la conexión en nuestra app.
 | `grant_type`   | string | Llave de autorización (authorization_code)<i class="label label-info">mandatory</i>                                                                             |
 | `code`         | string | Llave de autorización (authorization_code) <i class="label label-info">mandatory</i>                                                |
 
->Para autorizar nuestra aplicación:
-
-```shell
 
 
-
-
-
-
-> To authorize, use this code:
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: tu_centry_api_key"
-
-> Asegúrate de reemplazar `tu_centry_api_key` con tu API key.
-
-Centry usa llaves para permitir el acceso a la API. Puedes registrar una nueva API key en nuestro 
-[portal de desarrolladores](https://www.centry.cl/oauth/applications).
-
-Centry espera que una API key sea incluída en todas las llamadas a la API en la cabecera de cada request tal como
-lo muestra el ejemplo siguiente:
-
-`Authorization: tu_centry_api_key`
-
-<aside class="notice">
-Debes reemplazar <code>tu_centry_api_key</code> con tu API key personal.
-</aside>
 
