@@ -5,7 +5,7 @@
 
 | Atributo              |   Tipo  |                                      Descripción                                      |
 | ---------             | ------- | ------------------------------------------------------------------------------------- |
-| `id`                  | integer | Identificador del producto                        |
+| `id`                  | string | Identificador del producto                        |
 | `barcode`             | string  | Información almacenada en el codigo de barras     |
 | `brand_id`            | string  | Identificador de la marca         |
 | `bulk_upload`         | boolean | Valor sensible en carga masiva** default: false |
@@ -62,7 +62,7 @@
 
 | Atributo          |   Tipo  |                                      Descripción                                      |
 | ---------         | ------- | ------------------------------------------------------------------------------------- |
-| `_id`             | integer | Identificador de la variante               |
+| `_id`             | string | Identificador de la variante               |
 | `barcode`         | string  | Información del código de barras            |
 | `bulk_upload`     | boolean | Carga masiva                                |
 | `color_id`        | integer | Identificador del color                     |

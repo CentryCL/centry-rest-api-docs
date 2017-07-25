@@ -1,12 +1,12 @@
 # Orders
 
 ## Parámetros
-s
+
 
 
 | Atributo             		|   Tipo  |                                      Descripción                                      |
 | ---------            		| ------- | ------------------------------------------------------------------------------------- |
-| `id`                 		| integer |  Identificador de orden                           						|
+| `id`                 		| string  |  Identificador de orden                           						|
 | `_status`            		| string  |  Descripción del estado de la orden                                     |
 | `address_billing`			| object  |  Información del pago. Ver [Formulario de direcciones](#formulario-de-direcciones)|
 | `address_shipping`		| object  |  Información de envío. Ver [Formulario de direcciones](#formulario-de-direcciones)|
@@ -26,6 +26,7 @@ s
 | `shipped_date`			|date-time|  Fecha en el que se despacha la orden                                   |
 | `total_amount`			|  float  |  Valor monetario del monto total de la orden                            |
 | `updated_at`				|date-time|  Fecha en el que se realizó una actualización a la orden                |
+| `quantity`				| integer |  Cantidad de items en la orden                |
 
 
 
@@ -35,7 +36,7 @@ s
 
 | Atributo             		|   Tipo  |                                      Descripción                                      |
 | ---------            		| ------- | ------------------------------------------------------------------------------------- |
-| `_id`          			| integer | Identificador de formulario                                                           |
+| `_id`          			| string  | Identificador de formulario                                                           |
 | `city`         			| string  | Nombre de la ciudad 				                                                  |
 | `country`					| string  | Nombre del País                                                                       |  
 | `created_at`				| string  | Fecha de la realización del formulario                                                |  
@@ -57,7 +58,7 @@ s
 
 | Atributo             		|   Tipo  |                                      Descripción                                      |
 | ---------            		| ------- | ------------------------------------------------------------------------------------- |
-| `_id`               		| integer | Identificador de conjunto de items                                                    |
+| `_id`               		| string | Identificador de conjunto de items                                                    |
 | `created_at`        		|date-time| Fecha de creación de este elemento                                                   |
 | `currency`				| string  | Tipo de moneda en el que se pagará                                                    |
 | `name`					| string  | Nombre del producto                                                                   |
