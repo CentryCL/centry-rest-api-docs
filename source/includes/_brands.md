@@ -14,13 +14,3 @@
 | `vestirsebien`        | string  | Nombre de la marca en VestirseBien |
 
 
-
-
-
-## Todos los Productos de la cuenta
-
-
-```shell
-curl "https://www.centry.cl/conexion/v1/products"
-  -H "Authorization: tu_centry_api_key"
-```

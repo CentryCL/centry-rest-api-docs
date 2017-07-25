@@ -40,7 +40,6 @@ Dicho lo anterior se deben realizar los siguientes pasos.
 Ingresaremos a nuestro panel de [aplicaciones externas desde centry](https://www.centry.cl/oauth/applications)
 Y le damos click a Nueva Aplicación.
 
-Ingresaremos a nuestro panel de [aplicaciones externas desde centry](http://localhost:3000/oauth/applications)**borrame**
 
 
 

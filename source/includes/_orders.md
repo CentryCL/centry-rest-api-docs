@@ -17,11 +17,11 @@
 | `company_id`				| integer |  Identificador de la empresa                                            |
 | `created_at`				|date-time|  Fecha en formato UTC que registra la realizacion de la orden           |
 | `id_b_sale`				| integer |  Identificador de la orden en caso de realizarse por Bsale              |
-| `id_origin`				| string  |  Identificador de Algo a Revisar                                        |
+| `id_origin`				| string  |  Identificador de Origen de donde fue importada                                       |
 | `id_woocommerce`			| integer |  Identificador de la orden en caso de realizarse por Woocommerce        |
 | `items`			   		| array   |  Lista de items a comprar. Ver [Atributos de los items](#atributos-de-los-items)|
-| `origin`			   		| string  |  A Revisar                                                              |
-| `original_data`			| string  |  A Revisar                                                              |
+| `origin`			   		| string  |  Origen de donde fue importada la orden                                                            |
+| `original_data`			| string  |  Datos sin editar que fueron importados                                                             |
 | `received_date`			|date-time|  Fecha en el que el cliente recibe su orden                             |
 | `shipped_date`			|date-time|  Fecha en el que se despacha la orden                                   |
 | `total_amount`			|  float  |  Valor monetario del monto total de la orden                            |
