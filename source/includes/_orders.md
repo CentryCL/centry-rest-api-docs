@@ -29,7 +29,7 @@ s
 
 
 
-### formulario de direcciones
+### Formulario de direcciones
 
 #### Estos datos pueden variar y son consistentes para los parametros address_billing y address_shipping
 
