@@ -196,4 +196,4 @@ _id | El identificador del producto a actualizar
 
 Parámtetro | Descripción
 ---------- | -----------
-ID | El identificador del producto a eliminar
+ID | El identificador del producto a eliminar.
