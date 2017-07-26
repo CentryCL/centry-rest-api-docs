@@ -1,4 +1,5 @@
-# Products
+# Products 
+<i class="label label-info">InfoLabel</i>
 
 ## Parámetros
 
@@ -86,72 +87,203 @@
 
 ## Todos los Productos de la cuenta
 
+Este endpoint entrega todos los productos de la cuenta.
+
+### HTTP Request
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/products </h6>
+  </div>
+</div>
 
 ```shell
-curl "https://www.centry.cl/conexion/v1/products"
-  -H "Authorization: tu_centry_api_key"
+curl "https://www.centry.cl/conexion/v1/products.json"/
+ -H "Authorization: Bearer  <Access_code> "
 ```
 
 > Lo anterior retorna un JSON estructurado de la siguiente manera:
 
 ```json
 [
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
+  {"_id":"597644781d41c846ea000006",
+
+    "barcode":"12345655349384",
+    "brand_id":"57f63ffe4c266d1dec1edfb6",
+    "bulk_upload":false,
+    "category_id":"5769714df82f456e800001aa",
+    "color":null,
+    "company_id":"597643ab1d41c846ea000001",
+    "condition":"new",
+    "cover_content_type":null,
+    "cover_file_name":null,
+    "cover_file_size":null,
+    "cover_fingerprint":null,
+    "cover_updated_at":null,
+    "cover_url":"/images/defaults/products/missing_original.png",
+    "created_at":"2017-07-24T19:03:20.245Z",
+    "deliverytimesupplier":3,
+    "description":"\u003cp\u003easdasdsadsad\u003c/p\u003e",
+    "gender_id":"57ee86e911326899bc8f3f58",
+    "id_mercadolibre":null,
+    "id_shopify":null,
+    "id_woocommerce":null,
+    "is_fullproductname":null,
+    "listing_type":null,
+    "name":"ResTProduct",
+    "options":"Talla,Color",
+    "original_data":null,
+    "packageheight":"20",
+    "packagelength":"40",
+    "packageweight":"1",
+    "packagewidth":"20",
+    "price":null,
+    "price_compare":19999,
+    "publish":true,
+    "quantity":1000,
+    "saleenddate":null,
+    "salestartdate":null,
+    "season":"Centry 2019",
+    "seasonyear":"2015",
+    "seo_description":"asdsadas",
+    "seo_title":"sadasdd",
+    "shortdescription":"\u003cul\u003e\u003cli\u003easdasdasdasd\u003c/li\u003e\u003c/ul\u003e",
+    "sku":"CENTSER954",
+    "skusupplierconfig":"CENTSER954",
+    "status":true,
+    "updated_at":"2017-07-24T19:03:20.245Z",
+    "variants":[
+                {
+                "_id":"597649201d41c846ea000009",
+                "barcode":"123456553493842",
+                "bulk_upload":false,
+                "color_id":"57bdc991f82f453f680001d9",
+                "company_id":null,
+                "created_at":"2017-07-24T19:23:12.919Z",
+                "description":"L,Café",
+                 "id_b_sale":null,
+                "id_mercadolibre":null,
+                "id_shopify":null,
+                "id_woocommerce":null,
+                "original_data":null,
+                "price":null,
+                "price_compare":null,
+                "product_id":"597644781d41c846ea000006",
+                "quantity":9995,
+                "size_id":"5851b0c4b2c85e8282262a45",
+                "sku":"CENTSER9542",
+                "updated_at":"2017-07-24T19:23:12.947Z"
+  }],
+  "warranty":"2"
+}
 ]
 ```
 
-Este endpoint entrega todos los productos de la cuenta.
 
-### HTTP Request
-
-`GET https://www.centry.cl/conexion/v1/products.json`
 
 
 
 
 ## Obtener un Producto específico
 
+### HTTP Request
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/products/(product_id) </h6>
+  </div>
+</div>
 ```shell
-curl "https://www.centry.cl/conexion/v1/products/<product_id>.json"
-  -H "Authorization: tu_centry_api_key"
+curl "https://www.centry.cl/conexion/v1/products/(product_id).json" -H "Authorization: Bearer  <Access_code> "  > response.json
 ```
 
 > Lo anterior retorna un JSON estructurado de la siguiente manera:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "_id":"597644781d41c846ea000006",
+  "barcode":"12345655349384",
+  "brand_id":"57f63ffe4c266d1dec1edfb6",
+  "bulk_upload":false,
+  "category_id":"5769714df82f456e800001aa",
+  "color":null,
+  "company_id":"597643ab1d41c846ea000001",
+  "condition":"new",
+  "cover_content_type":null,
+  "cover_file_name":null,
+  "cover_file_size":null,
+  "cover_fingerprint":null,
+  "cover_updated_at":null,
+  "cover_url":"/images/defaults/products/missing_original.png",
+  "created_at":"2017-07-24T19:03:20.245Z",
+  "deliverytimesupplier":3,
+  "description":"\u003cp\u003easdasdsadsad\u003c/p\u003e",
+  "gender_id":"57ee86e911326899bc8f3f58",
+  "id_mercadolibre":null,
+  "id_shopify":null,
+  "id_woocommerce":null,
+  "is_fullproductname":null,
+  "listing_type":null,
+  "name":"ResTProduct",
+  "options":"Talla,
+  Color",
+  "original_data":null,
+  "packageheight":"20",
+  "packagelength":"40",
+  "packageweight":"1",
+  "packagewidth":"20",
+  "price":null,
+  "price_compare":19999,
+  "publish":true,
+  "quantity":1000,
+  "saleenddate":null,
+  "salestartdate":null,
+  "season":"Centry 2019",
+  "seasonyear":"2015",
+  "seo_description":"asdsadas",
+  "seo_title":"sadasdd",
+  "shortdescription":"\u003cul\u003e\u003cli\u003easdasdasdasd\u003c/li\u003e\u003c/ul\u003e",
+  "sku":"CENTSER954",
+  "skusupplierconfig":"CENTSER954",
+  "status":true,
+  "updated_at":"2017-07-24T19:03:20.245Z",
+  "variants":[
+    {
+      "_id":"597649201d41c846ea000009",
+      "barcode":"123456553493842",
+      "bulk_upload":false,
+      "color_id":"57bdc991f82f453f680001d9",
+      "company_id":null,
+      "created_at":"2017-07-24T19:23:12.919Z",
+      "description":"L,
+       Café",
+      "id_b_sale":null,
+      "id_mercadolibre":null,
+      "id_shopify":null,
+      "id_woocommerce":null,
+      "original_data":null,
+      "price":null,
+      "price_compare":null,
+      "product_id":"597644781d41c846ea000006",
+      "quantity":9995,
+      "size_id":"5851b0c4b2c85e8282262a45",
+      "sku":"CENTSER9542",
+      "updated_at":"2017-07-24T19:23:12.947Z"
+    }
+  ],
+  "warranty":"2"
 }
 ```
 
 Este endpoint entrega un producto específico.
 
-### HTTP Request
 
-`GET https://www.centry.cl/conexion/v1/products/<ID>`
 
 ### Parámetros URL
 
 Parámtetro | Descripción
 ---------- | -----------
-ID | El identificador del producto a recuperar
+`product_id` | El identificador del producto a recuperar
 
 
 
@@ -160,29 +292,69 @@ ID | El identificador del producto a recuperar
 
 ### HTTP Request
 
-`POST https://www.centry.cl/conexion/v1/products`
 
-### Parámetros URL
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-post">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/products </h6>
+  </div>
+</div>
+```shell
 
-Parámtetro | Descripción
----------- | -----------
+curl -X POST https://www.centry.cl/conexion/v1//products.json \
+    -H "Authorization: Bearer  dac351af298e8d410a56a6aa3b01acb47e810852e163413cec45aa005669c423"\
+    -H "Content-Type: application/json" \
+    -d '{
+    "barcode":"123456789",
+    "brand_id":"57f63ffe4c266d1dec1edfb6",
+    "category_id":"5769714df82f456e800001aa",
+    "company_id":<ID_de_tu_empresa>,
+    "cover_url":<imagen_producto>,
+    "deliverytimesupplier":3,
+    "description":"describiendo el asombroso producto que vendaras",
+    "name":"Un Nombre Fantastico, para un producto fantastico",
+    "packageheight":"20",
+    "packagelength":"40",
+    "packageweight":"1",
+    "packagewidth":"20",
+    "price":10000,
+    "seasonyear":"2015",
+    "seo_description":"Descripcion",
+    "seo_title":"Título asombroso",
+    "shortdescription":"\u003cul\u003e\u003cli\u003easdasdasdasd\u003c/li\u003e\u003c/ul\u003e",
+    "sku":"YOS0YUN54U",
+}'
 
 
-
+```
 
 ## Actualizar un Product
 
 ### HTTP Request
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-put">PUT</i>
+    <h6> https://www.centry.cl/conexion/v1/products/(product_ID) </h6>
+  </div>
+</div>
 
-`PUT https://www.centry.cl/conexion/v1/products`
+
+```shell
+
+curl -X PUT https://www.centry.cl/conexion/v1//products/(product_ID).json \
+    -H "Authorization: Bearer  <Access_code> "\
+    -H "Content-Type: application/json" \
+    -d '{
+  "parametro_a_editar": "nuevo_valor",
+  "seo_description":"Descripción bonita vía cUrl"
+}'
+```
 
 ### Parámetros URL
 
 Parámtetro | Descripción
 ---------- | -----------
-_id | El identificador del producto a actualizar
-
-
+product_ID | El identificador del producto a actualizar
 
 
 
@@ -190,10 +362,24 @@ _id | El identificador del producto a actualizar
 
 ### HTTP Request
 
-`DELETE https://www.centry.cl/conexion/v1/products/<ID>`
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-delete">DELETE</i>
+    <h6> https://www.centry.cl/conexion/v1/products/(product_ID) </h6>
+  </div>
+</div>
+
+```shell
+curl -X DELETE https://www.centry.cl/conexion/v1//products/(product_ID).json?force=true \
+    -H "Authorization: Bearer  <Access_code> "
+
+```
+
+
+
 
 ### Parámetros URL
 
 Parámtetro | Descripción
 ---------- | -----------
-ID | El identificador del producto a <eliminar class=""></eliminar>
+`product_ID` | El identificador del producto a eliminar

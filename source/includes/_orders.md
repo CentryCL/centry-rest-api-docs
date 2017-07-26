@@ -83,52 +83,196 @@
 
 ## Todas las Órdenes de la cuenta
 
+### HTTP Request
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/orders </h6>
+  </div>
+</div>
+
+
+
 ```shell
-curl "https://www.centry.cl/conexion/v1/orders"
-  -H "Authorization: tu_centry_api_key"
+curl "https://www.centry.cl/conexion/v1/orders.json"/
+ -H "Authorization: Bearer  <Access_code> "
 ```
 
 > Lo anterior retorna un JSON estructurado de la siguiente manera:
 
 ```json
-[
-  {...}
+  [
+  {"_id":"5977483f1d41c81248000003",
+	"_status":"pending",
+	"address_billing":{"_id":"5977483f1d41c81248000005",
+	"city":"Santiago",
+	"country":"Chile",
+	"created_at":null,
+	"email":"Email@Factura.cl",
+	"first_name":"Nombre Factura",
+	"last_name":"Apellido Factura",
+	"line1":"Dirección Cliente",
+	"line2":"",
+	"phone1":"89668063",
+	"phone2":"",
+	"state":"EstadoFactura",
+	"updated_at":null,
+	"zip_code":"2948513"},
+	"address_shipping":{"_id":"5977483f1d41c81248000006",
+	"city":"Santiago",
+	"country":"Chile",
+	"created_at":null,
+	"email":"Email@Envío.cl",
+	"first_name":"Nombre Envio",
+	"last_name":"Apellido Envío",
+	"line1":"Dirección Cliente",
+	"line2":"",
+	"phone1":"89668063",
+	"phone2":"",
+	"state":"EstadoFactura",
+	"updated_at":null,
+	"zip_code":"2948513"},
+	"buyer_email":"Email@Cliente.cl",
+	"buyer_first_name":"Nombre Cliente",
+	"buyer_last_name":"Apellido Cliente",
+	"cancelled_date":null,
+	"company_id":"597643ab1d41c846ea000001",
+	"created_at":"2017-07-25T13:31:43.133Z",
+	"id_b_sale":null,
+	"id_origin":null,
+	"id_woocommerce":null,
+	"items": [
+		{
+			"_id":"5977483f1d41c81248000004",
+			"created_at":null,
+			"currency":null,
+			"name":"L, Café",
+			"paid_price":null,
+			"quantity":5,
+			"shipment_provider":null,
+			"shipping_amount":null,
+			"shipping_type":null,
+			"tax_amount":null,
+			"tracking_code":null,
+			"tracking_code_pre":null,
+			"unit_price":19999.0,
+			"updated_at":null,
+			"variant_id":"597649201d41c846ea000009"
+			}],
+	"origin":"Centry",
+	"original_data":null,
+	"received_date":null,
+	"shipped_date":null,
+	"total_amount":99995.0,
+	"updated_at":"2017-07-25T13:31:43.133Z"
+	}
 ]
+	
+
 ```
-
-Este endpoint entrega todas las órdenes de la cuenta.
-
-### HTTP Request
-
-`GET https://www.centry.cl/conexion/v1/orders/`
-
-
 
 
 ## Obtener una Orden específica
 
+
+
+Este endpoint entrega un producto específico.
+
+### HTTP Request
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/<product_id> </h6>
+  </div>
+</div>
+
+
 ```shell
-curl "https://www.centry.cl/conexion/v1/orders/2"
-  -H "Authorization: tu_centry_api_key"
+curl "https://www.centry.cl/conexion/v1/products/<product_id>.json"/
+ -H "Authorization: Bearer  <Access_code> "  > response.json
 ```
 
 > Lo anterior retorna un JSON estructurado de la siguiente manera:
 
 ```json
-{...}
+
+  
+  {"_id":"5977483f1d41c81248000003",
+	"_status":"pending",
+	"address_billing":{"_id":"5977483f1d41c81248000005",
+	"city":"Santiago",
+	"country":"Chile",
+	"created_at":null,
+	"email":"Email@Factura.cl",
+	"first_name":"Nombre Factura",
+	"last_name":"Apellido Factura",
+	"line1":"Dirección Cliente",
+	"line2":"",
+	"phone1":"89668063",
+	"phone2":"",
+	"state":"EstadoFactura",
+	"updated_at":null,
+	"zip_code":"2948513"},
+	"address_shipping":{"_id":"5977483f1d41c81248000006",
+	"city":"Santiago",
+	"country":"Chile",
+	"created_at":null,
+	"email":"Email@Envío.cl",
+	"first_name":"Nombre Envio",
+	"last_name":"Apellido Envío",
+	"line1":"Dirección Cliente",
+	"line2":"",
+	"phone1":"89668063",
+	"phone2":"",
+	"state":"EstadoFactura",
+	"updated_at":null,
+	"zip_code":"2948513"},
+	"buyer_email":"Email@Cliente.cl",
+	"buyer_first_name":"Nombre Cliente",
+	"buyer_last_name":"Apellido Cliente",
+	"cancelled_date":null,
+	"company_id":"597643ab1d41c846ea000001",
+	"created_at":"2017-07-25T13:31:43.133Z",
+	"id_b_sale":null,
+	"id_origin":null,
+	"id_woocommerce":null,
+	"items": [
+		{
+			"_id":"5977483f1d41c81248000004",
+			"created_at":null,
+			"currency":null,
+			"name":"L, Café",
+			"paid_price":null,
+			"quantity":5,
+			"shipment_provider":null,
+			"shipping_amount":null,
+			"shipping_type":null,
+			"tax_amount":null,
+			"tracking_code":null,
+			"tracking_code_pre":null,
+			"unit_price":19999.0,
+			"updated_at":null,
+			"variant_id":"597649201d41c846ea000009"
+			}],
+	"origin":"Centry",
+	"original_data":null,
+	"received_date":null,
+	"shipped_date":null,
+	"total_amount":99995.0,
+	"updated_at":"2017-07-25T13:31:43.133Z"
+}
+
+	
+
 ```
 
-Este endpoint entrega un producto específico.
 
-### HTTP Request
-
-`GET https://www.centry.cl/conexion/v1/products/<ID>`
 
 ### Parámetros URL
 
 Parámtetro | Descripción
 ---------- | -----------
-ID | El identificador de la orden a recuperar
+`product_id` | El identificador de la orden a recuperar
 
 
 
@@ -136,13 +280,13 @@ ID | El identificador de la orden a recuperar
 ## Crear una Orden
 
 ### HTTP Request
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-post">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/orders </h6>
+  </div>
+</div>
 
-`POST https://www.centry.cl/conexion/v1/orders`
-
-### Parámetros URL
-
-Parámtetro | Descripción
----------- | -----------
 
 
 
@@ -150,14 +294,29 @@ Parámtetro | Descripción
 ## Actualizar una Orden
 
 ### HTTP Request
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-put">PUT</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/(order_ID) </h6>
+  </div>
+</div>
 
-`PUT https://www.centry.cl/conexion/v1/orders`
+```shell
+
+curl -X PUT https://www.centry.cl/conexion/v1//products/(order_ID).json \
+    -H "Authorization: Bearer  <Access_code> "\
+    -H "Content-Type: application/json" \
+    -d '{
+  "parametro_a_editar": "nuevo_valor",
+  "first_name":"Pedro cUrl"
+}'
+```
 
 ### Parámetros URL
 
 Parámtetro | Descripción
 ---------- | -----------
-_id | El identificador de la orden a actualizar
+`order_ID`| El identificador de la orden a actualizar
 
 
 
@@ -167,7 +326,12 @@ _id | El identificador de la orden a actualizar
 
 ### HTTP Request
 
-`DELETE https://www.centry.cl/conexion/v1/orders/<ID>`
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-delete">DELETE</i>
+    <h6> https://www.centry.cl/conexion/v1/order/(order_ID) </h6>
+  </div>
+</div>
 
 ### Parámetros URL
 
