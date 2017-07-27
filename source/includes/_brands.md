@@ -17,6 +17,8 @@
 
 ## Todas las Marcas 
 
+Este endpoint entrega todas las marcas de Centry
+
 ### HTTP Request
 <div class="api-endpoint">
   <div class="endpoint-data">

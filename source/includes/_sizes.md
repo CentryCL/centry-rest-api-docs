@@ -17,7 +17,7 @@
 
 
 ## Todas las Tallas
-
+Este endpoint entrega todas las tallas de Centry
 ### HTTP Request
 <div class="api-endpoint">
   <div class="endpoint-data">
@@ -69,7 +69,7 @@ curl "https://www.centry.cl/conexion/v1/sizes.json"/
 
 
 
-Este endpoint entrega una categoria específico.
+Este endpoint entrega una talla  específica
 
 ### HTTP Request
 <div class="api-endpoint">

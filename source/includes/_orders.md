@@ -81,7 +81,9 @@
 
 
 
-## Todas las Órdenes de la cuenta
+## Todas las Ordenes de la cuenta
+
+Este endpoint entrega todas las ordenes de la cuenta
 
 ### HTTP Request
 <div class="api-endpoint">
@@ -286,7 +288,7 @@ Parámtetro | Descripción
 
 
 ## Crear una Orden
-
+Este endpoint crea una orden
 ### HTTP Request
 <div class="api-endpoint">
   <div class="endpoint-data">
@@ -347,7 +349,7 @@ curl -X POST https://www.centry.cl/conexion/v1/orders.json \
 
 
 ## Eliminar una Orden
-
+Este endpoint elimina una orden 
 ### HTTP Request
 
 <div class="api-endpoint">

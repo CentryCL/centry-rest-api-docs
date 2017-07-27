@@ -25,6 +25,7 @@
 
 ## Todas las Categorias 
 
+Este endpoint entrega todas las categorias de Centry
 ### HTTP Request
 <div class="api-endpoint">
   <div class="endpoint-data">

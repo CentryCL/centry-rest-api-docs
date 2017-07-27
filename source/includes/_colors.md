@@ -17,7 +17,7 @@
 
 
 ## Todos los Colores 
-
+Este endpoint entrega todos los colores de Centry
 ### HTTP Request
 <div class="api-endpoint">
   <div class="endpoint-data">
@@ -69,7 +69,7 @@ curl "https://www.centry.cl/conexion/v1/colors.json"/
 
 
 
-Este endpoint entrega una categoria específico.
+Este endpoint entrega un color específico.
 
 ### HTTP Request
 <div class="api-endpoint">

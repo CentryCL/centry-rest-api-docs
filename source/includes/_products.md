@@ -185,7 +185,7 @@ curl "https://www.centry.cl/conexion/v1/products.json"/
 
 
 ## Obtener un Producto específico
-
+Este endpoint entrega un producto en específico
 ### HTTP Request
 <div class="api-endpoint">
   <div class="endpoint-data">
@@ -289,7 +289,7 @@ Parámtetro | Descripción
 
 
 ## Crear un Product
-
+Este endpoint crea un producto
 ### HTTP Request
 
 
@@ -329,7 +329,7 @@ curl -X POST https://www.centry.cl/conexion/v1//products.json \
 ```
 
 ## Actualizar un Product
-
+Este endpoint actualiza un producto
 ### HTTP Request
 <div class="api-endpoint">
   <div class="endpoint-data">
@@ -359,7 +359,7 @@ product_ID | El identificador del producto a actualizar
 
 
 ## Eliminar un Product
-
+Este endpoint elimina un procucto
 ### HTTP Request
 
 <div class="api-endpoint">
