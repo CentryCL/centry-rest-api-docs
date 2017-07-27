@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API de Centry</title>
+    <title>Centry REST Api</title>
     <link href="images/favicon.ico" rel="icon" type="image/ico" />
     <style>
       .highlight table td { padding: 5px; }
@@ -226,7 +226,7 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="introduction">Introduction</h1>
+        <h1 id="introducci-n">Introducción</h1>
 
 <p>Bienvenido a la API de Centry. Puedes usar nuestra API para acceder a los endpoints, los que entregan variada
 información sobre los recursos registrados en nuestra base de datos.</p>
@@ -234,13 +234,13 @@ información sobre los recursos registrados en nuestra base de datos.</p>
 <p>Puedes ver los códigos de ejemplo en la región oscura de la derecha y seleccionar el lenguaje de programación
 que más te acomode en las pestañas que se encuentran en la parte superior.</p>
 
-<h1 id="authentication">Authentication</h1>
+<h1 id="autenticaci-n">Autenticación</h1>
 
 <p>Para poder interactuar desde tu aplicación con centry se debe solicitar las credenciales necesarias para que 
 dicha conexión sea exitosa.
 Dicho lo anterior se deben realizar los siguientes pasos.</p>
 
-<h2 id="primer-paso">Primer paso</h2>
+<h2 id="obtener-credenciales-de-acceso">Obtener credenciales de acceso</h2>
 
 <p>Ingresaremos a nuestro panel de <a href="https://www.centry.cl/oauth/applications">aplicaciones externas desde centry</a>
 Y le damos click a Nueva Aplicación.</p>
@@ -259,11 +259,32 @@ Y le damos click a Nueva Aplicación.</p>
 
 <p><img src="images/appCentry4.png" alt="Configuración de llaves Centry REST API" /></p>
 
-<h2 id="segundo-paso">Segundo paso</h2>
+<h2 id="solicitar-acceso-desde-aplicaci-n">Solicitar acceso desde Aplicación</h2>
 
+<blockquote>
+<h3 id="para-autorizar-nuestra-aplicaci-n">Para autorizar nuestra aplicación:</h3>
+
+<p>Debe realizar un Request POST a la url https://www.centry.cl/oauth/token</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c">#comando para obtener codigo de autorización </span>
+
+curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&lt;My_client_secret&gt;&amp;redirect_uri&lt;My_redirect_uri&gt;&amp;grant_type=authorization_code&amp;code=&lt;My_authorization_code&gt;"</span> https://www.centry.cl/oauth/token
+
+</code></pre>
+<blockquote>
+<p>Ejemplo de respuesta JSON luego de ejecutar el comando anterior</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+"access_token":"fa56dff5a29c8...",
+"token_type":"bearer",
+"expires_in":7200,
+"refresh_token":"c38eabc8f00...",
+"created_at":1501020167
+}
+</code></pre>
 <p>Configurar la conexión en nuestra app.</p>
 
-<h4 id="url-parameters">URL parameters</h4>
+<h3 id="url-parameters">URL parameters</h3>
 
 <table><thead>
 <tr>
@@ -290,7 +311,7 @@ Y le damos click a Nueva Aplicación.</p>
 <tr>
 <td><code class="prettyprint">grant_type</code></td>
 <td>string</td>
-<td>Llave de autorización (authorization_code)<i class="label label-info">mandatory</i></td>
+<td>Valor a solicitar <code class="prettyprint">authorization_code</code> inicialmente<i class="label label-info">mandatory</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">code</code></td>
@@ -299,38 +320,84 @@ Y le damos click a Nueva Aplicación.</p>
 </tr>
 </tbody></table>
 
-<blockquote>
-<p>Para autorizar nuestra aplicación:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>
+<h2 id="configurar-header">Configurar Header</h2>
+<pre class="highlight shell tab-shell"><code><span class="c">#comando para obtener codigo de autorización </span>
 
 
+curl -H <span class="s2">"Authorization: Bearer fa56dff5a29c8..(access_token) "</span> https://www.centry.cl/oauth/token
 
-
-
-<span class="gp">&gt; </span>To authorize, use this code:
-
-<span class="sb">```</span>shell
-<span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: tu_centry_api_key"</span>
-
-<span class="gp">&gt; </span>Asegúrate de reemplazar <span class="sb">`</span>tu_centry_api_key<span class="sb">`</span> con tu API key.
-
-Centry usa llaves para permitir el acceso a la API. Puedes registrar una nueva API key en nuestro 
-<span class="o">[</span>portal de desarrolladores]<span class="o">(</span>https://www.centry.cl/oauth/applications<span class="o">)</span>.
-
-Centry espera que una API key sea incluída en todas las llamadas a la API en la cabecera de cada request tal como
-lo muestra el ejemplo siguiente:
-
-<span class="sb">`</span>Authorization: tu_centry_api_key<span class="sb">`</span>
-
-&lt;aside <span class="nv">class</span><span class="o">=</span><span class="s2">"notice"</span>&gt;
-Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key personal.
-&lt;/aside&gt;
 
 </code></pre>
+<h3 id="uso-de-acces_token">Uso de Acces_token</h3>
+
+<p>Por cada nueva solicitud de acceso que quieras realizar, es importante configurar el Header de nuestro entorno.</p>
+
+<p>Realizando este paso el acceso tu aplicación estará garantizada.</p>
+
+<h2 id="renovar-acceso">Renovar Acceso</h2>
+
+<blockquote>
+<h3 id="para-renovar-el-acceso-de-nuestra-aplicaci-n">Para renovar el acceso de nuestra aplicación:</h3>
+
+<p>Debe voler a realizar un Request POST a la url https://www.centry.cl/oauth/token</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c">#comando para renovar autorización </span>
+
+
+curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&lt;My_client_secret&gt;&amp;redirect_uri=urn:&lt;My_redirect_uri&gt;&amp;grant_type=refresh_token&amp;refresh_token=&lt;My_previus_refresh_token&gt;"</span> https://www.centry.cl/oauth/token
+</code></pre>
+<blockquote>
+<p>Ejemplo de respuesta JSON luego de ejecutar el comando anterior</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+"access_token":"64ad4cf7...",
+"token_type":"bearer",
+"expires_in":7200,
+"refresh_token":"ea14ff30...",
+"created_at":1501080163
+}
+</code></pre>
+<p>Renovar solicitudes de acceso </p>
+
+<h3 id="url-parameters">URL parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">client_id</code></td>
+<td>string</td>
+<td>Tu id de cliente visto en el paso anterior <i class="label label-info">mandatory</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">client_secret</code></td>
+<td>string</td>
+<td>Id Secreto visto en el paso anterior <i class="label label-info">mandatory</i>s</td>
+</tr>
+<tr>
+<td><code class="prettyprint">redirect_uri</code></td>
+<td>string</td>
+<td>Dirección de redirección luego de consulta <i class="label label-info">mandatory</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">grant_type</code></td>
+<td>string</td>
+<td><strong>Este valor cambia</strong> a <code class="prettyprint">refresh_token</code> <i class="label label-info">mandatory</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">refresh_token</code></td>
+<td>string</td>
+<td>Se tenía guardado de la solicitud anterior <i class="label label-info">mandatory</i></td>
+</tr>
+</tbody></table>
+
           <h1 id="products">Products</h1>
+
+<p><i class="label label-info">InfoLabel</i></p>
 
 <h2 id="par-metros">Parámetros</h2>
 
@@ -685,55 +752,186 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 </tbody></table>
 
 <h2 id="todos-los-productos-de-la-cuenta">Todos los Productos de la cuenta</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/products"</span>
-  -H <span class="s2">"Authorization: tu_centry_api_key"</span>
+
+<p>Este endpoint entrega todos los productos de la cuenta.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/products </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/products.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;Access_code&gt; "</span>
 </code></pre>
 <blockquote>
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"597644781d41c846ea000006"</span><span class="p">,</span><span class="w">
+
+    </span><span class="s2">"barcode"</span><span class="p">:</span><span class="s2">"12345655349384"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="s2">"57f63ffe4c266d1dec1edfb6"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bulk_upload"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"category_id"</span><span class="p">:</span><span class="s2">"5769714df82f456e800001aa"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"color"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="s2">"597643ab1d41c846ea000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"condition"</span><span class="p">:</span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cover_content_type"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cover_file_name"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cover_file_size"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cover_fingerprint"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cover_updated_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cover_url"</span><span class="p">:</span><span class="s2">"/images/defaults/products/missing_original.png"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-07-24T19:03:20.245Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deliverytimesupplier"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"</span><span class="se">\u</span><span class="s2">003cp</span><span class="se">\u</span><span class="s2">003easdasdsadsad</span><span class="se">\u</span><span class="s2">003c/p</span><span class="se">\u</span><span class="s2">003e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"gender_id"</span><span class="p">:</span><span class="s2">"57ee86e911326899bc8f3f58"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id_mercadolibre"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id_shopify"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id_woocommerce"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_fullproductname"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"listing_type"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"ResTProduct"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"options"</span><span class="p">:</span><span class="s2">"Talla,Color"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"original_data"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"packageheight"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"packagelength"</span><span class="p">:</span><span class="s2">"40"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"packageweight"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"packagewidth"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"price"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"price_compare"</span><span class="p">:</span><span class="mi">19999</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"publish"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"saleenddate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"salestartdate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"season"</span><span class="p">:</span><span class="s2">"Centry 2019"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seasonyear"</span><span class="p">:</span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seo_description"</span><span class="p">:</span><span class="s2">"asdsadas"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seo_title"</span><span class="p">:</span><span class="s2">"sadasdd"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shortdescription"</span><span class="p">:</span><span class="s2">"</span><span class="se">\u</span><span class="s2">003cul</span><span class="se">\u</span><span class="s2">003e</span><span class="se">\u</span><span class="s2">003cli</span><span class="se">\u</span><span class="s2">003easdasdasdasd</span><span class="se">\u</span><span class="s2">003c/li</span><span class="se">\u</span><span class="s2">003e</span><span class="se">\u</span><span class="s2">003c/ul</span><span class="se">\u</span><span class="s2">003e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sku"</span><span class="p">:</span><span class="s2">"CENTSER954"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"skusupplierconfig"</span><span class="p">:</span><span class="s2">"CENTSER954"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="s2">"2017-07-24T19:03:20.245Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"variants"</span><span class="p">:[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"597649201d41c846ea000009"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"barcode"</span><span class="p">:</span><span class="s2">"123456553493842"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"bulk_upload"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"color_id"</span><span class="p">:</span><span class="s2">"57bdc991f82f453f680001d9"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"company_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-07-24T19:23:12.919Z"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"L,Café"</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"id_b_sale"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id_mercadolibre"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id_shopify"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id_woocommerce"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"original_data"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"price"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"price_compare"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"product_id"</span><span class="p">:</span><span class="s2">"597644781d41c846ea000006"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"quantity"</span><span class="p">:</span><span class="mi">9995</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"size_id"</span><span class="p">:</span><span class="s2">"5851b0c4b2c85e8282262a45"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sku"</span><span class="p">:</span><span class="s2">"CENTSER9542"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="s2">"2017-07-24T19:23:12.947Z"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"warranty"</span><span class="p">:</span><span class="s2">"2"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>Este endpoint entrega todos los productos de la cuenta.</p>
+<h2 id="obtener-un-producto-espec-fico">Obtener un Producto específico</h2>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://www.centry.cl/conexion/v1/products.json</code></p>
-
-<h2 id="obtener-un-producto-espec-fico">Obtener un Producto específico</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;.json"</span>
-  -H <span class="s2">"Authorization: tu_centry_api_key"</span>
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/products/(product_id) </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/products/(product_id).json"</span> -H <span class="s2">"Authorization: Bearer  &lt;Access_code&gt; "</span>  &gt; response.json
 </code></pre>
 <blockquote>
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"597644781d41c846ea000006"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"barcode"</span><span class="p">:</span><span class="s2">"12345655349384"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="s2">"57f63ffe4c266d1dec1edfb6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"bulk_upload"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"category_id"</span><span class="p">:</span><span class="s2">"5769714df82f456e800001aa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"color"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="s2">"597643ab1d41c846ea000001"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"condition"</span><span class="p">:</span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cover_content_type"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cover_file_name"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cover_file_size"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cover_fingerprint"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cover_updated_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cover_url"</span><span class="p">:</span><span class="s2">"/images/defaults/products/missing_original.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-07-24T19:03:20.245Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deliverytimesupplier"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"</span><span class="se">\u</span><span class="s2">003cp</span><span class="se">\u</span><span class="s2">003easdasdsadsad</span><span class="se">\u</span><span class="s2">003c/p</span><span class="se">\u</span><span class="s2">003e"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"gender_id"</span><span class="p">:</span><span class="s2">"57ee86e911326899bc8f3f58"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id_mercadolibre"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id_shopify"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id_woocommerce"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_fullproductname"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"listing_type"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"ResTProduct"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"options"</span><span class="p">:</span><span class="s2">"Talla,
+  Color"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"original_data"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"packageheight"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"packagelength"</span><span class="p">:</span><span class="s2">"40"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"packageweight"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"packagewidth"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"price"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"price_compare"</span><span class="p">:</span><span class="mi">19999</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"publish"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"quantity"</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"saleenddate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"salestartdate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"season"</span><span class="p">:</span><span class="s2">"Centry 2019"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"seasonyear"</span><span class="p">:</span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"seo_description"</span><span class="p">:</span><span class="s2">"asdsadas"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"seo_title"</span><span class="p">:</span><span class="s2">"sadasdd"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"shortdescription"</span><span class="p">:</span><span class="s2">"</span><span class="se">\u</span><span class="s2">003cul</span><span class="se">\u</span><span class="s2">003e</span><span class="se">\u</span><span class="s2">003cli</span><span class="se">\u</span><span class="s2">003easdasdasdasd</span><span class="se">\u</span><span class="s2">003c/li</span><span class="se">\u</span><span class="s2">003e</span><span class="se">\u</span><span class="s2">003c/ul</span><span class="se">\u</span><span class="s2">003e"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sku"</span><span class="p">:</span><span class="s2">"CENTSER954"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"skusupplierconfig"</span><span class="p">:</span><span class="s2">"CENTSER954"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="s2">"2017-07-24T19:03:20.245Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"variants"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"597649201d41c846ea000009"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"barcode"</span><span class="p">:</span><span class="s2">"123456553493842"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bulk_upload"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"color_id"</span><span class="p">:</span><span class="s2">"57bdc991f82f453f680001d9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"company_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-07-24T19:23:12.919Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"L,
+       Café"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id_b_sale"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id_mercadolibre"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id_shopify"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id_woocommerce"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"original_data"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price_compare"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"product_id"</span><span class="p">:</span><span class="s2">"597644781d41c846ea000006"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="mi">9995</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"size_id"</span><span class="p">:</span><span class="s2">"5851b0c4b2c85e8282262a45"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sku"</span><span class="p">:</span><span class="s2">"CENTSER9542"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="s2">"2017-07-24T19:23:12.947Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"warranty"</span><span class="p">:</span><span class="s2">"2"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint entrega un producto específico.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://www.centry.cl/conexion/v1/products/&lt;ID&gt;</code></p>
 
 <h3 id="par-metros-url">Parámetros URL</h3>
 
@@ -744,7 +942,7 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
+<td><code class="prettyprint">product_id</code></td>
 <td>El identificador del producto a recuperar</td>
 </tr>
 </tbody></table>
@@ -753,24 +951,58 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://www.centry.cl/conexion/v1/products</code></p>
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-post">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/products </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>
+curl -X POST https://www.centry.cl/conexion/v1//products.json <span class="se">\</span>
+    -H <span class="s2">"Authorization: Bearer  dac351af298e8d410a56a6aa3b01acb47e810852e163413cec45aa005669c423"</span><span class="se">\</span>
+    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    -d <span class="s1">'{
+    "barcode":"123456789",
+    "brand_id":"57f63ffe4c266d1dec1edfb6",
+    "category_id":"5769714df82f456e800001aa",
+    "company_id":&lt;ID_de_tu_empresa&gt;,
+    "cover_url":&lt;imagen_producto&gt;,
+    "deliverytimesupplier":3,
+    "description":"describiendo el asombroso producto que vendaras",
+    "name":"Un Nombre Fantastico, para un producto fantastico",
+    "packageheight":"20",
+    "packagelength":"40",
+    "packageweight":"1",
+    "packagewidth":"20",
+    "price":10000,
+    "seasonyear":"2015",
+    "seo_description":"Descripcion",
+    "seo_title":"Título asombroso",
+    "shortdescription":"\u003cul\u003e\u003cli\u003easdasdasdasd\u003c/li\u003e\u003c/ul\u003e",
+    "sku":"YOS0YUN54U",
+}'</span>
 
-<h3 id="par-metros-url">Parámetros URL</h3>
 
-<table><thead>
-<tr>
-<th>Parámtetro</th>
-<th>Descripción</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-
+</code></pre>
 <h2 id="actualizar-un-product">Actualizar un Product</h2>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT https://www.centry.cl/conexion/v1/products</code></p>
-
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-put">PUT</i>
+    <h6> https://www.centry.cl/conexion/v1/products/(product_ID) </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>
+curl -X PUT https://www.centry.cl/conexion/v1//products/<span class="o">(</span>product_ID<span class="o">)</span>.json <span class="se">\</span>
+    -H <span class="s2">"Authorization: Bearer  &lt;Access_code&gt; "</span><span class="se">\</span>
+    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    -d <span class="s1">'{
+  "parametro_a_editar": "nuevo_valor",
+  "seo_description":"Descripción bonita vía cUrl"
+}'</span>
+</code></pre>
 <h3 id="par-metros-url">Parámetros URL</h3>
 
 <table><thead>
@@ -780,7 +1012,7 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 </tr>
 </thead><tbody>
 <tr>
-<td>_id</td>
+<td>product_ID</td>
 <td>El identificador del producto a actualizar</td>
 </tr>
 </tbody></table>
@@ -789,8 +1021,16 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE https://www.centry.cl/conexion/v1/products/&lt;ID&gt;</code></p>
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-delete">DELETE</i>
+    <h6> https://www.centry.cl/conexion/v1/products/(product_ID) </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE https://www.centry.cl/conexion/v1//products/<span class="o">(</span>product_ID<span class="o">)</span>.json?force<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+    -H <span class="s2">"Authorization: Bearer  &lt;Access_code&gt; "</span>
 
+</code></pre>
 <h3 id="par-metros-url">Parámetros URL</h3>
 
 <table><thead>
@@ -800,8 +1040,8 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>El identificador del producto a <eliminar class=""></eliminar></td>
+<td><code class="prettyprint">product_ID</code></td>
+<td>El identificador del producto a eliminar</td>
 </tr>
 </tbody></table>
 
@@ -1033,7 +1273,7 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 <tr>
 <td><code class="prettyprint">name</code></td>
 <td>string</td>
-<td>Nombre del producto</td>
+<td>Nombre del ordero</td>
 </tr>
 <tr>
 <td><code class="prettyprint">paid_price</code></td>
@@ -1093,37 +1333,186 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 </tbody></table>
 
 <h2 id="todas-las-rdenes-de-la-cuenta">Todas las Órdenes de la cuenta</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/orders"</span>
-  -H <span class="s2">"Authorization: tu_centry_api_key"</span>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/orders </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/orders.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;Access_code&gt; "</span>
 </code></pre>
 <blockquote>
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5977483f1d41c81248000003"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_status"</span><span class="p">:</span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address_billing"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5977483f1d41c81248000005"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Santiago"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="s2">"Chile"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"Email@Factura.cl"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="s2">"Nombre Factura"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="s2">"Apellido Factura"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"line1"</span><span class="p">:</span><span class="s2">"Dirección Cliente"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"line2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone1"</span><span class="p">:</span><span class="s2">"89668063"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"EstadoFactura"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="s2">"2948513"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"address_shipping"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5977483f1d41c81248000006"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Santiago"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="s2">"Chile"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"Email@Envío.cl"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="s2">"Nombre Envio"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="s2">"Apellido Envío"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"line1"</span><span class="p">:</span><span class="s2">"Dirección Cliente"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"line2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone1"</span><span class="p">:</span><span class="s2">"89668063"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"EstadoFactura"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="s2">"2948513"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"buyer_email"</span><span class="p">:</span><span class="s2">"Email@Cliente.cl"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buyer_first_name"</span><span class="p">:</span><span class="s2">"Nombre Cliente"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buyer_last_name"</span><span class="p">:</span><span class="s2">"Apellido Cliente"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cancelled_date"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="s2">"597643ab1d41c846ea000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-07-25T13:31:43.133Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id_b_sale"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id_origin"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id_woocommerce"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5977483f1d41c81248000004"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"L, Café"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"paid_price"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shipment_provider"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shipping_amount"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shipping_type"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tax_amount"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tracking_code"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tracking_code_pre"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="mf">19999.0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="s2">"597649201d41c846ea000009"</span><span class="w">
+            </span><span class="p">}],</span><span class="w">
+    </span><span class="s2">"origin"</span><span class="p">:</span><span class="s2">"Centry"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"original_data"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"received_date"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shipped_date"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_amount"</span><span class="p">:</span><span class="mf">99995.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="s2">"2017-07-25T13:31:43.133Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
+
+
 </span></code></pre>
-<p>Este endpoint entrega todas las órdenes de la cuenta.</p>
+<h2 id="obtener-una-orden-espec-fica">Obtener una Orden específica</h2>
+
+<p>Este endpoint entrega un orden específico.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://www.centry.cl/conexion/v1/orders/</code></p>
-
-<h2 id="obtener-una-orden-espec-fica">Obtener una Orden específica</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/orders/2"</span>
-  -H <span class="s2">"Authorization: tu_centry_api_key"</span>
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/<order_id> </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;Access_code&gt; "</span>  &gt; response.json
 </code></pre>
 <blockquote>
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="w">
+
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5977483f1d41c81248000003"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_status"</span><span class="p">:</span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address_billing"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5977483f1d41c81248000005"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Santiago"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="s2">"Chile"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"Email@Factura.cl"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="s2">"Nombre Factura"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="s2">"Apellido Factura"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"line1"</span><span class="p">:</span><span class="s2">"Dirección Cliente"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"line2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone1"</span><span class="p">:</span><span class="s2">"89668063"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"EstadoFactura"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="s2">"2948513"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"address_shipping"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5977483f1d41c81248000006"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Santiago"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="s2">"Chile"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"Email@Envío.cl"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="s2">"Nombre Envio"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="s2">"Apellido Envío"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"line1"</span><span class="p">:</span><span class="s2">"Dirección Cliente"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"line2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone1"</span><span class="p">:</span><span class="s2">"89668063"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"EstadoFactura"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="s2">"2948513"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"buyer_email"</span><span class="p">:</span><span class="s2">"Email@Cliente.cl"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buyer_first_name"</span><span class="p">:</span><span class="s2">"Nombre Cliente"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buyer_last_name"</span><span class="p">:</span><span class="s2">"Apellido Cliente"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cancelled_date"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="s2">"597643ab1d41c846ea000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-07-25T13:31:43.133Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id_b_sale"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id_origin"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id_woocommerce"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5977483f1d41c81248000004"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"L, Café"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"paid_price"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shipment_provider"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shipping_amount"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shipping_type"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tax_amount"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tracking_code"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tracking_code_pre"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="mf">19999.0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="s2">"597649201d41c846ea000009"</span><span class="w">
+            </span><span class="p">}],</span><span class="w">
+    </span><span class="s2">"origin"</span><span class="p">:</span><span class="s2">"Centry"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"original_data"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"received_date"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shipped_date"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_amount"</span><span class="p">:</span><span class="mf">99995.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="s2">"2017-07-25T13:31:43.133Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+
 </span></code></pre>
-<p>Este endpoint entrega un producto específico.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://www.centry.cl/conexion/v1/products/&lt;ID&gt;</code></p>
-
 <h3 id="par-metros-url">Parámetros URL</h3>
 
 <table><thead>
@@ -1133,7 +1522,7 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
+<td><code class="prettyprint">order_id</code></td>
 <td>El identificador de la orden a recuperar</td>
 </tr>
 </tbody></table>
@@ -1142,44 +1531,69 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://www.centry.cl/conexion/v1/orders</code></p>
-
-<h3 id="par-metros-url">Parámetros URL</h3>
-
-<table><thead>
-<tr>
-<th>Parámtetro</th>
-<th>Descripción</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-
-<h2 id="actualizar-una-orden">Actualizar una Orden</h2>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">PUT https://www.centry.cl/conexion/v1/orders</code></p>
-
-<h3 id="par-metros-url">Parámetros URL</h3>
-
-<table><thead>
-<tr>
-<th>Parámtetro</th>
-<th>Descripción</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>_id</td>
-<td>El identificador de la orden a actualizar</td>
-</tr>
-</tbody></table>
-
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-post">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/orders </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://www.centry.cl/conexion/v1/orders.json <span class="se">\</span>
+    -H <span class="s2">"Authorization: Bearer 077b4b3e9ec372cc09f3488d56a6b97c0e6c8595a08bbde8ac4c01517a9afe6f"</span><span class="se">\</span>
+    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    -d <span class="s1">'{  
+    "address_billing":{
+        "city":"Santiago",
+        "country":"Chile",
+        "email":"Email@Factura.cl",
+        "first_name":"Vía cUrl",
+        "last_name":"Apellido Factura",
+        "line1":"Dirección Cliente",
+        "line2":"Direccion alternativa",
+        "phone1":"89668063",
+        "phone2":"75927583",
+        "state":"EstadoFactura",
+        "zip_code":"2948513"
+        },
+    "address_shipping":{
+        "city":"Santiago",
+        "country":"Chile",
+        "email":"Email@Envío.cl",
+        "first_name":"Nombre Envio",
+        "last_name":"Apellido Envío",
+        "line1":"Dirección Cliente",
+        "line2":"Dirección alternativa",
+        "phone1":"89668063",
+        "phone2":"89765482",
+        "state":"EstadoFactura",
+        "zip_code":"2948513"
+        },
+    "total_amount": 6950493,
+    "buyer_email":"Email@Cliente.cl",
+    "buyer_first_name":"Vía cURl",
+    "buyer_last_name":"Apellido Cliente",
+    "origin":"cUrl app",
+    "items": 
+        [{
+            "name":"L, Café",
+            "quantity":5,
+            "unit_price":19999.0,
+            "variant_id":"597906591d41c80b2e000010"
+            }]
+    }'</span> &gt; createdOrder.json
+</code></pre>
 <h2 id="eliminar-una-orden">Eliminar una Orden</h2>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE https://www.centry.cl/conexion/v1/orders/&lt;ID&gt;</code></p>
-
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-delete">DELETE</i>
+    <h6> https://www.centry.cl/conexion/v1/order/(order_ID) </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE https://www.centry.cl/conexion/v1/orders/<span class="o">(</span>order_ID<span class="o">)</span>.json?force<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+    -H <span class="s2">"Authorization: Bearer &lt;Access_code&gt;"</span> &gt; deleteResponse.json
+</code></pre>
 <h3 id="par-metros-url">Parámetros URL</h3>
 
 <table><thead>
@@ -1189,7 +1603,7 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
+<td><code class="prettyprint">order_ID</code></td>
 <td>El identificador de la Orden a eliminar</td>
 </tr>
 </tbody></table>
@@ -1262,6 +1676,100 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 </tr>
 </tbody></table>
 
+<h2 id="todas-las-categorias">Todas las Categorias</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/categories </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/categories.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;Access_code&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e809571a7"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T16:54:37.823Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dafiti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"107"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dafiti_name_in_product"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"linio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7164"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"linio_name_in_product"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mercadolibre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MLC66190"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accesorios / Accesorios Femeninos / Anteojos"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T16:54:37.823Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vestirsebien"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e809381a5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T16:54:37.821Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dafiti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dafiti_name_in_product"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"linio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6937"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"linio_name_in_product"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mercadolibre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MLC25840"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accesorios / Accesorios Femeninos / Bijuteria / Anillos"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T16:54:37.821Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vestirsebien"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+ </span><span class="p">]</span><span class="w">
+
+</span></code></pre>
+<h2 id="obtener-una-categoria-espec-fica">Obtener una Categoria específica</h2>
+
+<p>Este endpoint entrega una categoria específico.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/categories/<order_id> </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;Access_code&gt; "</span>  &gt; response.json
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">   </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e809381a5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T16:54:37.821Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dafiti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"606"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dafiti_name_in_product"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"linio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6937"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"linio_name_in_product"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mercadolibre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MLC25840"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accesorios / Accesorios Femeninos / Bijuteria / Anillos"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T16:54:37.821Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vestirsebien"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámtetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>El identificador de la orden a recuperar</td>
+</tr>
+</tbody></table>
+
           <h1 id="brands">Brands</h1>
 
 <h2 id="par-metros">Parámetros</h2>
@@ -1307,6 +1815,94 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 <td><code class="prettyprint">vestirsebien</code></td>
 <td>string</td>
 <td>Nombre de la marca en VestirseBien</td>
+</tr>
+</tbody></table>
+
+<h2 id="todas-las-marcas">Todas las Marcas</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/brands </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/brands.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;Access_code&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57f63ffe4c266d1dec1edfb6"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-28T16:21:37.882Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dafiti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bata"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"linio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mercadolibre"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bata"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-28T16:21:37.882Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vestirsebien"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58124d68fd246926928fed3c"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dafiti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bobbies"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"linio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bobbies"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mercadolibre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bobbies"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bobbies"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vestirsebien"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+
+
+</span></code></pre>
+<h2 id="obtener-una-categoria-espec-fica">Obtener una Categoria específica</h2>
+
+<p>Este endpoint entrega una categoria específico.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/brands/<brand_id> </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/brands/&lt;brand_id&gt;.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;Access_code&gt; "</span>  &gt; response.json
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58124d68fd246926928fed3c"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dafiti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bobbies"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"linio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bobbies"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mercadolibre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bobbies"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bobbies"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vestirsebien"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámtetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">brand_id</code></td>
+<td>El identificador de la orden a recuperar</td>
 </tr>
 </tbody></table>
 
@@ -1368,6 +1964,96 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 </tr>
 </tbody></table>
 
+<h2 id="todos-los-colores">Todos los Colores</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/colors </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/colors.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;Access_code&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"588a28c40fb756a249fd0c78"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dafiti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morado"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"linio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morado"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mercadolibre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09ed564"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mercadolibre_attr_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Violeta oscuro"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vestirsebien"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"588a28c40fb756a249fd0c77"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dafiti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verde Petróleo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"linio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verde"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mercadolibre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dc7f392"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mercadolibre_attr_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verde oscuro"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vestirsebien"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+
+</span></code></pre>
+<h2 id="obtener-una-color-espec-fico">Obtener una Color específico</h2>
+
+<p>Este endpoint entrega una categoria específico.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/colors/<color_id> </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/colors/&lt;color_id&gt;.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;Access_code&gt; "</span>  &gt; response.json
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"588a28c40fb756a249fd0c78"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dafiti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morado"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"linio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morado"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mercadolibre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09ed564"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mercadolibre_attr_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Violeta oscuro"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vestirsebien"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámtetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">color_id</code></td>
+<td>El identificador de la orden a recuperar</td>
+</tr>
+</tbody></table>
+
           <h1 id="sizes">Sizes</h1>
 
 <h2 id="par-metros">Parámetros</h2>
@@ -1426,94 +2112,93 @@ Debes reemplazar &lt;code&gt;tu_centry_api_key&lt;/code&gt; con tu API key perso
 </tr>
 </tbody></table>
 
-          <h1 id="doorkeeperapps">Doorkeeperapps</h1>
+<h2 id="todas-las-tallas">Todas las Tallas</h2>
 
-<h2 id="par-metros">Parámetros</h2>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/sizes </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/sizes.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;Access_code&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5851b0c2b2c85e8282262a3e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dafiti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tamaño Único"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"linio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Talla Única"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mercadolibre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[{</span><span class="se">\"</span><span class="s2">group</span><span class="se">\"</span><span class="s2">=&gt;</span><span class="se">\"</span><span class="s2">73003</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">=&gt;</span><span class="se">\"</span><span class="s2">73003-69691c</span><span class="se">\"</span><span class="s2">}]"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mercadolibre_attr_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tamaño Único"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vestirsebien"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5851b0c2b2c85e8282262a3f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dafiti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"linio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mercadolibre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[{</span><span class="se">\"</span><span class="s2">group</span><span class="se">\"</span><span class="s2">=&gt;</span><span class="se">\"</span><span class="s2">73003</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">=&gt;</span><span class="se">\"</span><span class="s2">73003-4e51ce</span><span class="se">\"</span><span class="s2">}]"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mercadolibre_attr_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vestirsebien"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+
+</span></code></pre>
+<h2 id="obtener-una-talla-espec-fica">Obtener una Talla específica</h2>
+
+<p>Este endpoint entrega una categoria específico.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/sizes/<size_id> </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/sizes/&lt;size_id&gt;.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;Access_code&gt; "</span>  &gt; response.json
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+   </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5851b0c2b2c85e8282262a3f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dafiti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"linio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mercadolibre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[{</span><span class="se">\"</span><span class="s2">group</span><span class="se">\"</span><span class="s2">=&gt;</span><span class="se">\"</span><span class="s2">73003</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">=&gt;</span><span class="se">\"</span><span class="s2">73003-4e51ce</span><span class="se">\"</span><span class="s2">}]"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mercadolibre_attr_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vestirsebien"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+<h3 id="par-metros-url">Parámetros URL</h3>
 
 <table><thead>
 <tr>
-<th>Atributo</th>
-<th>Tipo</th>
+<th>Parámtetro</th>
 <th>Descripción</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">_id</code></td>
-<td>string</td>
-<td>Identificador del Aplicación</td>
-</tr>
-<tr>
-<td><code class="prettyprint">created_at</code></td>
-<td>string</td>
-<td>Regristro de creación del Aplicación en Centry</td>
-</tr>
-<tr>
-<td><code class="prettyprint">callback_url</code></td>
-<td>string</td>
-<td>Url de retorno</td>
-</tr>
-<tr>
-<td><code class="prettyprint">platform</code></td>
-<td>string</td>
-<td>Plataforma de aplicación</td>
-</tr>
-<tr>
-<td><code class="prettyprint">master</code></td>
-<td>Boolean</td>
-<td>Describe si aplicación está actuando o no como maestro</td>
-</tr>
-<tr>
-<td><code class="prettyprint">app_id</code></td>
-<td>string</td>
-<td>Identificador de aplicación asociada</td>
-</tr>
-<tr>
-<td><code class="prettyprint">company_id</code></td>
-<td>string</td>
-<td>Identificador de empresa</td>
-</tr>
-</tbody></table>
-
-          <h1 id="webhooks">Webhooks</h1>
-
-<h2 id="par-metros">Parámetros</h2>
-
-<table><thead>
-<tr>
-<th>Atributo</th>
-<th>Tipo</th>
-<th>Descripción</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">_id</code></td>
-<td>string</td>
-<td>Identificador del webhook</td>
-</tr>
-<tr>
-<td><code class="prettyprint">created_at</code></td>
-<td>string</td>
-<td>Regristro de creación del webhook en Centry</td>
-</tr>
-<tr>
-<td><code class="prettyprint">callback_url</code></td>
-<td>string</td>
-<td>Url de retorno</td>
-</tr>
-<tr>
-<td><code class="prettyprint">events</code></td>
-<td>string</td>
-<td>Eventos pendientes a describir</td>
-</tr>
-<tr>
-<td><code class="prettyprint">app_id</code></td>
-<td>string</td>
-<td>Identificador de aplicación asociada</td>
-</tr>
-<tr>
-<td><code class="prettyprint">company_id</code></td>
-<td>string</td>
-<td>Identificador de empresa</td>
+<td><code class="prettyprint">size_id</code></td>
+<td>El identificador de la orden a recuperar</td>
 </tr>
 </tbody></table>
 
