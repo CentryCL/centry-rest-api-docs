@@ -1,5 +1,4 @@
 # Products 
-<i class="label label-info">InfoLabel</i>
 
 ## Parámetros
 
