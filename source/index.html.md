@@ -126,7 +126,7 @@ curl --data "client_id=<My_client_id>&client_secret=<My_client_secret>&redirect_
 
 ```
 {
-"access_token":"64ad4cf9...",
+"access_token":"64ad4cf7...",
 "token_type":"bearer",
 "expires_in":7200,
 "refresh_token":"ea14ff30...",
