@@ -61,7 +61,7 @@
 | `_id`               		| string | Identificador de conjunto de items                                                    |
 | `created_at`        		|date-time| Fecha de creación de este elemento                                                   |
 | `currency`				| string  | Tipo de moneda en el que se pagará                                                    |
-| `name`					| string  | Nombre del producto                                                                   |
+| `name`					| string  | Nombre del ordero                                                                   |
 | `paid_price`				| float   | Monto a pagar                                                                         |
 | `quantity`				| integer | Cantidad de items                                                                     |
 | `shipment_provider`		| string  | Empresa encargada del despacho                                                        |
@@ -104,34 +104,38 @@ curl "https://www.centry.cl/conexion/v1/orders.json"/
   [
   {"_id":"5977483f1d41c81248000003",
 	"_status":"pending",
-	"address_billing":{"_id":"5977483f1d41c81248000005",
-	"city":"Santiago",
-	"country":"Chile",
-	"created_at":null,
-	"email":"Email@Factura.cl",
-	"first_name":"Nombre Factura",
-	"last_name":"Apellido Factura",
-	"line1":"Dirección Cliente",
-	"line2":"",
-	"phone1":"89668063",
-	"phone2":"",
-	"state":"EstadoFactura",
-	"updated_at":null,
-	"zip_code":"2948513"},
-	"address_shipping":{"_id":"5977483f1d41c81248000006",
-	"city":"Santiago",
-	"country":"Chile",
-	"created_at":null,
-	"email":"Email@Envío.cl",
-	"first_name":"Nombre Envio",
-	"last_name":"Apellido Envío",
-	"line1":"Dirección Cliente",
-	"line2":"",
-	"phone1":"89668063",
-	"phone2":"",
-	"state":"EstadoFactura",
-	"updated_at":null,
-	"zip_code":"2948513"},
+	"address_billing":{
+		"_id":"5977483f1d41c81248000005",
+		"city":"Santiago",
+		"country":"Chile",
+		"created_at":null,
+		"email":"Email@Factura.cl",
+		"first_name":"Nombre Factura",
+		"last_name":"Apellido Factura",
+		"line1":"Dirección Cliente",
+		"line2":"",
+		"phone1":"89668063",
+		"phone2":"",
+		"state":"EstadoFactura",
+		"updated_at":null,
+		"zip_code":"2948513"
+		},
+	"address_shipping":{
+		"_id":"5977483f1d41c81248000006",
+		"city":"Santiago",
+		"country":"Chile",
+		"created_at":null,
+		"email":"Email@Envío.cl",
+		"first_name":"Nombre Envio",
+		"last_name":"Apellido Envío",
+		"line1":"Dirección Cliente",
+		"line2":"",
+		"phone1":"89668063",
+		"phone2":"",
+		"state":"EstadoFactura",
+		"updated_at":null,
+		"zip_code":"2948513"
+		},
 	"buyer_email":"Email@Cliente.cl",
 	"buyer_first_name":"Nombre Cliente",
 	"buyer_last_name":"Apellido Cliente",
@@ -176,19 +180,19 @@ curl "https://www.centry.cl/conexion/v1/orders.json"/
 
 
 
-Este endpoint entrega un producto específico.
+Este endpoint entrega un orden específico.
 
 ### HTTP Request
 <div class="api-endpoint">
   <div class="endpoint-data">
     <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/orders/<product_id> </h6>
+    <h6> https://www.centry.cl/conexion/v1/orders/<order_id> </h6>
   </div>
 </div>
 
 
 ```shell
-curl "https://www.centry.cl/conexion/v1/products/<product_id>.json"/
+curl "https://www.centry.cl/conexion/v1/orders/<order_id>.json"/
  -H "Authorization: Bearer  <Access_code> "  > response.json
 ```
 
@@ -199,34 +203,38 @@ curl "https://www.centry.cl/conexion/v1/products/<product_id>.json"/
   
   {"_id":"5977483f1d41c81248000003",
 	"_status":"pending",
-	"address_billing":{"_id":"5977483f1d41c81248000005",
-	"city":"Santiago",
-	"country":"Chile",
-	"created_at":null,
-	"email":"Email@Factura.cl",
-	"first_name":"Nombre Factura",
-	"last_name":"Apellido Factura",
-	"line1":"Dirección Cliente",
-	"line2":"",
-	"phone1":"89668063",
-	"phone2":"",
-	"state":"EstadoFactura",
-	"updated_at":null,
-	"zip_code":"2948513"},
-	"address_shipping":{"_id":"5977483f1d41c81248000006",
-	"city":"Santiago",
-	"country":"Chile",
-	"created_at":null,
-	"email":"Email@Envío.cl",
-	"first_name":"Nombre Envio",
-	"last_name":"Apellido Envío",
-	"line1":"Dirección Cliente",
-	"line2":"",
-	"phone1":"89668063",
-	"phone2":"",
-	"state":"EstadoFactura",
-	"updated_at":null,
-	"zip_code":"2948513"},
+	"address_billing":{
+		"_id":"5977483f1d41c81248000005",
+		"city":"Santiago",
+		"country":"Chile",
+		"created_at":null,
+		"email":"Email@Factura.cl",
+		"first_name":"Nombre Factura",
+		"last_name":"Apellido Factura",
+		"line1":"Dirección Cliente",
+		"line2":"",
+		"phone1":"89668063",
+		"phone2":"",
+		"state":"EstadoFactura",
+		"updated_at":null,
+		"zip_code":"2948513"
+		},
+	"address_shipping":{
+		"_id":"5977483f1d41c81248000006",
+		"city":"Santiago",
+		"country":"Chile",
+		"created_at":null,
+		"email":"Email@Envío.cl",
+		"first_name":"Nombre Envio",
+		"last_name":"Apellido Envío",
+		"line1":"Dirección Cliente",
+		"line2":"",
+		"phone1":"89668063",
+		"phone2":"",
+		"state":"EstadoFactura",
+		"updated_at":null,
+		"zip_code":"2948513"
+		},
 	"buyer_email":"Email@Cliente.cl",
 	"buyer_first_name":"Nombre Cliente",
 	"buyer_last_name":"Apellido Cliente",
@@ -272,7 +280,7 @@ curl "https://www.centry.cl/conexion/v1/products/<product_id>.json"/
 
 Parámtetro | Descripción
 ---------- | -----------
-`product_id` | El identificador de la orden a recuperar
+`order_id` | El identificador de la orden a recuperar
 
 
 
@@ -287,36 +295,52 @@ Parámtetro | Descripción
   </div>
 </div>
 
-
-
-
-
-## Actualizar una Orden
-
-### HTTP Request
-<div class="api-endpoint">
-  <div class="endpoint-data">
-    <i class="label label-put">PUT</i>
-    <h6> https://www.centry.cl/conexion/v1/orders/(order_ID) </h6>
-  </div>
-</div>
-
 ```shell
-
-curl -X PUT https://www.centry.cl/conexion/v1//products/(order_ID).json \
-    -H "Authorization: Bearer  <Access_code> "\
+curl -X POST https://www.centry.cl/conexion/v1/orders.json \
+	-H "Authorization: Bearer 077b4b3e9ec372cc09f3488d56a6b97c0e6c8595a08bbde8ac4c01517a9afe6f"\
     -H "Content-Type: application/json" \
-    -d '{
-  "parametro_a_editar": "nuevo_valor",
-  "first_name":"Pedro cUrl"
-}'
+    -d '{  
+	"address_billing":{
+		"city":"Santiago",
+		"country":"Chile",
+		"email":"Email@Factura.cl",
+		"first_name":"Vía cUrl",
+		"last_name":"Apellido Factura",
+		"line1":"Dirección Cliente",
+		"line2":"Direccion alternativa",
+		"phone1":"89668063",
+		"phone2":"75927583",
+		"state":"EstadoFactura",
+		"zip_code":"2948513"
+		},
+	"address_shipping":{
+		"city":"Santiago",
+		"country":"Chile",
+		"email":"Email@Envío.cl",
+		"first_name":"Nombre Envio",
+		"last_name":"Apellido Envío",
+		"line1":"Dirección Cliente",
+		"line2":"Dirección alternativa",
+		"phone1":"89668063",
+		"phone2":"89765482",
+		"state":"EstadoFactura",
+		"zip_code":"2948513"
+		},
+	"total_amount": 6950493,
+	"buyer_email":"Email@Cliente.cl",
+	"buyer_first_name":"Vía cURl",
+	"buyer_last_name":"Apellido Cliente",
+	"origin":"cUrl app",
+	"items": 
+		[{
+			"name":"L, Café",
+			"quantity":5,
+			"unit_price":19999.0,
+			"variant_id":"597906591d41c80b2e000010"
+			}]
+	}' > createdOrder.json
 ```
 
-### Parámetros URL
-
-Parámtetro | Descripción
----------- | -----------
-`order_ID`| El identificador de la orden a actualizar
 
 
 
@@ -332,9 +356,14 @@ Parámtetro | Descripción
     <h6> https://www.centry.cl/conexion/v1/order/(order_ID) </h6>
   </div>
 </div>
+```shell
+curl -X DELETE https://www.centry.cl/conexion/v1/orders/(order_ID).json?force=true \
+    -H "Authorization: Bearer <Access_code>" > deleteResponse.json
+```
+
 
 ### Parámetros URL
 
 Parámtetro | Descripción
 ---------- | -----------
-ID | El identificador de la Orden a eliminar
+`order_ID` | El identificador de la Orden a eliminar

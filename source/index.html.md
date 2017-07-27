@@ -15,8 +15,6 @@ includes:
   - brands
   - colors
   - sizes
-  - doorkeeperapps
-  - webhooks
   - errors
 
 search: true

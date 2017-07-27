@@ -15,3 +15,102 @@
 | `updated_at`                  | string  | Registro de última actualización 						|
 | `vestirsebien`                | string  | Nombre de color equivalente en VestirseBien |
 
+
+## Todos los Colores 
+
+### HTTP Request
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/colors </h6>
+  </div>
+</div>
+
+
+
+```shell
+curl "https://www.centry.cl/conexion/v1/colors.json"/
+ -H "Authorization: Bearer  <Access_code> "
+```
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+[
+    {
+        "_id": "588a28c40fb756a249fd0c78",
+        "created_at": "2016-10-01T00:00:00.000Z",
+        "dafiti": "Morado",
+        "linio": "Morado",
+        "mercadolibre": "09ed564",
+        "mercadolibre_attr_id": "83000",
+        "name": "Violeta oscuro",
+        "updated_at": "2016-10-01T00:00:00.000Z",
+        "vestirsebien": null
+    },
+    {
+        "_id": "588a28c40fb756a249fd0c77",
+        "created_at": "2016-10-01T00:00:00.000Z",
+        "dafiti": "Verde Petróleo",
+        "linio": "Verde",
+        "mercadolibre": "dc7f392",
+        "mercadolibre_attr_id": "83000",
+        "name": "Verde oscuro",
+        "updated_at": "2016-10-01T00:00:00.000Z",
+        "vestirsebien": null
+    }
+]
+
+
+```
+
+
+## Obtener una Color específico
+
+
+
+Este endpoint entrega una categoria específico.
+
+### HTTP Request
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/colors/<color_id> </h6>
+  </div>
+</div>
+
+
+```shell
+curl "https://www.centry.cl/conexion/v1/colors/<color_id>.json"/
+ -H "Authorization: Bearer  <Access_code> "  > response.json
+```
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+   
+    {
+        "_id": "588a28c40fb756a249fd0c78",
+        "created_at": "2016-10-01T00:00:00.000Z",
+        "dafiti": "Morado",
+        "linio": "Morado",
+        "mercadolibre": "09ed564",
+        "mercadolibre_attr_id": "83000",
+        "name": "Violeta oscuro",
+        "updated_at": "2016-10-01T00:00:00.000Z",
+        "vestirsebien": null
+    }
+
+
+```
+
+
+
+### Parámetros URL
+
+Parámtetro | Descripción
+---------- | -----------
+`color_id` | El identificador de la orden a recuperar
+
+
+
