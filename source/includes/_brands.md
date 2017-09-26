@@ -2,15 +2,12 @@
 
 ## Parámetros
 
-| Atributo       | Tipo   | Descripción                         |
-| -------------- | ------ | ----------------------------------- |
-| `_id`          | string | Identificador de la marca           |
-| `dafiti`       | string | Nombre de la marca en Dafiti        |
-| `linio`        | string | Nombre de la marca en Linio         |
-| `mercadolibre` | string | Nombre de la marca en Mercado Libre |
-| `name`         | string | Nombre de la marca en Centry        |
-| `updated_at`   | string | Registro de última actualización    |
-| `vestirsebien` | string | Nombre de la marca en VestirseBien  |
+| Atributo     | Tipo   | Descripción                                                                              |
+| ------------ | ------ | ---------------------------------------------------------------------------------------- |
+| `_id`        | string | Identificador de la marca <i class="label label-info">sólo lectura</i>                   |
+| `name`       | string | Nombre de la marca en Centry <i class="label label-info">sólo lectura</i>                |
+| `created_at` | string | Regristro de creación de la marca en Centry <i class="label label-info">sólo lectura</i> |
+| `updated_at` | string | Registro de última actualización <i class="label label-info">sólo lectura</i>            |
 
 ## Todas las Marcas 
 
@@ -38,22 +35,14 @@ curl "https://www.centry.cl/conexion/v1/brands.json"/
 	{
         "_id": "57f63ffe4c266d1dec1edfb6",
         "created_at": "2016-08-28T16:21:37.882Z",
-        "dafiti": "Bata",
-        "linio": null,
-        "mercadolibre": null,
         "name": "Bata",
-        "updated_at": "2016-08-28T16:21:37.882Z",
-        "vestirsebien": null
+        "updated_at": "2016-08-28T16:21:37.882Z"
     },
     {
         "_id": "58124d68fd246926928fed3c",
         "created_at": "2016-10-01T19:35:14.734Z",
-        "dafiti": "Bobbies",
-        "linio": "Bobbies",
-        "mercadolibre": "Bobbies",
         "name": "Bobbies",
-        "updated_at": "2016-10-01T19:35:14.734Z",
-        "vestirsebien": null
+        "updated_at": "2016-10-01T19:35:14.734Z"
     }
 ]
 ```
@@ -82,12 +71,8 @@ curl "https://www.centry.cl/conexion/v1/brands/<brand_id>.json"/
 {
     "_id": "58124d68fd246926928fed3c",
     "created_at": "2016-10-01T19:35:14.734Z",
-    "dafiti": "Bobbies",
-    "linio": "Bobbies",
-    "mercadolibre": "Bobbies",
     "name": "Bobbies",
-    "updated_at": "2016-10-01T19:35:14.734Z",
-    "vestirsebien": null
+    "updated_at": "2016-10-01T19:35:14.734Z"
 }
 ```
 

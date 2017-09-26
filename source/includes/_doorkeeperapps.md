@@ -2,15 +2,16 @@
 
 ## Parámetros
 
-| Atributo       |   Tipo  | Descripción                                            |
-| -------------- | ------- | ------------------------------------------------------ |
-| `_id`          | string  | Identificador del Aplicación                           |
-| `created_at`   | string  | Regristro de creación del Aplicación en Centry         |
-| `callback_url` | string  | Url de retorno                                         |
-| `platform`     | string  | Plataforma de aplicación                               |
-| `master`       | boolean | Describe si aplicación está actuando o no como maestro |
-| `app_id`       | string  | Identificador de aplicación asociada                   |
-| `company_id`   | string  | Identificador de empresa                               |
+| Atributo       |   Tipo  | Descripción                                                               |
+| -------------- | ------- | ------------------------------------------------------------------------- |
+| `_id`          | string  | Identificador del Aplicación <i class="label label-info">sólo lectura</i> |
+| `callback_url` | string  | Url de retorno                                                            |
+| `platform`     | string  | Plataforma de aplicación                                                  |
+| `master`       | boolean | Describe si aplicación está actuando o no como maestro                    |
+| `app_id`       | string  | Identificador de aplicación asociada                                      |
+| `company_id`   | string  | Identificador de empresa <i class="label label-info">sólo lectura</i>     |
+| `created_at`   | string  | Regristro de creación del Aplicación en Centry                            |
+| `updated_at`   | string  | Regristro de actualizacion del Aplicación en Centry                       |
 
 ## Crear un Doorkeeper
 

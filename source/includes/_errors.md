@@ -1,9 +1,9 @@
-# Errores
+# Errors
 
 La API de Centry usa los siguientes códigos de errores:
 
 Error Code | Meaning
----------- | ----------------------------------------------------------------------------------------
+---------- | -----------------------------------------------------------------------------------------
 400        | Bad Request -- Your request sucks
 401        | Unauthorized -- Your API key is wrong
 403        | Forbidden -- The resource requested is hidden for administrators only

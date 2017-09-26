@@ -2,17 +2,12 @@
 
 ## Parámetros
 
-| Atributo               | Tipo   | Descripción                                        |
-| ---------------------- | ------ | -------------------------------------------------- |
-| `_id`                  | string | Identificador del color                            |
-| `created_at`           | string | Regristro de creación de color en Centry           |
-| `dafiti`               | string | Identificador de color equivalente  en Dafiti      |
-| `linio`                | string | Identificador de color equivalente en Linio        |
-| `mercadolibre`         | string | Identificador de color equivalente en mercadoLibre |
-| `mercadolibre_attr_id` | string | Atributo color en mercadoLibre                     |   
-| `name`                 | string | Nombre de color en Centry                          |
-| `updated_at`           | string | Registro de última actualización                   |
-| `vestirsebien`         | string | Nombre de color equivalente en VestirseBien        |
+| Atributo     | Tipo   | Descripción                                                                           |
+| ------------ | ------ | ------------------------------------------------------------------------------------- |
+| `_id`        | string | Identificador del color <i class="label label-info">sólo lectura</i>                  |
+| `name`       | string | Nombre de color en Centry <i class="label label-info">sólo lectura</i>                |
+| `created_at` | string | Regristro de creación de color en Centry <i class="label label-info">sólo lectura</i> |
+| `updated_at` | string | Registro de última actualización <i class="label label-info">sólo lectura</i>         |
 
 ## Todos los Colores
 
@@ -39,24 +34,14 @@ curl "https://www.centry.cl/conexion/v1/colors.json"/
     {
         "_id": "588a28c40fb756a249fd0c78",
         "created_at": "2016-10-01T00:00:00.000Z",
-        "dafiti": "Morado",
-        "linio": "Morado",
-        "mercadolibre": "09ed564",
-        "mercadolibre_attr_id": "83000",
         "name": "Violeta oscuro",
-        "updated_at": "2016-10-01T00:00:00.000Z",
-        "vestirsebien": null
+        "updated_at": "2016-10-01T00:00:00.000Z"
     },
     {
         "_id": "588a28c40fb756a249fd0c77",
         "created_at": "2016-10-01T00:00:00.000Z",
-        "dafiti": "Verde Petróleo",
-        "linio": "Verde",
-        "mercadolibre": "dc7f392",
-        "mercadolibre_attr_id": "83000",
         "name": "Verde oscuro",
-        "updated_at": "2016-10-01T00:00:00.000Z",
-        "vestirsebien": null
+        "updated_at": "2016-10-01T00:00:00.000Z"
     }
 ]
 
@@ -86,18 +71,13 @@ curl "https://www.centry.cl/conexion/v1/colors/<color_id>.json"/
 {
     "_id": "588a28c40fb756a249fd0c78",
     "created_at": "2016-10-01T00:00:00.000Z",
-    "dafiti": "Morado",
-    "linio": "Morado",
-    "mercadolibre": "09ed564",
-    "mercadolibre_attr_id": "83000",
     "name": "Violeta oscuro",
-    "updated_at": "2016-10-01T00:00:00.000Z",
-    "vestirsebien": null
+    "updated_at": "2016-10-01T00:00:00.000Z"
 }
 ```
 
 ### Parámetros URL
 
 Parámtetro | Descripción
----------- | ----------------------------------------
-`color_id` | El identificador de la orden a recuperar
+---------- | --------------------------------------
+`color_id` | El identificador del color a recuperar

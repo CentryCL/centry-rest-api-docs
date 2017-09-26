@@ -2,17 +2,12 @@
 
 ## Parámetros
 
-| Atributo               | Tipo   | Descripción                                         |
-| ---------------------- | ------ | --------------------------------------------------- |
-| `_id`                  | string | Identificador del tamaño                            |
-| `created_at`           | string | Regristro de creación del tamaño en Centry          |
-| `dafiti`               | string | Identificador de tamaño equivalente  en Dafiti      |
-| `linio`                | string | Identificador de tamaño equivalente en Linio        |
-| `mercadolibre`         | string | Identificador de tamaño equivalente en mercadoLibre |
-| `mercadolibre_attr_id` | string | Atributo tamaño en mercadoLibre                     |
-| `name`                 | string | Nombre de tamaño en Centry                          |
-| `updated_at`           | string | Registro de última actualización                    |
-| `vestirsebien`         | string | Nombre de tamaño equivalente en VestirseBien        |
+| Atributo     | Tipo   | Descripción                                                                             |
+| ------------ | ------ | --------------------------------------------------------------------------------------- |
+| `_id`        | string | Identificador del tamaño <i class="label label-info">sólo lectura</i>                   |
+| `name`       | string | Nombre de tamaño en Centry <i class="label label-info">sólo lectura</i>                 |
+| `created_at` | string | Regristro de creación del tamaño en Centry <i class="label label-info">sólo lectura</i> |
+| `updated_at` | string | Registro de última actualización <i class="label label-info">sólo lectura</i>           |
 
 ## Todas las Tallas
 
@@ -39,24 +34,14 @@ curl "https://www.centry.cl/conexion/v1/sizes.json"/
     {
         "_id": "5851b0c2b2c85e8282262a3e",
         "created_at": "2016-10-01T00:00:00.000Z",
-        "dafiti": "Tamaño Único",
-        "linio": "Talla Única",
-        "mercadolibre": "[{\"group\"=>\"73003\", \"id\"=>\"73003-69691c\"}]",
-        "mercadolibre_attr_id": null,
         "name": "Tamaño Único",
-        "updated_at": "2016-10-01T00:00:00.000Z",
-        "vestirsebien": null
+        "updated_at": "2016-10-01T00:00:00.000Z"
     },
     {
         "_id": "5851b0c2b2c85e8282262a3f",
         "created_at": "2016-10-01T00:00:00.000Z",
-        "dafiti": "XXS",
-        "linio": "XS",
-        "mercadolibre": "[{\"group\"=>\"73003\", \"id\"=>\"73003-4e51ce\"}]",
-        "mercadolibre_attr_id": null,
         "name": "XXS",
-        "updated_at": "2016-10-01T00:00:00.000Z",
-        "vestirsebien": null
+        "updated_at": "2016-10-01T00:00:00.000Z"
     }
 ]
 ```
@@ -85,13 +70,8 @@ curl "https://www.centry.cl/conexion/v1/sizes/<size_id>.json"/
 {
     "_id": "5851b0c2b2c85e8282262a3f",
     "created_at": "2016-10-01T00:00:00.000Z",
-    "dafiti": "XXS",
-    "linio": "XS",
-    "mercadolibre": "[{\"group\"=>\"73003\", \"id\"=>\"73003-4e51ce\"}]",
-    "mercadolibre_attr_id": null,
     "name": "XXS",
-    "updated_at": "2016-10-01T00:00:00.000Z",
-    "vestirsebien": null
+    "updated_at": "2016-10-01T00:00:00.000Z"
 }
 ```
 
@@ -99,5 +79,5 @@ curl "https://www.centry.cl/conexion/v1/sizes/<size_id>.json"/
 
 Parámtetro | Descripción
 ---------- | ----------------------------------------
-`size_id`  | El identificador de la orden a recuperar
+`size_id`  | El identificador de la talla a recuperar
 

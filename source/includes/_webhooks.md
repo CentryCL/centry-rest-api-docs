@@ -1,18 +1,72 @@
 # Webhooks
 
+La API de Centry permiten crear, ver, actualizar y eliminar webhooks individualmente.
+
+Los webhooks pueden ser administrados desde la [plataforma web de Centry](https://www.centry.cl/integraciones/webhooks) o usando los endpoints de la API REST.
+
+Todos los webhooks tienen los siguientes datos:
+
+* `topic`: determina cuál evento de recurso gatilla la notificación.
+
+Mientras que, por los siguientes tópicos, contiene la siguiente información:
+
+* `on_product_save` ó `on_product_delete`
+  * `product_id`: Identificador del producto involucrado en el evento.
+* `on_order_save` ó `on_order_delete`
+  * `order_id`: Identificador de la orden involucrada en el evento.
+
+### Topics
+
+El tópico es una combinación entre un recurso (ej. order) y un evento (ej. delete), esto se traduce a un nombre de hook (ej. `on_order_delete`).
+
+Los tópicos base de Centry son:
+
+* Orders: `on_order_save` y `on_order_delete`.
+* Products: `on_product_save`, `on_product_delete`.
+
+### Entrega e insistencias
+
+La entrega es realizada por Centry inmediatamente depués de que ocurre el evento usando él método POST de HTTP.
+
+Centry espera que el receptor de la notificación responda con un código 200 en menos de 15 segundos, de lo contrario volvera a incistir 5 minutos más tarde. Estas insitencias pueden perdurar hasta 48 horas, donde finalmente se desiste de notificar el evento.
+
+El contenido de la notificación está codificado en un JSON e incluye el mínimo de información posible de modo que el receptor tenga consultar a Centry por los datos que necesite.
+
+```json
+{
+  "topic":"on_product_save",
+  "product_id":"59c285f81746bf2096000001"
+}
+```
+
+### Logging
+
+Las solicitudes de notificacione y sus respuestas son registradas en un log que contiene los siguientes datos:
+
+* `callback_url`: URL configurada en el webhook al momenot de realizar la notifiación
+* `intent`: Número correlativo al numero de intento partiendo siempre desde el 1 y pudiendo terminar en el 576
+* `response`: El contenido de la respuesta. Se guarda cólo como referencia porque no se usa para nada.
+* `accepted`: Un booblean que indica si la notificación fue recibida correctamente o no.
+* `topic`: El tópico involucrado en la notificación.
+* `data`: El contenido completo que fue enviado en la notifiación.
+
+### Interfáz visual
+
+La administración de los webhooks así como el sus registros del log pueden ser accedidos directamente desde la [plataforma web de Centry](https://www.centry.cl/integraciones/webhooks).
+
 ## Parámetros
 
 | Atributo            | Tipo    | Descripción                                                                                |
 | ------------------- | ------- | ------------------------------------------------------------------------------------------ |
-| `_id`               | string  | Identificador del webhook                                                                  |
+| `_id`               | string  | Identificador del webhook <i class="label label-info">sólo lectura</i>                     |
 | `callback_url`      | string  | URL a la cual se le enviarán las notificaciones                                            |
 | `on_product_save`   | boolean | Flag que indica si se requiere recibir notificaciones del tipo "actualización de producto" |
 | `on_product_delete` | boolean | Flag que indica si se requiere recibir notificaciones del tipo "eliminación de producto"   |
 | `on_order_save`     | boolean | Flag que indica si se requiere recibir notificaciones del tipo "actualización de pedido"   |
 | `on_order_delete`   | boolean | Flag que indica si se requiere recibir notificaciones del tipo "eliminación de pedido"     |
-| `company_id`        | string  | Identificador de empresa                                                                   |
-| `updated_at`        | string  | Fecha de la última modificación del webhook en Centry                                      |
-| `created_at`        | string  | Fecha de creación del webhook en Centry                                                    |
+| `company_id`        | string  | Identificador de empresa <i class="label label-info">sólo lectura</i>                      |
+| `created_at`        | string  | Fecha de creación del webhook en Centry <i class="label label-info">sólo lectura</i>       |
+| `updated_at`        | string  | Fecha de la última modificación del webhook en Centry  <i class="label label-info">sólo lectura</i> |
 
 ## Listar los webhooks de la cuenta
 
@@ -135,6 +189,7 @@ curl -X POST \
 Este endpoint permite modificar un webhook específico.
 
 ### HTTP Request
+
 <div class="api-endpoint">
   <div class="endpoint-data">
     <i class="label label-put">PUT</i>
@@ -171,9 +226,9 @@ curl -X PUT \
 
 ### Parámetros URL
 
-Parámtetro  | Descripción
------------ | -----------------------------------------
-`webhook_id`| El identificador del webhook a actualizar
+Parámtetro   | Descripción
+------------ | -----------------------------------------
+`webhook_id` | El identificador del webhook a actualizar
 
 ## Eliminar un webhook
 
@@ -205,3 +260,4 @@ true
 Parámtetro   | Descripción
 ------------ | ---------------------------------------
 `webhook_id` | El identificador del webhook a eliminar
+
