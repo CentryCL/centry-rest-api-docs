@@ -15,6 +15,7 @@ includes:
   - brands
   - colors
   - sizes
+  - webhooks
   - errors
 
 search: true
@@ -32,96 +33,80 @@ que más te acomode en las pestañas que se encuentran en la parte superior.
 
 Para poder interactuar desde tu aplicación con centry se debe solicitar las credenciales necesarias para que 
 dicha conexión sea exitosa.
+
 Dicho lo anterior se deben realizar los siguientes pasos.
 
-## Obtener credenciales de acceso ##
-Ingresaremos a nuestro panel de [aplicaciones externas desde centry](https://www.centry.cl/oauth/applications)
-Y le damos click a Nueva Aplicación.
-
-
-
+## Obtener credenciales de acceso
+Ingresar al panel de [aplicaciones externas desde centry](https://www.centry.cl/oauth/applications) y presionar
+el botón "Nueva Aplicación".
 
 ![Configuración de llaves Centry REST API](images/appCentry1.png)
 
-Se rellena el formulario que aparecerá para obtener las llaves de acceso. 
+Se debe rellenar el formulario que aparecerá para obtener las llaves de acceso. 
 
 ![Configuración de llaves Centry REST API](images/appCentry2.png)
 
-Finalizado este paso tendremos las llaves necesarias para la conexión 
+Finalizado este paso se obtienen las llaves necesarias para la conexión .
 
 ![Configuración de llaves Centry REST API](images/appCentry3.png)
 
-Procedemos a autorizar estas credenciales, para obtener la llave de autorización
+El último paso es la autirización que consiste en obtener primer el "access token" y "refresh token" utilizando
+el código aturización que genera Centry.
 
 ![Configuración de llaves Centry REST API](images/appCentry4.png)
 
-
 ## Solicitar acceso desde Aplicación
-> ### Para autorizar nuestra aplicación:
-Debe realizar un Request POST a la url https://www.centry.cl/oauth/token
+
+> Debe realizar un Request POST a la url https://www.centry.cl/oauth/token
 
 ```shell
-#comando para obtener codigo de autorización 
-
 curl --data "client_id=<My_client_id>&client_secret=<My_client_secret>&redirect_uri<My_redirect_uri>&grant_type=authorization_code&code=<My_authorization_code>" https://www.centry.cl/oauth/token
-
 ```
+
 > Ejemplo de respuesta JSON luego de ejecutar el comando anterior
 
 ```
 {
-"access_token":"fa56dff5a29c8...",
-"token_type":"bearer",
-"expires_in":7200,
-"refresh_token":"c38eabc8f00...",
-"created_at":1501020167
+  "access_token":"fa56dff5a29c8...",
+  "token_type":"bearer",
+  "expires_in":7200,
+  "refresh_token":"c38eabc8f00...",
+  "created_at":1501020167
 }
 ```
 
-
 Configurar la conexión en nuestra app.
 
-### URL parameters ###
+### URL parameters
 
-|   Parameter    |  Type  | Description                                                      |
-|----------------|--------|------------------------------------------------------------------|
-| `client_id`    | string | Tu id de cliente visto en el paso anterior <i class="label label-info">mandatory</i>    |
-| `client_secret`| string | Id Secreto visto en el paso anterior <i class="label label-info">mandatory</i>           |
-| `redirect_uri` | string | Dirección de redirección luego de consulta <i class="label label-info">mandatory</i> |
-| `grant_type`   | string | Valor a solicitar `authorization_code` inicialmente<i class="label label-info">mandatory</i>       |
-| `code`         | string | Llave de autorización (authorization_code) <i class="label label-info">mandatory</i>   |
+|   Parameter    |  Type  | Description                                                                                  |
+|----------------|--------|----------------------------------------------------------------------------------------------|
+| `client_id`    | string | Id de cliente visto en el paso anterior <i class="label label-info">mandatory</i>            |
+| `client_secret`| string | Id Secreto visto en el paso anterior <i class="label label-info">mandatory</i>               |
+| `redirect_uri` | string | Dirección de redirección luego de consulta <i class="label label-info">mandatory</i>         |
+| `grant_type`   | string | Valor a solicitar `authorization_code` inicialmente<i class="label label-info">mandatory</i> |
+| `code`         | string | Llave de autorización (authorization_code) <i class="label label-info">mandatory</i>         |
 
 ## Configurar Header 
 
 ```shell
-#comando para obtener codigo de autorización 
-
-
 curl -H "Authorization: Bearer fa56dff5a29c8..(access_token) " https://www.centry.cl/oauth/token
-
-
 ```
 
-### Uso de Acces_token
-Por cada nueva solicitud de acceso que quieras realizar, es importante configurar el Header de nuestro entorno.
+### Uso de acces_token
 
-Realizando este paso el acceso tu aplicación estará garantizada.
-
-
-
-
+Por cada nueva solicitud de acceso que se quiera realizar, es importante configurar el Header del entorno.
 
 ## Renovar Acceso
 
-> ### Para renovar el acceso de nuestra aplicación:
-Debe voler a realizar un Request POST a la url https://www.centry.cl/oauth/token
+>  Request POST a la url https://www.centry.cl/oauth/token
 
 ```shell
 #comando para renovar autorización 
 
-
 curl --data "client_id=<My_client_id>&client_secret=<My_client_secret>&redirect_uri=urn:<My_redirect_uri>&grant_type=refresh_token&refresh_token=<My_previus_refresh_token>" https://www.centry.cl/oauth/token
 ```
+
 > Ejemplo de respuesta JSON luego de ejecutar el comando anterior
 
 ```
@@ -135,15 +120,12 @@ curl --data "client_id=<My_client_id>&client_secret=<My_client_secret>&redirect_
 ```
 Renovar solicitudes de acceso 
 
-### URL parameters ###
+### URL parameters
 
-|   Parameter    |  Type  | Description                                                      |
-|----------------|--------|------------------------------------------------------------------|
-| `client_id`    | string | Tu id de cliente visto en el paso anterior <i class="label label-info">mandatory</i>            |
-| `client_secret`| string | Id Secreto visto en el paso anterior <i class="label label-info">mandatory</i>s |
+|   Parameter    |  Type  | Description                                                                          |
+|----------------|--------|--------------------------------------------------------------------------------------|
+| `client_id`    | string | Id de cliente visto en el paso anterior <i class="label label-info">mandatory</i>    |
+| `client_secret`| string | Id Secreto visto en el paso anterior <i class="label label-info">mandatory</i>s      |
 | `redirect_uri` | string | Dirección de redirección luego de consulta <i class="label label-info">mandatory</i> |
-| `grant_type`   | string | **Este valor cambia** a `refresh_token` <i class="label label-info">mandatory</i>   |
+| `grant_type`   | string | Volor fijo igual a `refresh_token` <i class="label label-info">mandatory</i>         |
 | `refresh_token`| string | Se tenía guardado de la solicitud anterior <i class="label label-info">mandatory</i> |
-
-
-
