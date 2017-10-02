@@ -6,7 +6,7 @@
 | ------------ | ------ | ------------------------------------------------------------------------------------- |
 | `_id`        | string | Identificador del color <i class="label label-info">sólo lectura</i>                  |
 | `name`       | string | Nombre de color en Centry <i class="label label-info">sólo lectura</i>                |
-| `created_at` | string | Regristro de creación de color en Centry <i class="label label-info">sólo lectura</i> |
+| `created_at` | string | Registro de creación de color en Centry <i class="label label-info">sólo lectura</i>  |
 | `updated_at` | string | Registro de última actualización <i class="label label-info">sólo lectura</i>         |
 
 ## Todos los Colores
