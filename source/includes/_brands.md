@@ -6,10 +6,10 @@
 | ------------ | ------ | ---------------------------------------------------------------------------------------- |
 | `_id`        | string | Identificador de la marca <i class="label label-info">sólo lectura</i>                   |
 | `name`       | string | Nombre de la marca en Centry <i class="label label-info">sólo lectura</i>                |
-| `created_at` | string | Regristro de creación de la marca en Centry <i class="label label-info">sólo lectura</i> |
+| `created_at` | string | Registro de creación de la marca en Centry <i class="label label-info">sólo lectura</i>  |
 | `updated_at` | string | Registro de última actualización <i class="label label-info">sólo lectura</i>            |
 
-## Todas las Marcas 
+## Todas las Marcas
 
 Este endpoint entrega todas las marcas de Centry
 
@@ -47,9 +47,9 @@ curl "https://www.centry.cl/conexion/v1/brands.json"/
 ]
 ```
 
-## Obtener una Categoria específica
+## Obtener una Marca específica
 
-Este endpoint entrega una categoria específico.
+Este endpoint entrega una marca específico.
 
 ### HTTP Request
 
@@ -78,6 +78,6 @@ curl "https://www.centry.cl/conexion/v1/brands/<brand_id>.json"/
 
 ### Parámetros URL
 
-Parámtetro | Descripción
+Parámetro  | Descripción
 ---------- | ----------------------------------------
 `brand_id` | El identificador de la marca a recuperar

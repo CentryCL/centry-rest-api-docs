@@ -9,12 +9,13 @@ toc_footers:
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - products 
+  - products
   - orders
   - categories
   - brands
   - colors
   - sizes
+  - integration_configs
   - webhooks
   - errors
 
@@ -31,7 +32,7 @@ que más te acomode en las pestañas que se encuentran en la parte superior.
 
 # Autenticación
 
-Para poder interactuar desde tu aplicación con centry se debe solicitar las credenciales necesarias para que 
+Para poder interactuar desde tu aplicación con centry se debe solicitar las credenciales necesarias para que
 dicha conexión sea exitosa.
 
 Dicho lo anterior se deben realizar los siguientes pasos.
@@ -42,7 +43,7 @@ el botón "Nueva Aplicación".
 
 ![Configuración de llaves Centry REST API](images/appCentry1.png)
 
-Se debe rellenar el formulario que aparecerá para obtener las llaves de acceso. 
+Se debe rellenar el formulario que aparecerá para obtener las llaves de acceso.
 
 ![Configuración de llaves Centry REST API](images/appCentry2.png)
 
@@ -87,7 +88,7 @@ Configurar la conexión en nuestra app.
 | `grant_type`   | string | Valor a solicitar `authorization_code` inicialmente<i class="label label-info">mandatory</i> |
 | `code`         | string | Llave de autorización (authorization_code) <i class="label label-info">mandatory</i>         |
 
-## Configurar Header 
+## Configurar Header
 
 ```shell
 curl -H "Authorization: Bearer fa56dff5a29c8..(access_token) " https://www.centry.cl/oauth/token
@@ -102,7 +103,7 @@ Por cada nueva solicitud de acceso que se quiera realizar, es importante configu
 >  Request POST a la url https://www.centry.cl/oauth/token
 
 ```shell
-#comando para renovar autorización 
+#comando para renovar autorización
 
 curl --data "client_id=<My_client_id>&client_secret=<My_client_secret>&redirect_uri=urn:<My_redirect_uri>&grant_type=refresh_token&refresh_token=<My_previus_refresh_token>" https://www.centry.cl/oauth/token
 ```
@@ -118,7 +119,7 @@ curl --data "client_id=<My_client_id>&client_secret=<My_client_secret>&redirect_
 "created_at":1501080163
 }
 ```
-Renovar solicitudes de acceso 
+Renovar solicitudes de acceso
 
 ### URL parameters
 

@@ -15,7 +15,7 @@
 | `buyer_phone`      | string    | Número de teléfono (preferentemente fijo)                                         |
 | `buyer_mobilephone`| string    | Número de teléfono (preferentemente móvil)                                        |
 | `buyer_birthdate`  | string    | Fecha de nacimiento del cliente.                                                  |
-| `items`            | array     | Lista de items a comprar. Ver [Atributos de los items](#atributos-de-los-items)   |
+| `items`            | array     | Lista de ítems a comprar. Ver [Atributos de los items](#atributos-de-los-items)   |
 | `origin`           | string    | Origen de donde fue importada la orden                                            |
 | `original_data`    | string    | Datos sin editar que fueron importados                                            |
 | `id_origin`        | string    | Identificador de Origen de donde fue importada                                    |
@@ -34,7 +34,7 @@
 
 ### Formulario de direcciones
 
-#### Estos datos pueden variar y son consistentes para los parametros address_billing y address_shipping
+#### Estos datos pueden variar y son consistentes para los parámetros address_billing y address_shipping
 
 | Atributo     | Tipo      | Descripción                                                                         |
 | ------------ | --------- | ----------------------------------------------------------------------------------- |
@@ -57,11 +57,11 @@
 
 | Atributo            |   Tipo    | Descripción                                                                     |
 | ------------------- | --------- | ------------------------------------------------------------------------------- |
-| `_id`               | string    | Identificador de conjunto de items <i class="label label-info">sólo lectura</i> |
+| `_id`               | string    | Identificador de conjunto de ítems <i class="label label-info">sólo lectura</i> |
 | `currency`          | string    | Tipo de moneda en el que se pagará                                              |
-| `name`              | string    | Nombre del ordero                                                               |
+| `name`              | string    | Nombre del producto                                                             |
 | `paid_price`        | float     | Monto a pagar                                                                   |
-| `quantity`          | integer   | Cantidad de items                                                               |
+| `quantity`          | integer   | Cantidad de ítems                                                               |
 | `shipment_provider` | string    | Empresa encargada del despacho                                                  |
 | `shipping_amount`   | float     | Valor monetario del despacho                                                    |
 | `shipping_type`     | string    | Tipo de despacho                                                                |
@@ -170,7 +170,7 @@ curl "https://www.centry.cl/conexion/v1/orders.json"/
 
 ## Obtener una Orden específica
 
-Este endpoint entrega un orden específico.
+Este endpoint entrega una orden específica.
 
 ### HTTP Request
 
@@ -263,7 +263,7 @@ curl "https://www.centry.cl/conexion/v1/orders/<order_id>.json"/
 
 ### Parámetros URL
 
-Parámtetro | Descripción
+Parámetro  | Descripción
 ---------- | ----------------------------------------
 `order_id` | El identificador de la orden a recuperar
 
@@ -316,7 +316,7 @@ curl -X POST https://www.centry.cl/conexion/v1/orders.json \
  "buyer_first_name":"Vía cURl",
  "buyer_last_name":"Apellido Cliente",
  "origin":"cUrl app",
- "items": 
+ "items":
   [{
    "name":"L, Café",
    "quantity":5,
@@ -346,6 +346,6 @@ curl -X DELETE https://www.centry.cl/conexion/v1/orders/<order_id>;.json.json?fo
 
 ### Parámetros URL
 
-Parámtetro | Descripción
+Parámetro  | Descripción
 ---------- | ---------------------------------------
 `order_id` | El identificador de la Orden a eliminar

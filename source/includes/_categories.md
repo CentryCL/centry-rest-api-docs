@@ -6,12 +6,12 @@
 | ------------ | ------ | ---------------------------------------------------------------------------------- |
 | `_id`        | string | Identificador de la categoría  <i class="label label-info">sólo lectura</i>        |
 | `name`       | string | Nombre de la categoría en Centry <i class="label label-info">sólo lectura</i>      |
-| `created_at` | string | Regristro de creación de la categoría <i class="label label-info">sólo lectura</i> |
+| `created_at` | string | Registro de creación de la categoría <i class="label label-info">sólo lectura</i>  |
 | `updated_at` | string | Registro de última actualización <i class="label label-info">sólo lectura</i>      |
 
-## Todas las Categorias 
+## Todas las Categorías
 
-Este endpoint entrega todas las categorias de Centry
+Este endpoint entrega todas las categorías de Centry
 
 ### HTTP Request
 
@@ -46,11 +46,12 @@ curl "https://www.centry.cl/conexion/v1/categories.json"/
 ]
 ```
 
-## Obtener una Categoria específica
+## Obtener una Categoría específica
 
-Este endpoint entrega una categoria específico.
+Este endpoint entrega una categoría específico.
 
 ### HTTP Request
+
 <div class="api-endpoint">
   <div class="endpoint-data">
     <i class="label label-get">GET</i>
@@ -76,6 +77,6 @@ curl "https://www.centry.cl/conexion/v1/categories/<category_id>.json"/
 
 ### Parámetros URL
 
-Parámtetro    | Descripción
+Parámetro     | Descripción
 ------------- | --------------------------------------------
 `category_id` | El identificador de la categoría a recuperar

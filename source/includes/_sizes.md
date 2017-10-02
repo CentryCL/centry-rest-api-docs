@@ -4,9 +4,9 @@
 
 | Atributo     | Tipo   | Descripción                                                                             |
 | ------------ | ------ | --------------------------------------------------------------------------------------- |
-| `_id`        | string | Identificador del tamaño <i class="label label-info">sólo lectura</i>                   |
-| `name`       | string | Nombre de tamaño en Centry <i class="label label-info">sólo lectura</i>                 |
-| `created_at` | string | Regristro de creación del tamaño en Centry <i class="label label-info">sólo lectura</i> |
+| `_id`        | string | Identificador de la talla <i class="label label-info">sólo lectura</i>                  |
+| `name`       | string | Nombre de la talla en Centry <i class="label label-info">sólo lectura</i>               |
+| `created_at` | string | Registro de creación de la talla en Centry <i class="label label-info">sólo lectura</i> |
 | `updated_at` | string | Registro de última actualización <i class="label label-info">sólo lectura</i>           |
 
 ## Todas las Tallas
@@ -77,7 +77,6 @@ curl "https://www.centry.cl/conexion/v1/sizes/<size_id>.json"/
 
 ### Parámetros URL
 
-Parámtetro | Descripción
+Parámetro  | Descripción
 ---------- | ----------------------------------------
 `size_id`  | El identificador de la talla a recuperar
-

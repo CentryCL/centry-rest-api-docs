@@ -78,6 +78,6 @@ curl "https://www.centry.cl/conexion/v1/colors/<color_id>.json"/
 
 ### Parámetros URL
 
-Parámtetro | Descripción
+Parámetro  | Descripción
 ---------- | --------------------------------------
 `color_id` | El identificador del color a recuperar

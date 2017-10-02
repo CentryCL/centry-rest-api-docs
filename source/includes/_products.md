@@ -1,34 +1,33 @@
-# Products 
+# Products
 
 ## Parámetros
 
 | Atributo               | Tipo      | Descripción                                                                            |
 | ---------------------- | --------- | -------------------------------------------------------------------------------------- |
 | `id`                   | string    | Identificador del producto <i class="label label-info">sólo lectura</i>                |
-| `barcode`              | string    | Información almacenada en el codigo de barras                                          |
+| `barcode`              | string    | Información almacenada en el código de barras                                          |
 | `brand_id`             | string    | Identificador de la marca                                                              |
 | `bulk_upload`          | boolean   | Valor sensible en carga masiva** default: false                                        |
 | `category_id`          | integer   | Identificador de categoría a la que pertenece                                          |
 | `color`                | string    | Describe el color del producto                                                         |
-| `company_id`           | integer   | Identificador de la compañia a la que pertenece el producto <i class="label label-info">sólo lectura</i> |
+| `company_id`           | integer   | Identificador de la compañía a la que pertenece el producto <i class="label label-info">sólo lectura</i> |
 | `condition`            | string    | Describe la condición del producto (Nuevo, usado,renovado)                             |
 | `cover_content_type`   | string    | Almacena extensión de la imagen de cover                                               |
 | `cover_file_name`      | string    | Nombre de imagen de cover                                                              |
 | `cover_file_size`      | integer   | Tamaño de imagen de cover                                                              |
 | `cover_fingerprint`    | string    | CheckSum  de cover de imagen                                                           |
 | `cover_updated_at`     | date-time | Almacena fecha en formato UTC de actualización de la imagen de cover                   |
-| `cover_url`            | string    | Almacena url de imagen descruptiva del producto                                        |
+| `cover_url`            | string    | Almacena URL de imagen descriptiva del producto                                        |
 | `deliverytimesupplier` | integer   | Valor aproximado en días, de la llegada del producto al cliente                        |
 | `description`          | string    | Descripción del producto                                                               |
 | `gender_id`            | integer   | Identificador del genero del producto                                                  |
 | `is_fullproductname`   | boolean   | Indica si el nombre del producto está completo o acortado                              |
-| `listing_type`         | string    | Valor usado para integración de mercadolibre                                           |
 | `name`                 | string    | Nombre del producto                                                                    |
 | `options`              | string    | Opciones del producto (talla, color, etc)                                              |
-| `original_data`        | string    | Valor usado en integración Woocommerce                                                 |
-| `packageheight`        | integer   | Valor en centimetros de la altura del paquete                                          |
-| `packagelength`        | integer   | Valor en centimetros del largo del paquete                                             |
-| `packageweight`        | integer   | Valor en centimetros del ancho del paquete                                             |
+| `original_data`        | string    | Campo usado para almacenar toda la información del producto según su origen.           |
+| `packageheight`        | integer   | Valor en centímetros de la altura del paquete                                          |
+| `packagelength`        | integer   | Valor en centímetros del largo del paquete                                             |
+| `packageweight`        | integer   | Valor en centímetros del ancho del paquete                                             |
 | `packagewidth`         | integer   | Valor en kilogramos del peso del paquete                                               |
 | `price`                | integer   | Valor monetario del producto                                                           |
 | `price_compare`        | integer   | Valor monetario de comparación del producto                                            |
@@ -57,9 +56,9 @@
 | `barcode`         | string    | Información del código de barras                                                                |
 | `bulk_upload`     | boolean   | Carga masiva                                                                                    |
 | `color_id`        | integer   | Identificador del color                                                                         |
-| `company_id`      | integer   | Identificador de compañia <i class="label label-info">sólo lectura</i>                          |
+| `company_id`      | integer   | Identificador de compañía <i class="label label-info">sólo lectura</i>                          |
 | `description`     | string    | Descripción de la variante                                                                      |
-| `original_data`   | string    | Información total entregada por una variente en caso de ser importada                           |
+| `original_data`   | string    | Información total entregada por una variante en caso de ser importada                           |
 | `price`           | integer   | Valor monetario real del producto                                                               |
 | `price_compare`   | integer   | Valor monetario de comparación del producto                                                     |
 | `product_id`      | integer   | Identificador del Producto en Centry                                                            |
@@ -264,7 +263,7 @@ Este endpoint entrega un producto específico.
 
 ### Parámetros URL
 
-Parámtetro   | Descripción
+Parámetro    | Descripción
 ------------ | -----------------------------------------
 `product_id` | El identificador del producto a recuperar
 
@@ -332,13 +331,13 @@ curl -X PUT https://www.centry.cl/conexion/v1/products/<product_id>.json \
 
 ### Parámetros URL
 
-Parámtetro   | Descripción
+Parámetro    | Descripción
 ------------ | ------------------------------------------
 `product_id` | El identificador del producto a actualizar
 
 ## Eliminar un Product
 
-Este endpoint elimina un procucto
+Este endpoint elimina un producto
 
 ### HTTP Request
 
@@ -356,6 +355,6 @@ curl -X DELETE https://www.centry.cl/conexion/v1/products/<product_id>.json \
 
 ### Parámetros URL
 
-Parámtetro   | Descripción
+Parámetro    | Descripción
 ------------ | ----------------------------------------
 `product_id` | El identificador del producto a eliminar

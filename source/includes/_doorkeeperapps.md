@@ -10,8 +10,8 @@
 | `master`       | boolean | Describe si aplicación está actuando o no como maestro                    |
 | `app_id`       | string  | Identificador de aplicación asociada                                      |
 | `company_id`   | string  | Identificador de empresa <i class="label label-info">sólo lectura</i>     |
-| `created_at`   | string  | Regristro de creación del Aplicación en Centry                            |
-| `updated_at`   | string  | Regristro de actualizacion del Aplicación en Centry                       |
+| `created_at`   | string  | Registro de creación del Aplicación en Centry                             |
+| `updated_at`   | string  | Registro de actualización del Aplicación en Centry                        |
 
 ## Crear un Doorkeeper
 
@@ -34,7 +34,7 @@ curl -X POST https://www.centry.cl/conexion/v1/doorkeeper_apps.json \
      "callback_url": "https://www.myurl.cl/callback/",
   "platform": "Prestashop",
   "master": "false"
- 
+
  }'\
   > createdDoorkeeperApp.json
 
