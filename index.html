@@ -236,7 +236,7 @@ que más te acomode en las pestañas que se encuentran en la parte superior.</p>
 
 <h1 id="autenticaci-n">Autenticación</h1>
 
-<p>Para poder interactuar desde tu aplicación con centry se debe solicitar las credenciales necesarias para que 
+<p>Para poder interactuar desde tu aplicación con centry se debe solicitar las credenciales necesarias para que
 dicha conexión sea exitosa.</p>
 
 <p>Dicho lo anterior se deben realizar los siguientes pasos.</p>
@@ -248,7 +248,7 @@ el botón &ldquo;Nueva Aplicación&rdquo;.</p>
 
 <p><img src="images/appCentry1.png" alt="Configuración de llaves Centry REST API" /></p>
 
-<p>Se debe rellenar el formulario que aparecerá para obtener las llaves de acceso. </p>
+<p>Se debe rellenar el formulario que aparecerá para obtener las llaves de acceso.</p>
 
 <p><img src="images/appCentry2.png" alt="Configuración de llaves Centry REST API" /></p>
 
@@ -329,7 +329,7 @@ el código aturización que genera Centry.</p>
 <blockquote>
 <p>Request POST a la url https://www.centry.cl/oauth/token</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="c">#comando para renovar autorización </span>
+<pre class="highlight shell tab-shell"><code><span class="c">#comando para renovar autorización</span>
 
 curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&lt;My_client_secret&gt;&amp;redirect_uri=urn:&lt;My_redirect_uri&gt;&amp;grant_type=refresh_token&amp;refresh_token=&lt;My_previus_refresh_token&gt;"</span> https://www.centry.cl/oauth/token
 </code></pre>
@@ -344,7 +344,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 "created_at":1501080163
 }
 </code></pre>
-<p>Renovar solicitudes de acceso </p>
+<p>Renovar solicitudes de acceso</p>
 
 <h3 id="url-parameters">URL parameters</h3>
 
@@ -401,7 +401,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <tr>
 <td><code class="prettyprint">barcode</code></td>
 <td>string</td>
-<td>Información almacenada en el codigo de barras</td>
+<td>Información almacenada en el código de barras</td>
 </tr>
 <tr>
 <td><code class="prettyprint">brand_id</code></td>
@@ -426,7 +426,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <tr>
 <td><code class="prettyprint">company_id</code></td>
 <td>integer</td>
-<td>Identificador de la compañia a la que pertenece el producto <i class="label label-info">sólo lectura</i></td>
+<td>Identificador de la compañía a la que pertenece el producto <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">condition</code></td>
@@ -461,7 +461,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <tr>
 <td><code class="prettyprint">cover_url</code></td>
 <td>string</td>
-<td>Almacena url de imagen descruptiva del producto</td>
+<td>Almacena URL de imagen descriptiva del producto</td>
 </tr>
 <tr>
 <td><code class="prettyprint">deliverytimesupplier</code></td>
@@ -484,11 +484,6 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <td>Indica si el nombre del producto está completo o acortado</td>
 </tr>
 <tr>
-<td><code class="prettyprint">listing_type</code></td>
-<td>string</td>
-<td>Valor usado para integración de mercadolibre</td>
-</tr>
-<tr>
 <td><code class="prettyprint">name</code></td>
 <td>string</td>
 <td>Nombre del producto</td>
@@ -501,22 +496,22 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <tr>
 <td><code class="prettyprint">original_data</code></td>
 <td>string</td>
-<td>Valor usado en integración Woocommerce</td>
+<td>Campo usado para almacenar toda la información del producto según su origen.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">packageheight</code></td>
 <td>integer</td>
-<td>Valor en centimetros de la altura del paquete</td>
+<td>Valor en centímetros de la altura del paquete</td>
 </tr>
 <tr>
 <td><code class="prettyprint">packagelength</code></td>
 <td>integer</td>
-<td>Valor en centimetros del largo del paquete</td>
+<td>Valor en centímetros del largo del paquete</td>
 </tr>
 <tr>
 <td><code class="prettyprint">packageweight</code></td>
 <td>integer</td>
-<td>Valor en centimetros del ancho del paquete</td>
+<td>Valor en centímetros del ancho del paquete</td>
 </tr>
 <tr>
 <td><code class="prettyprint">packagewidth</code></td>
@@ -647,7 +642,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <tr>
 <td><code class="prettyprint">company_id</code></td>
 <td>integer</td>
-<td>Identificador de compañia <i class="label label-info">sólo lectura</i></td>
+<td>Identificador de compañía <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">description</code></td>
@@ -657,7 +652,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <tr>
 <td><code class="prettyprint">original_data</code></td>
 <td>string</td>
-<td>Información total entregada por una variente en caso de ser importada</td>
+<td>Información total entregada por una variante en caso de ser importada</td>
 </tr>
 <tr>
 <td><code class="prettyprint">price</code></td>
@@ -890,7 +885,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 
 <table><thead>
 <tr>
-<th>Parámtetro</th>
+<th>Parámetro</th>
 <th>Descripción</th>
 </tr>
 </thead><tbody>
@@ -960,7 +955,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 
 <table><thead>
 <tr>
-<th>Parámtetro</th>
+<th>Parámetro</th>
 <th>Descripción</th>
 </tr>
 </thead><tbody>
@@ -972,7 +967,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 
 <h2 id="eliminar-un-product">Eliminar un Product</h2>
 
-<p>Este endpoint elimina un procucto</p>
+<p>Este endpoint elimina un producto</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -989,7 +984,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 
 <table><thead>
 <tr>
-<th>Parámtetro</th>
+<th>Parámetro</th>
 <th>Descripción</th>
 </tr>
 </thead><tbody>
@@ -1068,7 +1063,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <tr>
 <td><code class="prettyprint">items</code></td>
 <td>array</td>
-<td>Lista de items a comprar. Ver <a href="#atributos-de-los-items">Atributos de los items</a></td>
+<td>Lista de ítems a comprar. Ver <a href="#atributos-de-los-items">Atributos de los items</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">origin</code></td>
@@ -1149,7 +1144,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 
 <h3 id="formulario-de-direcciones">Formulario de direcciones</h3>
 
-<h4 id="estos-datos-pueden-variar-y-son-consistentes-para-los-parametros-address_billing-y-address_shipping">Estos datos pueden variar y son consistentes para los parametros address_billing y address_shipping</h4>
+<h4 id="estos-datos-pueden-variar-y-son-consistentes-para-los-par-metros-address_billing-y-address_shipping">Estos datos pueden variar y son consistentes para los parámetros address_billing y address_shipping</h4>
 
 <table><thead>
 <tr>
@@ -1242,7 +1237,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <tr>
 <td><code class="prettyprint">_id</code></td>
 <td>string</td>
-<td>Identificador de conjunto de items <i class="label label-info">sólo lectura</i></td>
+<td>Identificador de conjunto de ítems <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">currency</code></td>
@@ -1252,7 +1247,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <tr>
 <td><code class="prettyprint">name</code></td>
 <td>string</td>
-<td>Nombre del ordero</td>
+<td>Nombre del producto</td>
 </tr>
 <tr>
 <td><code class="prettyprint">paid_price</code></td>
@@ -1262,7 +1257,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <tr>
 <td><code class="prettyprint">quantity</code></td>
 <td>integer</td>
-<td>Cantidad de items</td>
+<td>Cantidad de ítems</td>
 </tr>
 <tr>
 <td><code class="prettyprint">shipment_provider</code></td>
@@ -1409,7 +1404,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 </span></code></pre>
 <h2 id="obtener-una-orden-espec-fica">Obtener una Orden específica</h2>
 
-<p>Este endpoint entrega un orden específico.</p>
+<p>Este endpoint entrega una orden específica.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1500,7 +1495,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 
 <table><thead>
 <tr>
-<th>Parámtetro</th>
+<th>Parámetro</th>
 <th>Descripción</th>
 </tr>
 </thead><tbody>
@@ -1557,7 +1552,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
  "buyer_first_name":"Vía cURl",
  "buyer_last_name":"Apellido Cliente",
  "origin":"cUrl app",
- "items": 
+ "items":
   [{
    "name":"L, Café",
    "quantity":5,
@@ -1585,7 +1580,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 
 <table><thead>
 <tr>
-<th>Parámtetro</th>
+<th>Parámetro</th>
 <th>Descripción</th>
 </tr>
 </thead><tbody>
@@ -1619,7 +1614,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <tr>
 <td><code class="prettyprint">created_at</code></td>
 <td>string</td>
-<td>Regristro de creación de la categoría <i class="label label-info">sólo lectura</i></td>
+<td>Registro de creación de la categoría <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">updated_at</code></td>
@@ -1628,9 +1623,9 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 </tr>
 </tbody></table>
 
-<h2 id="todas-las-categorias">Todas las Categorias</h2>
+<h2 id="todas-las-categor-as">Todas las Categorías</h2>
 
-<p>Este endpoint entrega todas las categorias de Centry</p>
+<p>Este endpoint entrega todas las categorías de Centry</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1661,9 +1656,9 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<h2 id="obtener-una-categoria-espec-fica">Obtener una Categoria específica</h2>
+<h2 id="obtener-una-categor-a-espec-fica">Obtener una Categoría específica</h2>
 
-<p>Este endpoint entrega una categoria específico.</p>
+<p>Este endpoint entrega una categoría específico.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1690,7 +1685,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 
 <table><thead>
 <tr>
-<th>Parámtetro</th>
+<th>Parámetro</th>
 <th>Descripción</th>
 </tr>
 </thead><tbody>
@@ -1724,7 +1719,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <tr>
 <td><code class="prettyprint">created_at</code></td>
 <td>string</td>
-<td>Regristro de creación de la marca en Centry <i class="label label-info">sólo lectura</i></td>
+<td>Registro de creación de la marca en Centry <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">updated_at</code></td>
@@ -1767,9 +1762,9 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<h2 id="obtener-una-categoria-espec-fica">Obtener una Categoria específica</h2>
+<h2 id="obtener-una-marca-espec-fica">Obtener una Marca específica</h2>
 
-<p>Este endpoint entrega una categoria específico.</p>
+<p>Este endpoint entrega una marca específico.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1796,7 +1791,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 
 <table><thead>
 <tr>
-<th>Parámtetro</th>
+<th>Parámetro</th>
 <th>Descripción</th>
 </tr>
 </thead><tbody>
@@ -1902,7 +1897,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 
 <table><thead>
 <tr>
-<th>Parámtetro</th>
+<th>Parámetro</th>
 <th>Descripción</th>
 </tr>
 </thead><tbody>
@@ -1926,17 +1921,17 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <tr>
 <td><code class="prettyprint">_id</code></td>
 <td>string</td>
-<td>Identificador del tamaño <i class="label label-info">sólo lectura</i></td>
+<td>Identificador de la talla <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">name</code></td>
 <td>string</td>
-<td>Nombre de tamaño en Centry <i class="label label-info">sólo lectura</i></td>
+<td>Nombre de la talla en Centry <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">created_at</code></td>
 <td>string</td>
-<td>Regristro de creación del tamaño en Centry <i class="label label-info">sólo lectura</i></td>
+<td>Registro de creación de la talla en Centry <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">updated_at</code></td>
@@ -2007,7 +2002,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 
 <table><thead>
 <tr>
-<th>Parámtetro</th>
+<th>Parámetro</th>
 <th>Descripción</th>
 </tr>
 </thead><tbody>
@@ -2017,9 +2012,384 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 </tr>
 </tbody></table>
 
+          <h1 id="integration-configs">Integration Configs</h1>
+
+<p>La API de Centry permite listar, ver, y eliminar integraciones a marketplaces y/o ecommerces individualmente.</p>
+
+<p>Las integraciones pueden ser administradas desde la <a href="https://www.centry.cl/empresas/integraciones">plataforma web de Centry</a> o parcialmente usando los endpoints de la API REST.</p>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<h3 id="par-metros-comunes-a-todas-las-integraciones">Parámetros comunes a todas las integraciones</h3>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador de la integración                             <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">_delete_status</code></td>
+<td>string</td>
+<td>Sólo admite los valores <code class="prettyprint">unpublish</code> y <code class="prettyprint">delete</code> y definen el comportamiento de la publicación del producto después de que se elimine de Centry: <code class="prettyprint">unpublish</code> lo pausa o despublica, mientras que <code class="prettyprint">delete</code> lo intenta eliminar permanentemente.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">_use</code></td>
+<td>string</td>
+<td>Sólo admite los valores <code class="prettyprint">slave</code> y <code class="prettyprint">master</code> y definen quién es el cargado de llevar el control del catálogo e inventario: Centry (<code class="prettyprint">slave</code>) o la integración (<code class="prettyprint">master</code>). Sólo algunas integraciones admiten el modo <code class="prettyprint">master</code>.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">target</code></td>
+<td>string</td>
+<td>Indica el tipo de integración a la que pertenece (Ej: Dafiti, Linio MercadoLibre, etc.)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>boolean</td>
+<td>Flag que indica si Centry enviará este campo cada vez que se sincronicen productos con esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">description</code></td>
+<td>boolean</td>
+<td>Flag que indica si Centry enviará este campo cada vez que se sincronicen productos con esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">shortdescription</code></td>
+<td>boolean</td>
+<td>Flag que indica si Centry enviará este campo cada vez que se sincronicen productos con esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price_compare</code></td>
+<td>boolean</td>
+<td>Flag que indica si Centry enviará este campo cada vez que se sincronicen productos con esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price</code></td>
+<td>boolean</td>
+<td>Flag que indica si Centry enviará este campo cada vez que se sincronicen productos con esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price_factor</code></td>
+<td>float</td>
+<td>Factor por el cual se multiplicarán los precios para esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price_round</code></td>
+<td>int</td>
+<td>Número al cual se aproximarán los precios.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">stock_discount</code></td>
+<td>int</td>
+<td>Numero de unidades por variantes que se dejarán de publicar para esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">condition</code></td>
+<td>boolean</td>
+<td>Flag que indica si Centry enviará este campo cada vez que se sincronicen productos con esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">package_dimensions</code></td>
+<td>boolean</td>
+<td>Flag que indica si Centry enviará este campo cada vez que se sincronicen productos con esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">package_weight</code></td>
+<td>boolean</td>
+<td>Flag que indica si Centry enviará este campo cada vez que se sincronicen productos con esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">warranty</code></td>
+<td>boolean</td>
+<td>Flag que indica si Centry enviará este campo cada vez que se sincronicen productos con esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">barcode</code></td>
+<td>boolean</td>
+<td>Flag que indica si Centry enviará este campo cada vez que se sincronicen productos con esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sku</code></td>
+<td>boolean</td>
+<td>Flag que indica si Centry enviará este campo cada vez que se sincronicen productos con esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sku_prefix</code></td>
+<td>boolean</td>
+<td>Flag que indica si Centry enviará este campo cada vez que se sincronicen productos con esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">images</code></td>
+<td>boolean</td>
+<td>Flag que indica si Centry enviará este campo cada vez que se sincronicen productos con esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">images</code></td>
+<td>boolean</td>
+<td>Flag que indica si Centry enviará este campo cada vez que se sincronicen productos con esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">category</code></td>
+<td>boolean</td>
+<td>Flag que indica si Centry enviará este campo cada vez que se sincronicen productos con esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">excluded_brand_ids</code></td>
+<td>array</td>
+<td>Listado de marcas que serán excluidas de la la sincronización de productos para esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">excluded_category_ids</code></td>
+<td>array</td>
+<td>Listado de categorías que serán excluidas de la la sincronización de productos para esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">excluded_product_ids</code></td>
+<td>array</td>
+<td>Listado de producto que serán excluidas de la la sincronización de productos para esta integración.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">enabled</code></td>
+<td>boolean</td>
+<td>Flag que indica si esta integración está disponible.        <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">company_id</code></td>
+<td>string</td>
+<td>Identificador de empresa                                    <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>string</td>
+<td>Fecha de creación de la integración en Centry               <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>string</td>
+<td>Fecha de la última modificación de la integración en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+</tbody></table>
+
+<h3 id="par-metros-espec-ficos-para-cada-integraci-n">Parámetros específicos para cada integración</h3>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Integraciones</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="listar-las-integraciones-de-la-cuenta">Listar las integraciones de la cuenta</h2>
+
+<p>Este endpoint entrega todas las integraciones registradas en la cuenta.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/integration_configs.json </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+  https://www.centry.cl/conexion/v1/integration_configs.json <span class="se">\</span>
+  -H <span class="s1">'authorization: Bearer &lt;access_token&gt;'</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_delete_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unpublish"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59d295351746bf7fa9000003"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"_use"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slave"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linio_api_key"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59355c1b1746bf25a8000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"condition"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-02T16:36:21.588-03:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"excluded_brand_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"580450f61746bf79030001eb"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"59baccbf133b5a34d452a33c"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"excluded_category_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"580450f61746bf79030001a7"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"excluded_product_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"59d242ae1746bf33f4000000"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"images"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"package_dimensions"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"package_weight"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price_compare"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price_factor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price_round"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shortdescription"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sku_prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stock_discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Linio"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-02T16:37:00.426-03:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linio_usuario"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"warranty"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h2 id="obtener-una-integraci-n-espec-fica">Obtener una integración específica</h2>
+
+<p>Este endpoint entrega una integración específica.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/integration_configs/&lt;ic_id&gt;.json </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+  https://www.centry.cl/conexion/v1/integration_configs/59d295351746bf7fa9000003.json <span class="se">\</span>
+  -H <span class="s1">'authorization: Bearer &lt;access_token&gt;'</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_delete_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unpublish"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59d295351746bf7fa9000003"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_use"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slave"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linio_api_key"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59355c1b1746bf25a8000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"condition"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-02T16:36:21.588-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"excluded_brand_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"580450f61746bf79030001eb"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"59baccbf133b5a34d452a33c"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"excluded_category_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"580450f61746bf79030001a7"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"excluded_product_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"59d242ae1746bf33f4000000"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"images"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"package_dimensions"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"package_weight"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"price_compare"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"price_factor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"price_round"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shortdescription"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sku_prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"stock_discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Linio"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-02T16:37:00.426-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linio_usuario"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"warranty"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">ic_id</code></td>
+<td>El identificador de la integración a recuperar</td>
+</tr>
+</tbody></table>
+
+<h2 id="eliminar-una-integraci-n">Eliminar una integración</h2>
+
+<p>Este endpoint elimina permanentemente una integración específica.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-delete">DELETE</i>
+    <h6> https://www.centry.cl/conexion/v1/integration_configs/&lt;ic_id&gt;.json </h6>
+  </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+  https://www.centry.cl/conexion/v1/integration_configs/59d295351746bf7fa9000003.json <span class="se">\</span>
+  -H <span class="s1">'authorization: Bearer &lt;access_token&gt;'</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="kc">true</span><span class="w">
+</span></code></pre>
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">ic_id</code></td>
+<td>El identificador de la integración a eliminar</td>
+</tr>
+</tbody></table>
+
           <h1 id="webhooks">Webhooks</h1>
 
-<p>La API de Centry permiten crear, ver, actualizar y eliminar webhooks individualmente.</p>
+<p>La API de Centry permite crear, ver, actualizar y eliminar webhooks individualmente.</p>
 
 <p>Los webhooks pueden ser administrados desde la <a href="https://www.centry.cl/integraciones/webhooks">plataforma web de Centry</a> o usando los endpoints de la API REST.</p>
 
@@ -2042,6 +2412,11 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <ul>
 <li><code class="prettyprint">order_id</code>: Identificador de la orden involucrada en el evento.</li>
 </ul></li>
+<li><code class="prettyprint">on_integration_config_delete</code> ó <code class="prettyprint">on_integration_config_save</code>
+
+<ul>
+<li><code class="prettyprint">integration_config_id</code>: Identificador de la integración involucrada en el evento.</li>
+</ul></li>
 </ul>
 
 <h3 id="topics">Topics</h3>
@@ -2053,13 +2428,14 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <ul>
 <li>Orders: <code class="prettyprint">on_order_save</code> y <code class="prettyprint">on_order_delete</code>.</li>
 <li>Products: <code class="prettyprint">on_product_save</code>, <code class="prettyprint">on_product_delete</code>.</li>
+<li>Integration Configs: <code class="prettyprint">on_integration_config_delete</code>, <code class="prettyprint">on_integration_config_save</code>.</li>
 </ul>
 
 <h3 id="entrega-e-insistencias">Entrega e insistencias</h3>
 
-<p>La entrega es realizada por Centry inmediatamente depués de que ocurre el evento usando él método POST de HTTP.</p>
+<p>La entrega es realizada por Centry inmediatamente después de que ocurre el evento usando él método POST de HTTP.</p>
 
-<p>Centry espera que el receptor de la notificación responda con un código 200 en menos de 15 segundos, de lo contrario volvera a incistir 5 minutos más tarde. Estas insitencias pueden perdurar hasta 48 horas, donde finalmente se desiste de notificar el evento.</p>
+<p>Centry espera que el receptor de la notificación responda con un código 200 en menos de 15 segundos, de lo contrario volverá a insistir 5 minutos más tarde. Estas insistencias pueden perdurar hasta 48 horas, donde finalmente se desiste de notificar el evento.</p>
 
 <p>El contenido de la notificación está codificado en un JSON e incluye el mínimo de información posible de modo que el receptor tenga consultar a Centry por los datos que necesite.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2069,15 +2445,15 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 </span></code></pre>
 <h3 id="logging">Logging</h3>
 
-<p>Las solicitudes de notificacione y sus respuestas son registradas en un log que contiene los siguientes datos:</p>
+<p>Las solicitudes de notificaciones y sus respuestas son registradas en un log que contiene los siguientes datos:</p>
 
 <ul>
-<li><code class="prettyprint">callback_url</code>: URL configurada en el webhook al momenot de realizar la notifiación</li>
+<li><code class="prettyprint">callback_url</code>: URL configurada en el webhook al momento de realizar la notificación</li>
 <li><code class="prettyprint">intent</code>: Número correlativo al numero de intento partiendo siempre desde el 1 y pudiendo terminar en el 576</li>
-<li><code class="prettyprint">response</code>: El contenido de la respuesta. Se guarda cólo como referencia porque no se usa para nada.</li>
+<li><code class="prettyprint">response</code>: El contenido de la respuesta. Se guarda cómo como referencia porque no se usa para nada.</li>
 <li><code class="prettyprint">accepted</code>: Un booblean que indica si la notificación fue recibida correctamente o no.</li>
 <li><code class="prettyprint">topic</code>: El tópico involucrado en la notificación.</li>
-<li><code class="prettyprint">data</code>: El contenido completo que fue enviado en la notifiación.</li>
+<li><code class="prettyprint">data</code>: El contenido completo que fue enviado en la notificación.</li>
 </ul>
 
 <h3 id="interf-z-visual">Interfáz visual</h3>
@@ -2122,6 +2498,16 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <td><code class="prettyprint">on_order_delete</code></td>
 <td>boolean</td>
 <td>Flag que indica si se requiere recibir notificaciones del tipo &ldquo;eliminación de pedido&rdquo;</td>
+</tr>
+<tr>
+<td><code class="prettyprint">on_integration_config_save</code></td>
+<td>boolean</td>
+<td>Flag que indica si se requiere recibir notificaciones del tipo &ldquo;actualización de integración&rdquo;</td>
+</tr>
+<tr>
+<td><code class="prettyprint">on_integration_config_delete</code></td>
+<td>boolean</td>
+<td>Flag que indica si se requiere recibir notificaciones del tipo &ldquo;eliminación de integracion&rdquo;</td>
 </tr>
 <tr>
 <td><code class="prettyprint">company_id</code></td>
@@ -2169,6 +2555,8 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
         </span><span class="s2">"on_order_save"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"on_product_delete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"on_product_save"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"on_integration_config_delete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"on_integration_config_save"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-22T11:10:18.174-03:00"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -2201,6 +2589,8 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
     </span><span class="s2">"on_order_save"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"on_product_delete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"on_product_save"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"on_integration_config_delete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"on_integration_config_save"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-22T11:10:18.174-03:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2208,7 +2598,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 
 <table><thead>
 <tr>
-<th>Parámtetro</th>
+<th>Parámetro</th>
 <th>Descripción</th>
 </tr>
 </thead><tbody>
@@ -2252,6 +2642,8 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
     </span><span class="s2">"on_order_save"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"on_product_delete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"on_product_save"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"on_integration_config_delete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"on_integration_config_save"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-25T19:37:33.016-03:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2288,6 +2680,8 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
     </span><span class="s2">"on_order_save"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"on_product_delete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"on_product_save"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"on_integration_config_delete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"on_integration_config_save"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-25T19:41:16.604-03:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2295,7 +2689,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 
 <table><thead>
 <tr>
-<th>Parámtetro</th>
+<th>Parámetro</th>
 <th>Descripción</th>
 </tr>
 </thead><tbody>
@@ -2330,7 +2724,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 
 <table><thead>
 <tr>
-<th>Parámtetro</th>
+<th>Parámetro</th>
 <th>Descripción</th>
 </tr>
 </thead><tbody>
