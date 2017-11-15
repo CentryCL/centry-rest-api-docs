@@ -68,7 +68,7 @@ La administración de los webhooks así como el sus registros del log pueden ser
 | `on_order_save`                | boolean | Flag que indica si se requiere recibir notificaciones del tipo "actualización de pedido"            |
 | `on_order_delete`              | boolean | Flag que indica si se requiere recibir notificaciones del tipo "eliminación de pedido"              |
 | `on_integration_config_save`   | boolean | Flag que indica si se requiere recibir notificaciones del tipo "actualización de integración"       |
-| `on_integration_config_delete` | boolean | Flag que indica si se requiere recibir notificaciones del tipo "eliminación de integracion"         |
+| `on_integration_config_delete` | boolean | Flag que indica si se requiere recibir notificaciones del tipo "eliminación de integración"         |
 | `company_id`                   | string  | Identificador de empresa <i class="label label-info">sólo lectura</i>                               |
 | `created_at`                   | string  | Fecha de creación del webhook en Centry <i class="label label-info">sólo lectura</i>                |
 | `updated_at`                   | string  | Fecha de la última modificación del webhook en Centry  <i class="label label-info">sólo lectura</i> |

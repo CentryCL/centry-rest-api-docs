@@ -15,7 +15,7 @@
 | `buyer_phone`      | string    | Número de teléfono (preferentemente fijo)                                         |
 | `buyer_mobilephone`| string    | Número de teléfono (preferentemente móvil)                                        |
 | `buyer_birthdate`  | string    | Fecha de nacimiento del cliente.                                                  |
-| `items`            | array     | Lista de ítems a comprar. Ver [Atributos de los items](#atributos-de-los-items)   |
+| `items`            | array     | Lista de ítems a comprar. Ver [Atributos de los ítems](#atributos-de-los-items)   |
 | `origin`           | string    | Origen de donde fue importada la orden                                            |
 | `original_data`    | string    | Datos sin editar que fueron importados                                            |
 | `id_origin`        | string    | Identificador de Origen de donde fue importada                                    |
