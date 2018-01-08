@@ -234,153 +234,193 @@ información sobre los recursos registrados en nuestra base de datos.</p>
 <p>Puedes ver los códigos de ejemplo en la región oscura de la derecha y seleccionar el lenguaje de programación
 que más te acomode en las pestañas que se encuentran en la parte superior.</p>
 
-<h1 id="autenticaci-n">Autenticación</h1>
+          <h1 id="autenticaci-n">Autenticación</h1>
 
-<p>Para poder interactuar desde tu aplicación con centry se debe solicitar las credenciales necesarias para que
-dicha conexión sea exitosa.</p>
+<p>Para poder interactuar desde una aplicación con Centry se debe solicitar las credenciales necesarias para que
+dicha conexión sea exitosa. Para lo anterior, se deben realizar los siguientes pasos.</p>
 
-<p>Dicho lo anterior se deben realizar los siguientes pasos.</p>
+<h2 id="crear-una-aplicaci-n">Crear una aplicación</h2>
 
-<h2 id="obtener-credenciales-de-acceso">Obtener credenciales de acceso</h2>
-
-<p>Ingresar al panel de <a href="https://www.centry.cl/oauth/applications">aplicaciones externas desde centry</a> y presionar
+<p>Ingresar al panel de <a href="https://www.centry.cl/oauth/applications">aplicaciones externas de Centry</a> y presionar
 el botón &ldquo;Nueva Aplicación&rdquo;.</p>
 
 <p><img src="images/appCentry1.png" alt="Configuración de llaves Centry REST API" /></p>
 
-<p>Se debe rellenar el formulario que aparecerá para obtener las llaves de acceso.</p>
+<p>Se debe rellenar el formulario con los siguientes datos:</p>
+
+<p><strong>Name:</strong> <i class="label label-info">mandatory</i></p>
+
+<p>Nombre que se le quiera dar a la App. Es un campo de texto libre que pretende servir de ayuda al propietario
+para recordar el uso que le está dando. Ej: &ldquo;Mi App Android&rdquo;.</p>
+
+<p><strong>Redirect uri:</strong> <i class="label label-info">mandatory</i></p>
+
+<p>URI a la que se redireccionará cuando se solicite una autorización. En el capítulo <strong>Autorización</strong> se ve
+en detalle el uso de esta URI, pero a modo de adelanto, tiene que ser una ruta que sea capaz de leer parámetros
+se le envíen vía GET y de ejecutar los pasos necesarios para completar el proceso de autorización. Es en ese
+sentido que se recomienda habilitar una ruta dedicada a atender esta redirección.
+Ej: <code class="prettyprint">https://www.mi-website.com/centry/auth</code>.</p>
+
+<p>Si se quiere probar localmente o correr en un ambiente en el que no se disponga de una URL fija, puede ingresar
+<code class="prettyprint">urn:ietf:wg:oauth:2.0:oob</code> como redirect URI. Esto va a requerir un par de pasos más por parte del usuario,
+pero el efecto en el desempeño de la aplicación es exactamente el mismo.</p>
+
+<p><strong>Scopes:</strong></p>
+
+<p>No tiene utilidad por el momento. Se recomienda dejar en blanco.</p>
 
 <p><img src="images/appCentry2.png" alt="Configuración de llaves Centry REST API" /></p>
 
-<p>Finalizado este paso se obtienen las llaves necesarias para la conexión .</p>
+<p>Una vez enviado el formulario, Centry generará un identificador y una clave secreta que serán las llaves
+necesarias para las futuras conexiones.</p>
 
 <p><img src="images/appCentry3.png" alt="Configuración de llaves Centry REST API" /></p>
 
-<p>El último paso es la autirización que consiste en obtener primer el &ldquo;access token&rdquo; y &ldquo;refresh token&rdquo; utilizando
-el código aturización que genera Centry.</p>
+<h2 id="autorizaci-n">Autorización</h2>
 
-<p><img src="images/appCentry4.png" alt="Configuración de llaves Centry REST API" /></p>
+<p>Hasta el minuto lo único que se tiene es una aplicación creada. Pero para que un cliente pueda usarla,
+debe solicitar los primeros <code class="prettyprint">access_token</code> y <code class="prettyprint">refresh_token</code> en base a un código de que genera Centry
+para cada ocasión. Este proceso se conoce como &ldquo;Autorización&rdquo;.</p>
 
-<h2 id="solicitar-acceso-desde-aplicaci-n">Solicitar acceso desde Aplicación</h2>
+<p>Los pasos a seguir son los siguientes:</p>
+
+<ol>
+<li>Ingresar al panel de <a href="https://www.centry.cl/oauth/applications">aplicaciones externas de Centry</a>.</li>
+<li>Presionar el nombre de la aplicación.</li>
+<li>Presionar el botón &ldquo;Autorizar&rdquo; que está bajo el título &ldquo;Callback urls&rdquo;.</li>
+<li>Confirmar la autorización presionando el botón &ldquo;Autorizar&rdquo;.</li>
+<li>Recuperar el código de actualización.
+
+<ul>
+<li>Si la app tiene la URI para hacer pruebas locales, entonces Centry mostrará en pantalla el código
+de autorización.</li>
+<li>Si la app está configurada con una URL pública, entonces se redireccionará a la dirección informada
+en el campo <code class="prettyprint">redirect_uri</code> y como un parámetro GET llamado <code class="prettyprint">code</code>, se enviará el código de autorización.</li>
+</ul></li>
+</ol>
+
+<p><img src="images/appCentry4_2-4.png" alt="Configuración de llaves Centry REST API" />
+<img src="images/appCentry4_5.png" alt="Configuración de llaves Centry REST API" /></p>
 
 <blockquote>
-<p>Debe realizar un Request POST a la url https://www.centry.cl/oauth/token</p>
+<p>Request GET a la URL https://www.centry.cl/oauth/token</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&lt;My_client_secret&gt;&amp;redirect_uri&lt;My_redirect_uri&gt;&amp;grant_type=authorization_code&amp;code=&lt;My_authorization_code&gt;"</span> https://www.centry.cl/oauth/token
+<pre class="highlight shell tab-shell"><code>curl --data <span class="s2">"client_id=49fca0b1207097f29a21f12c96a1ce73b361ed354a40d1274d536ab7be4f921e&amp;client_secret=73b83c1b7d0257d500e203cb97767c5036c036b71be6b8ed07fa630579b3a3b2&amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;grant_type=authorization_code&amp;code=106b97e054f0ca7cf66d710b433ea3f1140cdadd84a00c24c6fa0394f67c8157"</span> https://www.centry.cl/oauth/token
 </code></pre>
 <blockquote>
 <p>Ejemplo de respuesta JSON luego de ejecutar el comando anterior</p>
 </blockquote>
-<pre class="highlight plaintext"><code>{
-  "access_token":"fa56dff5a29c8...",
-  "token_type":"bearer",
-  "expires_in":7200,
-  "refresh_token":"c38eabc8f00...",
-  "created_at":1501020167
-}
-</code></pre>
-<p>Configurar la conexión en nuestra app.</p>
-
-<h3 id="url-parameters">URL parameters</h3>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="s2">"ae7a9cecd01b346cfb7e6f196b948d8a63cb37f7feae38c4f4a2a31eca27c985"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token_type"</span><span class="p">:</span><span class="s2">"bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"expires_in"</span><span class="p">:</span><span class="mi">7200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"refresh_token"</span><span class="p">:</span><span class="s2">"64ab90f5675b0230677a10db46f52f66989e860f534fe92f23329f0e91d76ff5"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="mi">1515418927</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Luego, desde el cliente que hará uso de la API, se completa el proceso de autorización enviando vía
+GET a la URL <code class="prettyprint">https://www.centry.cl/oauth/token</code> los siguientes parámetros:.</p>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
+<th>Parámetro</th>
+<th>Tipo</th>
+<th>Descripción</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">client_id</code></td>
 <td>string</td>
-<td>Id de cliente visto en el paso anterior <i class="label label-info">mandatory</i></td>
+<td>Identificador de la aplicación <i class="label label-info">mandatory</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">client_secret</code></td>
 <td>string</td>
-<td>Id Secreto visto en el paso anterior <i class="label label-info">mandatory</i></td>
+<td>Llave secreta de la aplicación <i class="label label-info">mandatory</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">redirect_uri</code></td>
 <td>string</td>
-<td>Dirección de redirección luego de consulta <i class="label label-info">mandatory</i></td>
+<td>Dirección de redirección <i class="label label-info">mandatory</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">grant_type</code></td>
 <td>string</td>
-<td>Valor a solicitar <code class="prettyprint">authorization_code</code> inicialmente<i class="label label-info">mandatory</i></td>
+<td>Valor fijo igual a <code class="prettyprint">authorization_code</code> <i class="label label-info">mandatory</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">code</code></td>
 <td>string</td>
-<td>Llave de autorización (authorization_code) <i class="label label-info">mandatory</i></td>
+<td>Código de autorización (authorization_code) <i class="label label-info">mandatory</i></td>
 </tr>
 </tbody></table>
 
-<h2 id="configurar-header">Configurar Header</h2>
-<pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"Authorization: Bearer fa56dff5a29c8..(access_token) "</span> https://www.centry.cl/oauth/token
-</code></pre>
-<h3 id="uso-de-acces_token">Uso de acces_token</h3>
+<p>De la respuesta que entregue la API, es importante registrar el <code class="prettyprint">access_token</code> y <code class="prettyprint">refresh_token</code>. El primero servirá
+para firmar todas las solicitudes que se hagan a la API, mientras que el segundo servirá para solicitar un nuevo
+<code class="prettyprint">access_token</code> cuando el actual caduque.</p>
 
-<p>Por cada nueva solicitud de acceso que se quiera realizar, es importante configurar el Header del entorno.</p>
-
-<h2 id="renovar-acceso">Renovar Acceso</h2>
+<h2 id="renovar-los-tokens">Renovar los tokens</h2>
 
 <blockquote>
-<p>Request POST a la url https://www.centry.cl/oauth/token</p>
+<p>Request GET a la URL https://www.centry.cl/oauth/token</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c">#comando para renovar autorización</span>
-
-curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&lt;My_client_secret&gt;&amp;redirect_uri=urn:&lt;My_redirect_uri&gt;&amp;grant_type=refresh_token&amp;refresh_token=&lt;My_previus_refresh_token&gt;"</span> https://www.centry.cl/oauth/token
+curl --data <span class="s2">"client_id=49fca0b1207097f29a21f12c96a1ce73b361ed354a40d1274d536ab7be4f921e&amp;client_secret=73b83c1b7d0257d500e203cb97767c5036c036b71be6b8ed07fa630579b3a3b2&amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;grant_type=refresh_token&amp;refresh_token=64ab90f5675b0230677a10db46f52f66989e860f534fe92f23329f0e91d76ff5"</span> https://www.centry.cl/oauth/token
 </code></pre>
 <blockquote>
 <p>Ejemplo de respuesta JSON luego de ejecutar el comando anterior</p>
 </blockquote>
-<pre class="highlight plaintext"><code>{
-"access_token":"64ad4cf7...",
-"token_type":"bearer",
-"expires_in":7200,
-"refresh_token":"ea14ff30...",
-"created_at":1501080163
-}
-</code></pre>
-<p>Renovar solicitudes de acceso</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="s2">"e0b40212ad1f062aafe375ca1a570302940f6e223f164b8aeae108669411c3ef"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token_type"</span><span class="p">:</span><span class="s2">"bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"expires_in"</span><span class="p">:</span><span class="mi">7200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"refresh_token"</span><span class="p">:</span><span class="s2">"ea4d55434305f4929ee4dd3080039022912ad14d9fe7751ec7aea233aaca6277"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="mi">1515421188</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>El <code class="prettyprint">access_token</code> expira cada 7200 segundos (2 horas) por lo que pasado ese periodo cualquier solicitud que se intente
+hacer con esas credenciales, la API responderá con un error 401.</p>
 
-<h3 id="url-parameters">URL parameters</h3>
+<p>Lo que se debe hacer es solicitar un nuevo <code class="prettyprint">access_token</code> a partir del <code class="prettyprint">refresh_token</code>, esto se hace enviando a la URL
+<code class="prettyprint">https://www.centry.cl/oauth/token</code> los siguientes datos como parámetros GET:</p>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
+<th>Parámetro</th>
+<th>Tipo</th>
+<th>Descripción</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">client_id</code></td>
 <td>string</td>
-<td>Id de cliente visto en el paso anterior <i class="label label-info">mandatory</i></td>
+<td>Identificador de la aplicación <i class="label label-info">mandatory</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">client_secret</code></td>
 <td>string</td>
-<td>Id Secreto visto en el paso anterior <i class="label label-info">mandatory</i>s</td>
+<td>Llave secreta de la aplicación <i class="label label-info">mandatory</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">redirect_uri</code></td>
 <td>string</td>
-<td>Dirección de redirección luego de consulta <i class="label label-info">mandatory</i></td>
+<td>Dirección de redirección <i class="label label-info">mandatory</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">grant_type</code></td>
 <td>string</td>
-<td>Volor fijo igual a <code class="prettyprint">refresh_token</code> <i class="label label-info">mandatory</i></td>
+<td>Valor fijo igual a <code class="prettyprint">refresh_token</code> <i class="label label-info">mandatory</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">refresh_token</code></td>
 <td>string</td>
-<td>Se tenía guardado de la solicitud anterior <i class="label label-info">mandatory</i></td>
+<td>Último <code class="prettyprint">refresh_token</code> enviado por la API <i class="label label-info">mandatory</i></td>
 </tr>
 </tbody></table>
+
+<p>De la respuesta que entregue la API, es importante registrar el <code class="prettyprint">access_token</code> y <code class="prettyprint">refresh_token</code>. El primero servirá
+para firmar todas las solicitudes que se hagan a la API, mientras que el segundo servirá para solicitar un nuevo
+<code class="prettyprint">access_token</code> cuando el actual caduque.</p>
 
           <h1 id="products">Products</h1>
 
@@ -895,7 +935,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 </tr>
 </tbody></table>
 
-<h2 id="crear-un-product">Crear un Product</h2>
+<h2 id="crear-un-producto">Crear un Producto</h2>
 
 <p>Este endpoint crea un producto.</p>
 
@@ -931,7 +971,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
     "sku":"YOS0YUN54U",
 }'</span>
 </code></pre>
-<h2 id="actualizar-un-product">Actualizar un Product</h2>
+<h2 id="actualizar-un-producto">Actualizar un Producto</h2>
 
 <p>Este endpoint actualiza un producto.</p>
 
@@ -965,7 +1005,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 </tr>
 </tbody></table>
 
-<h2 id="eliminar-un-product">Eliminar un Product</h2>
+<h2 id="eliminar-un-producto">Eliminar un Producto</h2>
 
 <p>Este endpoint elimina un producto</p>
 
@@ -1063,7 +1103,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <tr>
 <td><code class="prettyprint">items</code></td>
 <td>array</td>
-<td>Lista de ítems a comprar. Ver <a href="#atributos-de-los-items">Atributos de los items</a></td>
+<td>Lista de ítems a comprar. Ver <a href="#atributos-de-los-items">Atributos de los ítems</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">origin</code></td>
@@ -2507,7 +2547,7 @@ curl --data <span class="s2">"client_id=&lt;My_client_id&gt;&amp;client_secret=&
 <tr>
 <td><code class="prettyprint">on_integration_config_delete</code></td>
 <td>boolean</td>
-<td>Flag que indica si se requiere recibir notificaciones del tipo &ldquo;eliminación de integracion&rdquo;</td>
+<td>Flag que indica si se requiere recibir notificaciones del tipo &ldquo;eliminación de integración&rdquo;</td>
 </tr>
 <tr>
 <td><code class="prettyprint">company_id</code></td>
