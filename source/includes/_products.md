@@ -267,7 +267,7 @@ Parámetro    | Descripción
 ------------ | -----------------------------------------
 `product_id` | El identificador del producto a recuperar
 
-## Crear un Product
+## Crear un Producto
 
 Este endpoint crea un producto.
 
@@ -306,7 +306,7 @@ curl -X POST https://www.centry.cl/conexion/v1/products.json \
 }'
 ```
 
-## Actualizar un Product
+## Actualizar un Producto
 
 Este endpoint actualiza un producto.
 
@@ -335,7 +335,7 @@ Parámetro    | Descripción
 ------------ | ------------------------------------------
 `product_id` | El identificador del producto a actualizar
 
-## Eliminar un Product
+## Eliminar un Producto
 
 Este endpoint elimina un producto
 
