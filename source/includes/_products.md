@@ -57,7 +57,6 @@
 | `bulk_upload`     | boolean   | Carga masiva                                                                                    |
 | `color_id`        | integer   | Identificador del color                                                                         |
 | `company_id`      | integer   | Identificador de compañía <i class="label label-info">sólo lectura</i>                          |
-| `description`     | string    | Descripción de la variante                                                                      |
 | `original_data`   | string    | Información total entregada por una variante en caso de ser importada                           |
 | `price`           | integer   | Valor monetario real del producto                                                               |
 | `price_compare`   | integer   | Valor monetario de comparación del producto                                                     |
@@ -107,7 +106,7 @@ curl "https://www.centry.cl/conexion/v1/products.json"/
     "cover_url":"/images/defaults/products/missing_original.png",
     "created_at":"2017-07-24T19:03:20.245Z",
     "deliverytimesupplier":3,
-    "description":"\u003cp\u003easdasdsadsad\u003c/p\u003e",
+    "description":"\u003cp\u003eDescripcón detallada del producto donde se explican todos sus atributos y propiedades.\u003c/p\u003e",
     "gender_id":"57ee86e911326899bc8f3f58",
     "id_mercadolibre":null,
     "id_shopify":null,
@@ -129,8 +128,8 @@ curl "https://www.centry.cl/conexion/v1/products.json"/
     "salestartdate":null,
     "season":"Centry 2019",
     "seasonyear":"2015",
-    "seo_description":"asdsadas",
-    "seo_title":"sadasdd",
+    "seo_description":"Meta descripción del producto",
+    "seo_title":"Meta título del producto",
     "shortdescription":"\u003cul\u003e\u003cli\u003easdasdasdasd\u003c/li\u003e\u003c/ul\u003e",
     "sku":"CENTSER954",
     "skusupplierconfig":"CENTSER954",
@@ -144,7 +143,6 @@ curl "https://www.centry.cl/conexion/v1/products.json"/
         "color_id":"57bdc991f82f453f680001d9",
         "company_id":null,
         "created_at":"2017-07-24T19:23:12.919Z",
-        "description":"L,Café",
          "id_b_sale":null,
         "id_mercadolibre":null,
         "id_shopify":null,
@@ -201,7 +199,7 @@ curl "https://www.centry.cl/conexion/v1/products/<product_id>.json" -H "Authoriz
   "cover_url":"/images/defaults/products/missing_original.png",
   "created_at":"2017-07-24T19:03:20.245Z",
   "deliverytimesupplier":3,
-  "description":"\u003cp\u003easdasdsadsad\u003c/p\u003e",
+  "description":"\u003cp\u003eDescripcón detallada del producto donde se explican todos sus atributos y propiedades.\u003c/p\u003e",
   "gender_id":"57ee86e911326899bc8f3f58",
   "id_mercadolibre":null,
   "id_shopify":null,
@@ -224,9 +222,9 @@ curl "https://www.centry.cl/conexion/v1/products/<product_id>.json" -H "Authoriz
   "salestartdate":null,
   "season":"Centry 2019",
   "seasonyear":"2015",
-  "seo_description":"asdsadas",
-  "seo_title":"sadasdd",
-  "shortdescription":"\u003cul\u003e\u003cli\u003easdasdasdasd\u003c/li\u003e\u003c/ul\u003e",
+  "seo_description":"Meta descripción del producto",
+  "seo_title":"Meta título del producto",
+  "shortdescription":"\u003cul\u003e\u003cli\u003eListado de características separadas por viñetas}\u003c/li\u003e\u003c/ul\u003e",
   "sku":"CENTSER954",
   "skusupplierconfig":"CENTSER954",
   "status":true,
@@ -239,8 +237,6 @@ curl "https://www.centry.cl/conexion/v1/products/<product_id>.json" -H "Authoriz
       "color_id":"57bdc991f82f453f680001d9",
       "company_id":null,
       "created_at":"2017-07-24T19:23:12.919Z",
-      "description":"L,
-       Café",
       "id_b_sale":null,
       "id_mercadolibre":null,
       "id_shopify":null,
@@ -324,8 +320,8 @@ curl -X PUT https://www.centry.cl/conexion/v1/products/<product_id>.json \
     -H "Authorization: Bearer  <access_token> "\
     -H "Content-Type: application/json" \
     -d '{
-  "parametro_a_editar": "nuevo_valor",
-  "seo_description":"Descripción bonita vía cUrl"
+  "price_compare": 19990,
+  "seo_title":"Calefator de pantuflas"
 }'
 ```
 

@@ -21,7 +21,7 @@ para recordar el uso que le está dando. Ej: "Mi App Android".
 
 URI a la que se redireccionará cuando se solicite una autorización. En el capítulo **Autorización** se ve
 en detalle el uso de esta URI, pero a modo de adelanto, tiene que ser una ruta que sea capaz de leer parámetros
-se le envíen vía GET y de ejecutar los pasos necesarios para completar el proceso de autorización. Es en ese
+que se le envíen vía GET y de ejecutar los pasos necesarios para completar el proceso de autorización. Es en ese
 sentido que se recomienda habilitar una ruta dedicada a atender esta redirección.
 Ej: `https://www.mi-website.com/centry/auth`.
 
@@ -61,10 +61,18 @@ Los pasos a seguir son los siguientes:
 ![Configuración de llaves Centry REST API](images/appCentry4_2-4.png)
 ![Configuración de llaves Centry REST API](images/appCentry4_5.png)
 
-> Request GET a la URL https://www.centry.cl/oauth/token
+> Request POST a la URL https://www.centry.cl/oauth/token
 
 ```shell
-curl --data "client_id=49fca0b1207097f29a21f12c96a1ce73b361ed354a40d1274d536ab7be4f921e&client_secret=73b83c1b7d0257d500e203cb97767c5036c036b71be6b8ed07fa630579b3a3b2&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code&code=106b97e054f0ca7cf66d710b433ea3f1140cdadd84a00c24c6fa0394f67c8157" https://www.centry.cl/oauth/token
+curl -X POST https://www.centry.cl/oauth/token \
+  -H 'Content-Type: application/json' \
+  -d '{
+        "client_id" : "49fca0b1207097f29a21f12c96a1ce73b361ed354a40d1274d536ab7be4f921e",
+        "client_secret" : "73b83c1b7d0257d500e203cb97767c5036c036b71be6b8ed07fa630579b3a3b2",
+        "redirect_uri" : "urn:ietf:wg:oauth:2.0:oob",
+        "grant_type" : "authorization_code",
+        "code" : "770e0c559a2aacee72dd98d573fdeeda3615ef529011c6731fe4592ad327427f"
+      }'
 ```
 
 > Ejemplo de respuesta JSON luego de ejecutar el comando anterior
@@ -80,7 +88,7 @@ curl --data "client_id=49fca0b1207097f29a21f12c96a1ce73b361ed354a40d1274d536ab7b
 ```
 
 Luego, desde el cliente que hará uso de la API, se completa el proceso de autorización enviando vía
-GET a la URL `https://www.centry.cl/oauth/token` los siguientes parámetros:.
+POST a la URL `https://www.centry.cl/oauth/token` los siguientes parámetros:.
 
 |   Parámetro    |  Tipo  | Descripción                                                                           |
 |----------------|--------|---------------------------------------------------------------------------------------|
@@ -96,11 +104,18 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 
 ## Renovar los tokens
 
->  Request GET a la URL https://www.centry.cl/oauth/token
+>  Request POST a la URL https://www.centry.cl/oauth/token
 
 ```shell
-#comando para renovar autorización
-curl --data "client_id=49fca0b1207097f29a21f12c96a1ce73b361ed354a40d1274d536ab7be4f921e&client_secret=73b83c1b7d0257d500e203cb97767c5036c036b71be6b8ed07fa630579b3a3b2&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=refresh_token&refresh_token=64ab90f5675b0230677a10db46f52f66989e860f534fe92f23329f0e91d76ff5" https://www.centry.cl/oauth/token
+curl -X POST https://www.centry.cl/oauth/token \
+  -H 'Content-Type: application/json' \
+  -d '{
+        "client_id" : "49fca0b1207097f29a21f12c96a1ce73b361ed354a40d1274d536ab7be4f921e",
+        "client_secret" : "73b83c1b7d0257d500e203cb97767c5036c036b71be6b8ed07fa630579b3a3b2",
+        "redirect_uri" : "urn:ietf:wg:oauth:2.0:oob",
+        "grant_type" : "refresh_token",
+        "refresh_token" : "64ab90f5675b0230677a10db46f52f66989e860f534fe92f23329f0e91d76ff5"
+      }'
 ```
 
 > Ejemplo de respuesta JSON luego de ejecutar el comando anterior
@@ -118,7 +133,7 @@ El `access_token` expira cada 7200 segundos (2 horas) por lo que pasado ese peri
 hacer con esas credenciales, la API responderá con un error 401.
 
 Lo que se debe hacer es solicitar un nuevo `access_token` a partir del `refresh_token`, esto se hace enviando a la URL
-`https://www.centry.cl/oauth/token` los siguientes datos como parámetros GET:
+`https://www.centry.cl/oauth/token` los siguientes datos vía POST:
 
 |   Parámetro    |  Tipo  | Descripción                                                                         |
 |----------------|--------|-------------------------------------------------------------------------------------|
