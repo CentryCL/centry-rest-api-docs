@@ -2,70 +2,58 @@
 
 ## Parámetros
 
-| Atributo               | Tipo      | Descripción                                                                            |
-| ---------------------- | --------- | -------------------------------------------------------------------------------------- |
-| `id`                   | string    | Identificador del producto <i class="label label-info">sólo lectura</i>                |
-| `barcode`              | string    | Información almacenada en el código de barras                                          |
-| `brand_id`             | string    | Identificador de la marca                                                              |
-| `bulk_upload`          | boolean   | Valor sensible en carga masiva** default: false                                        |
-| `category_id`          | integer   | Identificador de categoría a la que pertenece                                          |
-| `color`                | string    | Describe el color del producto                                                         |
+| Atributo               | Tipo      | Descripción                                                                                              |
+| ---------------------- | --------- | -------------------------------------------------------------------------------------------------------- |
+| `id`                   | string    | Identificador del producto <i class="label label-info">sólo lectura</i>                                  |
+| `name`                 | string    | Nombre del producto                                                                                      |
+| `sku`                  | string    | SKU del producto                                                                                         |
+| `barcode`              | string    | Código de barras                                                                                         |
+| `description`          | string    | Descripción del producto                                                                                 |
+| `shortdescription`     | string    | Listado de características del producto del producto. Se recomienda el uso de viñetas HTML sin orden, ie, "<ul><li></li></ul>". |
+| `condition`            | string    | Describe la condición del producto (Nuevo, usado, renovado)                                              |
+| `brand_id`             | string    | Identificador de la marca                                                                                |
+| `category_id`          | integer   | Identificador de categoría a la que pertenece                                                            |
+| `cover_content_type`   | string    | Extensión de la imagen principal <i class="label label-info">sólo lectura</i>                            |
+| `cover_file_name`      | string    | Nombre de la imagen principal <i class="label label-info">sólo lectura</i>                               |
+| `cover_file_size`      | integer   | Tamaño de la imagen principal <i class="label label-info">sólo lectura</i>                               |
+| `cover_fingerprint`    | string    | CheckSum de la imagen principal <i class="label label-info">sólo lectura</i>                             |
+| `cover_updated_at`     | date-time | Fecha de actualización de la imagen principal <i class="label label-info">sólo lectura</i>               |
+| `cover_url`            | string    | URL de la imagen principal.                                                                              |
+| `deliverytimesupplier` | integer   | Valor aproximado en días, de la llegada del producto al cliente                                          |
+| `gender_id`            | string    | Identificador del genero del producto                                                                    |
+| `is_fullproductname`   | boolean   | Indica si el nombre del producto está completo o acortado                                                |
+| `packageheight`        | integer   | Valor en centímetros de la altura del paquete                                                            |
+| `packagelength`        | integer   | Valor en centímetros del largo del paquete                                                               |
+| `packageweight`        | integer   | Valor en centímetros del ancho del paquete                                                               |
+| `packagewidth`         | integer   | Valor en kilogramos del peso del paquete                                                                 |
+| `price_compare`        | integer   | Precio normal                                                                                            |
+| `price`                | integer   | Precio de oferta                                                                                         |
+| `salestartdate`        | date-time | Fecha de término de la oferta                                                                            |
+| `saleenddate`          | date-time | Fecha de inicio del precio de oferta                                                                     |
+| `season`               | string    | Temporada a la que pertenece el producto. Ej "Invierno"                                                  |
+| `seasonyear`           | integer   | Indica el año del producto                                                                               |
+| `seo_title`            | string    | Meta título del producto. Usado para optimización SEO.                                                   |
+| `seo_description`      | string    | Meta descripción del producto. Usado para optimización SEO.                                              |
+| `status`               | boolean   | Estado del producto. `true`: Activo; `false`: Pausado.                                                   |
+| `variants`             | array     | Lista de variantes del producto. Ver [Atributos de variantes](#atributos-de-variantes)                   |
+| `warranty`             | integer   | Descripción de la garantía del producto                                                                  |
 | `company_id`           | integer   | Identificador de la compañía a la que pertenece el producto <i class="label label-info">sólo lectura</i> |
-| `condition`            | string    | Describe la condición del producto (Nuevo, usado,renovado)                             |
-| `cover_content_type`   | string    | Almacena extensión de la imagen de cover                                               |
-| `cover_file_name`      | string    | Nombre de imagen de cover                                                              |
-| `cover_file_size`      | integer   | Tamaño de imagen de cover                                                              |
-| `cover_fingerprint`    | string    | CheckSum  de cover de imagen                                                           |
-| `cover_updated_at`     | date-time | Almacena fecha en formato UTC de actualización de la imagen de cover                   |
-| `cover_url`            | string    | Almacena URL de imagen descriptiva del producto                                        |
-| `deliverytimesupplier` | integer   | Valor aproximado en días, de la llegada del producto al cliente                        |
-| `description`          | string    | Descripción del producto                                                               |
-| `gender_id`            | integer   | Identificador del genero del producto                                                  |
-| `is_fullproductname`   | boolean   | Indica si el nombre del producto está completo o acortado                              |
-| `name`                 | string    | Nombre del producto                                                                    |
-| `options`              | string    | Opciones del producto (talla, color, etc)                                              |
-| `original_data`        | string    | Campo usado para almacenar toda la información del producto según su origen.           |
-| `packageheight`        | integer   | Valor en centímetros de la altura del paquete                                          |
-| `packagelength`        | integer   | Valor en centímetros del largo del paquete                                             |
-| `packageweight`        | integer   | Valor en centímetros del ancho del paquete                                             |
-| `packagewidth`         | integer   | Valor en kilogramos del peso del paquete                                               |
-| `price`                | integer   | Valor monetario del producto                                                           |
-| `price_compare`        | integer   | Valor monetario de comparación del producto                                            |
-| `publish`              | boolean   | Describe si el producto ha sido publicado para la venta. Default true                  |
-| `quantity`             | integer   | Stock del producto                                                                     |
-| `saleenddate`          | date-time | Fecha en formato UTC que indica el fin de oferta                                       |
-| `salestartdate`        | date-time | Fecha en formato UTC que indica el inicio de oferta                                    |
-| `season`               | string    | Describe temporada a la que pertenece el producto                                      |
-| `seasonyear`           | integer   | Indica el año del producto                                                             |
-| `seo_description`      | string    | Descripción extendida del la temporada                                                 |
-| `seo_title`            | string    | Título de la temporada                                                                 |
-| `shortdescription`     | string    | Descripción acotada del producto                                                       |
-| `sku`                  | string    | sku del producto                                                                       |
-| `skusupplierconfig`    | string    | Shows the quantity of products in this term                                            |
-| `status`               | boolean   | Shows the quantity of products in this term                                            |
-| `variants`             | array     | Lista de variantes del producto. Ver [Atributos de variantes](#atributos-de-variantes) |
-| `warranty`             | integer   | Valor en meses de la garantía del producto                                             |
-| `created_at`           | date-time | Almacena fecha en formato UTC de creación de producto <i class="label label-info">sólo lectura</i> |
-| `updated_at`           | date-time | Fecha de última actualización del producto <i class="label label-info">sólo lectura</i> |
+| `created_at`           | date-time | Fecha de creación del producto en Centry <i class="label label-info">sólo lectura</i>                    |
+| `updated_at`           | date-time | Fecha de última actualización del producto en Centry <i class="label label-info">sólo lectura</i>        |
 
 ### Atributos de variantes
 
-| Atributo          | Tipo      | Descripción                                                                                     |
-| ----------------- | --------- | ----------------------------------------------------------------------------------------------- |
-| `_id`             | string    | Identificador de la variante <i class="label label-info">sólo lectura</i>                       |
-| `barcode`         | string    | Información del código de barras                                                                |
-| `bulk_upload`     | boolean   | Carga masiva                                                                                    |
-| `color_id`        | integer   | Identificador del color                                                                         |
-| `company_id`      | integer   | Identificador de compañía <i class="label label-info">sólo lectura</i>                          |
-| `original_data`   | string    | Información total entregada por una variante en caso de ser importada                           |
-| `price`           | integer   | Valor monetario real del producto                                                               |
-| `price_compare`   | integer   | Valor monetario de comparación del producto                                                     |
-| `product_id`      | integer   | Identificador del Producto en Centry                                                            |
-| `quantity`        | integer   | Stock de productos de esta variante                                                             |
-| `size_id`         | integer   | Identificador de las dimensiones del producto                                                   |
-| `sku`             | string    | Información de sku                                                                              |
-| `created_at`      | date-time | Fecha en formato UTC de la creación de la variante <i class="label label-info">sólo lectura</i> |
-| `updated_at`      | date-time | Registro de actualización en fecha formato UTC <i class="label label-info">sólo lectura</i>     |
+| Atributo          | Tipo      | Descripción                                                                                             |
+| ----------------- | --------- | ------------------------------------------------------------------------------------------------------- |
+| `_id`             | string    | Identificador de la variante <i class="label label-info">sólo lectura</i>                               |
+| `sku`             | string    | SKU de la variante                                                                                      |
+| `barcode`         | string    | Código de barras                                                                                        |
+| `product_id`      | integer   | Identificador del Producto en Centry <i class="label label-info">sólo lectura</i>                       |
+| `size_id`         | integer   | Identificador de la talla                                                                               |
+| `color_id`        | integer   | Identificador del color                                                                                 |
+| `company_id`      | integer   | Identificador de la empresa a la que pertenece la variante <i class="label label-info">sólo lectura</i> |
+| `created_at`      | date-time | Fecha en formato UTC de la creación de la variante <i class="label label-info">sólo lectura</i>         |
+| `updated_at`      | date-time | Registro de actualización en fecha formato UTC <i class="label label-info">sólo lectura</i>             |
 
 ## Todos los Productos de la cuenta
 
