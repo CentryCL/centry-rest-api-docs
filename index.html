@@ -454,74 +454,19 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td>Identificador del producto <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
+<td><code class="prettyprint">name</code></td>
+<td>string</td>
+<td>Nombre del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sku</code></td>
+<td>string</td>
+<td>SKU del producto</td>
+</tr>
+<tr>
 <td><code class="prettyprint">barcode</code></td>
 <td>string</td>
-<td>Información almacenada en el código de barras</td>
-</tr>
-<tr>
-<td><code class="prettyprint">brand_id</code></td>
-<td>string</td>
-<td>Identificador de la marca</td>
-</tr>
-<tr>
-<td><code class="prettyprint">bulk_upload</code></td>
-<td>boolean</td>
-<td>Valor sensible en carga masiva** default: false</td>
-</tr>
-<tr>
-<td><code class="prettyprint">category_id</code></td>
-<td>integer</td>
-<td>Identificador de categoría a la que pertenece</td>
-</tr>
-<tr>
-<td><code class="prettyprint">color</code></td>
-<td>string</td>
-<td>Describe el color del producto</td>
-</tr>
-<tr>
-<td><code class="prettyprint">company_id</code></td>
-<td>integer</td>
-<td>Identificador de la compañía a la que pertenece el producto <i class="label label-info">sólo lectura</i></td>
-</tr>
-<tr>
-<td><code class="prettyprint">condition</code></td>
-<td>string</td>
-<td>Describe la condición del producto (Nuevo, usado,renovado)</td>
-</tr>
-<tr>
-<td><code class="prettyprint">cover_content_type</code></td>
-<td>string</td>
-<td>Almacena extensión de la imagen de cover</td>
-</tr>
-<tr>
-<td><code class="prettyprint">cover_file_name</code></td>
-<td>string</td>
-<td>Nombre de imagen de cover</td>
-</tr>
-<tr>
-<td><code class="prettyprint">cover_file_size</code></td>
-<td>integer</td>
-<td>Tamaño de imagen de cover</td>
-</tr>
-<tr>
-<td><code class="prettyprint">cover_fingerprint</code></td>
-<td>string</td>
-<td>CheckSum  de cover de imagen</td>
-</tr>
-<tr>
-<td><code class="prettyprint">cover_updated_at</code></td>
-<td>date-time</td>
-<td>Almacena fecha en formato UTC de actualización de la imagen de cover</td>
-</tr>
-<tr>
-<td><code class="prettyprint">cover_url</code></td>
-<td>string</td>
-<td>Almacena URL de imagen descriptiva del producto</td>
-</tr>
-<tr>
-<td><code class="prettyprint">deliverytimesupplier</code></td>
-<td>integer</td>
-<td>Valor aproximado en días, de la llegada del producto al cliente</td>
+<td>Código de barras</td>
 </tr>
 <tr>
 <td><code class="prettyprint">description</code></td>
@@ -529,29 +474,69 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td>Descripción del producto</td>
 </tr>
 <tr>
-<td><code class="prettyprint">gender_id</code></td>
+<td><code class="prettyprint">shortdescription</code></td>
+<td>string</td>
+<td>Listado de características del producto del producto. Se recomienda el uso de viñetas HTML sin orden, ie, &ldquo;<ul><li></li></ul>&rdquo;.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">condition</code></td>
+<td>string</td>
+<td>Describe la condición del producto (Nuevo, usado, renovado)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">brand_id</code></td>
+<td>string</td>
+<td>Identificador de la marca</td>
+</tr>
+<tr>
+<td><code class="prettyprint">category_id</code></td>
 <td>integer</td>
+<td>Identificador de categoría a la que pertenece</td>
+</tr>
+<tr>
+<td><code class="prettyprint">cover_content_type</code></td>
+<td>string</td>
+<td>Extensión de la imagen principal <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">cover_file_name</code></td>
+<td>string</td>
+<td>Nombre de la imagen principal <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">cover_file_size</code></td>
+<td>integer</td>
+<td>Tamaño de la imagen principal <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">cover_fingerprint</code></td>
+<td>string</td>
+<td>CheckSum de la imagen principal <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">cover_updated_at</code></td>
+<td>date-time</td>
+<td>Fecha de actualización de la imagen principal <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">cover_url</code></td>
+<td>string</td>
+<td>URL de la imagen principal.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">deliverytimesupplier</code></td>
+<td>integer</td>
+<td>Valor aproximado en días, de la llegada del producto al cliente</td>
+</tr>
+<tr>
+<td><code class="prettyprint">gender_id</code></td>
+<td>string</td>
 <td>Identificador del genero del producto</td>
 </tr>
 <tr>
 <td><code class="prettyprint">is_fullproductname</code></td>
 <td>boolean</td>
 <td>Indica si el nombre del producto está completo o acortado</td>
-</tr>
-<tr>
-<td><code class="prettyprint">name</code></td>
-<td>string</td>
-<td>Nombre del producto</td>
-</tr>
-<tr>
-<td><code class="prettyprint">options</code></td>
-<td>string</td>
-<td>Opciones del producto (talla, color, etc)</td>
-</tr>
-<tr>
-<td><code class="prettyprint">original_data</code></td>
-<td>string</td>
-<td>Campo usado para almacenar toda la información del producto según su origen.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">packageheight</code></td>
@@ -574,39 +559,29 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td>Valor en kilogramos del peso del paquete</td>
 </tr>
 <tr>
-<td><code class="prettyprint">price</code></td>
-<td>integer</td>
-<td>Valor monetario del producto</td>
-</tr>
-<tr>
 <td><code class="prettyprint">price_compare</code></td>
 <td>integer</td>
-<td>Valor monetario de comparación del producto</td>
+<td>Precio normal</td>
 </tr>
 <tr>
-<td><code class="prettyprint">publish</code></td>
-<td>boolean</td>
-<td>Describe si el producto ha sido publicado para la venta. Default true</td>
-</tr>
-<tr>
-<td><code class="prettyprint">quantity</code></td>
+<td><code class="prettyprint">price</code></td>
 <td>integer</td>
-<td>Stock del producto</td>
-</tr>
-<tr>
-<td><code class="prettyprint">saleenddate</code></td>
-<td>date-time</td>
-<td>Fecha en formato UTC que indica el fin de oferta</td>
+<td>Precio de oferta</td>
 </tr>
 <tr>
 <td><code class="prettyprint">salestartdate</code></td>
 <td>date-time</td>
-<td>Fecha en formato UTC que indica el inicio de oferta</td>
+<td>Fecha de término de la oferta</td>
+</tr>
+<tr>
+<td><code class="prettyprint">saleenddate</code></td>
+<td>date-time</td>
+<td>Fecha de inicio del precio de oferta</td>
 </tr>
 <tr>
 <td><code class="prettyprint">season</code></td>
 <td>string</td>
-<td>Describe temporada a la que pertenece el producto</td>
+<td>Temporada a la que pertenece el producto. Ej &ldquo;Invierno&rdquo;</td>
 </tr>
 <tr>
 <td><code class="prettyprint">seasonyear</code></td>
@@ -614,34 +589,19 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td>Indica el año del producto</td>
 </tr>
 <tr>
-<td><code class="prettyprint">seo_description</code></td>
-<td>string</td>
-<td>Descripción extendida del la temporada</td>
-</tr>
-<tr>
 <td><code class="prettyprint">seo_title</code></td>
 <td>string</td>
-<td>Título de la temporada</td>
+<td>Meta título del producto. Usado para optimización SEO.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">shortdescription</code></td>
+<td><code class="prettyprint">seo_description</code></td>
 <td>string</td>
-<td>Descripción acotada del producto</td>
-</tr>
-<tr>
-<td><code class="prettyprint">sku</code></td>
-<td>string</td>
-<td>sku del producto</td>
-</tr>
-<tr>
-<td><code class="prettyprint">skusupplierconfig</code></td>
-<td>string</td>
-<td>Shows the quantity of products in this term</td>
+<td>Meta descripción del producto. Usado para optimización SEO.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">status</code></td>
 <td>boolean</td>
-<td>Shows the quantity of products in this term</td>
+<td>Estado del producto. <code class="prettyprint">true</code>: Activo; <code class="prettyprint">false</code>: Pausado.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">variants</code></td>
@@ -651,17 +611,22 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">warranty</code></td>
 <td>integer</td>
-<td>Valor en meses de la garantía del producto</td>
+<td>Descripción de la garantía del producto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">company_id</code></td>
+<td>integer</td>
+<td>Identificador de la compañía a la que pertenece el producto <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">created_at</code></td>
 <td>date-time</td>
-<td>Almacena fecha en formato UTC de creación de producto <i class="label label-info">sólo lectura</i></td>
+<td>Fecha de creación del producto en Centry <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">updated_at</code></td>
 <td>date-time</td>
-<td>Fecha de última actualización del producto <i class="label label-info">sólo lectura</i></td>
+<td>Fecha de última actualización del producto en Centry <i class="label label-info">sólo lectura</i></td>
 </tr>
 </tbody></table>
 
@@ -680,14 +645,24 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td>Identificador de la variante <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
-<td><code class="prettyprint">barcode</code></td>
+<td><code class="prettyprint">sku</code></td>
 <td>string</td>
-<td>Información del código de barras</td>
+<td>SKU de la variante</td>
 </tr>
 <tr>
-<td><code class="prettyprint">bulk_upload</code></td>
-<td>boolean</td>
-<td>Carga masiva</td>
+<td><code class="prettyprint">barcode</code></td>
+<td>string</td>
+<td>Código de barras</td>
+</tr>
+<tr>
+<td><code class="prettyprint">product_id</code></td>
+<td>integer</td>
+<td>Identificador del Producto en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">size_id</code></td>
+<td>integer</td>
+<td>Identificador de la talla</td>
 </tr>
 <tr>
 <td><code class="prettyprint">color_id</code></td>
@@ -697,42 +672,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">company_id</code></td>
 <td>integer</td>
-<td>Identificador de compañía <i class="label label-info">sólo lectura</i></td>
-</tr>
-<tr>
-<td><code class="prettyprint">original_data</code></td>
-<td>string</td>
-<td>Información total entregada por una variante en caso de ser importada</td>
-</tr>
-<tr>
-<td><code class="prettyprint">price</code></td>
-<td>integer</td>
-<td>Valor monetario real del producto</td>
-</tr>
-<tr>
-<td><code class="prettyprint">price_compare</code></td>
-<td>integer</td>
-<td>Valor monetario de comparación del producto</td>
-</tr>
-<tr>
-<td><code class="prettyprint">product_id</code></td>
-<td>integer</td>
-<td>Identificador del Producto en Centry</td>
-</tr>
-<tr>
-<td><code class="prettyprint">quantity</code></td>
-<td>integer</td>
-<td>Stock de productos de esta variante</td>
-</tr>
-<tr>
-<td><code class="prettyprint">size_id</code></td>
-<td>integer</td>
-<td>Identificador de las dimensiones del producto</td>
-</tr>
-<tr>
-<td><code class="prettyprint">sku</code></td>
-<td>string</td>
-<td>Información de sku</td>
+<td>Identificador de la empresa a la que pertenece la variante <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">created_at</code></td>
@@ -1155,7 +1095,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">paid_amount</code></td>
 <td>float</td>
-<td>Monto total pagado por el cliente. En un caso ideal es igual a total_amount + shipping_amount - discount_amount</td>
+<td>Monto total pagado por el cliente. En un caso ideal es igual a <code class="prettyprint">total_amount + shipping_amount - discount_amount</code></td>
 </tr>
 <tr>
 <td><code class="prettyprint">received_date</code></td>
@@ -1170,7 +1110,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">cancelled_date</code></td>
 <td>date-time</td>
-<td>Fecha en formato UTC de Pago de la orden</td>
+<td>Fecha en que la orden fue anulada</td>
 </tr>
 <tr>
 <td><code class="prettyprint">company_id</code></td>
@@ -1180,18 +1120,20 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">created_at</code></td>
 <td>date-time</td>
-<td>Fecha en formato UTC que registra la realizacion de la orden <i class="label label-info">sólo lectura</i></td>
+<td>Fecha de creación de la orden en Centry <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">updated_at</code></td>
 <td>date-time</td>
-<td>Fecha en el que se realizó una actualización a la orden <i class="label label-info">sólo lectura</i></td>
+<td>Fecha de la ultima actualización a la orden en Centry <i class="label label-info">sólo lectura</i></td>
 </tr>
 </tbody></table>
 
 <h3 id="formulario-de-direcciones">Formulario de direcciones</h3>
 
 <h4 id="estos-datos-pueden-variar-y-son-consistentes-para-los-par-metros-address_billing-y-address_shipping">Estos datos pueden variar y son consistentes para los parámetros address_billing y address_shipping</h4>
+
+<p>Este recurso almacena tanto información de una dirección como de una persona de contacto asociada a esta locación.</p>
 
 <table><thead>
 <tr>
@@ -1206,39 +1148,19 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td>Identificador de formulario <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
-<td><code class="prettyprint">city</code></td>
-<td>string</td>
-<td>Nombre de la ciudad</td>
-</tr>
-<tr>
-<td><code class="prettyprint">country</code></td>
-<td>string</td>
-<td>Nombre del País</td>
-</tr>
-<tr>
 <td><code class="prettyprint">email</code></td>
 <td>string</td>
-<td>Email del cliente</td>
+<td>Email de la persona de contacto</td>
 </tr>
 <tr>
 <td><code class="prettyprint">first_name</code></td>
 <td>string</td>
-<td>Nombre(s) del cliente</td>
+<td>Nombre(s) de la persona de contacto</td>
 </tr>
 <tr>
 <td><code class="prettyprint">last_name</code></td>
 <td>string</td>
-<td>Apellido(s) del cliente</td>
-</tr>
-<tr>
-<td><code class="prettyprint">line1</code></td>
-<td>string</td>
-<td>Dirección principal del cliente</td>
-</tr>
-<tr>
-<td><code class="prettyprint">line2</code></td>
-<td>string</td>
-<td>Dirección alternativa del cliente</td>
+<td>Apellido(s) de la persona de contacto</td>
 </tr>
 <tr>
 <td><code class="prettyprint">phone1</code></td>
@@ -1248,17 +1170,42 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">phone2</code></td>
 <td>string</td>
-<td>Número telefónico Alternativo del cliente</td>
+<td>Número telefónico alternativo</td>
 </tr>
 <tr>
-<td><code class="prettyprint">state</code></td>
+<td><code class="prettyprint">line1</code></td>
 <td>string</td>
-<td>Estado del Cliente</td>
+<td>Dirección principal. Ej: &ldquo;Aurelio González 3838&rdquo;</td>
+</tr>
+<tr>
+<td><code class="prettyprint">line2</code></td>
+<td>string</td>
+<td>Complemento de la línea 1. Ej: &ldquo;Oficina 02&rdquo;</td>
 </tr>
 <tr>
 <td><code class="prettyprint">zip_code</code></td>
 <td>string</td>
-<td>Numero del código postal</td>
+<td>Código postal. Ej: &ldquo;7630354&rdquo;</td>
+</tr>
+<tr>
+<td><code class="prettyprint">county</code></td>
+<td>string</td>
+<td>Nombre de la comuna. Ej &ldquo;Vitacura&rdquo;</td>
+</tr>
+<tr>
+<td><code class="prettyprint">city</code></td>
+<td>string</td>
+<td>Nombre de la ciudad. Ej &ldquo;Santiago&rdquo;</td>
+</tr>
+<tr>
+<td><code class="prettyprint">state</code></td>
+<td>string</td>
+<td>Estado o región. Ej: &ldquo;Región Metropolitana&rdquo;</td>
+</tr>
+<tr>
+<td><code class="prettyprint">country</code></td>
+<td>string</td>
+<td>Nombre del país. Ej: &ldquo;Chile&rdquo;</td>
 </tr>
 <tr>
 <td><code class="prettyprint">created_at</code></td>
@@ -1289,7 +1236,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">currency</code></td>
 <td>string</td>
-<td>Tipo de moneda en el que se pagará</td>
+<td>Tipo de moneda en el que se paga</td>
 </tr>
 <tr>
 <td><code class="prettyprint">name</code></td>
@@ -1299,7 +1246,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">paid_price</code></td>
 <td>float</td>
-<td>Monto a pagar</td>
+<td>Monto pagado</td>
 </tr>
 <tr>
 <td><code class="prettyprint">quantity</code></td>
@@ -1314,7 +1261,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">shipping_amount</code></td>
 <td>float</td>
-<td>Valor monetario del despacho</td>
+<td>Costo del despacho</td>
 </tr>
 <tr>
 <td><code class="prettyprint">shipping_type</code></td>
@@ -1329,12 +1276,12 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">tracking_code</code></td>
 <td>string</td>
-<td>Código de rastreo</td>
+<td>Código de seguimiento</td>
 </tr>
 <tr>
 <td><code class="prettyprint">tracking_code_pre</code></td>
 <td>string</td>
-<td>Código de rastreo</td>
+<td></td>
 </tr>
 <tr>
 <td><code class="prettyprint">unit_price</code></td>
