@@ -2,35 +2,40 @@
 
 ## Parámetros
 
-| Atributo           | Tipo      | Descripción                                                                                                       |
-| ------------------ | --------- | ----------------------------------------------------------------------------------------------------------------- |
-| `id`               | string    | Identificador de orden  <i class="label label-info">sólo lectura</i>                                              |
-| `_status`          | string    | Estado de la orden. Las opciones son `pending`, `shipped`, `received`, `cancelled`, `cancelled_before_shipping` o `cancelled_after_shipping`. |
-| `address_billing`  | object    | Información del pago. Ver [Formulario de direcciones](#formulario-de-direcciones)                                 |
-| `address_shipping` | object    | Información de envío. Ver [Formulario de direcciones](#formulario-de-direcciones)                                 |
-| `buyer_dni`        | string    | Número de identificación nacional del cliente (ej. en Chile es el RUN)                                            |
-| `buyer_email`      | string    | Email de Cliente                                                                                                  |
-| `buyer_first_name` | string    | Nombre de Cliente                                                                                                 |
-| `buyer_last_name`  | string    | Apellido de Cliente                                                                                               |
-| `buyer_phone`      | string    | Número de teléfono (preferentemente fijo)                                                                         |
-| `buyer_mobilephone`| string    | Número de teléfono (preferentemente móvil)                                                                        |
-| `buyer_birthdate`  | string    | Fecha de nacimiento del cliente.                                                                                  |
-| `items`            | array     | Lista de ítems a comprar. Ver [Atributos de los ítems](#atributos-de-los-items)                                   |
-| `origin`           | string    | Origen de donde fue importada la orden                                                                            |
-| `original_data`    | string    | Datos sin editar que fueron importados                                                                            |
-| `id_origin`        | string    | Identificador de Origen de donde fue importada                                                                    |
-| `number_origin`    | string    | Número del pedido con el que se maneja la orden en la plataforma de origen                                        |
-| `url_origin`       | string    | URL desde la cual puede ser accedida la orden en la plataforma de origen                                          |
-| `total_amount`     | float     | Monto total de los productos comprados                                                                            |
-| `shipping_amount`  | float     | Costo del despacho del pedido                                                                                     |
-| `discount_amount`  | float     | Suma total de los descuentos aplicados a los productos del pedido                                                 |
-| `paid_amount`      | float     | Monto total pagado por el cliente. En un caso ideal es igual a `total_amount + shipping_amount - discount_amount` |
-| `received_date`    | date-time | Fecha en el que el cliente recibe su orden                                                                        |
-| `shipped_date`     | date-time | Fecha en el que se despacha la orden                                                                              |
-| `cancelled_date`   | date-time | Fecha en que la orden fue anulada                                                                                 |
-| `company_id`       | string    | Identificador de la empresa <i class="label label-info">sólo lectura</i>                                          |
-| `created_at`       | date-time | Fecha de creación de la orden en Centry <i class="label label-info">sólo lectura</i>                              |
-| `updated_at`       | date-time | Fecha de la ultima actualización a la orden en Centry <i class="label label-info">sólo lectura</i>                |
+| Atributo             | Tipo      | Descripción                                                                                                                                   |
+| -------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `_id`                | string    | Identificador de orden  <i class="label label-info">sólo lectura</i>                                                                          |
+| `_status`            | string    | Estado de la orden. Las opciones son `pending`, `shipped`, `received`, `cancelled`, `cancelled_before_shipping` o `cancelled_after_shipping`. |
+| `status_origin`      | string    | Etiqueta con el estado del pedido según la plataforma de origen.                                                                              |
+| `address_billing`    | object    | Información del pago. Ver [Formulario de direcciones](#formulario-de-direcciones)                                                             |
+| `address_shipping`   | object    | Información de envío. Ver [Formulario de direcciones](#formulario-de-direcciones)                                                             |
+| `buyer_dni`          | string    | Número de identificación nacional del cliente (ej. en Chile es el RUN)                                                                        |
+| `buyer_email`        | string    | Email de Cliente                                                                                                                              |
+| `buyer_first_name`   | string    | Nombre de Cliente                                                                                                                             |
+| `buyer_last_name`    | string    | Apellido de Cliente                                                                                                                           |
+| `buyer_phone`        | string    | Número de teléfono (preferentemente fijo)                                                                                                     |
+| `buyer_mobilephone`  | string    | Número de teléfono (preferentemente móvil)                                                                                                    |
+| `buyer_birthdate`    | string    | Fecha de nacimiento del cliente.                                                                                                              |
+| `_buyer_gender`      | string    | Género del comprador. Las opciones son `undefined`, `male`, `female` u `other.                                                                |
+| `_payment_mode`      | string    | Tipo de pago empleado por el comprador. Las opciones son `undefined`, `cash`, `credit_card`, `debit_card` o `transfer`.                       |
+| `items`              | array     | Lista de ítems a comprar. Ver [Atributos de los ítems](#atributos-de-los-items)                                                               |
+| `origin`             | string    | Origen de donde fue importada la orden                                                                                                        |
+| `original_data`      | string    | Es un JSON codificado cono string con toda la información tal cual como viene en la plataforma de origen                                      |
+| `id_origin`          | string    | Identificador de Origen de donde fue importada                                                                                                |
+| `number_origin`      | string    | Número del pedido con el que se maneja la orden en la plataforma de origen                                                                    |
+| `url_origin`         | string    | URL desde la cual puede ser accedida la orden en la plataforma de origen                                                                      |
+| `total_amount`       | float     | Monto total de los productos comprados                                                                                                        |
+| `shipping_amount`    | float     | Costo del despacho del pedido                                                                                                                 |
+| `discount_amount`    | float     | Suma total de los descuentos aplicados a los productos del pedido                                                                             |
+| `paid_amount`        | float     | Monto total pagado por el cliente. En un caso ideal es igual a `total_amount + shipping_amount - discount_amount`                             |
+| `date_for_delivery`  | date-time | Fecha estimada en la que se espera despachar el pedido                                                                                        |
+| `date_for_reception` | date-time | Fecha estimada en la que se espera que el cliente reciba el pedido                                                                            |
+| `received_date`      | date-time | Fecha en el que el cliente recibe su orden                                                                                                    |
+| `shipped_date`       | date-time | Fecha en el que se despacha la orden                                                                                                          |
+| `cancelled_date`     | date-time | Fecha en que la orden fue anulada                                                                                                             |
+| `company_id`         | string    | Identificador de la empresa <i class="label label-info">sólo lectura</i>                                                                      |
+| `created_at`         | date-time | Fecha de creación de la orden en Centry <i class="label label-info">sólo lectura</i>                                                          |
+| `updated_at`         | date-time | Fecha de la ultima actualización a la orden en Centry <i class="label label-info">sólo lectura</i>                                            |
 
 ### Formulario de direcciones
 
@@ -56,25 +61,30 @@ Este recurso almacena tanto información de una dirección como de una persona d
 | `created_at` | string    | Fecha de la realización del formulario <i class="label label-info">sólo lectura</i> |  
 | `updated_at` | date-time | Fecha de actualización de formulario <i class="label label-info">sólo lectura</i>   |
 
-### Atributos de los items
+### Atributos de los ítems
 
-| Atributo            |   Tipo    | Descripción                                                                     |
-| ------------------- | --------- | ------------------------------------------------------------------------------- |
-| `_id`               | string    | Identificador de conjunto de ítems <i class="label label-info">sólo lectura</i> |
-| `currency`          | string    | Tipo de moneda en el que se paga                                                |
-| `name`              | string    | Nombre del producto                                                             |
-| `paid_price`        | float     | Monto pagado                                                                    |
-| `quantity`          | integer   | Cantidad de ítems                                                               |
-| `shipment_provider` | string    | Empresa encargada del despacho                                                  |
-| `shipping_amount`   | float     | Costo del despacho                                                              |
-| `shipping_type`     | string    | Tipo de despacho                                                                |
-| `tax_amount`        | float     | Cantidad de impuesto                                                            |
-| `tracking_code`     | string    | Código de seguimiento                                                           |
-| `tracking_code_pre` | string    |                                                                                 |
-| `unit_price`        | float     | Precio unitario                                                                 |
-| `variant_id`        | integer   | Identificador de variante registrada en Centry                                  |
-| `created_at`        | date-time | Fecha de creación de este elemento <i class="label label-info">sólo lectura</i> |
-| `updated_at`        | date-time | Fecha de actualización <i class="label label-info">sólo lectura</i>             |
+| Atributo             |   Tipo    | Descripción                                                                     |
+| -------------------- | --------- | ------------------------------------------------------------------------------- |
+| `_id`                | string    | Identificador de conjunto de ítems <i class="label label-info">sólo lectura</i> |
+| `id_origin`          | string    | Identificador de la línea en la plataforma de origen                            |
+| `sku`                | string    | SKU del producto involucrado según lo informado por la plataforma de origen     |
+| `name`               | string    | Nombre del producto                                                             |
+| `unit_price`         | float     | Precio unitario                                                                 |
+| `paid_price`         | float     | Monto pagado                                                                    |
+| `tax_amount`         | float     | Cantidad de impuesto                                                            |
+| `discount_amount`    | float     | Descuentos aplicado al producto                                                 |
+| `shipping_amount`    | float     | Costo del despacho                                                              |
+| `currency`           | string    | Tipo de moneda en el que se paga                                                |
+| `quantity`           | integer   | Número de unidades solicitadas originalmente                                    |
+| `quantity_restocked` | integer   | Unidades repuestas                                                              |
+| `shipment_provider`  | string    | Empresa encargada del despacho                                                  |
+| `shipping_type`      | string    | Tipo de despacho                                                                |
+| `tracking_code`      | string    | Código de seguimiento                                                           |
+| `tracking_code_pre`  | string    |                                                                                 |
+| `tracking_url`       | string    | URL con información del seguimiento del despacho                                |
+| `variant_id`         | integer   | Identificador de variante registrada en Centry                                  |
+| `created_at`         | date-time | Fecha de creación de este elemento <i class="label label-info">sólo lectura</i> |
+| `updated_at`         | date-time | Fecha de actualización <i class="label label-info">sólo lectura</i>             |
 
 ## Todas las Ordenes de la cuenta
 
@@ -98,76 +108,191 @@ curl "https://www.centry.cl/conexion/v1/orders.json"/
 
 ```json
 [
-	{
-		"_id":"5977483f1d41c81248000003",
-		"_status":"pending",
-		"address_billing":{
-			"_id":"5977483f1d41c81248000005",
-			"city":"Santiago",
-			"country":"Chile",
-			"created_at":null,
-			"email":"Email@Factura.cl",
-			"first_name":"Nombre Factura",
-			"last_name":"Apellido Factura",
-			"line1":"Dirección Cliente",
-			"line2":"",
-			"phone1":"89668063",
-			"phone2":"",
-			"state":"EstadoFactura",
-			"updated_at":null,
-			"zip_code":"2948513"
-		},
-		"address_shipping":{
-			"_id":"5977483f1d41c81248000006",
-			"city":"Santiago",
-			"country":"Chile",
-			"created_at":null,
-			"email":"Email@Envío.cl",
-			"first_name":"Nombre Envio",
-			"last_name":"Apellido Envío",
-			"line1":"Dirección Cliente",
-			"line2":"",
-			"phone1":"89668063",
-			"phone2":"",
-			"state":"EstadoFactura",
-			"updated_at":null,
-			"zip_code":"2948513"
-		},
-		"buyer_email":"Email@Cliente.cl",
-		"buyer_first_name":"Nombre Cliente",
-		"buyer_last_name":"Apellido Cliente",
-		"cancelled_date":null,
-		"company_id":"597643ab1d41c846ea000001",
-		"created_at":"2017-07-25T13:31:43.133Z",
-		"id_b_sale":null,
-		"id_origin":null,
-		"id_woocommerce":null,
-		"items": [
-			{
-				"_id":"5977483f1d41c81248000004",
-				"created_at":null,
-				"currency":null,
-				"name":"L, Café",
-				"paid_price":null,
-				"quantity":5,
-				"shipment_provider":null,
-				"shipping_amount":null,
-				"shipping_type":null,
-				"tax_amount":null,
-				"tracking_code":null,
-				"tracking_code_pre":null,
-				"unit_price":19999.0,
-				"updated_at":null,
-				"variant_id":"597649201d41c846ea000009"
-			}
-		],
-		"origin":"Centry",
-		"original_data":null,
-		"received_date":null,
-		"shipped_date":null,
-		"total_amount":99995.0,
-		"updated_at":"2017-07-25T13:31:43.133Z"
-	}
+  {
+        "_buyer_gender": "undefined",
+        "_id": "57bf36a08b5bc7a24920c8b4",
+        "_payment_mode": "undefined",
+        "_status": "received",
+        "address_billing": {
+            "_id": "57bf3610915bc7a23920c8ba",
+            "city": "",
+            "country": "Chile",
+            "county": null,
+            "created_at": null,
+            "email": null,
+            "first_name": "Cliente genérico",
+            "last_name": null,
+            "line1": "",
+            "line2": "",
+            "phone1": "",
+            "phone2": "",
+            "state": "",
+            "updated_at": null,
+            "zip_code": ""
+        },
+        "address_shipping": {
+            "_id": "57bf3610925bc7a23920c8ba",
+            "city": "",
+            "country": "Chile",
+            "county": null,
+            "created_at": null,
+            "email": null,
+            "first_name": null,
+            "last_name": null,
+            "line1": "",
+            "line2": null,
+            "phone1": null,
+            "phone2": null,
+            "state": "",
+            "updated_at": null,
+            "zip_code": ""
+        },
+        "buyer_birthdate": null,
+        "buyer_dni": null,
+        "buyer_email": null,
+        "buyer_first_name": "Cliente genérico",
+        "buyer_last_name": null,
+        "buyer_mobilephone": null,
+        "buyer_phone": null,
+        "cancelled_date": null,
+        "company_id": "501f5000000588f5b5ef82f4",
+        "created_at": "2018-10-17T17:57:29.888-03:00",
+        "date_for_delivery": null,
+        "date_for_reception": null,
+        "discount_amount": null,
+        "id_origin": "4234",
+        "id_woocommerce": null,
+        "integrations": {},
+        "items": [
+            {
+                "_id": "5bc7a23920c8ba57bf36108c",
+                "created_at": null,
+                "currency": null,
+                "discount_amount": null,
+                "id_origin": null,
+                "name": "Carcasa para celular Tamaño Único, Multicolor",
+                "paid_price": null,
+                "quantity": 1,
+                "quantity_restocked": null,
+                "shipment_provider": null,
+                "shipping_amount": null,
+                "shipping_type": null,
+                "sku": null,
+                "tax_amount": null,
+                "tracking_code": null,
+                "tracking_code_pre": null,
+                "tracking_url": null,
+                "unit_price": 2900,
+                "updated_at": null,
+                "variant_id": "5942afc1f82f4566c60000a2"
+            }
+        ],
+        "number_origin": null,
+        "origin": "relBase",
+        "original_data": null,
+        "paid_amount": 2900,
+        "received_date": null,
+        "shipment_label": null,
+        "shipped_date": null,
+        "shipping_amount": 0,
+        "status_origin": null,
+        "tax_amount": null,
+        "total_amount": 2900,
+        "updated_at": "2018-10-17T17:57:29.888-03:00",
+        "url_origin": "http://app.relbase.cl/dtes/boletas/10000"
+    },
+    {
+        "_buyer_gender": "undefined",
+        "_id": "096ef853335bc7e6df20c8ba",
+        "_payment_mode": "undefined",
+        "_status": "received",
+        "address_billing": {
+            "_id": "5017ec39705bcc2fb820c8ba",
+            "city": "Vitacura",
+            "country": "CL",
+            "county": null,
+            "created_at": "2018-10-21T04:50:16.456-03:00",
+            "email": null,
+            "first_name": "John",
+            "last_name": "Doe",
+            "line1": "Aurelio González",
+            "line2": "Of 02",
+            "phone1": "+56232716362",
+            "phone2": null,
+            "state": "REG.METROPOLITANA",
+            "updated_at": "2018-10-21T04:50:16.456-03:00",
+            "zip_code": null
+        },
+        "address_shipping": {
+            "_id": "5017ec39715bcc2fb820c8ba",
+            "city": "Vitacura",
+            "country": "CL",
+            "county": null,
+            "created_at": "2018-10-21T04:50:16.456-03:00",
+            "email": null,
+            "first_name": "John",
+            "last_name": "Doe",
+            "line1": "Aurelio González",
+            "line2": "Of 02",
+            "phone1": "+56232716362",
+            "phone2": null,
+            "state": "REG.METROPOLITANA",
+            "updated_at": "2018-10-21T04:50:16.456-03:00",
+            "zip_code": null
+        },
+        "buyer_birthdate": null,
+        "buyer_dni": "19",
+        "buyer_email": null,
+        "buyer_first_name": "John",
+        "buyer_last_name": "Doe",
+        "buyer_mobilephone": null,
+        "buyer_phone": null,
+        "cancelled_date": null,
+        "company_id": "588f5b5ef82f4501f5000000",
+        "created_at": "2018-10-17T22:50:23.515-03:00",
+        "date_for_delivery": null,
+        "date_for_reception": null,
+        "discount_amount": 0,
+        "id_origin": "47304624-J",
+        "integrations": {},
+        "items": [
+            {
+                "_id": "5017ec398c5bcc2fb920c8ba",
+                "created_at": "2018-10-21T04:50:17.862-03:00",
+                "currency": null,
+                "discount_amount": null,
+                "id_origin": "80417610",
+                "name": "POSA VASOS | Talla Unica | Negro  PVS1001",
+                "paid_price": 16860,
+                "quantity": 3,
+                "quantity_restocked": null,
+                "shipment_provider": "DHL e-Commerce",
+                "shipping_amount": 3990,
+                "shipping_type": null,
+                "sku": null,
+                "tax_amount": null,
+                "tracking_code": "5118102013583578",
+                "tracking_code_pre": null,
+                "tracking_url": null,
+                "unit_price": 12870,
+                "updated_at": "2018-10-21T04:50:17.862-03:00",
+                "variant_id": "5a69de14f82f45596a000224"
+            }
+        ],
+        "number_origin": null,
+        "origin": "Ripley",
+        "original_data": "{\"acceptance_decision_date\":\"2018-10-17T19:49:45Z\",\"can_cancel\":false,\"channel\":null,\"commercial_id\":\"...\"}",
+        "paid_amount": 16860,
+        "received_date": null,
+        "shipment_label": null,
+        "shipped_date": null,
+        "shipping_amount": 3990,
+        "status_origin": "RECEIVED",
+        "tax_amount": null,
+        "total_amount": 12870,
+        "updated_at": "2018-10-19T17:00:27.770-03:00",
+        "url_origin": null
+    }
 ]
 ```
 
@@ -185,7 +310,7 @@ Este endpoint entrega una orden específica.
 </div>
 
 ```shell
-curl "https://www.centry.cl/conexion/v1/orders/<order_id>.json"/
+curl "https://www.centry.cl/conexion/v1/orders/096ef853335bc7e6df20c8ba.json"/
  -H "Authorization: Bearer  <access_token> "
 ```
 
@@ -193,74 +318,96 @@ curl "https://www.centry.cl/conexion/v1/orders/<order_id>.json"/
 
 ```json
 {
-	"_id":"5977483f1d41c81248000003",
-	"_status":"pending",
-	"address_billing":{
-		"_id":"5977483f1d41c81248000005",
-		"city":"Santiago",
-		"country":"Chile",
-		"created_at":null,
-		"email":"Email@Factura.cl",
-		"first_name":"Nombre Factura",
-		"last_name":"Apellido Factura",
-		"line1":"Dirección Cliente",
-		"line2":"",
-		"phone1":"89668063",
-		"phone2":"",
-		"state":"EstadoFactura",
-		"updated_at":null,
-		"zip_code":"2948513"
-	},
-	"address_shipping":{
-		"_id":"5977483f1d41c81248000006",
-		"city":"Santiago",
-		"country":"Chile",
-		"created_at":null,
-		"email":"Email@Envío.cl",
-		"first_name":"Nombre Envio",
-		"last_name":"Apellido Envío",
-		"line1":"Dirección Cliente",
-		"line2":"",
-		"phone1":"89668063",
-		"phone2":"",
-		"state":"EstadoFactura",
-		"updated_at":null,
-		"zip_code":"2948513"
-	},
-	"buyer_email":"Email@Cliente.cl",
-	"buyer_first_name":"Nombre Cliente",
-	"buyer_last_name":"Apellido Cliente",
-	"cancelled_date":null,
-	"company_id":"597643ab1d41c846ea000001",
-	"created_at":"2017-07-25T13:31:43.133Z",
-	"id_b_sale":null,
-	"id_origin":null,
-	"id_woocommerce":null,
-	"items": [
-		{
-			"_id":"5977483f1d41c81248000004",
-			"created_at":null,
-			"currency":null,
-			"name":"L, Café",
-			"paid_price":null,
-			"quantity":5,
-			"shipment_provider":null,
-			"shipping_amount":null,
-			"shipping_type":null,
-			"tax_amount":null,
-			"tracking_code":null,
-			"tracking_code_pre":null,
-			"unit_price":19999.0,
-			"updated_at":null,
-			"variant_id":"597649201d41c846ea000009"
-		}
-	],
-	"origin":"Centry",
-	"original_data":null,
-	"received_date":null,
-	"shipped_date":null,
-	"total_amount":99995.0,
-	"updated_at":"2017-07-25T13:31:43.133Z"
+    "_buyer_gender": "undefined",
+    "_id": "096ef853335bc7e6df20c8ba",
+    "_payment_mode": "undefined",
+    "_status": "received",
+    "address_billing": {
+        "_id": "5017ec39705bcc2fb820c8ba",
+        "city": "Vitacura",
+        "country": "CL",
+        "county": null,
+        "created_at": "2018-10-21T04:50:16.456-03:00",
+        "email": null,
+        "first_name": "John",
+        "last_name": "Doe",
+        "line1": "Aurelio González",
+        "line2": "Of 02",
+        "phone1": "+56232716362",
+        "phone2": null,
+        "state": "REG.METROPOLITANA",
+        "updated_at": "2018-10-21T04:50:16.456-03:00",
+        "zip_code": null
+    },
+    "address_shipping": {
+        "_id": "5017ec39715bcc2fb820c8ba",
+        "city": "Vitacura",
+        "country": "CL",
+        "county": null,
+        "created_at": "2018-10-21T04:50:16.456-03:00",
+        "email": null,
+        "first_name": "John",
+        "last_name": "Doe",
+        "line1": "Aurelio González",
+        "line2": "Of 02",
+        "phone1": "+56232716362",
+        "phone2": null,
+        "state": "REG.METROPOLITANA",
+        "updated_at": "2018-10-21T04:50:16.456-03:00",
+        "zip_code": null
+    },
+    "buyer_birthdate": null,
+    "buyer_dni": "19",
+    "buyer_email": null,
+    "buyer_first_name": "John",
+    "buyer_last_name": "Doe",
+    "buyer_mobilephone": null,
+    "buyer_phone": null,
+    "cancelled_date": null,
+    "company_id": "588f5b5ef82f4501f5000000",
+    "created_at": "2018-10-17T22:50:23.515-03:00",
+    "date_for_delivery": null,
+    "date_for_reception": null,
+    "discount_amount": 0,
+    "id_origin": "47304624-J",
+    "integrations": {},
+    "items": [
+        {
+            "_id": "5017ec398c5bcc2fb920c8ba",
+            "created_at": "2018-10-21T04:50:17.862-03:00",
+            "currency": null,
+            "discount_amount": null,
+            "id_origin": "80417610",
+            "name": "POSA VASOS | Talla Unica | Negro  PVS1001",
+            "paid_price": 16860,
+            "quantity": 3,
+            "quantity_restocked": null,
+            "shipment_provider": "DHL e-Commerce",
+            "shipping_amount": 3990,
+            "shipping_type": null,
+            "sku": null,
+            "tax_amount": null,
+            "tracking_code": "5118102013583578",
+            "tracking_code_pre": null,
+            "tracking_url": null,
+            "unit_price": 12870,
+            "updated_at": "2018-10-21T04:50:17.862-03:00",
+            "variant_id": "5a69de14f82f45596a000224"
+        }
+    ],
+    "number_origin": null,
+    "origin": "Ripley",
+    "original_data": "{\"acceptance_decision_date\":\"2018-10-17T19:49:45Z\",\"can_cancel\":false,\"channel\":null,\"commercial_id\":\"...\"}",
+    "paid_amount": 16860,
+    "received_date": null,
+    "shipment_label": null,
+    "shipped_date": null,
+    "shipping_amount": 3990,
+    "status_origin": "RECEIVED",
+    "tax_amount": null,
+    "total_amount": 12870,
+    "updated_at": "2018-10-19T17:00:27.770-03:00",
+    "url_origin": null
 }
 ```
 
@@ -343,7 +490,7 @@ Este endpoint elimina una orden
 </div>
 
 ```shell
-curl -X DELETE https://www.centry.cl/conexion/v1/orders/<order_id>;.json.json?force=true \
+curl -X DELETE https://www.centry.cl/conexion/v1/orders/096ef853335bc7e6df20c8ba.json \
     -H "Authorization: Bearer <access_token>" > deleteResponse.json
 ```
 
