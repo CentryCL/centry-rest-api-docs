@@ -50,6 +50,7 @@
 | `barcode`         | string    | Código de barras                                                                                        |
 | `product_id`      | integer   | Identificador del Producto en Centry <i class="label label-info">sólo lectura</i>                       |
 | `size_id`         | integer   | Identificador de la talla                                                                               |
+| `quantity`        | integer   | Stock de la variante.                                                                               |
 | `color_id`        | integer   | Identificador del color                                                                                 |
 | `company_id`      | integer   | Identificador de la empresa a la que pertenece la variante <i class="label label-info">sólo lectura</i> |
 | `created_at`      | date-time | Fecha en formato UTC de la creación de la variante <i class="label label-info">sólo lectura</i>         |
@@ -81,7 +82,6 @@ curl "https://www.centry.cl/conexion/v1/products.json"/
     "_id":"597644781d41c846ea000006",
     "barcode":"12345655349384",
     "brand_id":"57f63ffe4c266d1dec1edfb6",
-    "bulk_upload":false,
     "category_id":"5769714df82f456e800001aa",
     "color":null,
     "company_id":"597643ab1d41c846ea000001",
@@ -102,7 +102,6 @@ curl "https://www.centry.cl/conexion/v1/products.json"/
     "is_fullproductname":null,
     "listing_type":null,
     "name":"ResTProduct",
-    "options":"Talla,Color",
     "original_data":null,
     "packageheight":"20",
     "packagelength":"40",
@@ -127,14 +126,8 @@ curl "https://www.centry.cl/conexion/v1/products.json"/
       {
         "_id":"597649201d41c846ea000009",
         "barcode":"123456553493842",
-        "bulk_upload":false,
         "color_id":"57bdc991f82f453f680001d9",
-        "company_id":null,
         "created_at":"2017-07-24T19:23:12.919Z",
-         "id_b_sale":null,
-        "id_mercadolibre":null,
-        "id_shopify":null,
-        "id_woocommerce":null,
         "original_data":null,
         "price":null,
         "price_compare":null,
@@ -174,7 +167,6 @@ curl "https://www.centry.cl/conexion/v1/products/<product_id>.json" -H "Authoriz
   "_id":"597644781d41c846ea000006",
   "barcode":"12345655349384",
   "brand_id":"57f63ffe4c266d1dec1edfb6",
-  "bulk_upload":false,
   "category_id":"5769714df82f456e800001aa",
   "color":null,
   "company_id":"597643ab1d41c846ea000001",
@@ -195,8 +187,6 @@ curl "https://www.centry.cl/conexion/v1/products/<product_id>.json" -H "Authoriz
   "is_fullproductname":null,
   "listing_type":null,
   "name":"ResTProduct",
-  "options":"Talla,
-  Color",
   "original_data":null,
   "packageheight":"20",
   "packagelength":"40",
@@ -221,14 +211,9 @@ curl "https://www.centry.cl/conexion/v1/products/<product_id>.json" -H "Authoriz
     {
       "_id":"597649201d41c846ea000009",
       "barcode":"123456553493842",
-      "bulk_upload":false,
       "color_id":"57bdc991f82f453f680001d9",
       "company_id":null,
       "created_at":"2017-07-24T19:23:12.919Z",
-      "id_b_sale":null,
-      "id_mercadolibre":null,
-      "id_shopify":null,
-      "id_woocommerce":null,
       "original_data":null,
       "price":null,
       "price_compare":null,
