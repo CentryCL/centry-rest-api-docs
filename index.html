@@ -993,7 +993,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">id</code></td>
+<td><code class="prettyprint">_id</code></td>
 <td>string</td>
 <td>Identificador de orden  <i class="label label-info">sólo lectura</i></td>
 </tr>
@@ -1001,6 +1001,11 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td><code class="prettyprint">_status</code></td>
 <td>string</td>
 <td>Estado de la orden. Las opciones son <code class="prettyprint">pending</code>, <code class="prettyprint">shipped</code>, <code class="prettyprint">received</code>, <code class="prettyprint">cancelled</code>, <code class="prettyprint">cancelled_before_shipping</code> o <code class="prettyprint">cancelled_after_shipping</code>.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">status_origin</code></td>
+<td>string</td>
+<td>Etiqueta con el estado del pedido según la plataforma de origen.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">address_billing</code></td>
@@ -1048,6 +1053,16 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td>Fecha de nacimiento del cliente.</td>
 </tr>
 <tr>
+<td><code class="prettyprint">_buyer_gender</code></td>
+<td>string</td>
+<td>Género del comprador. Las opciones son <code class="prettyprint">undefined</code>, <code class="prettyprint">male</code>, <code class="prettyprint">female</code> u `other.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">_payment_mode</code></td>
+<td>string</td>
+<td>Tipo de pago empleado por el comprador. Las opciones son <code class="prettyprint">undefined</code>, <code class="prettyprint">cash</code>, <code class="prettyprint">credit_card</code>, <code class="prettyprint">debit_card</code> o <code class="prettyprint">transfer</code>.</td>
+</tr>
+<tr>
 <td><code class="prettyprint">items</code></td>
 <td>array</td>
 <td>Lista de ítems a comprar. Ver <a href="#atributos-de-los-items">Atributos de los ítems</a></td>
@@ -1060,7 +1075,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">original_data</code></td>
 <td>string</td>
-<td>Datos sin editar que fueron importados</td>
+<td>Es un JSON codificado cono string con toda la información tal cual como viene en la plataforma de origen</td>
 </tr>
 <tr>
 <td><code class="prettyprint">id_origin</code></td>
@@ -1096,6 +1111,16 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td><code class="prettyprint">paid_amount</code></td>
 <td>float</td>
 <td>Monto total pagado por el cliente. En un caso ideal es igual a <code class="prettyprint">total_amount + shipping_amount - discount_amount</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">date_for_delivery</code></td>
+<td>date-time</td>
+<td>Fecha estimada en la que se espera despachar el pedido</td>
+</tr>
+<tr>
+<td><code class="prettyprint">date_for_reception</code></td>
+<td>date-time</td>
+<td>Fecha estimada en la que se espera que el cliente reciba el pedido</td>
 </tr>
 <tr>
 <td><code class="prettyprint">received_date</code></td>
@@ -1219,7 +1244,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 </tr>
 </tbody></table>
 
-<h3 id="atributos-de-los-items">Atributos de los items</h3>
+<h3 id="atributos-de-los-tems">Atributos de los ítems</h3>
 
 <table><thead>
 <tr>
@@ -1234,9 +1259,14 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td>Identificador de conjunto de ítems <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
-<td><code class="prettyprint">currency</code></td>
+<td><code class="prettyprint">id_origin</code></td>
 <td>string</td>
-<td>Tipo de moneda en el que se paga</td>
+<td>Identificador de la línea en la plataforma de origen</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sku</code></td>
+<td>string</td>
+<td>SKU del producto involucrado según lo informado por la plataforma de origen</td>
 </tr>
 <tr>
 <td><code class="prettyprint">name</code></td>
@@ -1244,19 +1274,24 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td>Nombre del producto</td>
 </tr>
 <tr>
+<td><code class="prettyprint">unit_price</code></td>
+<td>float</td>
+<td>Precio unitario</td>
+</tr>
+<tr>
 <td><code class="prettyprint">paid_price</code></td>
 <td>float</td>
 <td>Monto pagado</td>
 </tr>
 <tr>
-<td><code class="prettyprint">quantity</code></td>
-<td>integer</td>
-<td>Cantidad de ítems</td>
+<td><code class="prettyprint">tax_amount</code></td>
+<td>float</td>
+<td>Cantidad de impuesto</td>
 </tr>
 <tr>
-<td><code class="prettyprint">shipment_provider</code></td>
-<td>string</td>
-<td>Empresa encargada del despacho</td>
+<td><code class="prettyprint">discount_amount</code></td>
+<td>float</td>
+<td>Descuentos aplicado al producto</td>
 </tr>
 <tr>
 <td><code class="prettyprint">shipping_amount</code></td>
@@ -1264,14 +1299,29 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td>Costo del despacho</td>
 </tr>
 <tr>
+<td><code class="prettyprint">currency</code></td>
+<td>string</td>
+<td>Tipo de moneda en el que se paga</td>
+</tr>
+<tr>
+<td><code class="prettyprint">quantity</code></td>
+<td>integer</td>
+<td>Número de unidades solicitadas originalmente</td>
+</tr>
+<tr>
+<td><code class="prettyprint">quantity_restocked</code></td>
+<td>integer</td>
+<td>Unidades repuestas</td>
+</tr>
+<tr>
+<td><code class="prettyprint">shipment_provider</code></td>
+<td>string</td>
+<td>Empresa encargada del despacho</td>
+</tr>
+<tr>
 <td><code class="prettyprint">shipping_type</code></td>
 <td>string</td>
 <td>Tipo de despacho</td>
-</tr>
-<tr>
-<td><code class="prettyprint">tax_amount</code></td>
-<td>float</td>
-<td>Cantidad de impuesto</td>
 </tr>
 <tr>
 <td><code class="prettyprint">tracking_code</code></td>
@@ -1284,9 +1334,9 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td></td>
 </tr>
 <tr>
-<td><code class="prettyprint">unit_price</code></td>
-<td>float</td>
-<td>Precio unitario</td>
+<td><code class="prettyprint">tracking_url</code></td>
+<td>string</td>
+<td>URL con información del seguimiento del despacho</td>
 </tr>
 <tr>
 <td><code class="prettyprint">variant_id</code></td>
@@ -1324,75 +1374,190 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5977483f1d41c81248000003"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"_status"</span><span class="p">:</span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address_billing"</span><span class="p">:{</span><span class="w">
-            </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5977483f1d41c81248000005"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Santiago"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"country"</span><span class="p">:</span><span class="s2">"Chile"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"Email@Factura.cl"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="s2">"Nombre Factura"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="s2">"Apellido Factura"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"line1"</span><span class="p">:</span><span class="s2">"Dirección Cliente"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"line2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"phone1"</span><span class="p">:</span><span class="s2">"89668063"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"phone2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"EstadoFactura"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="s2">"2948513"</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_buyer_gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57bf36a08b5bc7a24920c8b4"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_payment_mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"received"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address_billing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57bf3610915bc7a23920c8ba"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chile"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"county"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cliente genérico"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"phone1"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"phone2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"address_shipping"</span><span class="p">:{</span><span class="w">
-            </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5977483f1d41c81248000006"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Santiago"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"country"</span><span class="p">:</span><span class="s2">"Chile"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"Email@Envío.cl"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="s2">"Nombre Envio"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="s2">"Apellido Envío"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"line1"</span><span class="p">:</span><span class="s2">"Dirección Cliente"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"line2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"phone1"</span><span class="p">:</span><span class="s2">"89668063"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"phone2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"EstadoFactura"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="s2">"2948513"</span><span class="w">
+        </span><span class="s2">"address_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57bf3610925bc7a23920c8ba"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chile"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"county"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"phone1"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"phone2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"buyer_email"</span><span class="p">:</span><span class="s2">"Email@Cliente.cl"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"buyer_first_name"</span><span class="p">:</span><span class="s2">"Nombre Cliente"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"buyer_last_name"</span><span class="p">:</span><span class="s2">"Apellido Cliente"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"cancelled_date"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"company_id"</span><span class="p">:</span><span class="s2">"597643ab1d41c846ea000001"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-07-25T13:31:43.133Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"id_b_sale"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"id_origin"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"id_woocommerce"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buyer_birthdate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buyer_dni"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buyer_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buyer_first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cliente genérico"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buyer_last_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buyer_mobilephone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buyer_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cancelled_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"501f5000000588f5b5ef82f4"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-17T17:57:29.888-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_for_delivery"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_for_reception"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"discount_amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id_origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4234"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id_woocommerce"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"integrations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
         </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5977483f1d41c81248000004"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"created_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"currency"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"L, Café"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"paid_price"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"quantity"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"shipment_provider"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"shipping_amount"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"shipping_type"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"tax_amount"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"tracking_code"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"tracking_code_pre"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="mf">19999.0</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="s2">"597649201d41c846ea000009"</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5bc7a23920c8ba57bf36108c"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"discount_amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id_origin"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carcasa para celular Tamaño Único, Multicolor"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"paid_price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"quantity_restocked"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"shipment_provider"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"shipping_amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"shipping_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tax_amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tracking_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tracking_code_pre"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tracking_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">2900</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5942afc1f82f4566c60000a2"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"origin"</span><span class="p">:</span><span class="s2">"Centry"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"original_data"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"received_date"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"shipped_date"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"total_amount"</span><span class="p">:</span><span class="mf">99995.0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="s2">"2017-07-25T13:31:43.133Z"</span><span class="w">
+        </span><span class="s2">"number_origin"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"relBase"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"original_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"paid_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2900</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"received_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shipment_label"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shipped_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shipping_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status_origin"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tax_amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2900</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-17T17:57:29.888-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url_origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.relbase.cl/dtes/boletas/10000"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_buyer_gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"096ef853335bc7e6df20c8ba"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_payment_mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"received"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address_billing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5017ec39705bcc2fb820c8ba"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vitacura"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"county"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-21T04:50:16.456-03:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aurelio González"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Of 02"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"phone1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+56232716362"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"phone2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REG.METROPOLITANA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-21T04:50:16.456-03:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"address_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5017ec39715bcc2fb820c8ba"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vitacura"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"county"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-21T04:50:16.456-03:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aurelio González"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Of 02"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"phone1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+56232716362"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"phone2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REG.METROPOLITANA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-21T04:50:16.456-03:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"buyer_birthdate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buyer_dni"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buyer_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buyer_first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buyer_last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buyer_mobilephone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buyer_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cancelled_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"588f5b5ef82f4501f5000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-17T22:50:23.515-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_for_delivery"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_for_reception"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"discount_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id_origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47304624-J"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"integrations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5017ec398c5bcc2fb920c8ba"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-21T04:50:17.862-03:00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"discount_amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id_origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80417610"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POSA VASOS | Talla Unica | Negro  PVS1001"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"paid_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">16860</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"quantity_restocked"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"shipment_provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DHL e-Commerce"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"shipping_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3990</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"shipping_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tax_amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tracking_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5118102013583578"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tracking_code_pre"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tracking_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">12870</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-21T04:50:17.862-03:00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a69de14f82f45596a000224"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"number_origin"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ripley"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"original_data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">acceptance_decision_date</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">2018-10-17T19:49:45Z</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">can_cancel</span><span class="se">\"</span><span class="s2">:false,</span><span class="se">\"</span><span class="s2">channel</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">commercial_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">...</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"paid_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">16860</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"received_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shipment_label"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shipped_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shipping_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3990</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status_origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RECEIVED"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tax_amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">12870</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-19T17:00:27.770-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url_origin"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -1408,81 +1573,103 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
     <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;.json </h6>
   </div>
 </div>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;.json"</span>/
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/orders/096ef853335bc7e6df20c8ba.json"</span>/
  -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
 </code></pre>
 <blockquote>
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5977483f1d41c81248000003"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"_status"</span><span class="p">:</span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"address_billing"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5977483f1d41c81248000005"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Santiago"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"country"</span><span class="p">:</span><span class="s2">"Chile"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"Email@Factura.cl"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="s2">"Nombre Factura"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="s2">"Apellido Factura"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"line1"</span><span class="p">:</span><span class="s2">"Dirección Cliente"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"line2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"phone1"</span><span class="p">:</span><span class="s2">"89668063"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"phone2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"EstadoFactura"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="s2">"2948513"</span><span class="w">
+    </span><span class="s2">"_buyer_gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"096ef853335bc7e6df20c8ba"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_payment_mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"received"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address_billing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5017ec39705bcc2fb820c8ba"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vitacura"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"county"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-21T04:50:16.456-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aurelio González"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Of 02"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+56232716362"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REG.METROPOLITANA"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-21T04:50:16.456-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"address_shipping"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5977483f1d41c81248000006"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Santiago"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"country"</span><span class="p">:</span><span class="s2">"Chile"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"Email@Envío.cl"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="s2">"Nombre Envio"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="s2">"Apellido Envío"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"line1"</span><span class="p">:</span><span class="s2">"Dirección Cliente"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"line2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"phone1"</span><span class="p">:</span><span class="s2">"89668063"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"phone2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"EstadoFactura"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="s2">"2948513"</span><span class="w">
+    </span><span class="s2">"address_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5017ec39715bcc2fb820c8ba"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vitacura"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"county"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-21T04:50:16.456-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aurelio González"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Of 02"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+56232716362"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REG.METROPOLITANA"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-21T04:50:16.456-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"buyer_email"</span><span class="p">:</span><span class="s2">"Email@Cliente.cl"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"buyer_first_name"</span><span class="p">:</span><span class="s2">"Nombre Cliente"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"buyer_last_name"</span><span class="p">:</span><span class="s2">"Apellido Cliente"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cancelled_date"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="s2">"597643ab1d41c846ea000001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-07-25T13:31:43.133Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"id_b_sale"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"id_origin"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"id_woocommerce"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buyer_birthdate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buyer_dni"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buyer_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buyer_first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buyer_last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buyer_mobilephone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buyer_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cancelled_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"588f5b5ef82f4501f5000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-17T22:50:23.515-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date_for_delivery"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date_for_reception"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"discount_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id_origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47304624-J"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"integrations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"5977483f1d41c81248000004"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"currency"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"L, Café"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"paid_price"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"quantity"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"shipment_provider"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"shipping_amount"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"shipping_type"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"tax_amount"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"tracking_code"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"tracking_code_pre"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="mf">19999.0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="s2">"597649201d41c846ea000009"</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5017ec398c5bcc2fb920c8ba"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-21T04:50:17.862-03:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"discount_amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id_origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80417610"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POSA VASOS | Talla Unica | Negro  PVS1001"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"paid_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">16860</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity_restocked"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shipment_provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DHL e-Commerce"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shipping_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3990</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shipping_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tax_amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tracking_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5118102013583578"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tracking_code_pre"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tracking_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">12870</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-21T04:50:17.862-03:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a69de14f82f45596a000224"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"origin"</span><span class="p">:</span><span class="s2">"Centry"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"original_data"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"received_date"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"shipped_date"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total_amount"</span><span class="p">:</span><span class="mf">99995.0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="s2">"2017-07-25T13:31:43.133Z"</span><span class="w">
+    </span><span class="s2">"number_origin"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ripley"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"original_data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">acceptance_decision_date</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">2018-10-17T19:49:45Z</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">can_cancel</span><span class="se">\"</span><span class="s2">:false,</span><span class="se">\"</span><span class="s2">channel</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">commercial_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">...</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"paid_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">16860</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"received_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shipment_label"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shipped_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shipping_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3990</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status_origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RECEIVED"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tax_amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">12870</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-19T17:00:27.770-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url_origin"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="par-metros-url">Parámetros URL</h3>
@@ -1567,7 +1754,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
     <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;.json </h6>
   </div>
 </div>
-<pre class="highlight shell tab-shell"><code>curl -X DELETE https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;;.json.json?force<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE https://www.centry.cl/conexion/v1/orders/096ef853335bc7e6df20c8ba.json <span class="se">\</span>
     -H <span class="s2">"Authorization: Bearer &lt;access_token&gt;"</span> &gt; deleteResponse.json
 </code></pre>
 <h3 id="par-metros-url">Parámetros URL</h3>
