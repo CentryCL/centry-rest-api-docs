@@ -665,6 +665,11 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td>Identificador de la talla</td>
 </tr>
 <tr>
+<td><code class="prettyprint">quantity</code></td>
+<td>integer</td>
+<td>Stock de la variante.</td>
+</tr>
+<tr>
 <td><code class="prettyprint">color_id</code></td>
 <td>integer</td>
 <td>Identificador del color</td>
@@ -709,7 +714,6 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"597644781d41c846ea000006"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"barcode"</span><span class="p">:</span><span class="s2">"12345655349384"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="s2">"57f63ffe4c266d1dec1edfb6"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bulk_upload"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"category_id"</span><span class="p">:</span><span class="s2">"5769714df82f456e800001aa"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"color"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"company_id"</span><span class="p">:</span><span class="s2">"597643ab1d41c846ea000001"</span><span class="p">,</span><span class="w">
@@ -730,7 +734,6 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
     </span><span class="s2">"is_fullproductname"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"listing_type"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"ResTProduct"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"options"</span><span class="p">:</span><span class="s2">"Talla,Color"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"original_data"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"packageheight"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"packagelength"</span><span class="p">:</span><span class="s2">"40"</span><span class="p">,</span><span class="w">
@@ -755,14 +758,8 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"597649201d41c846ea000009"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"barcode"</span><span class="p">:</span><span class="s2">"123456553493842"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"bulk_upload"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"color_id"</span><span class="p">:</span><span class="s2">"57bdc991f82f453f680001d9"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"company_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-07-24T19:23:12.919Z"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"id_b_sale"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"id_mercadolibre"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"id_shopify"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"id_woocommerce"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"original_data"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"price"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"price_compare"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -798,7 +795,6 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
   </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"597644781d41c846ea000006"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"barcode"</span><span class="p">:</span><span class="s2">"12345655349384"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="s2">"57f63ffe4c266d1dec1edfb6"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"bulk_upload"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"category_id"</span><span class="p">:</span><span class="s2">"5769714df82f456e800001aa"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"color"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"company_id"</span><span class="p">:</span><span class="s2">"597643ab1d41c846ea000001"</span><span class="p">,</span><span class="w">
@@ -819,8 +815,6 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
   </span><span class="s2">"is_fullproductname"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"listing_type"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"ResTProduct"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"options"</span><span class="p">:</span><span class="s2">"Talla,
-  Color"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"original_data"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"packageheight"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"packagelength"</span><span class="p">:</span><span class="s2">"40"</span><span class="p">,</span><span class="w">
@@ -845,14 +839,9 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"597649201d41c846ea000009"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"barcode"</span><span class="p">:</span><span class="s2">"123456553493842"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"bulk_upload"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"color_id"</span><span class="p">:</span><span class="s2">"57bdc991f82f453f680001d9"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"company_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-07-24T19:23:12.919Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"id_b_sale"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"id_mercadolibre"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"id_shopify"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"id_woocommerce"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"original_data"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"price"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"price_compare"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
