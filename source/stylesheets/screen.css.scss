@@ -520,6 +520,7 @@ html, body {
     padding: 0 28px;
     box-sizing: border-box;
     display: block;
+    clear: initial !important;
 }
 .api-endpoint .endpoint-data {
     background-color: #292929;
@@ -529,7 +530,7 @@ html, body {
     border-bottom: 1px solid #404040;
     text-shadow: 0px 1px 2px rgba(0,0,0,0.4);
     margin: 15px 0;
-    height: 38px;
+    height: auto;
 }
 .api-endpoint .endpoint-data h6 {
     display: inline-block;
@@ -701,5 +702,3 @@ content code, .content pre, .api-endpoint .endpoint-data h6 {
   padding: 2px 4px;
   margin-left: 5px;
 }
-
-

@@ -11,14 +11,18 @@ toc_footers:
 includes:
   - authentication
   - products
+  - variants
   - orders
   - categories
   - brands
   - colors
   - sizes
   - integration_configs
+  - company
+  - user
   - webhooks
   - errors
+  - filters
 
 search: true
 ---

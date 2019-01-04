@@ -77,15 +77,6 @@ La administración de los webhooks así como el sus registros del log pueden ser
 
 Este endpoint entrega todos los webhooks registrados en la cuenta.
 
-### HTTP Request
-
-<div class="api-endpoint">
-  <div class="endpoint-data">
-    <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/webhooks.json </h6>
-  </div>
-</div>
-
 ```shell
 curl -X GET \
   https://www.centry.cl/conexion/v1/webhooks.json \
@@ -112,18 +103,23 @@ curl -X GET \
 ]
 ```
 
-## Obtener un webhook específico
-
-Este endpoint entrega un webhook específico.
-
 ### HTTP Request
 
 <div class="api-endpoint">
   <div class="endpoint-data">
     <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/webhooks/&lt;webhook_id&gt;.json </h6>
+    <h6> https://www.centry.cl/conexion/v1/webhooks.json </h6>
   </div>
 </div>
+
+### Filtros comunes
+
+Si se desean obtener resultados más específicos para este endpoint, se puede precisar la request agregando parámetros a la URL de la forma https://www.centry.cl/conexion/v1/webhooks.json?&lt;filter&gt;=&lt;valor&gt; como se muestra en el capítulo **Filters** al final de la documentación. Además, de ser necesario algunos filtros pueden ser concatenados de la forma https://www.centry.cl/conexion/v1/webhooks.json?&lt;filter&gt;=&lt;valor&gt;&&lt;filter&gt;=&lt;valor&gt;&...
+
+## Obtener un webhook específico
+
+Este endpoint entrega un webhook específico.
+
 
 ```shell
 curl -X GET \
@@ -149,6 +145,15 @@ curl -X GET \
 }
 ```
 
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/webhooks/&lt;webhook_id&gt;.json </h6>
+  </div>
+</div>
+
 ### Parámetros URL
 
 Parámetro    | Descripción
@@ -159,14 +164,6 @@ Parámetro    | Descripción
 
 Este endpoint permite crear webhook nuevo.
 
-### HTTP Request
-
-<div class="api-endpoint">
-  <div class="endpoint-data">
-    <i class="label label-post">POST</i>
-    <h6> https://www.centry.cl/conexion/v1/webhooks.json </h6>
-  </div>
-</div>
 
 ```shell
 curl -X POST \
@@ -198,18 +195,19 @@ curl -X POST \
 }
 ```
 
-## Actualizar un webhook
-
-Este endpoint permite modificar un webhook específico.
-
 ### HTTP Request
 
 <div class="api-endpoint">
   <div class="endpoint-data">
-    <i class="label label-put">PUT</i>
-    <h6> https://www.centry.cl/conexion/v1/webhooks/&lt;webhook_id&gt;.json </h6>
+    <i class="label label-post">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/webhooks.json </h6>
   </div>
 </div>
+
+## Actualizar un webhook
+
+Este endpoint permite modificar un webhook específico.
+
 
 ```shell
 curl -X PUT \
@@ -240,6 +238,15 @@ curl -X PUT \
 }
 ```
 
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-put">PUT</i>
+    <h6> https://www.centry.cl/conexion/v1/webhooks/&lt;webhook_id&gt;.json </h6>
+  </div>
+</div>
+
 ### Parámetros URL
 
 Parámetro    | Descripción
@@ -249,15 +256,6 @@ Parámetro    | Descripción
 ## Eliminar un webhook
 
 Este endpoint elimina permanentemente un webhook específico.
-
-### HTTP Request
-
-<div class="api-endpoint">
-  <div class="endpoint-data">
-    <i class="label label-delete">DELETE</i>
-    <h6> https://www.centry.cl/conexion/v1/webhook/&lt;webhook_id&gt;.json </h6>
-  </div>
-</div>
 
 ```shell
 curl -X DELETE \
@@ -270,6 +268,15 @@ curl -X DELETE \
 ```json
 true
 ```
+
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-delete">DELETE</i>
+    <h6> https://www.centry.cl/conexion/v1/webhook/&lt;webhook_id&gt;.json </h6>
+  </div>
+</div>
 
 ### Parámetros URL
 

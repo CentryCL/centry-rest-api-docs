@@ -31,7 +31,12 @@ pero el efecto en el desempeño de la aplicación es exactamente el mismo.
 
 **Scopes:**
 
-No tiene utilidad por el momento. Se recomienda dejar en blanco.
+Son los recursos a los que se le solicitará acceso al usuario. En general se distinguen entre permisos de lectura y escritura para pedidos, productos, configuraciones de integraciones, usuarios, Webhooks. Para las pruebas se puede seleccionar cualquiera, pero para una integración de tipo **Marketplace** Centry sólo acepta que los permisos solicitados sean:
+
+- Pedidos (lectura/escritura)
+- Productos (lectura)
+- Usuarios (lectura)
+- Webhooks (lectura/escritura)
 
 ![Configuración de llaves Centry REST API](images/appCentry2.png)
 

@@ -88,16 +88,7 @@ Este recurso almacena tanto información de una dirección como de una persona d
 
 ## Todas las Ordenes de la cuenta
 
-Este endpoint entrega todas las ordenes de la cuenta
-
-### HTTP Request
-
-<div class="api-endpoint">
-  <div class="endpoint-data">
-    <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/orders.json </h6>
-  </div>
-</div>
+Este endpoint entrega todas las ordenes de la cuenta.
 
 ```shell
 curl "https://www.centry.cl/conexion/v1/orders.json"/
@@ -296,18 +287,32 @@ curl "https://www.centry.cl/conexion/v1/orders.json"/
 ]
 ```
 
-## Obtener una Orden específica
-
-Este endpoint entrega una orden específica.
-
 ### HTTP Request
 
 <div class="api-endpoint">
   <div class="endpoint-data">
     <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;.json </h6>
+    <h6> https://www.centry.cl/conexion/v1/orders.json </h6>
   </div>
 </div>
+
+### Filtros comunes
+
+Si se desean obtener resultados más específicos para este endpoint, se puede precisar la request agregando parámetros a la URL de la forma https://www.centry.cl/conexion/v1/orders.json?&lt;filter&gt;=&lt;valor&gt; como se muestra en el capítulo **Filters** al final de la documentación. Además, de ser necesario algunos filtros pueden ser concatenados de la forma https://www.centry.cl/conexion/v1/orders.json?&lt;filter&gt;=&lt;valor&gt;&&lt;filter&gt;=&lt;valor&gt;&...
+
+### Filtros especiales
+
+Solo pueden ser ocupados para este endpoint en particular.
+
+Filtro       | Descripción                                     | Ejemplo
+------------ | ----------------------------------------------- | -------
+`status`     | Corresponde al estado del pedido, sus posibles valores pueden ser: `pending`, `shipped`, `received`, `cancelled`, `cancelled_before_shipping`, `cancelled_after_shipping`  | https://www.centry.cl/conexion/v1/orders.json?status=received
+`origin`     | Corresponde al origen del pedido, por ejemplo: Ripley, MercadoLibre, Dafiti, etc. | https://www.centry.cl/conexion/v1/orders.json?origin=Ripley
+`expand` | Sirve para incluir la información completa de las variantes en los items del pedido | https://www.centry.cl/conexion/v1/orders.json?status=pending&expand
+
+## Obtener una Orden específica
+
+Este endpoint entrega una orden específica.
 
 ```shell
 curl "https://www.centry.cl/conexion/v1/orders/096ef853335bc7e6df20c8ba.json"/
@@ -411,6 +416,15 @@ curl "https://www.centry.cl/conexion/v1/orders/096ef853335bc7e6df20c8ba.json"/
 }
 ```
 
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;.json </h6>
+  </div>
+</div>
+
 ### Parámetros URL
 
 Parámetro  | Descripción
@@ -419,20 +433,11 @@ Parámetro  | Descripción
 
 ## Crear una Orden
 
-Este endpoint crea una orden
-
-### HTTP Request
-
-<div class="api-endpoint">
-  <div class="endpoint-data">
-    <i class="label label-post">POST</i>
-    <h6> https://www.centry.cl/conexion/v1/orders.json </h6>
-  </div>
-</div>
+Este endpoint crea una orden.
 
 ```shell
 curl -X POST https://www.centry.cl/conexion/v1/orders.json \
- -H "Authorization: Bearer 077b4b3e9ec372cc09f3488d56a6b97c0e6c8595a08bbde8ac4c01517a9afe6f"\
+ -H "Authorization: Bearer <access_token>"\
     -H "Content-Type: application/json" \
     -d '{  
  "address_billing":{
@@ -476,9 +481,29 @@ curl -X POST https://www.centry.cl/conexion/v1/orders.json \
  }'
 ```
 
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-post">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/orders.json </h6>
+  </div>
+</div>
+
 ## Eliminar una Orden
 
-Este endpoint elimina una orden
+Este endpoint elimina una orden.
+
+```shell
+curl -X DELETE https://www.centry.cl/conexion/v1/orders/096ef853335bc7e6df20c8ba.json \
+    -H "Authorization: Bearer <access_token>" > deleteResponse.json
+```
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+true
+```
 
 ### HTTP Request
 
@@ -488,11 +513,6 @@ Este endpoint elimina una orden
     <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;.json </h6>
   </div>
 </div>
-
-```shell
-curl -X DELETE https://www.centry.cl/conexion/v1/orders/096ef853335bc7e6df20c8ba.json \
-    -H "Authorization: Bearer <access_token>" > deleteResponse.json
-```
 
 ### Parámetros URL
 

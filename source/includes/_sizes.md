@@ -13,15 +13,6 @@
 
 Este endpoint entrega todas las tallas de Centry
 
-### HTTP Request
-
-<div class="api-endpoint">
-  <div class="endpoint-data">
-    <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/sizes.json </h6>
-  </div>
-</div>
-
 ```shell
 curl "https://www.centry.cl/conexion/v1/sizes.json"/
  -H "Authorization: Bearer  <access_token> "
@@ -46,18 +37,22 @@ curl "https://www.centry.cl/conexion/v1/sizes.json"/
 ]
 ```
 
-## Obtener una Talla específica
-
-Este endpoint entrega una talla  específica
-
 ### HTTP Request
 
 <div class="api-endpoint">
   <div class="endpoint-data">
     <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/sizes/&lt;size_id&gt;.json </h6>
+    <h6> https://www.centry.cl/conexion/v1/sizes.json </h6>
   </div>
 </div>
+
+### Filtros comunes
+
+Si se desean obtener resultados más específicos para este endpoint, se puede precisar la request agregando parámetros a la URL de la forma https://www.centry.cl/conexion/v1/sizes.json?&lt;filter&gt;=&lt;valor&gt; como se muestra en el capítulo **Filters** al final de la documentación. Además, de ser necesario algunos filtros pueden ser concatenados de la forma https://www.centry.cl/conexion/v1/sizes.json?&lt;filter&gt;=&lt;valor&gt;&&lt;filter&gt;=&lt;valor&gt;&...
+
+## Obtener una Talla específica
+
+Este endpoint entrega una talla  específica
 
 ```shell
 curl "https://www.centry.cl/conexion/v1/sizes/<size_id>.json"/
@@ -74,6 +69,15 @@ curl "https://www.centry.cl/conexion/v1/sizes/<size_id>.json"/
     "updated_at": "2016-10-01T00:00:00.000Z"
 }
 ```
+
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/sizes/&lt;size_id&gt;.json </h6>
+  </div>
+</div>
 
 ### Parámetros URL
 

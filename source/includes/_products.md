@@ -41,7 +41,7 @@
 | `created_at`           | date-time | Fecha de creación del producto en Centry <i class="label label-info">sólo lectura</i>                    |
 | `updated_at`           | date-time | Fecha de última actualización del producto en Centry <i class="label label-info">sólo lectura</i>        |
 
-### Atributos de variantes
+###Atributos de las variantes
 
 | Atributo          | Tipo      | Descripción                                                                                             |
 | ----------------- | --------- | ------------------------------------------------------------------------------------------------------- |
@@ -60,18 +60,9 @@
 
 Este endpoint entrega todos los productos de la cuenta.
 
-### HTTP Request
-
-<div class="api-endpoint">
-  <div class="endpoint-data">
-    <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/products.json </h6>
-  </div>
-</div>
-
 ```shell
 curl "https://www.centry.cl/conexion/v1/products.json"/
- -H "Authorization: Bearer  <access_token> "
+ -H "Authorization: Bearer  <access_token>"
 ```
 
 > Lo anterior retorna un JSON estructurado de la siguiente manera:
@@ -143,21 +134,25 @@ curl "https://www.centry.cl/conexion/v1/products.json"/
 ]
 ```
 
-## Obtener un Producto específico
-
-Este endpoint entrega un producto en específico
-
 ### HTTP Request
 
 <div class="api-endpoint">
   <div class="endpoint-data">
     <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;.json </h6>
+    <h6> https://www.centry.cl/conexion/v1/products.json </h6>
   </div>
 </div>
 
+### Filtros comunes
+
+Si se desean obtener resultados más específicos para este endpoint, se puede precisar la request agregando parámetros a la URL de la forma https://www.centry.cl/conexion/v1/products.json?&lt;filter&gt;=&lt;valor&gt; como se muestra en el capítulo **Filters** al final de la documentación. Además, de ser necesario algunos filtros pueden ser concatenados de la forma https://www.centry.cl/conexion/v1/products.json?&lt;filter&gt;=&lt;valor&gt;&&lt;filter&gt;=&lt;valor&gt;&...
+
+## Obtener un Producto específico
+
+Este endpoint entrega un producto en específico.
+
 ```shell
-curl "https://www.centry.cl/conexion/v1/products/<product_id>.json" -H "Authorization: Bearer  <access_token> "
+curl "https://www.centry.cl/conexion/v1/products/<product_id>.json" -H "Authorization: Bearer  <access_token>"
 ```
 
 > Lo anterior retorna un JSON estructurado de la siguiente manera:
@@ -228,7 +223,14 @@ curl "https://www.centry.cl/conexion/v1/products/<product_id>.json" -H "Authoriz
 }
 ```
 
-Este endpoint entrega un producto específico.
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;.json </h6>
+  </div>
+</div>
 
 ### Parámetros URL
 
@@ -240,6 +242,32 @@ Parámetro    | Descripción
 
 Este endpoint crea un producto.
 
+```shell
+curl -X POST https://www.centry.cl/conexion/v1/products.json \
+    -H "Authorization: Bearer  <access_token"\
+    -H "Content-Type: application/json" \
+    -d '{
+    "barcode":"123456789",
+    "brand_id":"57f63ffe4c266d1dec1edfb6",
+    "category_id":"5769714df82f456e800001aa",
+    "company_id":<ID_de_tu_empresa>,
+    "cover_url":<imagen_producto>,
+    "deliverytimesupplier":3,
+    "description":"Describiendo el asombroso producto que venderás",
+    "name":"Un Nombre Fantástico, para un producto fantástico",
+    "packageheight":"20",
+    "packagelength":"40",
+    "packageweight":"1",
+    "packagewidth":"20",
+    "price":10000,
+    "seasonyear":"2015",
+    "seo_description":"Descripción",
+    "seo_title":"Título asombroso",
+    "shortdescription":"\u003cul\u003e\u003cli\u003easdasdasdasd\u003c/li\u003e\u003c/ul\u003e",
+    "sku":"YOS0YUN54U",
+}'
+```
+
 ### HTTP Request
 
 <div class="api-endpoint">
@@ -249,35 +277,19 @@ Este endpoint crea un producto.
   </div>
 </div>
 
-```shell
-curl -X POST https://www.centry.cl/conexion/v1/products.json \
-    -H "Authorization: Bearer  dac351af298e8d410a56a6aa3b01acb47e810852e163413cec45aa005669c423"\
-    -H "Content-Type: application/json" \
-    -d '{
-    "barcode":"123456789",
-    "brand_id":"57f63ffe4c266d1dec1edfb6",
-    "category_id":"5769714df82f456e800001aa",
-    "company_id":<ID_de_tu_empresa>,
-    "cover_url":<imagen_producto>,
-    "deliverytimesupplier":3,
-    "description":"describiendo el asombroso producto que vendaras",
-    "name":"Un Nombre Fantastico, para un producto fantastico",
-    "packageheight":"20",
-    "packagelength":"40",
-    "packageweight":"1",
-    "packagewidth":"20",
-    "price":10000,
-    "seasonyear":"2015",
-    "seo_description":"Descripcion",
-    "seo_title":"Título asombroso",
-    "shortdescription":"\u003cul\u003e\u003cli\u003easdasdasdasd\u003c/li\u003e\u003c/ul\u003e",
-    "sku":"YOS0YUN54U",
-}'
-```
-
 ## Actualizar un Producto
 
 Este endpoint actualiza un producto.
+
+```shell
+curl -X PUT https://www.centry.cl/conexion/v1/products/<product_id>.json \
+    -H "Authorization: Bearer  <access_token> "\
+    -H "Content-Type: application/json" \
+    -d '{
+  "price_compare": 19990,
+  "seo_title":"Calefactor de pantuflas"
+}'
+```
 
 ### HTTP Request
 
@@ -288,16 +300,6 @@ Este endpoint actualiza un producto.
   </div>
 </div>
 
-```shell
-curl -X PUT https://www.centry.cl/conexion/v1/products/<product_id>.json \
-    -H "Authorization: Bearer  <access_token> "\
-    -H "Content-Type: application/json" \
-    -d '{
-  "price_compare": 19990,
-  "seo_title":"Calefator de pantuflas"
-}'
-```
-
 ### Parámetros URL
 
 Parámetro    | Descripción
@@ -306,7 +308,18 @@ Parámetro    | Descripción
 
 ## Eliminar un Producto
 
-Este endpoint elimina un producto
+Este endpoint elimina un producto.
+
+```shell
+curl -X DELETE https://www.centry.cl/conexion/v1/products/<product_id>.json \
+    -H "Authorization: Bearer  <access_token> "
+```
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+true
+```
 
 ### HTTP Request
 
@@ -317,13 +330,34 @@ Este endpoint elimina un producto
   </div>
 </div>
 
-```shell
-curl -X DELETE https://www.centry.cl/conexion/v1/products/<product_id>.json \
-    -H "Authorization: Bearer  <access_token> "
-```
 
 ### Parámetros URL
 
 Parámetro    | Descripción
 ------------ | ----------------------------------------
 `product_id` | El identificador del producto a eliminar
+
+## Contar los Productos
+
+Este endpoint entrega la cantidad de productos.
+
+
+```shell
+curl -X GET https://www.centry.cl/conexion/v1/products/count.json \
+  -H "Authorization: Bearer <access_token>"
+```
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+8
+```
+
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/products/count.json </h6>
+  </div>
+</div>

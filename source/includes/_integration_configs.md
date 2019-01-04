@@ -54,15 +54,6 @@ Las integraciones pueden ser administradas desde la [plataforma web de Centry](h
 
 Este endpoint entrega todas las integraciones registradas en la cuenta.
 
-### HTTP Request
-
-<div class="api-endpoint">
-  <div class="endpoint-data">
-    <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/integration_configs.json </h6>
-  </div>
-</div>
-
 ```shell
 curl -X GET \
   https://www.centry.cl/conexion/v1/integration_configs.json \
@@ -115,17 +106,22 @@ curl -X GET \
 ]
 ```
 
-## Obtener una integración específica
-
-Este endpoint entrega una integración específica.
-
 ### HTTP Request
+
 <div class="api-endpoint">
   <div class="endpoint-data">
     <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/integration_configs/&lt;ic_id&gt;.json </h6>
+    <h6> https://www.centry.cl/conexion/v1/integration_configs.json </h6>
   </div>
 </div>
+
+### Filtros comunes
+
+Si se desean obtener resultados más específicos para este endpoint, se puede precisar la request agregando parámetros a la URL de la forma https://www.centry.cl/conexion/v1/integration_configs.json?&lt;filter&gt;=&lt;valor&gt; como se muestra en el capítulo **Filters** al final de la documentación. Además, de ser necesario algunos filtros pueden ser concatenados de la forma https://www.centry.cl/conexion/v1/integration_configs.json?&lt;filter&gt;=&lt;valor&gt;&&lt;filter&gt;=&lt;valor&gt;&...
+
+## Obtener una integración específica
+
+Este endpoint entrega una integración específica.
 
 ```shell
 curl -X GET \
@@ -177,6 +173,14 @@ curl -X GET \
 }
 ```
 
+### HTTP Request
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/integration_configs/&lt;ic_id&gt;.json </h6>
+  </div>
+</div>
+
 ### Parámetros URL
 
 Parámetro  | Descripción
@@ -186,15 +190,6 @@ Parámetro  | Descripción
 ## Eliminar una integración
 
 Este endpoint elimina permanentemente una integración específica.
-
-### HTTP Request
-
-<div class="api-endpoint">
-  <div class="endpoint-data">
-    <i class="label label-delete">DELETE</i>
-    <h6> https://www.centry.cl/conexion/v1/integration_configs/&lt;ic_id&gt;.json </h6>
-  </div>
-</div>
 
 ```shell
 curl -X DELETE \
@@ -207,6 +202,15 @@ curl -X DELETE \
 ```json
 true
 ```
+
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-delete">DELETE</i>
+    <h6> https://www.centry.cl/conexion/v1/integration_configs/&lt;ic_id&gt;.json </h6>
+  </div>
+</div>
 
 ### Parámetros URL
 

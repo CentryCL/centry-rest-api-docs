@@ -11,16 +11,7 @@
 
 ## Todos los Colores
 
-Este endpoint entrega todos los colores de Centry
-
-### HTTP Request
-
-<div class="api-endpoint">
-  <div class="endpoint-data">
-    <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/colors.json </h6>
-  </div>
-</div>
+Este endpoint entrega todos los colores de Centry.
 
 ```shell
 curl "https://www.centry.cl/conexion/v1/colors.json"/
@@ -47,18 +38,22 @@ curl "https://www.centry.cl/conexion/v1/colors.json"/
 
 ```
 
-## Obtener una Color específico
-
-Este endpoint entrega un color específico.
-
 ### HTTP Request
 
 <div class="api-endpoint">
   <div class="endpoint-data">
     <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/colors/&lt;color_id&gt;.json </h6>
+    <h6> https://www.centry.cl/conexion/v1/colors.json </h6>
   </div>
 </div>
+
+### Filtros comunes
+
+Si se desean obtener resultados más específicos para este endpoint, se puede precisar la request agregando parámetros a la URL de la forma https://www.centry.cl/conexion/v1/colors.json?&lt;filter&gt;=&lt;valor&gt; como se muestra en el capítulo **Filters** al final de la documentación. Además, de ser necesario algunos filtros pueden ser concatenados de la forma https://www.centry.cl/conexion/v1/colors.json?&lt;filter&gt;=&lt;valor&gt;&&lt;filter&gt;=&lt;valor&gt;&...
+
+## Obtener una Color específico
+
+Este endpoint entrega un color específico.
 
 ```shell
 curl "https://www.centry.cl/conexion/v1/colors/<color_id>.json"/
@@ -75,6 +70,14 @@ curl "https://www.centry.cl/conexion/v1/colors/<color_id>.json"/
     "updated_at": "2016-10-01T00:00:00.000Z"
 }
 ```
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/colors/&lt;color_id&gt;.json </h6>
+  </div>
+</div>
 
 ### Parámetros URL
 
