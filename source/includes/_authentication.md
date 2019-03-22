@@ -1,7 +1,38 @@
-# Autenticación
+# Aplicaciones y permisos
 
-Para poder interactuar desde una aplicación con Centry se debe solicitar las credenciales necesarias para que
-dicha conexión sea exitosa. Para lo anterior, se deben realizar los siguientes pasos.
+## OAuth 2.0
+
+La API de Centry está basada en estándar de autorización OAuth 2.0 por lo que antes de revisar los endpoints
+es fundamental tener claros los conceptos detrás de este protocolo. Si no se tiene experiencia previa sobre
+esta materia, se recomienda revisar los siguientes portales con documentación al respecto:
+
+* [OAtuh.net](https://oauth.net/2/)
+* [OAuth 2.0 Simplified de Aaron Parecki](https://aaronparecki.com/oauth-2-simplified/)
+
+Entendiendo cómo opera OAuth 2.0 es necesario revisar como se traduce este estándar en términos de Centry:
+
+* **Usuario:** Es la cuenta de una empresa que otorgará los permisos a la aplicación para que ésta última pueda
+acceder a la información de productos, pedidos, usuarios, etc.
+* **Aplicación:** Es el registro en Centry del desarrollo que hace uso de la API de Centry. En el siguiente
+capítulo se explica cómo crear una.
+* **Tokens:** Son las llaves con las que una aplicación puede acceder a la información de la empresa de un
+usuario.
+
+El estándar OAuth 2.0 ofrece distintos mecanismos por los cuales un usuario puede autorizar a una aplicación.
+En este capítulo de "Aplicaciones y permisos" se pondrá el foco en el por "código de autorización"
+([Authorization Code Grant](https://oauth.net/2/grant-types/authorization-code/)), pero el resto de la
+documentación opera de la misma manera para otros "Grant Types".
+
+Con todo lo anterior, el ciclo de una autorización podría resumirse de la siguiente manera:
+
+1. El desarrollador registra una aplicación en Centry. Ver capítulo [Crear una Aplicación](#crear-una-aplicaci-n).
+2. Luego se le solicita a todos los usuarios que se quiera acceso a sus datos. Ver capítulo [Autorización](#autorizaci-n)
+  1. Si un usuario autoriza a la aplicación, la plataforma generará un código de autorización y se la entrega
+  a la aplicación.
+  2. Con ese código, la aplicación solicita 2 tokens: el `access_token` y el `refresh_token`.
+3. Con un `access_token` válido, se puede hacer uso de los endpoint que la API provee.
+4. Cuando el `access_token` caduca, se usa el `refresh_token` para renovar los tokens.
+Ver capítulo [Renovar los tokens](#renovar-los-tokens).
 
 ## Crear una aplicación
 
