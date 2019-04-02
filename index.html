@@ -2053,6 +2053,16 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td>Sirve para incluir la información completa de las variantes en los items del pedido</td>
 <td>https://www.centry.cl/conexion/v1/orders.json?status=pending&amp;expand</td>
 </tr>
+<tr>
+<td><code class="prettyprint">id_origin</code></td>
+<td>Filtra los resultados en base al identificador de origen</td>
+<td>https://www.centry.cl/conexion/v1/orders.json?id_origin=100001</td>
+</tr>
+<tr>
+<td><code class="prettyprint">number_origin</code></td>
+<td>Filtra los resultados en base el número del pedido. Es importante tener presente de que no todas las integraciones entregan este dato</td>
+<td>https://www.centry.cl/conexion/v1/orders.json?number_origin=5840001</td>
+</tr>
 </tbody></table>
 
 <h2 id="obtener-una-orden-espec-fica">Obtener una Orden específica</h2>
