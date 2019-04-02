@@ -304,11 +304,13 @@ Si se desean obtener resultados más específicos para este endpoint, se puede p
 
 Solo pueden ser ocupados para este endpoint en particular.
 
-Filtro       | Descripción                                     | Ejemplo
------------- | ----------------------------------------------- | -------
-`status`     | Corresponde al estado del pedido, sus posibles valores pueden ser: `pending`, `shipped`, `received`, `cancelled`, `cancelled_before_shipping`, `cancelled_after_shipping`  | https://www.centry.cl/conexion/v1/orders.json?status=received
-`origin`     | Corresponde al origen del pedido, por ejemplo: Ripley, MercadoLibre, Dafiti, etc. | https://www.centry.cl/conexion/v1/orders.json?origin=Ripley
-`expand` | Sirve para incluir la información completa de las variantes en los items del pedido | https://www.centry.cl/conexion/v1/orders.json?status=pending&expand
+Filtro          | Descripción                                     | Ejemplo
+--------------- | ----------------------------------------------- | -------
+`status`        | Corresponde al estado del pedido, sus posibles valores pueden ser: `pending`, `shipped`, `received`, `cancelled`, `cancelled_before_shipping`, `cancelled_after_shipping`  | https://www.centry.cl/conexion/v1/orders.json?status=received
+`origin`        | Corresponde al origen del pedido, por ejemplo: Ripley, MercadoLibre, Dafiti, etc. | https://www.centry.cl/conexion/v1/orders.json?origin=Ripley
+`expand`        | Sirve para incluir la información completa de las variantes en los items del pedido | https://www.centry.cl/conexion/v1/orders.json?status=pending&expand
+`id_origin`     | Filtra los resultados en base al identificador de origen | https://www.centry.cl/conexion/v1/orders.json?id_origin=100001
+`number_origin` | Filtra los resultados en base el número del pedido. Es importante tener presente de que no todas las integraciones entregan este dato | https://www.centry.cl/conexion/v1/orders.json?number_origin=5840001
 
 ## Obtener una Orden específica
 
