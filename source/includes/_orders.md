@@ -521,3 +521,62 @@ true
 Parámetro  | Descripción
 ---------- | ---------------------------------------
 `order_id` | El identificador de la Orden a eliminar
+
+## Obtener etiquetas de despacho
+
+Este endpoint recibe identificadores de pedidos y retorna un listado de documentos codificados en Base64.
+
+```shell
+curl "https://www.centry.cl/conexion/v1/orders/shipping_labels.json?ids[]=096ef853335bc7e6df20c8ba"/
+ -H "Authorization: Bearer  <access_token> "
+```
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+[
+    {
+        "orders": [
+            {
+                "_id": "5ccc461a1a61bb184c11d18a",
+                "origin": "MercadoLibre",
+                "id_origin": "2032305225",
+                "extras": {
+                    "shipping": {
+                        "id": 27895575952
+                    }
+                }
+            }
+        ],
+        "files": [
+            {
+                "content_type": "application/pdf",
+                "filename": "labels_and_manifest.pdf",
+                "content_base_64": "..."
+            }
+        ]
+    }
+]
+```
+
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/shipping_labels.json?ids[]=&lt;order_id_1&gt;&ids[]=&lt;order_id_2&gt;&... </h6>
+  </div>
+</div>
+
+### Parámetros URL
+
+Parámetro  | Descripción
+---------- | ----------------------------------------
+`ids`      | Es un listado de identificadores de pedidos de Centry
+
+La respuesta entrega un arreglo de objetos estructurados de la siguiente manera:
+
+Llave  | Descripción
+---------- | ----------------------------------------
+`orders`      | Un arreglo de objetos con información de los los pedidos involucrados en los documentos adjuntos, esta información es: `_id`: identificador del pedido en centry, `origin`: Nombre de la plataforma de desde donde se origió el pedido, `id_origin`: identificador del pedido en la plataforma de origen, `extras` información relevante que pudiera servir para cada integración. Este último campo vaía de plataforma en plataforma, por ejemplo para mercado libre entrega un objeto `shipping` con el identificador del despacho, mientras que en Dafiti o Linio entrega un arreglo llamado `order_item_ids` con los identificadores de las líneas del pedido.
+`files` | un listado de objetos con los documentos asociados, estos objetos están compuesto de 3 campos: `content_type` el mime type del archivo adjunto, `filename` un nombre de fantasía que describe el documento, `content_base_64` el contenidop del documento codifficado en base 64.
