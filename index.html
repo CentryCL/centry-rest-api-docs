@@ -2280,6 +2280,80 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 </tr>
 </tbody></table>
 
+<h2 id="obtener-etiquetas-de-despacho">Obtener etiquetas de despacho</h2>
+
+<p>Este endpoint recibe identificadores de pedidos y retorna un listado de documentos codificados en Base64.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/orders/shipping_labels.json?ids[]=096ef853335bc7e6df20c8ba"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ccc461a1a61bb184c11d18a"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MercadoLibre"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id_origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2032305225"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"extras"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27895575952</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels_and_manifest.pdf"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"content_base_64"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/shipping_labels.json?ids[]=&lt;order_id_1&gt;&ids[]=&lt;order_id_2&gt;&&hellip; </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">ids</code></td>
+<td>Es un listado de identificadores de pedidos de Centry</td>
+</tr>
+</tbody></table>
+
+<p>La respuesta entrega un arreglo de objetos estructurados de la siguiente manera:</p>
+
+<table><thead>
+<tr>
+<th>Llave</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">orders</code></td>
+<td>Un arreglo de objetos con información de los los pedidos involucrados en los documentos adjuntos, esta información es: <code class="prettyprint">_id</code>: identificador del pedido en centry, <code class="prettyprint">origin</code>: Nombre de la plataforma de desde donde se origió el pedido, <code class="prettyprint">id_origin</code>: identificador del pedido en la plataforma de origen, <code class="prettyprint">extras</code> información relevante que pudiera servir para cada integración. Este último campo vaía de plataforma en plataforma, por ejemplo para mercado libre entrega un objeto <code class="prettyprint">shipping</code> con el identificador del despacho, mientras que en Dafiti o Linio entrega un arreglo llamado <code class="prettyprint">order_item_ids</code> con los identificadores de las líneas del pedido.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">files</code></td>
+<td>un listado de objetos con los documentos asociados, estos objetos están compuesto de 3 campos: <code class="prettyprint">content_type</code> el mime type del archivo adjunto, <code class="prettyprint">filename</code> un nombre de fantasía que describe el documento, <code class="prettyprint">content_base_64</code> el contenidop del documento codifficado en base 64.</td>
+</tr>
+</tbody></table>
+
           <h1 id="categories">Categories</h1>
 
 <h2 id="par-metros">Parámetros</h2>
