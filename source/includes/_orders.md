@@ -7,8 +7,8 @@
 | `_id`                | string    | Identificador de orden  <i class="label label-info">sólo lectura</i>                                                                          |
 | `_status`            | string    | Estado de la orden. Las opciones son `pending`, `shipped`, `received`, `cancelled`, `cancelled_before_shipping` o `cancelled_after_shipping`. |
 | `status_origin`      | string    | Etiqueta con el estado del pedido según la plataforma de origen.                                                                              |
-| `address_billing`    | object    | Información del pago. Ver [Formulario de direcciones](#formulario-de-direcciones)                                                             |
-| `address_shipping`   | object    | Información de envío. Ver [Formulario de direcciones](#formulario-de-direcciones)                                                             |
+| `address_billing`    | object    | Dirección de facturación. Ver [Formulario de direcciones](#formulario-de-direcciones)                                                             |
+| `address_shipping`   | object    | Dirección de despacho. Ver [Formulario de direcciones](#formulario-de-direcciones)                                                             |
 | `buyer_dni`          | string    | Número de identificación nacional del cliente (ej. en Chile es el RUN)                                                                        |
 | `buyer_email`        | string    | Email de Cliente                                                                                                                              |
 | `buyer_first_name`   | string    | Nombre de Cliente                                                                                                                             |
@@ -20,8 +20,8 @@
 | `_payment_mode`      | string    | Tipo de pago empleado por el comprador. Las opciones son `undefined`, `cash`, `credit_card`, `debit_card` o `transfer`.                       |
 | `items`              | array     | Lista de ítems a comprar. Ver [Atributos de los ítems](#atributos-de-los-items)                                                               |
 | `origin`             | string    | Origen de donde fue importada la orden                                                                                                        |
-| `original_data`      | string    | Es un JSON codificado cono string con toda la información tal cual como viene en la plataforma de origen                                      |
-| `id_origin`          | string    | Identificador de Origen de donde fue importada                                                                                                |
+| `original_data`      | string    | Es un JSON codificado como string con toda la información tal cual como viene en la plataforma de origen                                      |
+| `id_origin`          | string    | Identificador del pedido en la plataforma de Origen                                                                                           |
 | `number_origin`      | string    | Número del pedido con el que se maneja la orden en la plataforma de origen                                                                    |
 | `url_origin`         | string    | URL desde la cual puede ser accedida la orden en la plataforma de origen                                                                      |
 | `total_amount`       | float     | Monto total de los productos comprados                                                                                                        |
@@ -30,12 +30,14 @@
 | `paid_amount`        | float     | Monto total pagado por el cliente. En un caso ideal es igual a `total_amount + shipping_amount - discount_amount`                             |
 | `date_for_delivery`  | date-time | Fecha estimada en la que se espera despachar el pedido                                                                                        |
 | `date_for_reception` | date-time | Fecha estimada en la que se espera que el cliente reciba el pedido                                                                            |
-| `received_date`      | date-time | Fecha en el que el cliente recibe su orden                                                                                                    |
+| `received_date`      | date-time | Fecha en el que el cliente recibe la orden                                                                                                    |
 | `shipped_date`       | date-time | Fecha en el que se despacha la orden                                                                                                          |
 | `cancelled_date`     | date-time | Fecha en que la orden fue anulada                                                                                                             |
 | `company_id`         | string    | Identificador de la empresa <i class="label label-info">sólo lectura</i>                                                                      |
 | `created_at`         | date-time | Fecha de creación de la orden en Centry <i class="label label-info">sólo lectura</i>                                                          |
 | `updated_at`         | date-time | Fecha de la ultima actualización a la orden en Centry <i class="label label-info">sólo lectura</i>                                            |
+| `created_at_origin`  | date-time | Fecha de creación de la orden en la plataforma de origen <i class="label label-info">sólo lectura</i>                                         |
+| `updated_at_origin`  | date-time | Fecha de la ultima actualización a la orden en la plataforma de origen <i class="label label-info">sólo lectura</i>                           |
 
 ### Formulario de direcciones
 
