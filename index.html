@@ -523,7 +523,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">shortdescription</code></td>
 <td>string</td>
-<td>Listado de características del producto del producto. Se recomienda el uso de viñetas HTML sin orden, ie, &ldquo;<ul><li></li></ul>&rdquo;.</td>
+<td>Listado de características del producto del producto. Se recomienda el uso de viñetas HTML sin orden, ie, <code class="prettyprint">&lt;ul&gt;&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;</code>.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">condition</code></td>
@@ -714,7 +714,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">quantity</code></td>
 <td>integer</td>
-<td>Stock de la variante.</td>
+<td>Stock de la variante. <i class="label label-info">deprecado</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">color_id</code></td>
@@ -1078,12 +1078,12 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">color_name</code></td>
 <td>string</td>
-<td>Nombre del color</td>
+<td>Nombre del color <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">company_id</code></td>
 <td>string</td>
-<td>Identificador de la compañía</td>
+<td>Identificador de la compañía <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">created_at</code></td>
@@ -1093,22 +1093,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">created_by_id</code></td>
 <td>string</td>
-<td></td>
-</tr>
-<tr>
-<td><code class="prettyprint">custom_data</code></td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td><code class="prettyprint">description</code></td>
-<td>string</td>
-<td>Descripción de la variante</td>
-</tr>
-<tr>
-<td><code class="prettyprint">id_mercadolibre</code></td>
-<td>string</td>
-<td></td>
+<td>Identificador del usuario que creó por el registro <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">id_shopify</code></td>
@@ -1116,14 +1101,9 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td></td>
 </tr>
 <tr>
-<td><code class="prettyprint">id_woocommerce</code></td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
 <td><code class="prettyprint">integrations</code></td>
-<td>hash</td>
-<td></td>
+<td>object</td>
+<td>Diccionario con información especializada para algunas integraciones</td>
 </tr>
 <tr>
 <td><code class="prettyprint">modifier_id</code></td>
@@ -1138,7 +1118,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">position</code></td>
 <td>integer</td>
-<td></td>
+<td>Posición de una variante en relación a las otras que pertenecen al mismo producto</td>
 </tr>
 <tr>
 <td><code class="prettyprint">price</code></td>
@@ -1158,7 +1138,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">quantity</code></td>
 <td>integer</td>
-<td>Stock de la variante</td>
+<td>Stock de la variante <i class="label label-info">deprecado</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">size_id</code></td>
@@ -1168,7 +1148,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">size_name</code></td>
 <td>string</td>
-<td>Nombre de la talla</td>
+<td>Nombre de la talla <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">sku</code></td>
@@ -1178,21 +1158,19 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">updated_at</code></td>
 <td>string</td>
-<td></td>
+<td>Fecha de la última modificación del registro en Centry <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">updated_by_id</code></td>
 <td>string</td>
-<td></td>
+<td>Identificador del usuario que modificó por última vez el registro <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">version</code></td>
 <td>int</td>
-<td></td>
+<td>Numero de versión del registro, va aumentando en la medida que se registran actualizaciones <i class="label label-info">sólo lectura</i></td>
 </tr>
 </tbody></table>
-
-<h3 id="atributos-de-las-integraciones">Atributos de las Integraciones</h3>
 
 <h2 id="actualizar-por-sku">Actualizar por SKU</h2>
 
@@ -1225,34 +1203,34 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c2e07488f26c638ca60dc0b"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"bulk_upload"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"color_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"580450f61746bf79030001d6"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"color_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Azul"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-03T09:59:52.852-03:00"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"created_by_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c2d1ae68f26c638ca60dc04"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"custom_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Descripción detallada de la variante del producto"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"id_mercadolibre"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"id_shopify"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"id_woocommerce"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"integrations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-          </span><span class="s2">"modifier_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"original_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"price_compare"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c2e07488f26c638ca60dc0a"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"size_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5804ad46b831a33ada0f5f93"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"size_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"variante_12345"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-03T12:29:19.387-03:00"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"updated_by_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c2d1ae68f26c638ca60dc04"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c2e07488f26c638ca60dc0b"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bulk_upload"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"color_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"580450f61746bf79030001d6"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"color_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Azul"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-03T09:59:52.852-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_by_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c2d1ae68f26c638ca60dc04"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"custom_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Descripción detallada de la variante del producto"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id_mercadolibre"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id_shopify"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id_woocommerce"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"integrations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"modifier_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"original_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"price_compare"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c2e07488f26c638ca60dc0a"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"size_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5804ad46b831a33ada0f5f93"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"size_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"variante_12345"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-03T12:29:19.387-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_by_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c2d1ae68f26c638ca60dc04"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
@@ -1323,33 +1301,33 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Identificador de la variante&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Código de barras de la variante&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bulk_upload"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"color_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Identificador del color&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"color_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Azul"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-03T09:59:52.852-03:00"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_by_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c2d1ae68f26c638ca60dc04"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"custom_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Descripción&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"id_mercadolibre"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"id_shopify"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"id_woocommerce"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"integrations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="s2">"modifier_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"original_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"price_compare"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Identificador del producto&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"size_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Identificador de la talla&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"size_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;SKU de la variante&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-03T12:29:19.387-03:00"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_by_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c2d1ae68f26c638ca60dc04"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Identificador de la variante&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Código de barras de la variante&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"bulk_upload"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"color_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Identificador del color&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"color_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Azul"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-03T09:59:52.852-03:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_by_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c2d1ae68f26c638ca60dc04"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"custom_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Descripción&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id_mercadolibre"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id_shopify"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id_woocommerce"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"integrations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="s2">"modifier_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"original_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"price_compare"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Identificador del producto&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"size_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Identificador de la talla&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"size_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;SKU de la variante&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-03T12:29:19.387-03:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_by_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c2d1ae68f26c638ca60dc04"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
@@ -1443,6 +1421,1245 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 </tr>
 </tbody></table>
 
+          <h1 id="warehouses">Warehouses</h1>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador del webhook <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>string</td>
+<td>Nombre con el cual se puede reconocer la bodega</td>
+</tr>
+<tr>
+<td><code class="prettyprint">address</code></td>
+<td>string</td>
+<td>Dirección donde se encuentra ubicada la bodega</td>
+</tr>
+<tr>
+<td><code class="prettyprint">country_id</code></td>
+<td>string</td>
+<td>Identificador del país. Ver endpoint <a href="#countries">Countries</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">region_id</code></td>
+<td>string</td>
+<td>Identificador de la región. Ver endpoint <a href="#regions">Regions</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">city_id</code></td>
+<td>string</td>
+<td>Identificador de la ciudad. Ver endpoint <a href="#cities">Cities</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">commune_id</code></td>
+<td>string</td>
+<td>Identificador de la comuna. Ver endpoint <a href="#communes">Communes</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">latitude</code></td>
+<td>string</td>
+<td>Número decimal con la latitud de la ubicación geográfica de la bodega</td>
+</tr>
+<tr>
+<td><code class="prettyprint">longitude</code></td>
+<td>string</td>
+<td>Número decimal con la longitud de la ubicación geográfica de la bodega</td>
+</tr>
+<tr>
+<td><code class="prettyprint">integrations</code></td>
+<td>object</td>
+<td>Diccionario con información especializada para algunas integraciones</td>
+</tr>
+<tr>
+<td><code class="prettyprint">company_id</code></td>
+<td>string</td>
+<td>Identificador de empresa <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>string</td>
+<td>Fecha de creación del webhook en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>string</td>
+<td>Fecha de la última modificación del webhook en Centry  <i class="label label-info">sólo lectura</i></td>
+</tr>
+</tbody></table>
+
+<h2 id="listar-las-bodegas-de-la-cuenta">Listar las bodegas de la cuenta</h2>
+
+<p>Este endpoint entrega todas las bodegas registradas en la cuenta.</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+  https://www.centry.cl/conexion/v1/warehouses.json <span class="se">\</span>
+  -H <span class="s1">'authorization: Bearer &lt;access_token&gt;'</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000001"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aurelio González 3838, oficina 02"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"commune_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000169"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-07T16:12:40.079-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"integrations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Casa matriz"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"region_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000001"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-24T13:39:44.792-03:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/warehouses.json </h6>
+  </div>
+</div>
+
+<h3 id="filtros-comunes">Filtros comunes</h3>
+
+<p>Si se desean obtener resultados más específicos para este endpoint, se puede
+precisar el request agregando parámetros a la URL de la forma
+https://www.centry.cl/conexion/v1/warehouses.json?&lt;filter&gt;=&lt;valor&gt;
+como se muestra en el capítulo <a href="#filters">Filters</a> al final de la documentación.</p>
+
+<h3 id="filtros-especiales">Filtros especiales</h3>
+
+<p>Sólo pueden ser ocupados para este endpoint en particular.</p>
+
+<table><thead>
+<tr>
+<th>Filtro</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>Buscar por el nombre exacto de una bodega</td>
+<td>https://www.centry.cl/conexion/v1/warehouses.json?name=Casa%20matriz</td>
+</tr>
+<tr>
+<td><code class="prettyprint">address</code></td>
+<td>Buscar por la dirección exacta de una bodega</td>
+<td>https://www.centry.cl/conexion/v1/warehouses.json?address=Aurelio20González203838,20oficina2002</td>
+</tr>
+<tr>
+<td><code class="prettyprint">latitude</code></td>
+<td>Buscar por la latitud geográfica exacta de una bodega</td>
+<td>https://www.centry.cl/conexion/v1/warehouses.json?latitude=</td>
+</tr>
+<tr>
+<td><code class="prettyprint">longitude</code></td>
+<td>Buscar por la longitud geográfica exacta de una bodega</td>
+<td>https://www.centry.cl/conexion/v1/warehouses.json?longitude=</td>
+</tr>
+</tbody></table>
+
+<h2 id="obtener-una-bodega-espec-fica">Obtener una bodega específica</h2>
+
+<p>Este endpoint entrega una bodega específica.</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+  https://www.centry.cl/conexion/v1/warehouses/577eb7b8f82f456ef4000001.json <span class="se">\</span>
+  -H <span class="s1">'authorization: Bearer &lt;access_token&gt;'</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Badajoz 100, oficina 407"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"commune_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000169"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-07T16:12:40.079-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"integrations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Casa matriz"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"region_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-24T13:39:44.792-03:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/warehouses/&lt;warehouse_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">warehouse_id</code></td>
+<td>El identificador de la bodega a recuperar</td>
+</tr>
+</tbody></table>
+
+<h2 id="crear-una-bodega">Crear una bodega</h2>
+
+<p>Este endpoint permite crear una bodega nueva.</p>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  https://www.centry.cl/conexion/v1/warehouses.json <span class="se">\</span>
+  -H <span class="s1">'authorization: Bearer &lt;access_token&gt;'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "name": "Demo",
+    "address": "Calle principal 5500",
+    "latitude": 70.04,
+    "longitude": -30.43
+}'</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd2f56a48f0393d1d17f984"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Calle principal 5500"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"commune_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-18T16:47:54.309-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70.04"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-30.43"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"region_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-18T16:47:54.309-03:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-post">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/warehouses.json </h6>
+  </div>
+</div>
+
+<h2 id="actualizar-una-bodega">Actualizar una bodega</h2>
+
+<p>Este endpoint permite modificar una bodega específica.</p>
+<pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">\</span>
+  https://www.centry.cl/conexion/v1/warehouses/5dd2f56a48f0393d1d17f984.json <span class="se">\</span>
+  -H <span class="s1">'authorization: Bearer &lt;access_token&gt;'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "address": "Nuevo nombre",
+    "longitude": 25.05
+}'</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd2f56a48f0393d1d17f984"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Calle principal 5500"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"commune_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-18T16:47:54.309-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70.04"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25.05"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nuevo nombre"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"region_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-18T16:47:54.309-03:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-put">PUT</i>
+    <h6> https://www.centry.cl/conexion/v1/warehouses/&lt;warehouse_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">warehouse_id</code></td>
+<td>El identificador de la bodega a actualizar</td>
+</tr>
+</tbody></table>
+
+<h2 id="eliminar-un-webhook">Eliminar un webhook</h2>
+
+<p>Este endpoint elimina permanentemente una bodega específica.</p>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+  https://www.centry.cl/conexion/v1/warehouses/59c9852d1746bf1d93000001.json <span class="se">\</span>
+  -H <span class="s1">'authorization: Bearer &lt;access_token&gt;'</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="kc">true</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-delete">DELETE</i>
+    <h6> https://www.centry.cl/conexion/v1/webhook/&lt;warehouse_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">warehouse_id</code></td>
+<td>El identificador de la bodega a eliminar</td>
+</tr>
+</tbody></table>
+
+          <h1 id="variantwarehouses">VariantWarehouses</h1>
+
+<p>Este modelo es el encargado de relacionar las variantes de un producto con las
+bodegas para llevar el control del stock.</p>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador de la relación variante-bodega <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">variant_id</code></td>
+<td>string</td>
+<td>Identificador de la variante. Ver endpoint <a href="#variants">Variants</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">warehouse_id</code></td>
+<td>string</td>
+<td>Identificador de la bodega. Ver endpoint <a href="#warehouses">Warehouses</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">quantity</code></td>
+<td>integer</td>
+<td>Stock que registra la variante en una bodega</td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_by_id</code></td>
+<td>string</td>
+<td>Identificador del usuario que creó por el registro <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">modifier_id</code></td>
+<td>string</td>
+<td>Identificador del usuario que modificó por última vez el registro <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>string</td>
+<td>Fecha de creación del registro en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>string</td>
+<td>Fecha de la última modificación del registro en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">version</code></td>
+<td>integer</td>
+<td>Numero de versión del registro, va aumentando en la medida que se registran actualizaciones <i class="label label-info">sólo lectura</i></td>
+</tr>
+</tbody></table>
+
+<h2 id="todas-las-variantebodegas-de-la-cuenta">Todas las VarianteBodegas de la cuenta</h2>
+
+<p>Este endpoint entrega todas las relaciones variante-bodega de la cuenta.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/variant_warehouses.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ac23e71f82f455978672393"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-02T11:30:09.723-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_by_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"modifier_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-03T13:55:09.068-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_by_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000002"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ac23e71f82f455978672392"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"warehouse_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000001"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cc36d8748f039156b45f78d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-26T16:43:51.125-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_by_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000002"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"modifier_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-17T19:06:45.114-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_by_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000002"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cc36d8748f039156b45f78c"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"warehouse_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000001"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cc36d8748f039156b45f78f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-26T16:43:51.152-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_by_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000002"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"modifier_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-17T19:06:45.072-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_by_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000002"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cc36d8748f039156b45f78e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"warehouse_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000001"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/variant_warehouses.json </h6>
+  </div>
+</div>
+
+<h3 id="filtros-comunes">Filtros comunes</h3>
+
+<p>Si se desean obtener resultados más específicos para este endpoint, se puede
+precisar el request agregando parámetros a la URL de la forma
+https://www.centry.cl/conexion/v1/variant_warehouses.json?&lt;filter&gt;=&lt;valor&gt;
+como se muestra en el capítulo <a href="#filters">Filters</a> al final de la documentación.</p>
+
+<h3 id="filtros-especiales">Filtros especiales</h3>
+
+<p>Sólo pueden ser ocupados para este endpoint en particular.</p>
+
+<table><thead>
+<tr>
+<th>Filtro</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">variant_id</code></td>
+<td>El identificador de la variante que se desea recuperar</td>
+<td>https://www.centry.cl/conexion/v1/variant_warehouses.json?variant_id=5cc36d8748f039156b45f78e</td>
+</tr>
+<tr>
+<td><code class="prettyprint">warehouse_id</code></td>
+<td>El identificador de la bodega que se desea recuperar</td>
+<td>https://www.centry.cl/conexion/v1/variant_warehouses.json?warehouse_id=577eb7b8f82f456ef4000001</td>
+</tr>
+</tbody></table>
+
+<h2 id="crear-un-variantebodega">Crear un VarianteBodega</h2>
+
+<p>Este endpoint crea una relación variante-bodega en la cuenta.</p>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  https://www.centry.cl/conexion/v1/variant_warehouses.json <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer &lt;access_token&gt;'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "quantity": 2,
+    "variant_id": "5cc36d8748f039156b45f78e",
+    "warehouse_id": "577eb7b8f82f456ef4000001"
+}'</span>
+</code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-post">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/variant_warehouses.json </h6>
+  </div>
+</div>
+
+<h2 id="obtener-una-variante-espec-fica">Obtener una Variante específica</h2>
+
+<p>Este endpoint entrega una relación variante-bodega en específica.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/variant_warehouses/&lt;variant_warehouse_id&gt;.json"</span> -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cc36d8748f039156b45f78f"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-26T16:43:51.152-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_by_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000002"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modifier_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-17T19:06:45.072-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_by_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000002"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cc36d8748f039156b45f78e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"warehouse_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000001"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/variant_warehouses/&lt;variant_warehouse_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">variant_warehouse_id</code></td>
+<td>El identificador de la relación variante-bodega a recuperar</td>
+</tr>
+</tbody></table>
+
+<h2 id="actualizar-una-variante">Actualizar una Variante</h2>
+
+<p>Este endpoint actualiza una relación variante-bodega.</p>
+<pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">\</span>
+  https://www.centry.cl/conexion/v1/variant_warehouses/&lt;variant_warehouse_id&gt;.json <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer &lt;access_token&gt;'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "quantity": 30
+}'</span>
+</code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-put">PUT</i>
+    <h6> https://www.centry.cl/conexion/v1/variant_warehouses/&lt;variant_warehouse_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">variant_warehouse_id</code></td>
+<td>El identificador de la relación variante-bodega a actualizar</td>
+</tr>
+</tbody></table>
+
+<h2 id="eliminar-una-variante">Eliminar una Variante</h2>
+
+<p>Este endpoint elimina una relación variante-bodega.</p>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE https://www.centry.cl/conexion/v1/variant_warehouses/&lt;variant_warehouse_id&gt;.json <span class="se">\</span>
+    -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="kc">true</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-delete">DELETE</i>
+    <h6> https://www.centry.cl/conexion/v1/variants/&lt;variant_warehouse_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">variant_warehouse_id</code></td>
+<td>El identificador de la relación variante-bodega a eliminar</td>
+</tr>
+</tbody></table>
+
+          <h1 id="countries">Countries</h1>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador del país <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>string</td>
+<td>Nombre del país en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">iso_code</code></td>
+<td>string</td>
+<td>Código del país según la norma ISO <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">language</code></td>
+<td>string</td>
+<td>Código que identifica el idioma principal del país <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>string</td>
+<td>Fecha de creación del país en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>string</td>
+<td>Fecha de la última actualización <i class="label label-info">sólo lectura</i></td>
+</tr>
+</tbody></table>
+
+<h2 id="todas-los-paises">Todas los paises</h2>
+
+<p>Este endpoint entrega todas los países de Centry.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/locations/countries.json"</span>/
+ -H <span class="s2">"Authorization: Bearer &lt;access_token&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.367-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"es"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chile"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.367-04:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/locations/countries.json </h6>
+  </div>
+</div>
+
+<h3 id="filtros-comunes">Filtros comunes</h3>
+
+<p>Si se desean obtener resultados más específicos para este endpoint, se puede
+precisar la request agregando parámetros a la URL de la forma
+https://www.centry.cl/conexion/v1/locations/countries.json?&lt;filter&gt;=&lt;valor&gt;
+como se muestra en el capítulo <a href="#filters">Filters</a> al final de la documentación.</p>
+
+<h3 id="filtros-especiales">Filtros especiales</h3>
+
+<p>Solo pueden ser ocupados para este endpoint en particular.</p>
+
+<table><thead>
+<tr>
+<th>Filtro</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">iso_code</code></td>
+<td>Busca paises por el código iso exacto</td>
+<td>https://www.centry.cl/conexion/v1/locations/countries.json?iso_code=CL</td>
+</tr>
+<tr>
+<td><code class="prettyprint">language</code></td>
+<td>Busca países por el código de idioma exacto</td>
+<td>https://www.centry.cl/conexion/v1/locations/countries.json?language=es</td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>Busca países por el nombre el nombre exacto</td>
+<td>https://www.centry.cl/conexion/v1/locations/countries.json?name=Chile</td>
+</tr>
+</tbody></table>
+
+<h2 id="obtener-un-pa-s-espec-fico">Obtener un país específico</h2>
+
+<p>Este endpoint entrega un país específico.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/locations/countries/&lt;country_id&gt;.json"</span>/
+ -H <span class="s2">"Authorization: Bearer &lt;access_token&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.367-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"es"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chile"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.367-04:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/locations/countries/&lt;country_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">country_id</code></td>
+<td>El identificador del país a recuperar</td>
+</tr>
+</tbody></table>
+
+          <h1 id="regions">Regions</h1>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador de la región <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>string</td>
+<td>Nombre de la región en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">country_id</code></td>
+<td>string</td>
+<td>Identificador del país al que pertenece la región <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">position</code></td>
+<td>integer</td>
+<td>Posición de la región dentro del listado perteneciente a un país <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>string</td>
+<td>Fecha de creación de la región en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>string</td>
+<td>Fecha de la última actualización <i class="label label-info">sólo lectura</i></td>
+</tr>
+</tbody></table>
+
+<h2 id="todas-los-paises">Todas los paises</h2>
+
+<p>Este endpoint entrega todas las regiones de Centry.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/locations/regions.json"</span>/
+ -H <span class="s2">"Authorization: Bearer &lt;access_token&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000001"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.370-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Región Metropolitana"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.370-04:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e8000000e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.389-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XIV Región: Los Ríos"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.389-04:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e8000000d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.388-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XII Región: Magallanes"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.388-04:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/locations/regions.json </h6>
+  </div>
+</div>
+
+<h3 id="filtros-comunes">Filtros comunes</h3>
+
+<p>Si se desean obtener resultados más específicos para este endpoint, se puede
+precisar la request agregando parámetros a la URL de la forma
+https://www.centry.cl/conexion/v1/locations/regions.json?&lt;filter&gt;=&lt;valor&gt;
+como se muestra en el capítulo <a href="#filters">Filters</a> al final de la documentación.</p>
+
+<h3 id="filtros-especiales">Filtros especiales</h3>
+
+<p>Solo pueden ser ocupados para este endpoint en particular.</p>
+
+<table><thead>
+<tr>
+<th>Filtro</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">country_id</code></td>
+<td>Busca regiones que pertenezcan a un país específico</td>
+<td>https://www.centry.cl/conexion/v1/locations/regions.json?country_id=5769714df82f456e80000000</td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>Busca regiones por el nombre el nombre exacto</td>
+<td>https://www.centry.cl/conexion/v1/locations/regions.json?name=Región%20Metropolitana</td>
+</tr>
+<tr>
+<td><code class="prettyprint">position</code></td>
+<td>Busca regiones que tengan una posición específica</td>
+<td>https://www.centry.cl/conexion/v1/locations/regions.json?position=3</td>
+</tr>
+</tbody></table>
+
+<h2 id="obtener-un-pa-s-espec-fico">Obtener un país específico</h2>
+
+<p>Este endpoint entrega una región específica.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/locations/regions/&lt;region_id&gt;.json"</span>/
+ -H <span class="s2">"Authorization: Bearer &lt;access_token&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.370-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Región Metropolitana"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.370-04:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/locations/regions/&lt;region_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">region_id</code></td>
+<td>El identificador de la región a recuperar</td>
+</tr>
+</tbody></table>
+
+          <h1 id="cities">Cities</h1>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador de la ciudad <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>string</td>
+<td>Nombre de la ciudad en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">region_id</code></td>
+<td>string</td>
+<td>Identificador de la región a la que pertenece la ciudad <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>string</td>
+<td>Fecha de creación de la ciudad en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>string</td>
+<td>Fecha de la última actualización <i class="label label-info">sólo lectura</i></td>
+</tr>
+</tbody></table>
+
+<h2 id="todas-los-paises">Todas los paises</h2>
+
+<p>Este endpoint entrega todas las ciudades de Centry.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/locations/cities.json"</span>/
+ -H <span class="s2">"Authorization: Bearer &lt;access_token&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e8000003f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.440-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maipo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"region_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000001"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.440-04:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e8000003d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.438-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cordillera"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"region_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000001"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.438-04:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e8000003e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.439-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chacabuco"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"region_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000001"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.439-04:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e8000003c"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.437-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Santiago"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"region_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000001"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.437-04:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/locations/cities.json </h6>
+  </div>
+</div>
+
+<h3 id="filtros-comunes">Filtros comunes</h3>
+
+<p>Si se desean obtener resultados más específicos para este endpoint, se puede
+precisar la request agregando parámetros a la URL de la forma
+https://www.centry.cl/conexion/v1/locations/cities.json?&lt;filter&gt;=&lt;valor&gt;
+como se muestra en el capítulo <a href="#filters">Filters</a> al final de la documentación.</p>
+
+<h3 id="filtros-especiales">Filtros especiales</h3>
+
+<p>Solo pueden ser ocupados para este endpoint en particular.</p>
+
+<table><thead>
+<tr>
+<th>Filtro</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">region_id</code></td>
+<td>Busca ciudades que pertenezcan a una región específica</td>
+<td>https://www.centry.cl/conexion/v1/locations/cities.json?region_id=5769714df82f456e80000001</td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>Busca ciudades por el nombre el nombre exacto</td>
+<td>https://www.centry.cl/conexion/v1/locations/cities.json?name=Santiago</td>
+</tr>
+</tbody></table>
+
+<h2 id="obtener-un-pa-s-espec-fico">Obtener un país específico</h2>
+
+<p>Este endpoint entrega una ciudad específica.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/locations/cities/&lt;city_id&gt;.json"</span>/
+ -H <span class="s2">"Authorization: Bearer &lt;access_token&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"region_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.370-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Región Metropolitana"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.370-04:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/locations/cities/&lt;city_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">city_id</code></td>
+<td>El identificador de la ciudad a recuperar</td>
+</tr>
+</tbody></table>
+
+          <h1 id="communes">Communes</h1>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador de la comuna <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>string</td>
+<td>Nombre de la comuna en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">city_id</code></td>
+<td>string</td>
+<td>Identificador de la ciudad a la que pertenece la comuna <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>string</td>
+<td>Fecha de creación de la comuna en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>string</td>
+<td>Fecha de la última actualización <i class="label label-info">sólo lectura</i></td>
+</tr>
+</tbody></table>
+
+<h2 id="todas-los-paises">Todas los paises</h2>
+
+<p>Este endpoint entrega todas las comunas de Centry.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/locations/communes.json"</span>/
+ -H <span class="s2">"Authorization: Bearer &lt;access_token&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000048"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000011"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.449-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pozo Almonte"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"region_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000002"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.449-04:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e8000004c"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000011"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.453-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pica"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"region_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000002"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.453-04:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e8000004b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000011"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.452-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Huara"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"region_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000002"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.452-04:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/locations/communes.json </h6>
+  </div>
+</div>
+
+<h3 id="filtros-comunes">Filtros comunes</h3>
+
+<p>Si se desean obtener resultados más específicos para este endpoint, se puede
+precisar la request agregando parámetros a la URL de la forma
+https://www.centry.cl/conexion/v1/locations/communes.json?&lt;filter&gt;=&lt;valor&gt;
+como se muestra en el capítulo <a href="#filters">Filters</a> al final de la documentación.</p>
+
+<h3 id="filtros-especiales">Filtros especiales</h3>
+
+<p>Solo pueden ser ocupados para este endpoint en particular.</p>
+
+<table><thead>
+<tr>
+<th>Filtro</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">city_id</code></td>
+<td>Busca comunas que pertenezcan a una ciudad específica</td>
+<td>https://www.centry.cl/conexion/v1/locations/communes.json?city_id=5769714df82f456e80000011</td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>Busca comunas por el nombre el nombre exacto</td>
+<td>https://www.centry.cl/conexion/v1/locations/communes.json?name=Pica</td>
+</tr>
+</tbody></table>
+
+<h2 id="obtener-un-pa-s-espec-fico">Obtener un país específico</h2>
+
+<p>Este endpoint entrega una comuna específica.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/locations/communes/&lt;commune_id&gt;.json"</span>/
+ -H <span class="s2">"Authorization: Bearer &lt;access_token&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"region_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e80000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.370-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Región Metropolitana"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T12:54:37.370-04:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/locations/communes/&lt;commune_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">commune_id</code></td>
+<td>El identificador de la comuna a recuperar</td>
+</tr>
+</tbody></table>
+
           <h1 id="orders">Orders</h1>
 
 <h2 id="par-metros">Parámetros</h2>
@@ -1472,12 +2689,12 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">address_billing</code></td>
 <td>object</td>
-<td>Información del pago. Ver <a href="#formulario-de-direcciones">Formulario de direcciones</a></td>
+<td>Dirección de facturación. Ver <a href="#formulario-de-direcciones">Formulario de direcciones</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">address_shipping</code></td>
 <td>object</td>
-<td>Información de envío. Ver <a href="#formulario-de-direcciones">Formulario de direcciones</a></td>
+<td>Dirección de despacho. Ver <a href="#formulario-de-direcciones">Formulario de direcciones</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">buyer_dni</code></td>
@@ -1537,12 +2754,12 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">original_data</code></td>
 <td>string</td>
-<td>Es un JSON codificado cono string con toda la información tal cual como viene en la plataforma de origen</td>
+<td>Es un JSON codificado como string con toda la información tal cual como viene en la plataforma de origen</td>
 </tr>
 <tr>
 <td><code class="prettyprint">id_origin</code></td>
 <td>string</td>
-<td>Identificador de Origen de donde fue importada</td>
+<td>Identificador del pedido en la plataforma de Origen</td>
 </tr>
 <tr>
 <td><code class="prettyprint">number_origin</code></td>
@@ -1587,7 +2804,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">received_date</code></td>
 <td>date-time</td>
-<td>Fecha en el que el cliente recibe su orden</td>
+<td>Fecha en el que el cliente recibe la orden</td>
 </tr>
 <tr>
 <td><code class="prettyprint">shipped_date</code></td>
@@ -1613,6 +2830,16 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td><code class="prettyprint">updated_at</code></td>
 <td>date-time</td>
 <td>Fecha de la ultima actualización a la orden en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at_origin</code></td>
+<td>date-time</td>
+<td>Fecha de creación de la orden en la plataforma de origen <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at_origin</code></td>
+<td>date-time</td>
+<td>Fecha de la ultima actualización a la orden en la plataforma de origen <i class="label label-info">sólo lectura</i></td>
 </tr>
 </tbody></table>
 
@@ -2526,17 +3753,17 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
 
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57f63ffe4c266d1dec1edfb6"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-28T16:21:37.882Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bata"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-28T16:21:37.882Z"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58124d68fd246926928fed3c"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZIKO"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57f63ffe4c266d1dec1edfb6"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-28T16:21:37.882Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bata"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-28T16:21:37.882Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58124d68fd246926928fed3c"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZIKO"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
@@ -2580,10 +3807,10 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58124d68fd246926928fed3c"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZIKO"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58124d68fd246926928fed3c"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZIKO"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
