@@ -12,6 +12,12 @@ includes:
   - authentication
   - products
   - variants
+  - warehouses
+  - variant_warehouses
+  - location_countries
+  - location_regions
+  - location_cities
+  - location_communes
   - orders
   - categories
   - brands

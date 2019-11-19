@@ -24,17 +24,17 @@ curl "https://www.centry.cl/conexion/v1/brands.json"/
 [
 
 	{
-        "_id": "57f63ffe4c266d1dec1edfb6",
-        "created_at": "2016-08-28T16:21:37.882Z",
-        "name": "Bata",
-        "updated_at": "2016-08-28T16:21:37.882Z"
-    },
-    {
-        "_id": "58124d68fd246926928fed3c",
-        "created_at": "2016-10-01T19:35:14.734Z",
-        "name": "ZIKO",
-        "updated_at": "2016-10-01T19:35:14.734Z"
-    }
+    "_id": "57f63ffe4c266d1dec1edfb6",
+    "created_at": "2016-08-28T16:21:37.882Z",
+    "name": "Bata",
+    "updated_at": "2016-08-28T16:21:37.882Z"
+  },
+  {
+    "_id": "58124d68fd246926928fed3c",
+    "created_at": "2016-10-01T19:35:14.734Z",
+    "name": "ZIKO",
+    "updated_at": "2016-10-01T19:35:14.734Z"
+  }
 ]
 ```
 
@@ -72,10 +72,10 @@ curl "https://www.centry.cl/conexion/v1/brands/<brand_id>.json"/
 
 ```json
 {
-    "_id": "58124d68fd246926928fed3c",
-    "created_at": "2016-10-01T19:35:14.734Z",
-    "name": "ZIKO",
-    "updated_at": "2016-10-01T19:35:14.734Z"
+  "_id": "58124d68fd246926928fed3c",
+  "created_at": "2016-10-01T19:35:14.734Z",
+  "name": "ZIKO",
+  "updated_at": "2016-10-01T19:35:14.734Z"
 }
 ```
 

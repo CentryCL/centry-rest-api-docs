@@ -9,7 +9,7 @@
 | `sku`                  | string    | SKU del producto                                                                                         |
 | `barcode`              | string    | Código de barras                                                                                         |
 | `description`          | string    | Descripción del producto                                                                                 |
-| `shortdescription`     | string    | Listado de características del producto del producto. Se recomienda el uso de viñetas HTML sin orden, ie, "<ul><li></li></ul>". |
+| `shortdescription`     | string    | Listado de características del producto del producto. Se recomienda el uso de viñetas HTML sin orden, ie, `<ul><li></li></ul>`. |
 | `condition`            | string    | Describe la condición del producto (Nuevo, usado, renovado)                                              |
 | `brand_id`             | string    | Identificador de la marca                                                                                |
 | `category_id`          | integer   | Identificador de categoría a la que pertenece                                                            |
@@ -50,7 +50,7 @@
 | `barcode`         | string    | Código de barras                                                                                        |
 | `product_id`      | integer   | Identificador del Producto en Centry <i class="label label-info">sólo lectura</i>                       |
 | `size_id`         | integer   | Identificador de la talla                                                                               |
-| `quantity`        | integer   | Stock de la variante.                                                                               |
+| `quantity`        | integer   | Stock de la variante. <i class="label label-info">deprecado</i>                                         |
 | `color_id`        | integer   | Identificador del color                                                                                 |
 | `company_id`      | integer   | Identificador de la empresa a la que pertenece la variante <i class="label label-info">sólo lectura</i> |
 | `created_at`      | date-time | Fecha en formato UTC de la creación de la variante <i class="label label-info">sólo lectura</i>         |

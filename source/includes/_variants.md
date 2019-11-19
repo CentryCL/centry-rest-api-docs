@@ -2,37 +2,31 @@
 
 ##Parámetros
 
-| Atributo               | Tipo      | Descripción                                                                                              |
-| ---------------------- | --------- | -------------------------------------------------------------------------------------------------------- |
-| `id`                   | string    | Identificador de la variante <i class="label label-info">sólo lectura</i>                                  |
-| `barcode`              | string    | Código de barras                                                                                         |
-| `bulk_upload`          | boolean    |                                                                                  |
-| `color_id`     | string    | Identificador del color |
-| `color_name`            | string    | Nombre del color                                              |
-| `company_id`             | string    | Identificador de la compañía                                                                                |
-| `created_at`          | date-time | Fecha en formato UTC de la creación de la variante <i class="label label-info">sólo lectura</i>                                                            |
-| `created_by_id`   | string    |                             |
-| `custom_data`      | string    |                              |
-| `description`      | string   | Descripción de la variante                               |
-| `id_mercadolibre`    | string    |                              |
-| `id_shopify`     | string |                |
-| `id_woocommerce`            | string    |                                                                               |
-| `integrations` | hash   |                                           |
-| `modifier_id`            | string    |                                                                    |
-| `original_data`   | string   |                                                 |
-| `position`        | integer   |                                                             |
-| `price`        | string   |                                                                |
-| `price_compare`        | string   |                                                                |
-| `product_id`         | string   | Identificar del producto al cual pertenece la variante                                                                 |
-| `quantity`        | integer   | Stock de la variante                                                                                            |
-| `size_id`                | string   |      Identificador de la talla                                                                                    |
-| `size_name`        | string | Nombre de la talla                                                                            |
-| `sku`          | string | SKU de la variante                                                                     |
-| `updated_at`               | string    |                                                   |
-| `updated_by_id`           | string   |                                                                                |
-| `version`            | int    |                                                    |
-
-### Atributos de las Integraciones
+Atributo        | Tipo      | Descripción
+----------------| --------- | -----------
+`id`            | string    | Identificador de la variante <i class="label label-info">sólo lectura</i>
+`barcode`       | string    | Código de barras
+`bulk_upload`   | boolean   |
+`color_id`      | string    | Identificador del color
+`color_name`    | string    | Nombre del color <i class="label label-info">sólo lectura</i>
+`company_id`    | string    | Identificador de la compañía <i class="label label-info">sólo lectura</i>
+`created_at`    | date-time | Fecha en formato UTC de la creación de la variante <i class="label label-info">sólo lectura</i>
+`created_by_id` | string    | Identificador del usuario que creó por el registro <i class="label label-info">sólo lectura</i>
+`id_shopify`    | string    |
+`integrations`  | object    | Diccionario con información especializada para algunas integraciones
+`modifier_id`   | string    |
+`original_data` | string    |
+`position`      | integer   | Posición de una variante en relación a las otras que pertenecen al mismo producto
+`price`         | string    |
+`price_compare` | string    |
+`product_id`    | string    | Identificar del producto al cual pertenece la variante
+`quantity`      | integer   | Stock de la variante <i class="label label-info">deprecado</i>
+`size_id`       | string    | Identificador de la talla
+`size_name`     | string    | Nombre de la talla <i class="label label-info">sólo lectura</i>
+`sku`           | string    | SKU de la variante
+`updated_at`    | string    | Fecha de la última modificación del registro en Centry <i class="label label-info">sólo lectura</i>
+`updated_by_id` | string    | Identificador del usuario que modificó por última vez el registro <i class="label label-info">sólo lectura</i>
+`version`       | int       | Numero de versión del registro, va aumentando en la medida que se registran actualizaciones <i class="label label-info">sólo lectura</i>
 
 
 ## Actualizar por SKU
@@ -71,34 +65,34 @@ curl "https://www.centry.cl/conexion/v1/variants.json"/
 ```json
 [
   {
-          "_id": "5c2e07488f26c638ca60dc0b",
-          "barcode": "123456789",
-          "bulk_upload": false,
-          "color_id": "580450f61746bf79030001d6",
-          "color_name": "Azul",
-          "company_id": null,
-          "created_at": "2019-01-03T09:59:52.852-03:00",
-          "created_by_id": "5c2d1ae68f26c638ca60dc04",
-          "custom_data": null,
-          "description": "Descripción detallada de la variante del producto",
-          "id_mercadolibre": null,
-          "id_shopify": null,
-          "id_woocommerce": null,
-          "integrations": {},
-          "modifier_id": null,
-          "original_data": null,
-          "position": 0,
-          "price": null,
-          "price_compare": null,
-          "product_id": "5c2e07488f26c638ca60dc0a",
-          "quantity": 20,
-          "size_id": "5804ad46b831a33ada0f5f93",
-          "size_name": "S",
-          "sku": "variante_12345",
-          "updated_at": "2019-01-03T12:29:19.387-03:00",
-          "updated_by_id": "5c2d1ae68f26c638ca60dc04",
-          "version": 1
-      }
+    "_id": "5c2e07488f26c638ca60dc0b",
+    "barcode": "123456789",
+    "bulk_upload": false,
+    "color_id": "580450f61746bf79030001d6",
+    "color_name": "Azul",
+    "company_id": null,
+    "created_at": "2019-01-03T09:59:52.852-03:00",
+    "created_by_id": "5c2d1ae68f26c638ca60dc04",
+    "custom_data": null,
+    "description": "Descripción detallada de la variante del producto",
+    "id_mercadolibre": null,
+    "id_shopify": null,
+    "id_woocommerce": null,
+    "integrations": {},
+    "modifier_id": null,
+    "original_data": null,
+    "position": 0,
+    "price": null,
+    "price_compare": null,
+    "product_id": "5c2e07488f26c638ca60dc0a",
+    "quantity": 20,
+    "size_id": "5804ad46b831a33ada0f5f93",
+    "size_name": "S",
+    "sku": "variante_12345",
+    "updated_at": "2019-01-03T12:29:19.387-03:00",
+    "updated_by_id": "5c2d1ae68f26c638ca60dc04",
+    "version": 1
+  }
 ]
 ```
 
@@ -166,33 +160,33 @@ curl "https://www.centry.cl/conexion/v1/variants/<variant_id>.json" -H "Authoriz
 
 ```json
 {
-    "_id": "<Identificador de la variante>",
-    "barcode": "<Código de barras de la variante>",
-    "bulk_upload": false,
-    "color_id": "<Identificador del color>",
-    "color_name": "Azul",
-    "company_id": null,
-    "created_at": "2019-01-03T09:59:52.852-03:00",
-    "created_by_id": "5c2d1ae68f26c638ca60dc04",
-    "custom_data": null,
-    "description": "<Descripción>",
-    "id_mercadolibre": null,
-    "id_shopify": null,
-    "id_woocommerce": null,
-    "integrations": {},
-    "modifier_id": null,
-    "original_data": null,
-    "position": 0,
-    "price": null,
-    "price_compare": null,
-    "product_id": "<Identificador del producto>",
-    "quantity": 20,
-    "size_id": "<Identificador de la talla>",
-    "size_name": "S",
-    "sku": "<SKU de la variante>",
-    "updated_at": "2019-01-03T12:29:19.387-03:00",
-    "updated_by_id": "5c2d1ae68f26c638ca60dc04",
-    "version": 1
+  "_id": "<Identificador de la variante>",
+  "barcode": "<Código de barras de la variante>",
+  "bulk_upload": false,
+  "color_id": "<Identificador del color>",
+  "color_name": "Azul",
+  "company_id": null,
+  "created_at": "2019-01-03T09:59:52.852-03:00",
+  "created_by_id": "5c2d1ae68f26c638ca60dc04",
+  "custom_data": null,
+  "description": "<Descripción>",
+  "id_mercadolibre": null,
+  "id_shopify": null,
+  "id_woocommerce": null,
+  "integrations": {},
+  "modifier_id": null,
+  "original_data": null,
+  "position": 0,
+  "price": null,
+  "price_compare": null,
+  "product_id": "<Identificador del producto>",
+  "quantity": 20,
+  "size_id": "<Identificador de la talla>",
+  "size_name": "S",
+  "sku": "<SKU de la variante>",
+  "updated_at": "2019-01-03T12:29:19.387-03:00",
+  "updated_by_id": "5c2d1ae68f26c638ca60dc04",
+  "version": 1
 }
 ```
 
