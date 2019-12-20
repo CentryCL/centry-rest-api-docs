@@ -274,7 +274,7 @@ true
 <div class="api-endpoint">
   <div class="endpoint-data">
     <i class="label label-delete">DELETE</i>
-    <h6> https://www.centry.cl/conexion/v1/webhook/&lt;webhook_id&gt;.json </h6>
+    <h6> https://www.centry.cl/conexion/v1/webhooks/&lt;webhook_id&gt;.json </h6>
   </div>
 </div>
 
