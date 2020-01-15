@@ -571,6 +571,11 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td>URL de la imagen principal.</td>
 </tr>
 <tr>
+<td><code class="prettyprint">assets</code></td>
+<td>array</td>
+<td>Listado de imágenes secundarias del producto. Ver <a href="#atributos-de-las-im-genes">Atributos de imágenes</a></td>
+</tr>
+<tr>
 <td><code class="prettyprint">deliverytimesupplier</code></td>
 <td>integer</td>
 <td>Valor aproximado en días, de la llegada del producto al cliente</td>
@@ -653,7 +658,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">variants</code></td>
 <td>array</td>
-<td>Lista de variantes del producto. Ver <a href="#atributos-de-variantes">Atributos de variantes</a></td>
+<td>Lista de variantes del producto. Ver <a href="#atributos-de-las-variantes">Atributos de variantes</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">warranty</code></td>
@@ -725,6 +730,72 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td><code class="prettyprint">company_id</code></td>
 <td>integer</td>
 <td>Identificador de la empresa a la que pertenece la variante <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>date-time</td>
+<td>Fecha en formato UTC de la creación de la variante <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>date-time</td>
+<td>Registro de actualización en fecha formato UTC <i class="label label-info">sólo lectura</i></td>
+</tr>
+</tbody></table>
+
+<h3 id="atributos-de-las-im-genes">Atributos de las imágenes</h3>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador de la imagen. <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">alt</code></td>
+<td>string</td>
+<td>Texto alternativo para la imagen.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">image_url</code></td>
+<td>string</td>
+<td>URL de la imagen.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">image_content_type</code></td>
+<td>string</td>
+<td>Es el tipo de contenido de la imagen. Ej: &ldquo;image/jpeg&rdquo;. <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">image_file_name</code></td>
+<td>string</td>
+<td>Nombre del archivo de imagen. <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">image_file_size</code></td>
+<td>integer</td>
+<td>Tamaño de la imagen. <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">image_fingerprint</code></td>
+<td>string</td>
+<td>CheckSum de la imagen. <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">image_updated_at</code></td>
+<td>date-time</td>
+<td>Fecha de la última actualización del archivo de imagen. <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">position</code></td>
+<td>integer</td>
+<td>Posición de la imagen en el arreglo de imágenes.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">created_at</code></td>
