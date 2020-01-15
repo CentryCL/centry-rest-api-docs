@@ -19,6 +19,7 @@
 | `cover_fingerprint`    | string    | CheckSum de la imagen principal <i class="label label-info">sólo lectura</i>                             |
 | `cover_updated_at`     | date-time | Fecha de actualización de la imagen principal <i class="label label-info">sólo lectura</i>               |
 | `cover_url`            | string    | URL de la imagen principal.                                                                              |
+| `assets`               | array     | Listado de imágenes secundarias del producto. Ver [Atributos de imágenes](#atributos-de-las-im-genes)                                                                      |
 | `deliverytimesupplier` | integer   | Valor aproximado en días, de la llegada del producto al cliente                                          |
 | `gender_id`            | string    | Identificador del genero del producto                                                                    |
 | `is_fullproductname`   | boolean   | Indica si el nombre del producto está completo o acortado                                                |
@@ -35,7 +36,7 @@
 | `seo_title`            | string    | Meta título del producto. Usado para optimización SEO.                                                   |
 | `seo_description`      | string    | Meta descripción del producto. Usado para optimización SEO.                                              |
 | `status`               | boolean   | Estado del producto. `true`: Activo; `false`: Pausado.                                                   |
-| `variants`             | array     | Lista de variantes del producto. Ver [Atributos de variantes](#atributos-de-variantes)                   |
+| `variants`             | array     | Lista de variantes del producto. Ver [Atributos de variantes](#atributos-de-las-variantes)                   |
 | `warranty`             | integer   | Descripción de la garantía del producto                                                                  |
 | `company_id`           | integer   | Identificador de la compañía a la que pertenece el producto <i class="label label-info">sólo lectura</i> |
 | `created_at`           | date-time | Fecha de creación del producto en Centry <i class="label label-info">sólo lectura</i>                    |
@@ -55,6 +56,21 @@
 | `company_id`      | integer   | Identificador de la empresa a la que pertenece la variante <i class="label label-info">sólo lectura</i> |
 | `created_at`      | date-time | Fecha en formato UTC de la creación de la variante <i class="label label-info">sólo lectura</i>         |
 | `updated_at`      | date-time | Registro de actualización en fecha formato UTC <i class="label label-info">sólo lectura</i>             |
+
+###Atributos de las imágenes
+| Atributo              | Tipo      | Descripción                                                                                             |
+| --------------------- | --------- | --------------------------------------------------------------------------------------------------------|
+| `_id`                 | string    | Identificador de la imagen. <i class="label label-info">sólo lectura</i>                                |
+| `alt`                 | string    | Texto alternativo para la imagen.                                                                       |
+| `image_url`           | string    | URL de la imagen.                                                                                       |                  
+| `image_content_type`  | string    | Es el tipo de contenido de la imagen. Ej: "image/jpeg". <i class="label label-info">sólo lectura</i>    |
+| `image_file_name`     | string    | Nombre del archivo de imagen. <i class="label label-info">sólo lectura</i>                              |
+| `image_file_size`     | integer   | Tamaño de la imagen. <i class="label label-info">sólo lectura</i>                                       |
+| `image_fingerprint`   | string    | CheckSum de la imagen. <i class="label label-info">sólo lectura</i>                                     |
+| `image_updated_at`    | date-time | Fecha de la última actualización del archivo de imagen. <i class="label label-info">sólo lectura</i>    | 
+| `position`            | integer   | Posición de la imagen en el arreglo de imágenes.                                                        |
+| `created_at`          | date-time | Fecha en formato UTC de la creación de la variante <i class="label label-info">sólo lectura</i>         |
+| `updated_at`          | date-time | Registro de actualización en fecha formato UTC <i class="label label-info">sólo lectura</i>             |
 
 ## Todos los Productos de la cuenta
 
