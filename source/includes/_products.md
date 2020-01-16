@@ -61,8 +61,7 @@
 | Atributo              | Tipo      | Descripción                                                                                             |
 | --------------------- | --------- | --------------------------------------------------------------------------------------------------------|
 | `_id`                 | string    | Identificador de la imagen. <i class="label label-info">sólo lectura</i>                                |
-| `alt`                 | string    | Texto alternativo para la imagen.                                                                       |
-| `image_url`           | string    | URL de la imagen.                                                                                       |                  
+| `url`                 | string    | URL de la imagen.                                                                                       |                  
 | `image_content_type`  | string    | Es el tipo de contenido de la imagen. Ej: "image/jpeg". <i class="label label-info">sólo lectura</i>    |
 | `image_file_name`     | string    | Nombre del archivo de imagen. <i class="label label-info">sólo lectura</i>                              |
 | `image_file_size`     | integer   | Tamaño de la imagen. <i class="label label-info">sólo lectura</i>                                       |
