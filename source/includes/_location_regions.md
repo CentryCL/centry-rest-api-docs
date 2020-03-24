@@ -6,12 +6,12 @@ Atributo     | Tipo    | Descripción
 ------------ | ------- | -----------
 `_id`        | string  | Identificador de la región <i class="label label-info">sólo lectura</i>
 `name`       | string  | Nombre de la región en Centry <i class="label label-info">sólo lectura</i>
-`country_id` | string  | Identificador del país al que pertenece la región <i class="label label-info">sólo lectura</i>
-`position`   | integer | Posición de la región dentro del listado perteneciente a un país <i class="label label-info">sólo lectura</i>
+`country_id` | string  | Identificador dela región al que pertenece la región <i class="label label-info">sólo lectura</i>
+`position`   | integer | Posición de la región dentro del listado perteneciente a una región <i class="label label-info">sólo lectura</i>
 `created_at` | string  | Fecha de creación de la región en Centry <i class="label label-info">sólo lectura</i>
 `updated_at` | string  | Fecha de la última actualización <i class="label label-info">sólo lectura</i>
 
-## Todas los paises
+## Todas los Regiones
 
 Este endpoint entrega todas las regiones de Centry.
 
@@ -73,11 +73,11 @@ Solo pueden ser ocupados para este endpoint en particular.
 
 Filtro       | Descripción                                         | Ejemplo
 ------------ | --------------------------------------------------- | -------
-`country_id` | Busca regiones que pertenezcan a un país específico | https://www.centry.cl/conexion/v1/locations/regions.json?country_id=5769714df82f456e80000000
+`country_id` | Busca regiones que pertenezcan a una región específica | https://www.centry.cl/conexion/v1/locations/regions.json?country_id=5769714df82f456e80000000
 `name`       | Busca regiones por el nombre el nombre exacto       | https://www.centry.cl/conexion/v1/locations/regions.json?name=Región%20Metropolitana
 `position`   | Busca regiones que tengan una posición específica   | https://www.centry.cl/conexion/v1/locations/regions.json?position=3
 
-## Obtener un país específico
+## Obtener una región específica
 
 Este endpoint entrega una región específica.
 

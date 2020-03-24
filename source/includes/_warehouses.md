@@ -4,7 +4,7 @@
 
 | Atributo       | Tipo   | Descripción                                                                                         |
 | ---------------| ------ | --------------------------------------------------------------------------------------------------- |
-| `_id`          | string | Identificador del webhook <i class="label label-info">sólo lectura</i>                              |
+| `_id`          | string | Identificador del warehouse <i class="label label-info">sólo lectura</i>                              |
 | `name`         | string | Nombre con el cual se puede reconocer la bodega                                                     |
 | `address`      | string | Dirección donde se encuentra ubicada la bodega                                                      |
 | `country_id`   | string | Identificador del país. Ver endpoint [Countries](#countries)                                        |
@@ -15,8 +15,8 @@
 | `longitude`    | string | Número decimal con la longitud de la ubicación geográfica de la bodega                              |
 | `integrations` | object | Diccionario con información especializada para algunas integraciones                                |
 | `company_id`   | string | Identificador de empresa <i class="label label-info">sólo lectura</i>                               |
-| `created_at`   | string | Fecha de creación del webhook en Centry <i class="label label-info">sólo lectura</i>                |
-| `updated_at`   | string | Fecha de la última modificación del webhook en Centry  <i class="label label-info">sólo lectura</i> |
+| `created_at`   | string | Fecha de creación del warehouse en Centry <i class="label label-info">sólo lectura</i>                |
+| `updated_at`   | string | Fecha de la última modificación del warehouse en Centry  <i class="label label-info">sólo lectura</i> |
 
 ## Listar las bodegas de la cuenta
 
@@ -218,7 +218,7 @@ Parámetro      | Descripción
 -------------- | ------------------------------------------
 `warehouse_id` | El identificador de la bodega a actualizar
 
-## Eliminar un webhook
+## Eliminar un warehouse
 
 Este endpoint elimina permanentemente una bodega específica.
 
@@ -239,7 +239,7 @@ true
 <div class="api-endpoint">
   <div class="endpoint-data">
     <i class="label label-delete">DELETE</i>
-    <h6> https://www.centry.cl/conexion/v1/webhook/&lt;warehouse_id&gt;.json </h6>
+    <h6> https://www.centry.cl/conexion/v1/warehouses/&lt;warehouse_id&gt;.json </h6>
   </div>
 </div>
 
