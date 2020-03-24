@@ -234,6 +234,10 @@ información sobre los recursos registrados en nuestra base de datos.</p>
 <p>Puedes ver los códigos de ejemplo en la región oscura de la derecha y seleccionar el lenguaje de programación
 que más te acomode en las pestañas que se encuentran en la parte superior.</p>
 
+<p>Para descargar esta documentación y probarla vía postman descárgala en el siguiente link </p>
+
+<p><a href="https://app.getpostman.com/run-collection/49f16248109c2795d7a0#?env%5BCentry%20Enviroment%20%5D=W3sia2V5IjoiQXBwX0lEIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6IlNlY3JldF9LZXkiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiQ2FsbGJhY2tfVVJMIiwidmFsdWUiOiJ1cm46aWV0Zjp3ZzpvYXV0aDoyLjA6b29iIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJBdXRob3JpemF0aW9uX0NvZGUiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiQWNjZXNzX1Rva2VuIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6IlJlZnJlc2hfVG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiVVJMX0Jhc2UiLCJ2YWx1ZSI6Imh0dHBzOi8vd3d3LmNlbnRyeS5jbCIsImVuYWJsZWQiOnRydWV9XQ=="><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" /></a></p>
+
           <h1 id="aplicaciones-y-permisos">Aplicaciones y permisos</h1>
 
 <h2 id="oauth-2-0">OAuth 2.0</h2>
@@ -1501,7 +1505,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">_id</code></td>
 <td>string</td>
-<td>Identificador del webhook <i class="label label-info">sólo lectura</i></td>
+<td>Identificador del warehouse <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">name</code></td>
@@ -1556,12 +1560,12 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">created_at</code></td>
 <td>string</td>
-<td>Fecha de creación del webhook en Centry <i class="label label-info">sólo lectura</i></td>
+<td>Fecha de creación del warehouse en Centry <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">updated_at</code></td>
 <td>string</td>
-<td>Fecha de la última modificación del webhook en Centry  <i class="label label-info">sólo lectura</i></td>
+<td>Fecha de la última modificación del warehouse en Centry  <i class="label label-info">sólo lectura</i></td>
 </tr>
 </tbody></table>
 
@@ -1785,7 +1789,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-<h2 id="eliminar-un-webhook">Eliminar un webhook</h2>
+<h2 id="eliminar-un-warehouse">Eliminar un warehouse</h2>
 
 <p>Este endpoint elimina permanentemente una bodega específica.</p>
 <pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
@@ -1802,7 +1806,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 <div class="api-endpoint">
   <div class="endpoint-data">
     <i class="label label-delete">DELETE</i>
-    <h6> https://www.centry.cl/conexion/v1/webhook/&lt;warehouse_id&gt;.json </h6>
+    <h6> https://www.centry.cl/conexion/v1/warehouses/&lt;warehouse_id&gt;.json </h6>
   </div>
 </div>
 
@@ -2274,12 +2278,12 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 <tr>
 <td><code class="prettyprint">country_id</code></td>
 <td>string</td>
-<td>Identificador del país al que pertenece la región <i class="label label-info">sólo lectura</i></td>
+<td>Identificador dela región al que pertenece la región <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">position</code></td>
 <td>integer</td>
-<td>Posición de la región dentro del listado perteneciente a un país <i class="label label-info">sólo lectura</i></td>
+<td>Posición de la región dentro del listado perteneciente a una región <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">created_at</code></td>
@@ -2293,7 +2297,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-<h2 id="todas-los-paises">Todas los paises</h2>
+<h2 id="todas-los-regiones">Todas los Regiones</h2>
 
 <p>Este endpoint entrega todas las regiones de Centry.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/locations/regions.json"</span>/
@@ -2358,7 +2362,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">country_id</code></td>
-<td>Busca regiones que pertenezcan a un país específico</td>
+<td>Busca regiones que pertenezcan a una región específica</td>
 <td>https://www.centry.cl/conexion/v1/locations/regions.json?country_id=5769714df82f456e80000000</td>
 </tr>
 <tr>
@@ -2373,7 +2377,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-<h2 id="obtener-un-pa-s-espec-fico">Obtener un país específico</h2>
+<h2 id="obtener-una-regi-n-espec-fica">Obtener una región específica</h2>
 
 <p>Este endpoint entrega una región específica.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/locations/regions/&lt;region_id&gt;.json"</span>/
@@ -2452,7 +2456,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-<h2 id="todas-los-paises">Todas los paises</h2>
+<h2 id="todas-las-ciudades">Todas las Ciudades</h2>
 
 <p>Este endpoint entrega todas las ciudades de Centry.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/locations/cities.json"</span>/
@@ -2531,7 +2535,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-<h2 id="obtener-un-pa-s-espec-fico">Obtener un país específico</h2>
+<h2 id="obtener-una-ciudad-espec-fico">Obtener una ciudad específico</h2>
 
 <p>Este endpoint entrega una ciudad específica.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/locations/cities/&lt;city_id&gt;.json"</span>/
