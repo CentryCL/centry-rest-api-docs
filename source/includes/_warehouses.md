@@ -218,7 +218,7 @@ Parámetro      | Descripción
 -------------- | ------------------------------------------
 `warehouse_id` | El identificador de la bodega a actualizar
 
-## Eliminar un warehouse
+## Eliminar una bodega
 
 Este endpoint elimina permanentemente una bodega específica.
 

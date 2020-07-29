@@ -1,9 +1,9 @@
-#VariantWarehouses
+# VariantWarehouses
 
 Este modelo es el encargado de relacionar las variantes de un producto con las
 bodegas para llevar el control del stock.
 
-##Parámetros
+## Parámetros
 
 Atributo       | Tipo    | Descripción
 ---------------| ------- | -----------
@@ -17,7 +17,7 @@ Atributo       | Tipo    | Descripción
 `updated_at`   | string  | Fecha de la última modificación del registro en Centry <i class="label label-info">sólo lectura</i>
 `version`      | integer | Numero de versión del registro, va aumentando en la medida que se registran actualizaciones <i class="label label-info">sólo lectura</i>
 
-## Todas las VarianteBodegas de la cuenta
+## Todas las variante-bodegas de la cuenta
 
 Este endpoint entrega todas las relaciones variante-bodega de la cuenta.
 
@@ -94,7 +94,7 @@ Filtro         | Descripción                                            | Ejemp
 `variant_id`   | El identificador de la variante que se desea recuperar | https://www.centry.cl/conexion/v1/variant_warehouses.json?variant_id=5cc36d8748f039156b45f78e
 `warehouse_id` | El identificador de la bodega que se desea recuperar   | https://www.centry.cl/conexion/v1/variant_warehouses.json?warehouse_id=577eb7b8f82f456ef4000001
 
-## Crear un VarianteBodega
+## Crear una variante-bodega
 
 Este endpoint crea una relación variante-bodega en la cuenta.
 
@@ -119,7 +119,7 @@ curl -X POST \
   </div>
 </div>
 
-## Obtener una Variante específica
+## Obtener una variante-bodega específica
 
 Este endpoint entrega una relación variante-bodega en específica.
 
@@ -158,7 +158,7 @@ Parámetro              | Descripción
 ---------------------- | -----------------------------------------------------------
 `variant_warehouse_id` | El identificador de la relación variante-bodega a recuperar
 
-## Actualizar una Variante
+## Actualizar una variante-bodega
 
 Este endpoint actualiza una relación variante-bodega.
 

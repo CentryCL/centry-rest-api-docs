@@ -1,6 +1,6 @@
-#Companies
+# Companies
 
-##Parámetros
+## Parámetros
 
 Atributo | Tipo  | Descripción
 -------- | ----- | -----------
@@ -26,7 +26,7 @@ Atributo | Tipo  | Descripción
 `url` | string | Página de la empresa
 `users_count` | integer |
 
-##Obtener información de la empresa
+## Obtener información de la empresa
 
 Este endpoint entrega los detalles de la empresa
 

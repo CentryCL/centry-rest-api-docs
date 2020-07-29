@@ -1,4 +1,4 @@
-#Filters
+# Filters
 
 La siguiente tabla contiene parámetros URL útiles al momento de enviar un request GET list, el cual termina en una lista detallada de los datos que se quieren obtener. La utilización de valores previamente conocidos pueden ayudar a los procesos de búsqueda y recopilación de información.
 

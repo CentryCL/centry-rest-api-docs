@@ -9,7 +9,7 @@
 | `created_at` | string | Registro de creación de color en Centry <i class="label label-info">sólo lectura</i>  |
 | `updated_at` | string | Registro de última actualización <i class="label label-info">sólo lectura</i>         |
 
-## Todos los Colores
+## Todos los colores
 
 Este endpoint entrega todos los colores de Centry.
 
@@ -51,7 +51,7 @@ curl "https://www.centry.cl/conexion/v1/colors.json"/
 
 Si se desean obtener resultados más específicos para este endpoint, se puede precisar la request agregando parámetros a la URL de la forma https://www.centry.cl/conexion/v1/colors.json?&lt;filter&gt;=&lt;valor&gt; como se muestra en el capítulo **Filters** al final de la documentación. Además, de ser necesario algunos filtros pueden ser concatenados de la forma https://www.centry.cl/conexion/v1/colors.json?&lt;filter&gt;=&lt;valor&gt;&&lt;filter&gt;=&lt;valor&gt;&...
 
-## Obtener una Color específico
+## Obtener un color específico
 
 Este endpoint entrega un color específico.
 

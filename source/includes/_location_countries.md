@@ -11,7 +11,7 @@ Atributo     | Tipo   | Descripción
 `created_at` | string | Fecha de creación del país en Centry <i class="label label-info">sólo lectura</i>
 `updated_at` | string | Fecha de la última actualización <i class="label label-info">sólo lectura</i>
 
-## Todas los paises
+## Todos los países
 
 Este endpoint entrega todas los países de Centry.
 

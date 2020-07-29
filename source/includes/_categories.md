@@ -9,7 +9,7 @@
 | `created_at` | string | Registro de creación de la categoría <i class="label label-info">sólo lectura</i>  |
 | `updated_at` | string | Registro de última actualización <i class="label label-info">sólo lectura</i>      |
 
-## Todas las Categorías
+## Todas las categorías
 
 Este endpoint entrega todas las categorías de Centry.
 
@@ -58,7 +58,7 @@ Filtro       | Descripción                                     | Ejemplo
 ------------ | ----------------------------------------------- | -------
 `filtered_used_by_company`        | Muestra sólo las categorías usadas actualmente por la empresa    | https://www.centry.cl/conexion/v1/categories.json?created_at=2017-09-13T21:00:00.000-03:00&filtered_used_by_company
 
-## Obtener una Categoría específica
+## Obtener una categoría específica
 
 Este endpoint entrega una categoría específica.
 

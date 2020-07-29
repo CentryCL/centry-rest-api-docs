@@ -49,7 +49,7 @@
 | `_id`             | string    | Identificador de la variante <i class="label label-info">sólo lectura</i>                               |
 | `sku`             | string    | SKU de la variante                                                                                      |
 | `barcode`         | string    | Código de barras                                                                                        |
-| `product_id`      | integer   | Identificador del Producto en Centry <i class="label label-info">sólo lectura</i>                       |
+| `product_id`      | integer   | Identificador del producto en Centry <i class="label label-info">sólo lectura</i>                       |
 | `size_id`         | integer   | Identificador de la talla                                                                               |
 | `quantity`        | integer   | Stock de la variante. <i class="label label-info">deprecado</i>                                         |
 | `color_id`        | integer   | Identificador del color                                                                                 |
@@ -71,7 +71,7 @@
 | `created_at`          | date-time | Fecha en formato UTC de la creación de la variante <i class="label label-info">sólo lectura</i>         |
 | `updated_at`          | date-time | Registro de actualización en fecha formato UTC <i class="label label-info">sólo lectura</i>             |
 
-## Todos los Productos de la cuenta
+## Todos los productos de la cuenta
 
 Este endpoint entrega todos los productos de la cuenta.
 
@@ -162,7 +162,7 @@ curl "https://www.centry.cl/conexion/v1/products.json"/
 
 Si se desean obtener resultados más específicos para este endpoint, se puede precisar la request agregando parámetros a la URL de la forma https://www.centry.cl/conexion/v1/products.json?&lt;filter&gt;=&lt;valor&gt; como se muestra en el capítulo **Filters** al final de la documentación. Además, de ser necesario algunos filtros pueden ser concatenados de la forma https://www.centry.cl/conexion/v1/products.json?&lt;filter&gt;=&lt;valor&gt;&&lt;filter&gt;=&lt;valor&gt;&...
 
-## Obtener un Producto específico
+## Obtener un producto específico
 
 Este endpoint entrega un producto en específico.
 
@@ -253,7 +253,7 @@ Parámetro    | Descripción
 ------------ | -----------------------------------------
 `product_id` | El identificador del producto a recuperar
 
-## Crear un Producto
+## Crear un producto
 
 Este endpoint crea un producto.
 
@@ -292,7 +292,7 @@ curl -X POST https://www.centry.cl/conexion/v1/products.json \
   </div>
 </div>
 
-## Actualizar un Producto
+## Actualizar un producto
 
 Este endpoint actualiza un producto.
 
@@ -321,7 +321,7 @@ Parámetro    | Descripción
 ------------ | ------------------------------------------
 `product_id` | El identificador del producto a actualizar
 
-## Eliminar un Producto
+## Eliminar un producto
 
 Este endpoint elimina un producto.
 
@@ -352,7 +352,7 @@ Parámetro    | Descripción
 ------------ | ----------------------------------------
 `product_id` | El identificador del producto a eliminar
 
-## Contar los Productos
+## Contar los productos
 
 Este endpoint entrega la cantidad de productos.
 

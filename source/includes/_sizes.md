@@ -9,7 +9,7 @@
 | `created_at` | string | Registro de creación de la talla en Centry <i class="label label-info">sólo lectura</i> |
 | `updated_at` | string | Registro de última actualización <i class="label label-info">sólo lectura</i>           |
 
-## Todas las Tallas
+## Todas las tallas
 
 Este endpoint entrega todas las tallas de Centry
 
@@ -50,7 +50,7 @@ curl "https://www.centry.cl/conexion/v1/sizes.json"/
 
 Si se desean obtener resultados más específicos para este endpoint, se puede precisar la request agregando parámetros a la URL de la forma https://www.centry.cl/conexion/v1/sizes.json?&lt;filter&gt;=&lt;valor&gt; como se muestra en el capítulo **Filters** al final de la documentación. Además, de ser necesario algunos filtros pueden ser concatenados de la forma https://www.centry.cl/conexion/v1/sizes.json?&lt;filter&gt;=&lt;valor&gt;&&lt;filter&gt;=&lt;valor&gt;&...
 
-## Obtener una Talla específica
+## Obtener una talla específica
 
 Este endpoint entrega una talla  específica
 

@@ -9,7 +9,7 @@
 | `created_at` | string | Registro de creación de la marca en Centry <i class="label label-info">sólo lectura</i>  |
 | `updated_at` | string | Registro de última actualización <i class="label label-info">sólo lectura</i>            |
 
-## Todas las Marcas
+## Todas las marcas
 
 Este endpoint entrega todas las marcas de Centry.
 
@@ -59,7 +59,7 @@ Filtro       | Descripción                                     | Ejemplo
 ------------ | ----------------------------------------------- | -------
 `filtered_used_by_company`        | Muestra sólo las marcas usadas actualmente por la empresa    | https://www.centry.cl/conexion/v1/brands.json?created_at=2017-09-13T21:00:00.000-03:00&filtered_used_by_company
 
-## Obtener una Marca específica
+## Obtener una marca específica
 
 Este endpoint entrega una marca específico.
 

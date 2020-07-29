@@ -1,6 +1,6 @@
-#Variants
+# Variants
 
-##Parámetros
+## Parámetros
 
 Atributo        | Tipo      | Descripción
 ----------------| --------- | -----------
@@ -28,30 +28,7 @@ Atributo        | Tipo      | Descripción
 `updated_by_id` | string    | Identificador del usuario que modificó por última vez el registro <i class="label label-info">sólo lectura</i>
 `version`       | int       | Numero de versión del registro, va aumentando en la medida que se registran actualizaciones <i class="label label-info">sólo lectura</i>
 
-
-## Actualizar por SKU
-
-Este endpoint actualiza la variante de un producto.
-
-```shell
-curl -X PUT https://www.centry.cl/conexion/v1/variants/sku.json \
-  -H 'Authorization: Bearer <access_token>' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "sku": "<SKU de la variante a actualizar>",
-    "quantity": 20
-}'
-```
-### HTTP Request
-
-<div class="api-endpoint">
-  <div class="endpoint-data">
-    <i class="label label-put">PUT</i>
-    <h6> https://www.centry.cl/conexion/v1/variants/sku.json </h6>
-  </div>
-</div>
-
-## Todas las Variantes de la cuenta
+## Todas las variantes de la cuenta
 
 Este endpoint entrega todas las variantes de los productos de la cuenta.
 
@@ -117,7 +94,7 @@ Filtro       | Descripción                                     | Ejemplo
 ------------ | ----------------------------------------------- | -------
 `sku`        | El sku de la variante que se desea recuperar    | https://www.centry.cl/conexion/v1/variants.json?sku=00_1
 
-## Crear una Variante
+## Crear una variante
 
 Este endpoint crea una variante de un producto.
 
@@ -148,7 +125,7 @@ curl -X POST \
   </div>
 </div>
 
-## Obtener una Variante específica
+## Obtener una variante específica
 
 Este endpoint entrega una variante en específico.
 
@@ -205,7 +182,7 @@ Parámetro    | Descripción
 ------------ | -----------------------------------------
 `variant_id` | El identificador de la variante a recuperar
 
-## Actualizar una Variante
+## Actualizar una variante
 
 Este endpoint actualiza una variante.
 
@@ -234,7 +211,29 @@ Parámetro    | Descripción
 ------------ | ------------------------------------------
 `variant_id` | El identificador de la variante a actualizar
 
-## Eliminar una Variante
+## Actualizar por SKU
+
+Este endpoint actualiza la variante de un producto.
+
+```shell
+curl -X PUT https://www.centry.cl/conexion/v1/variants/sku.json \
+  -H 'Authorization: Bearer <access_token>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "sku": "<SKU de la variante a actualizar>",
+    "quantity": 20
+}'
+```
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-put">PUT</i>
+    <h6> https://www.centry.cl/conexion/v1/variants/sku.json </h6>
+  </div>
+</div>
+
+## Eliminar una variante
 
 Este endpoint elimina una variante.
 
@@ -261,5 +260,5 @@ true
 ### Parámetros URL
 
 Parámetro    | Descripción
------------- | ----------------------------------------
+------------ | ------------------------------------------
 `variant_id` | El identificador de la variante a eliminar

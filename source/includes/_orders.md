@@ -88,7 +88,7 @@ Este recurso almacena tanto información de una dirección como de una persona d
 | `created_at`         | date-time | Fecha de creación de este elemento <i class="label label-info">sólo lectura</i> |
 | `updated_at`         | date-time | Fecha de actualización <i class="label label-info">sólo lectura</i>             |
 
-## Todas las Ordenes de la cuenta
+## Todas las órdenes de la cuenta
 
 Este endpoint entrega todas las ordenes de la cuenta.
 
@@ -314,7 +314,7 @@ Filtro          | Descripción                                     | Ejemplo
 `id_origin`     | Filtra los resultados en base al identificador de origen | https://www.centry.cl/conexion/v1/orders.json?id_origin=100001
 `number_origin` | Filtra los resultados en base el número del pedido. Es importante tener presente de que no todas las integraciones entregan este dato | https://www.centry.cl/conexion/v1/orders.json?number_origin=5840001
 
-## Obtener una Orden específica
+## Obtener una orden específica
 
 Este endpoint entrega una orden específica.
 
@@ -435,7 +435,7 @@ Parámetro  | Descripción
 ---------- | ----------------------------------------
 `order_id` | El identificador de la orden a recuperar
 
-## Crear una Orden
+## Crear una orden
 
 Este endpoint crea una orden.
 
@@ -494,7 +494,7 @@ curl -X POST https://www.centry.cl/conexion/v1/orders.json \
   </div>
 </div>
 
-## Eliminar una Orden
+## Eliminar una orden
 
 Este endpoint elimina una orden.
 

@@ -10,7 +10,7 @@ Atributo     | Tipo    | Descripción
 `created_at` | string  | Fecha de creación de la ciudad en Centry <i class="label label-info">sólo lectura</i>
 `updated_at` | string  | Fecha de la última actualización <i class="label label-info">sólo lectura</i>
 
-## Todas las Ciudades
+## Todas las ciudades
 
 Este endpoint entrega todas las ciudades de Centry.
 
@@ -79,7 +79,7 @@ Filtro      | Descripción                                            | Ejemplo
 `region_id` | Busca ciudades que pertenezcan a una región específica | https://www.centry.cl/conexion/v1/locations/cities.json?region_id=5769714df82f456e80000001
 `name`      | Busca ciudades por el nombre el nombre exacto          | https://www.centry.cl/conexion/v1/locations/cities.json?name=Santiago
 
-## Obtener una ciudad específico
+## Obtener una ciudad específica
 
 Este endpoint entrega una ciudad específica.
 

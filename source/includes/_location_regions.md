@@ -6,12 +6,12 @@ Atributo     | Tipo    | Descripción
 ------------ | ------- | -----------
 `_id`        | string  | Identificador de la región <i class="label label-info">sólo lectura</i>
 `name`       | string  | Nombre de la región en Centry <i class="label label-info">sólo lectura</i>
-`country_id` | string  | Identificador dela región al que pertenece la región <i class="label label-info">sólo lectura</i>
+`country_id` | string  | Identificador de la región al que pertenece la región <i class="label label-info">sólo lectura</i>
 `position`   | integer | Posición de la región dentro del listado perteneciente a una región <i class="label label-info">sólo lectura</i>
 `created_at` | string  | Fecha de creación de la región en Centry <i class="label label-info">sólo lectura</i>
 `updated_at` | string  | Fecha de la última actualización <i class="label label-info">sólo lectura</i>
 
-## Todas los Regiones
+## Todas las regiones
 
 Este endpoint entrega todas las regiones de Centry.
 

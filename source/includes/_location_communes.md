@@ -10,7 +10,7 @@ Atributo     | Tipo    | Descripción
 `created_at` | string  | Fecha de creación de la comuna en Centry <i class="label label-info">sólo lectura</i>
 `updated_at` | string  | Fecha de la última actualización <i class="label label-info">sólo lectura</i>
 
-## Todas los paises
+## Todas las comunas
 
 Este endpoint entrega todas las comunas de Centry.
 
@@ -75,7 +75,7 @@ Filtro    | Descripción                                           | Ejemplo
 `city_id` | Busca comunas que pertenezcan a una ciudad específica | https://www.centry.cl/conexion/v1/locations/communes.json?city_id=5769714df82f456e80000011
 `name`    | Busca comunas por el nombre el nombre exacto          | https://www.centry.cl/conexion/v1/locations/communes.json?name=Pica
 
-## Obtener un país específico
+## Obtener una comuna específica
 
 Este endpoint entrega una comuna específica.
 

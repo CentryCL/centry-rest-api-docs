@@ -1,6 +1,6 @@
-#Users
+# Users
 
-##Parámetros
+## Parámetros
 
 Atributo | Tipo  | Descripción
 -------- | ----- | -----------
@@ -35,7 +35,7 @@ Atributo | Tipo  | Descripción
 `updated_at` | date-time | Fecha de actualización
 `user_group_id` | string |
 
-##Obtener información del usuario
+## Obtener información del usuario
 
 Este endpoint entrega los detalles del usuario
 
