@@ -23,11 +23,12 @@
 | `original_data`      | string    | Es un JSON codificado como string con toda la información tal cual como viene en la plataforma de origen                                      |
 | `id_origin`          | string    | Identificador del pedido en la plataforma de Origen                                                                                           |
 | `number_origin`      | string    | Número del pedido con el que se maneja la orden en la plataforma de origen                                                                    |
+| `id_pack`            | string    | Identificador de paquete asociado al pedido                                                                                                   |
 | `url_origin`         | string    | URL desde la cual puede ser accedida la orden en la plataforma de origen                                                                      |
 | `total_amount`       | float     | Monto total de los productos comprados                                                                                                        |
 | `shipping_amount`    | float     | Costo del despacho del pedido                                                                                                                 |
 | `discount_amount`    | float     | Suma total de los descuentos aplicados a los productos del pedido                                                                             |
-| `paid_amount`        | float     | Monto total pagado por el cliente. En un caso ideal es igual a `total_amount + shipping_amount - discount_amount`                             |
+| `paid_amount` [^1]   | float     | Monto total pagado por el cliente. En un caso ideal es igual a `total_amount + shipping_amount - discount_amount`                             |
 | `date_for_delivery`  | date-time | Fecha estimada en la que se espera despachar el pedido                                                                                        |
 | `date_for_reception` | date-time | Fecha estimada en la que se espera que el cliente reciba el pedido                                                                            |
 | `received_date`      | date-time | Fecha en el que el cliente recibe la orden                                                                                                    |
@@ -38,6 +39,8 @@
 | `updated_at`         | date-time | Fecha de la ultima actualización a la orden en Centry <i class="label label-info">sólo lectura</i>                                            |
 | `created_at_origin`  | date-time | Fecha de creación de la orden en la plataforma de origen <i class="label label-info">sólo lectura</i>                                         |
 | `updated_at_origin`  | date-time | Fecha de la ultima actualización a la orden en la plataforma de origen <i class="label label-info">sólo lectura</i>                           |
+
+[^1]: Si el atributo `paid_amount` tiene un valor, quiere decir que el pedido está pagado total o parcialmente.
 
 ### Formulario de direcciones
 
