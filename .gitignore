@@ -22,5 +22,6 @@ build/
 _yardoc
 doc/
 .idea/
+.vscode/
 ruby/
 

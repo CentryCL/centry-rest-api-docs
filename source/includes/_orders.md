@@ -97,7 +97,7 @@ Este endpoint entrega todas las ordenes de la cuenta.
 
 ```shell
 curl "https://www.centry.cl/conexion/v1/orders.json"/
- -H "Authorization: Bearer  <access_token> "
+ -H "Authorization: Bearer  <access_token>"
 ```
 
 > Lo anterior retorna un JSON estructurado de la siguiente manera:
@@ -323,7 +323,7 @@ Este endpoint entrega una orden específica.
 
 ```shell
 curl "https://www.centry.cl/conexion/v1/orders/096ef853335bc7e6df20c8ba.json"/
- -H "Authorization: Bearer  <access_token> "
+ -H "Authorization: Bearer  <access_token>"
 ```
 
 > Lo anterior retorna un JSON estructurado de la siguiente manera:
@@ -533,7 +533,7 @@ Este endpoint recibe identificadores de pedidos y retorna un listado de document
 
 ```shell
 curl "https://www.centry.cl/conexion/v1/orders/shipping_labels.json?ids[]=096ef853335bc7e6df20c8ba"/
- -H "Authorization: Bearer  <access_token> "
+ -H "Authorization: Bearer  <access_token>"
 ```
 
 > Lo anterior retorna un JSON estructurado de la siguiente manera:
@@ -585,3 +585,246 @@ Llave  | Descripción
 ---------- | ----------------------------------------
 `orders`      | Un arreglo de objetos con información de los los pedidos involucrados en los documentos adjuntos, esta información es: `_id`: identificador del pedido en centry, `origin`: Nombre de la plataforma de desde donde se origió el pedido, `id_origin`: identificador del pedido en la plataforma de origen, `extras` información relevante que pudiera servir para cada integración. Este último campo vaía de plataforma en plataforma, por ejemplo para mercado libre entrega un objeto `shipping` con el identificador del despacho, mientras que en Dafiti o Linio entrega un arreglo llamado `order_item_ids` con los identificadores de las líneas del pedido.
 `files` | un listado de objetos con los documentos asociados, estos objetos están compuesto de 3 campos: `content_type` el mime type del archivo adjunto, `filename` un nombre de fantasía que describe el documento, `content_base_64` el contenidop del documento codifficado en base 64.
+
+## Confirmación de un pedido pendiente
+
+Este endpoint permite confirmar un pedido pendiente para aquellas integraciones que así lo admiten. Estas integraciones son:
+
+* Falabella Marketplace
+
+```shell
+curl "https://www.centry.cl/conexion/v1/orders/5eece46148f039166bf5ffad/order_status/confirmations.json" \
+     -H "Authorization: Bearer  <access_token>" \
+     -d '{
+    "boxes": [
+        {
+            "dimensions": {
+                "length": 10.0,
+                "width": 11.0,
+                "height": 12.0,
+                "weight": 1.5
+            },
+            "items": {
+                "sku_ejemplo_1": 1,
+                "sku_ejemplo_2": 1
+            }
+        }
+    ]
+}'
+```
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+{
+  "_id": "5eece7c248f0390feef121c4",
+  "boxes": [
+    {
+      "_id": "5f119e7948f03956a204f3bf",
+      "skus": [
+        {
+          "_id": "5f119e8f48f03956a204f3c0",
+          "sku": "sku_ejemplo_1",
+          "quantity": 1
+        },
+        {
+          "_id": "5f119e8f48f03956a204f3c1",
+          "sku": "sku_ejemplo_2",
+          "quantity": 1
+        }
+      ],
+      "length": 10.0,
+      "width": 11.0,
+      "height": 12.0,
+      "weight": 1.5
+    }
+  ],
+  "order_id": "5eece46148f039166bf5ffad",
+  "success_response": {
+    "uuid": "e8352482-1acb-4997-9759-cf5f4b3ceb8b",
+    "status": "DONE",
+    "errors": []
+  },
+  "failed_attempts": [],
+  "created_at": "2020-06-19T08:28:50.880-08:00"
+}
+```
+
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/<order_id>/order_status/confirmations.json </h6>
+  </div>
+</div>
+
+### Parámetros URL
+
+Parámetro  | Descripción
+---------- | ------------------------------------
+`order_id` | Identificador de un pedido en Centry
+
+### Body request
+
+Parámetro | Descripción
+--------- | ------------------------------------
+`boxes` | Listado de cajas, paquetes o bultos que componen el pedido
+`boxes.dimensions` | Diccionario con las longitudes y peso del bulto
+`boxes.dimensions.length` | Largo del bulto medido en centrímetros
+`boxes.dimensions.width` | Ancho del bulto medido en centrímetros
+`boxes.dimensions.height` | Alto del bulto medido en centrímetros
+`boxes.dimensions.weight` | Peso del bulto medido en kilogramos
+`boxes.items` | Diccionario con el listado de todos los productos que componen el bulto. Cada llave es el SKU del producto y los valores son las unidades de cada SKU
+
+### Body response
+
+Parámetro | Descripción
+--------- | ------------------------------------
+`_id` | Identificador de la confirmación en Centry
+`order_id` | Identificador del pedido asociado a esta confirmación
+`boxes` | Listado de cajas, paquetes o bultos que componen el pedido
+`success_response` | Diccionario con la respuesta entregada por la plataforma de origen del pedido. No existe un formato predefinido para este campo, depende de cada integración y puede cambiar sin previo aviso. Lo más relevante es que su presencia indica que la confirmación ha resultado exitosa.
+`failed_attempts` | Listado con todos los intentos fallidos que ha tenido esta confirmación en la plataforma de origen del pedido.
+`created_at` | fecha de creación de la confirmación
+
+## Reagendamiento de un pedido pendiente
+
+Este endpoint permite reagendar un pedido pendiente para aquellas integraciones que así lo admiten. Estas integraciones son:
+
+* Falabella Marketplace
+
+```shell
+curl "https://www.centry.cl/conexion/v1/orders/5eece46148f039166bf5ffad/order_status/reschedules.json" \
+     -H "Authorization: Bearer  <access_token>" \
+     -d '{
+    "date": "2021-02-31"
+}'
+```
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+{
+  "_id": "5eeba37348f03925389e5a20",
+  "order_id": "5eeba0ad48f039354aa785ac",
+  "success_response": {
+    "uuid": "0f2ca23b-10be-4237-bf03-74f521fb1ee8",
+    "status": "DONE",
+    "errors": []
+  },
+  "failed_attempts": [],
+  "created_at": "2020-06-18T09:25:07.451-08:00"
+}
+```
+
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/<order_id>/order_status/reschedules.json </h6>
+  </div>
+</div>
+
+### Parámetros URL
+
+Parámetro  | Descripción
+---------- | ------------------------------------
+`order_id` | Identificador de un pedido en Centry
+
+### Body request
+
+Parámetro | Descripción
+----------| ------------------------------------
+`date` | Nueva fecha con la que se quiere reagendar el pedido.
+
+### Body response
+
+Parámetro | Descripción
+--------- | ------------------------------------
+`_id` | Identificador del reagendamiento en Centry
+`order_id` | Identificador del pedido asociado a este reagendamiento
+`date` | Fecha solicidata para reagendar
+`success_response` | Diccionario con la respuesta entregada por la plataforma de origen del pedido. No existe un formato predefinido para este campo, depende de cada integración y puede cambiar sin previo aviso. Lo más relevante es que su presencia indica que el reagendamiento ha resultado exitoso.
+`failed_attempts` | Listado con todos los intentos fallidos que ha tenido este reagendamiento en la plataforma de origen del pedido.
+`created_at` | fecha de creación del reagendamiento
+
+## Anulación de un pedido pendiente
+
+Este endpoint permite anular un pedido pendiente para aquellas integraciones que así lo admiten. Estas integraciones son:
+
+* Falabella Marketplace
+* Mercado Libre
+* Dafiti
+* Linio
+* Shopify
+
+```shell
+curl "https://www.centry.cl/conexion/v1/orders/5eece46148f039166bf5ffad/order_status/cancellations.json" \
+     -H "Authorization: Bearer  <access_token>" \
+     -d '{
+    "buyer_rate_id": "5e45b03d48f0392442dbd1bc",
+    "reason_id": "5e45b03c48f0392442dbd1a6",
+    "message": "Solicitud del cliente",
+    "restock": true
+}'
+```
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+{
+  "_id": "5eeba37348f03925389e5a20",
+  "buyer_rate_id": "5e45b03d48f0392442dbd1bc",
+  "order_id": "5eeba0ad48f039354aa785ac",
+  "reason_id": "5e45b03c48f0392442dbd1a6",
+  "message": "Solicitud del cliente",
+  "restock": true,
+  "success_response": {
+    "uuid": "0f2ca23b-10be-4237-bf03-74f521fb1ee8",
+    "status": "DONE",
+    "errors": []
+  },
+  "failed_attempts": [],
+  "created_at": "2020-06-18T09:25:07.451-08:00"
+}
+```
+
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/<order_id>/order_status/cancellations.json </h6>
+  </div>
+</div>
+
+### Parámetros URL
+
+Parámetro  | Descripción
+---------- | ------------------------------------
+`order_id` | Identificador de un pedido en Centry
+
+### Body request
+
+Parámetro | Descripción
+----------| ------------------------------------
+`buyer_rate_id` | Identificado de la calificación del comprador [BuyerRates](#buyerrates)
+`reason_id` | Identificador del motivo de anulación [CancellationReasons](#cancellationreasons)
+`message` | Texto con la justificación de la anulación del pedido
+`restock` | Boolean que indica si se requiere reponer (`true`) o no (`false`) el stock. Está opción se puede usar dependiendo de si lo admite el motivo de anulación
+
+### Body response
+
+Parámetro  | Descripción
+---------- | ------------------------------------
+`_id` | Identificador de la anulación en Centry
+`order_id` | Identificador del pedido asociado a esta anulación
+`buyer_rate_id` | Identificado de la calificación del comprador
+`reason_id` | Identificador del motivo de anulación
+`message` | Texto con la justificación de la anulación del pedido
+`restock` | Boolean que indica si se requiere reponer (`true`) o no (`false`) el stock.
+`success_response` | Diccionario con la respuesta entregada por la plataforma de origen del pedido. No existe un formato predefinido para este campo, depende de cada integración y puede cambiar sin previo aviso. Lo más relevante es que su presencia indica que la anulación ha resultado exitosa.
+`failed_attempts` | Listado con todos los intentos fallidos que ha tenido esta anulación en la plataforma de origen del pedido.
+`created_at` | fecha de creación de la anulación

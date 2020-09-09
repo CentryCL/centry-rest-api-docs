@@ -14,15 +14,17 @@ includes:
   - variants
   - warehouses
   - variant_warehouses
+  - categories
+  - brands
+  - colors
+  - sizes
   - location_countries
   - location_regions
   - location_cities
   - location_communes
   - orders
-  - categories
-  - brands
-  - colors
-  - sizes
+  - buyer_rates
+  - cancellation_reasons
   - integration_configs
   - company
   - user
