@@ -236,8 +236,6 @@ que más te acomode en las pestañas que se encuentran en la parte superior.</p>
 
 <p>Para descargar esta documentación y probarla vía postman descárgala en el siguiente link </p>
 
-<p><a href="https://app.getpostman.com/run-collection/49f16248109c2795d7a0#?env%5BCentry%20Enviroment%20%5D=W3sia2V5IjoiQXBwX0lEIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6IlNlY3JldF9LZXkiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiQ2FsbGJhY2tfVVJMIiwidmFsdWUiOiJ1cm46aWV0Zjp3ZzpvYXV0aDoyLjA6b29iIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJBdXRob3JpemF0aW9uX0NvZGUiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiQWNjZXNzX1Rva2VuIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6IlJlZnJlc2hfVG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiVVJMX0Jhc2UiLCJ2YWx1ZSI6Imh0dHBzOi8vd3d3LmNlbnRyeS5jbCIsImVuYWJsZWQiOnRydWV9XQ=="><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" /></a></p>
-
           <h1 id="aplicaciones-y-permisos">Aplicaciones y permisos</h1>
 
 <h2 id="oauth-2-0">OAuth 2.0</h2>
@@ -713,7 +711,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">product_id</code></td>
 <td>integer</td>
-<td>Identificador del Producto en Centry <i class="label label-info">sólo lectura</i></td>
+<td>Identificador del producto en Centry <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">size_id</code></td>
@@ -808,7 +806,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 </tr>
 </tbody></table>
 
-<h2 id="todos-los-productos-de-la-cuenta">Todos los Productos de la cuenta</h2>
+<h2 id="todos-los-productos-de-la-cuenta">Todos los productos de la cuenta</h2>
 
 <p>Este endpoint entrega todos los productos de la cuenta.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/products.json"</span>/
@@ -895,7 +893,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 
 <p>Si se desean obtener resultados más específicos para este endpoint, se puede precisar la request agregando parámetros a la URL de la forma https://www.centry.cl/conexion/v1/products.json?&lt;filter&gt;=&lt;valor&gt; como se muestra en el capítulo <strong>Filters</strong> al final de la documentación. Además, de ser necesario algunos filtros pueden ser concatenados de la forma https://www.centry.cl/conexion/v1/products.json?&lt;filter&gt;=&lt;valor&gt;&amp;&lt;filter&gt;=&lt;valor&gt;&amp;&hellip;</p>
 
-<h2 id="obtener-un-producto-espec-fico">Obtener un Producto específico</h2>
+<h2 id="obtener-un-producto-espec-fico">Obtener un producto específico</h2>
 
 <p>Este endpoint entrega un producto en específico.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;.json"</span> -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span>
@@ -990,7 +988,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 </tr>
 </tbody></table>
 
-<h2 id="crear-un-producto">Crear un Producto</h2>
+<h2 id="crear-un-producto">Crear un producto</h2>
 
 <p>Este endpoint crea un producto.</p>
 <pre class="highlight shell tab-shell"><code>curl -X POST https://www.centry.cl/conexion/v1/products.json <span class="se">\</span>
@@ -1000,8 +998,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
     "barcode":"123456789",
     "brand_id":"57f63ffe4c266d1dec1edfb6",
     "category_id":"5769714df82f456e800001aa",
-    "company_id":&lt;ID_de_tu_empresa&gt;,
-    "cover_url":&lt;imagen_producto&gt;,
+    "cover_url": "https://placehold.it/800x1160",
     "deliverytimesupplier":3,
     "description":"Describiendo el asombroso producto que venderás",
     "name":"Un Nombre Fantástico, para un producto fantástico",
@@ -1026,7 +1023,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
   </div>
 </div>
 
-<h2 id="actualizar-un-producto">Actualizar un Producto</h2>
+<h2 id="actualizar-un-producto">Actualizar un producto</h2>
 
 <p>Este endpoint actualiza un producto.</p>
 <pre class="highlight shell tab-shell"><code>curl -X PUT https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;.json <span class="se">\</span>
@@ -1060,7 +1057,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 </tr>
 </tbody></table>
 
-<h2 id="eliminar-un-producto">Eliminar un Producto</h2>
+<h2 id="eliminar-un-producto">Eliminar un producto</h2>
 
 <p>Este endpoint elimina un producto.</p>
 <pre class="highlight shell tab-shell"><code>curl -X DELETE https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;.json <span class="se">\</span>
@@ -1094,7 +1091,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 </tr>
 </tbody></table>
 
-<h2 id="contar-los-productos">Contar los Productos</h2>
+<h2 id="contar-los-productos">Contar los productos</h2>
 
 <p>Este endpoint entrega la cantidad de productos.</p>
 <pre class="highlight shell tab-shell"><code>curl -X GET https://www.centry.cl/conexion/v1/products/count.json <span class="se">\</span>
@@ -1242,27 +1239,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 </tr>
 </tbody></table>
 
-<h2 id="actualizar-por-sku">Actualizar por SKU</h2>
-
-<p>Este endpoint actualiza la variante de un producto.</p>
-<pre class="highlight shell tab-shell"><code>curl -X PUT https://www.centry.cl/conexion/v1/variants/sku.json <span class="se">\</span>
-  -H <span class="s1">'Authorization: Bearer &lt;access_token&gt;'</span> <span class="se">\</span>
-  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  -d <span class="s1">'{
-    "sku": "&lt;SKU de la variante a actualizar&gt;",
-    "quantity": 20
-}'</span>
-</code></pre>
-<h3 id="http-request">HTTP Request</h3>
-
-<div class="api-endpoint">
-  <div class="endpoint-data">
-    <i class="label label-put">PUT</i>
-    <h6> https://www.centry.cl/conexion/v1/variants/sku.json </h6>
-  </div>
-</div>
-
-<h2 id="todas-las-variantes-de-la-cuenta">Todas las Variantes de la cuenta</h2>
+<h2 id="todas-las-variantes-de-la-cuenta">Todas las variantes de la cuenta</h2>
 
 <p>Este endpoint entrega todas las variantes de los productos de la cuenta.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/variants.json"</span>/
@@ -1334,7 +1311,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 </tr>
 </tbody></table>
 
-<h2 id="crear-una-variante">Crear una Variante</h2>
+<h2 id="crear-una-variante">Crear una variante</h2>
 
 <p>Este endpoint crea una variante de un producto.</p>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
@@ -1362,7 +1339,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
   </div>
 </div>
 
-<h2 id="obtener-una-variante-espec-fica">Obtener una Variante específica</h2>
+<h2 id="obtener-una-variante-espec-fica">Obtener una variante específica</h2>
 
 <p>Este endpoint entrega una variante en específico.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/variants/&lt;variant_id&gt;.json"</span> -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
@@ -1423,7 +1400,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 </tr>
 </tbody></table>
 
-<h2 id="actualizar-una-variante">Actualizar una Variante</h2>
+<h2 id="actualizar-una-variante">Actualizar una variante</h2>
 
 <p>Este endpoint actualiza una variante.</p>
 <pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">\</span>
@@ -1457,7 +1434,27 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 </tr>
 </tbody></table>
 
-<h2 id="eliminar-una-variante">Eliminar una Variante</h2>
+<h2 id="actualizar-por-sku">Actualizar por SKU</h2>
+
+<p>Este endpoint actualiza la variante de un producto.</p>
+<pre class="highlight shell tab-shell"><code>curl -X PUT https://www.centry.cl/conexion/v1/variants/sku.json <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer &lt;access_token&gt;'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "sku": "&lt;SKU de la variante a actualizar&gt;",
+    "quantity": 20
+}'</span>
+</code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-put">PUT</i>
+    <h6> https://www.centry.cl/conexion/v1/variants/sku.json </h6>
+  </div>
+</div>
+
+<h2 id="eliminar-una-variante">Eliminar una variante</h2>
 
 <p>Este endpoint elimina una variante.</p>
 <pre class="highlight shell tab-shell"><code>curl -X DELETE https://www.centry.cl/conexion/v1/variants/&lt;variant_id&gt;.json <span class="se">\</span>
@@ -1789,7 +1786,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-<h2 id="eliminar-un-warehouse">Eliminar un warehouse</h2>
+<h2 id="eliminar-una-bodega">Eliminar una bodega</h2>
 
 <p>Este endpoint elimina permanentemente una bodega específica.</p>
 <pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
@@ -1885,7 +1882,7 @@ bodegas para llevar el control del stock.</p>
 </tr>
 </tbody></table>
 
-<h2 id="todas-las-variantebodegas-de-la-cuenta">Todas las VarianteBodegas de la cuenta</h2>
+<h2 id="todas-las-variante-bodegas-de-la-cuenta">Todas las variante-bodegas de la cuenta</h2>
 
 <p>Este endpoint entrega todas las relaciones variante-bodega de la cuenta.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/variant_warehouses.json"</span>/
@@ -1972,7 +1969,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-<h2 id="crear-un-variantebodega">Crear un VarianteBodega</h2>
+<h2 id="crear-una-variante-bodega">Crear una variante-bodega</h2>
 
 <p>Este endpoint crea una relación variante-bodega en la cuenta.</p>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
@@ -1994,7 +1991,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
   </div>
 </div>
 
-<h2 id="obtener-una-variante-espec-fica">Obtener una Variante específica</h2>
+<h2 id="obtener-una-variante-bodega-espec-fica">Obtener una variante-bodega específica</h2>
 
 <p>Este endpoint entrega una relación variante-bodega en específica.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/variant_warehouses/&lt;variant_warehouse_id&gt;.json"</span> -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
@@ -2038,7 +2035,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-<h2 id="actualizar-una-variante">Actualizar una Variante</h2>
+<h2 id="actualizar-una-variante-bodega">Actualizar una variante-bodega</h2>
 
 <p>Este endpoint actualiza una relación variante-bodega.</p>
 <pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">\</span>
@@ -2106,6 +2103,480 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
+          <h1 id="categories">Categories</h1>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador de la categoría  <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>string</td>
+<td>Nombre de la categoría en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>string</td>
+<td>Registro de creación de la categoría <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>string</td>
+<td>Registro de última actualización <i class="label label-info">sólo lectura</i></td>
+</tr>
+</tbody></table>
+
+<h2 id="todas-las-categor-as">Todas las categorías</h2>
+
+<p>Este endpoint entrega todas las categorías de Centry.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/categories.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e809571a7"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T16:54:37.823Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accesorios / Accesorios Femeninos / Anteojos"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T16:54:37.823Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e809381a5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T16:54:37.821Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accesorios / Accesorios Femeninos / Bijuteria / Anillos"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T16:54:37.821Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/categories.json </h6>
+  </div>
+</div>
+
+<h3 id="filtros-comunes">Filtros comunes</h3>
+
+<p>Si se desean obtener resultados más específicos para este endpoint, se puede precisar la request agregando parámetros a la URL de la forma https://www.centry.cl/conexion/v1/categories.json?&lt;filter&gt;=&lt;valor&gt; como se muestra en el capítulo <strong>Filters</strong> al final de la documentación. Además, de ser necesario algunos filtros pueden ser concatenados de la forma https://www.centry.cl/conexion/v1/categories.json?&lt;filter&gt;=&lt;valor&gt;&amp;&lt;filter&gt;=&lt;valor&gt;&amp;&hellip;</p>
+
+<h3 id="filtros-especiales">Filtros especiales</h3>
+
+<p>Solo pueden ser ocupados para este endpoint en particular.</p>
+
+<table><thead>
+<tr>
+<th>Filtro</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">filtered_used_by_company</code></td>
+<td>Muestra sólo las categorías usadas actualmente por la empresa</td>
+<td>https://www.centry.cl/conexion/v1/categories.json?created_at=2017-09-13T21:00:00.000-03:00&amp;filtered_used_by_company</td>
+</tr>
+</tbody></table>
+
+<h2 id="obtener-una-categor-a-espec-fica">Obtener una categoría específica</h2>
+
+<p>Este endpoint entrega una categoría específica.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/categories/&lt;category_id&gt;.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e809381a5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T16:54:37.821Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accesorios / Accesorios Femeninos / Bijuteria / Anillos"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T16:54:37.821Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/categories/&lt;category_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">category_id</code></td>
+<td>El identificador de la categoría a recuperar</td>
+</tr>
+</tbody></table>
+
+          <h1 id="brands">Brands</h1>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador de la marca <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>string</td>
+<td>Nombre de la marca en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>string</td>
+<td>Registro de creación de la marca en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>string</td>
+<td>Registro de última actualización <i class="label label-info">sólo lectura</i></td>
+</tr>
+</tbody></table>
+
+<h2 id="todas-las-marcas">Todas las marcas</h2>
+
+<p>Este endpoint entrega todas las marcas de Centry.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/brands.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+
+    </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57f63ffe4c266d1dec1edfb6"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-28T16:21:37.882Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bata"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-28T16:21:37.882Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58124d68fd246926928fed3c"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZIKO"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/brands.json </h6>
+  </div>
+</div>
+
+<h3 id="filtros-comunes">Filtros comunes</h3>
+
+<p>Si se desean obtener resultados más específicos para este endpoint, se puede precisar la request agregando parámetros a la URL de la forma https://www.centry.cl/conexion/v1/brands.json?&lt;filter&gt;=&lt;valor&gt; como se muestra en el capítulo <strong>Filters</strong> al final de la documentación. Además, de ser necesario algunos filtros pueden ser concatenados de la forma https://www.centry.cl/conexion/v1/brands.json?&lt;filter&gt;=&lt;valor&gt;&amp;&lt;filter&gt;=&lt;valor&gt;&amp;&hellip;</p>
+
+<h3 id="filtros-especiales">Filtros especiales</h3>
+
+<p>Solo pueden ser ocupados para este endpoint en particular.</p>
+
+<table><thead>
+<tr>
+<th>Filtro</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">filtered_used_by_company</code></td>
+<td>Muestra sólo las marcas usadas actualmente por la empresa</td>
+<td>https://www.centry.cl/conexion/v1/brands.json?created_at=2017-09-13T21:00:00.000-03:00&amp;filtered_used_by_company</td>
+</tr>
+</tbody></table>
+
+<h2 id="obtener-una-marca-espec-fica">Obtener una marca específica</h2>
+
+<p>Este endpoint entrega una marca específico.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/brands/&lt;brand_id&gt;.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58124d68fd246926928fed3c"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZIKO"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/brands/&lt;brand_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">brand_id</code></td>
+<td>El identificador de la marca a recuperar</td>
+</tr>
+</tbody></table>
+
+          <h1 id="colors">Colors</h1>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador del color <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>string</td>
+<td>Nombre de color en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>string</td>
+<td>Registro de creación de color en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>string</td>
+<td>Registro de última actualización <i class="label label-info">sólo lectura</i></td>
+</tr>
+</tbody></table>
+
+<h2 id="todos-los-colores">Todos los colores</h2>
+
+<p>Este endpoint entrega todos los colores de Centry.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/colors.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"588a28c40fb756a249fd0c78"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Violeta oscuro"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"588a28c40fb756a249fd0c77"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verde oscuro"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/colors.json </h6>
+  </div>
+</div>
+
+<h3 id="filtros-comunes">Filtros comunes</h3>
+
+<p>Si se desean obtener resultados más específicos para este endpoint, se puede precisar la request agregando parámetros a la URL de la forma https://www.centry.cl/conexion/v1/colors.json?&lt;filter&gt;=&lt;valor&gt; como se muestra en el capítulo <strong>Filters</strong> al final de la documentación. Además, de ser necesario algunos filtros pueden ser concatenados de la forma https://www.centry.cl/conexion/v1/colors.json?&lt;filter&gt;=&lt;valor&gt;&amp;&lt;filter&gt;=&lt;valor&gt;&amp;&hellip;</p>
+
+<h2 id="obtener-un-color-espec-fico">Obtener un color específico</h2>
+
+<p>Este endpoint entrega un color específico.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/colors/&lt;color_id&gt;.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"588a28c40fb756a249fd0c78"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Violeta oscuro"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/colors/&lt;color_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">color_id</code></td>
+<td>El identificador del color a recuperar</td>
+</tr>
+</tbody></table>
+
+          <h1 id="sizes">Sizes</h1>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador de la talla <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>string</td>
+<td>Nombre de la talla en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>string</td>
+<td>Registro de creación de la talla en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>string</td>
+<td>Registro de última actualización <i class="label label-info">sólo lectura</i></td>
+</tr>
+</tbody></table>
+
+<h2 id="todas-las-tallas">Todas las tallas</h2>
+
+<p>Este endpoint entrega todas las tallas de Centry</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/sizes.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5851b0c2b2c85e8282262a3e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tamaño Único"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5851b0c2b2c85e8282262a3f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/sizes.json </h6>
+  </div>
+</div>
+
+<h3 id="filtros-comunes">Filtros comunes</h3>
+
+<p>Si se desean obtener resultados más específicos para este endpoint, se puede precisar la request agregando parámetros a la URL de la forma https://www.centry.cl/conexion/v1/sizes.json?&lt;filter&gt;=&lt;valor&gt; como se muestra en el capítulo <strong>Filters</strong> al final de la documentación. Además, de ser necesario algunos filtros pueden ser concatenados de la forma https://www.centry.cl/conexion/v1/sizes.json?&lt;filter&gt;=&lt;valor&gt;&amp;&lt;filter&gt;=&lt;valor&gt;&amp;&hellip;</p>
+
+<h2 id="obtener-una-talla-espec-fica">Obtener una talla específica</h2>
+
+<p>Este endpoint entrega una talla  específica</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/sizes/&lt;size_id&gt;.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5851b0c2b2c85e8282262a3f"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/sizes/&lt;size_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">size_id</code></td>
+<td>El identificador de la talla a recuperar</td>
+</tr>
+</tbody></table>
+
           <h1 id="countries">Countries</h1>
 
 <h2 id="par-metros">Parámetros</h2>
@@ -2149,7 +2620,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-<h2 id="todas-los-paises">Todas los paises</h2>
+<h2 id="todos-los-pa-ses">Todos los países</h2>
 
 <p>Este endpoint entrega todas los países de Centry.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/locations/countries.json"</span>/
@@ -2278,7 +2749,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 <tr>
 <td><code class="prettyprint">country_id</code></td>
 <td>string</td>
-<td>Identificador dela región al que pertenece la región <i class="label label-info">sólo lectura</i></td>
+<td>Identificador de la región al que pertenece la región <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">position</code></td>
@@ -2297,7 +2768,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-<h2 id="todas-los-regiones">Todas los Regiones</h2>
+<h2 id="todas-las-regiones">Todas las regiones</h2>
 
 <p>Este endpoint entrega todas las regiones de Centry.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/locations/regions.json"</span>/
@@ -2456,7 +2927,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-<h2 id="todas-las-ciudades">Todas las Ciudades</h2>
+<h2 id="todas-las-ciudades">Todas las ciudades</h2>
 
 <p>Este endpoint entrega todas las ciudades de Centry.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/locations/cities.json"</span>/
@@ -2535,7 +3006,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-<h2 id="obtener-una-ciudad-espec-fico">Obtener una ciudad específico</h2>
+<h2 id="obtener-una-ciudad-espec-fica">Obtener una ciudad específica</h2>
 
 <p>Este endpoint entrega una ciudad específica.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/locations/cities/&lt;city_id&gt;.json"</span>/
@@ -2614,7 +3085,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-<h2 id="todas-los-paises">Todas los paises</h2>
+<h2 id="todas-las-comunas">Todas las comunas</h2>
 
 <p>Este endpoint entrega todas las comunas de Centry.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/locations/communes.json"</span>/
@@ -2689,7 +3160,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-<h2 id="obtener-un-pa-s-espec-fico">Obtener un país específico</h2>
+<h2 id="obtener-una-comuna-espec-fica">Obtener una comuna específica</h2>
 
 <p>Este endpoint entrega una comuna específica.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/locations/communes/&lt;commune_id&gt;.json"</span>/
@@ -2837,6 +3308,11 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 <td>Número del pedido con el que se maneja la orden en la plataforma de origen</td>
 </tr>
 <tr>
+<td><code class="prettyprint">id_pack</code></td>
+<td>string</td>
+<td>Identificador de paquete asociado al pedido</td>
+</tr>
+<tr>
 <td><code class="prettyprint">url_origin</code></td>
 <td>string</td>
 <td>URL desde la cual puede ser accedida la orden en la plataforma de origen</td>
@@ -2857,7 +3333,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 <td>Suma total de los descuentos aplicados a los productos del pedido</td>
 </tr>
 <tr>
-<td><code class="prettyprint">paid_amount</code></td>
+<td><code class="prettyprint">paid_amount</code> [^1]</td>
 <td>float</td>
 <td>Monto total pagado por el cliente. En un caso ideal es igual a <code class="prettyprint">total_amount + shipping_amount - discount_amount</code></td>
 </tr>
@@ -2912,6 +3388,8 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 <td>Fecha de la ultima actualización a la orden en la plataforma de origen <i class="label label-info">sólo lectura</i></td>
 </tr>
 </tbody></table>
+
+<p>[^1]: Si el atributo <code class="prettyprint">paid_amount</code> tiene un valor, quiere decir que el pedido está pagado total o parcialmente.</p>
 
 <h3 id="formulario-de-direcciones">Formulario de direcciones</h3>
 
@@ -3114,11 +3592,11 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-<h2 id="todas-las-ordenes-de-la-cuenta">Todas las Ordenes de la cuenta</h2>
+<h2 id="todas-las-rdenes-de-la-cuenta">Todas las órdenes de la cuenta</h2>
 
 <p>Este endpoint entrega todas las ordenes de la cuenta.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/orders.json"</span>/
- -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+ -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span>
 </code></pre>
 <blockquote>
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
@@ -3362,11 +3840,11 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-<h2 id="obtener-una-orden-espec-fica">Obtener una Orden específica</h2>
+<h2 id="obtener-una-orden-espec-fica">Obtener una orden específica</h2>
 
 <p>Este endpoint entrega una orden específica.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/orders/096ef853335bc7e6df20c8ba.json"</span>/
- -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+ -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span>
 </code></pre>
 <blockquote>
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
@@ -3487,7 +3965,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-<h2 id="crear-una-orden">Crear una Orden</h2>
+<h2 id="crear-una-orden">Crear una orden</h2>
 
 <p>Este endpoint crea una orden.</p>
 <pre class="highlight shell tab-shell"><code>curl -X POST https://www.centry.cl/conexion/v1/orders.json <span class="se">\</span>
@@ -3543,7 +4021,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
   </div>
 </div>
 
-<h2 id="eliminar-una-orden">Eliminar una Orden</h2>
+<h2 id="eliminar-una-orden">Eliminar una orden</h2>
 
 <p>Este endpoint elimina una orden.</p>
 <pre class="highlight shell tab-shell"><code>curl -X DELETE https://www.centry.cl/conexion/v1/orders/096ef853335bc7e6df20c8ba.json <span class="se">\</span>
@@ -3581,7 +4059,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 
 <p>Este endpoint recibe identificadores de pedidos y retorna un listado de documentos codificados en Base64.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/orders/shipping_labels.json?ids[]=096ef853335bc7e6df20c8ba"</span>/
- -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+ -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span>
 </code></pre>
 <blockquote>
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
@@ -3651,244 +4129,74 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-          <h1 id="categories">Categories</h1>
+<h2 id="confirmaci-n-de-un-pedido-pendiente">Confirmación de un pedido pendiente</h2>
 
-<h2 id="par-metros">Parámetros</h2>
+<p>Este endpoint permite confirmar un pedido pendiente para aquellas integraciones que así lo admiten. Estas integraciones son:</p>
 
-<table><thead>
-<tr>
-<th>Atributo</th>
-<th>Tipo</th>
-<th>Descripción</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">_id</code></td>
-<td>string</td>
-<td>Identificador de la categoría  <i class="label label-info">sólo lectura</i></td>
-</tr>
-<tr>
-<td><code class="prettyprint">name</code></td>
-<td>string</td>
-<td>Nombre de la categoría en Centry <i class="label label-info">sólo lectura</i></td>
-</tr>
-<tr>
-<td><code class="prettyprint">created_at</code></td>
-<td>string</td>
-<td>Registro de creación de la categoría <i class="label label-info">sólo lectura</i></td>
-</tr>
-<tr>
-<td><code class="prettyprint">updated_at</code></td>
-<td>string</td>
-<td>Registro de última actualización <i class="label label-info">sólo lectura</i></td>
-</tr>
-</tbody></table>
-
-<h2 id="todas-las-categor-as">Todas las Categorías</h2>
-
-<p>Este endpoint entrega todas las categorías de Centry.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/categories.json"</span>/
- -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
-</code></pre>
-<blockquote>
-<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e809571a7"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T16:54:37.823Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accesorios / Accesorios Femeninos / Anteojos"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T16:54:37.823Z"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e809381a5"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T16:54:37.821Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accesorios / Accesorios Femeninos / Bijuteria / Anillos"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T16:54:37.821Z"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<h3 id="http-request">HTTP Request</h3>
-
-<div class="api-endpoint">
-  <div class="endpoint-data">
-    <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/categories.json </h6>
-  </div>
-</div>
-
-<h3 id="filtros-comunes">Filtros comunes</h3>
-
-<p>Si se desean obtener resultados más específicos para este endpoint, se puede precisar la request agregando parámetros a la URL de la forma https://www.centry.cl/conexion/v1/categories.json?&lt;filter&gt;=&lt;valor&gt; como se muestra en el capítulo <strong>Filters</strong> al final de la documentación. Además, de ser necesario algunos filtros pueden ser concatenados de la forma https://www.centry.cl/conexion/v1/categories.json?&lt;filter&gt;=&lt;valor&gt;&amp;&lt;filter&gt;=&lt;valor&gt;&amp;&hellip;</p>
-
-<h3 id="filtros-especiales">Filtros especiales</h3>
-
-<p>Solo pueden ser ocupados para este endpoint en particular.</p>
-
-<table><thead>
-<tr>
-<th>Filtro</th>
-<th>Descripción</th>
-<th>Ejemplo</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">filtered_used_by_company</code></td>
-<td>Muestra sólo las categorías usadas actualmente por la empresa</td>
-<td>https://www.centry.cl/conexion/v1/categories.json?created_at=2017-09-13T21:00:00.000-03:00&amp;filtered_used_by_company</td>
-</tr>
-</tbody></table>
-
-<h2 id="obtener-una-categor-a-espec-fica">Obtener una Categoría específica</h2>
-
-<p>Este endpoint entrega una categoría específica.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/categories/&lt;category_id&gt;.json"</span>/
- -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+<ul>
+<li>Falabella Marketplace</li>
+</ul>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/orders/5eece46148f039166bf5ffad/order_status/confirmations.json"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span> <span class="se">\</span>
+     -d <span class="s1">'{
+    "boxes": [
+        {
+            "dimensions": {
+                "length": 10.0,
+                "width": 11.0,
+                "height": 12.0,
+                "weight": 1.5
+            },
+            "items": {
+                "sku_ejemplo_1": 1,
+                "sku_ejemplo_2": 1
+            }
+        }
+    ]
+}'</span>
 </code></pre>
 <blockquote>
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5769714df82f456e809381a5"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T16:54:37.821Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accesorios / Accesorios Femeninos / Bijuteria / Anillos"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-21T16:54:37.821Z"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h3 id="http-request">HTTP Request</h3>
-
-<div class="api-endpoint">
-  <div class="endpoint-data">
-    <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/categories/&lt;category_id&gt;.json </h6>
-  </div>
-</div>
-
-<h3 id="par-metros-url">Parámetros URL</h3>
-
-<table><thead>
-<tr>
-<th>Parámetro</th>
-<th>Descripción</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">category_id</code></td>
-<td>El identificador de la categoría a recuperar</td>
-</tr>
-</tbody></table>
-
-          <h1 id="brands">Brands</h1>
-
-<h2 id="par-metros">Parámetros</h2>
-
-<table><thead>
-<tr>
-<th>Atributo</th>
-<th>Tipo</th>
-<th>Descripción</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">_id</code></td>
-<td>string</td>
-<td>Identificador de la marca <i class="label label-info">sólo lectura</i></td>
-</tr>
-<tr>
-<td><code class="prettyprint">name</code></td>
-<td>string</td>
-<td>Nombre de la marca en Centry <i class="label label-info">sólo lectura</i></td>
-</tr>
-<tr>
-<td><code class="prettyprint">created_at</code></td>
-<td>string</td>
-<td>Registro de creación de la marca en Centry <i class="label label-info">sólo lectura</i></td>
-</tr>
-<tr>
-<td><code class="prettyprint">updated_at</code></td>
-<td>string</td>
-<td>Registro de última actualización <i class="label label-info">sólo lectura</i></td>
-</tr>
-</tbody></table>
-
-<h2 id="todas-las-marcas">Todas las Marcas</h2>
-
-<p>Este endpoint entrega todas las marcas de Centry.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/brands.json"</span>/
- -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
-</code></pre>
-<blockquote>
-<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eece7c248f0390feef121c4"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"boxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57f63ffe4c266d1dec1edfb6"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-28T16:21:37.882Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bata"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-28T16:21:37.882Z"</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f119e7948f03956a204f3bf"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"skus"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f119e8f48f03956a204f3c0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sku_ejemplo_1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f119e8f48f03956a204f3c1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sku_ejemplo_2"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"length"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eece46148f039166bf5ffad"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"success_response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e8352482-1acb-4997-9759-cf5f4b3ceb8b"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DONE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58124d68fd246926928fed3c"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZIKO"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<h3 id="http-request">HTTP Request</h3>
-
-<div class="api-endpoint">
-  <div class="endpoint-data">
-    <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/brands.json </h6>
-  </div>
-</div>
-
-<h3 id="filtros-comunes">Filtros comunes</h3>
-
-<p>Si se desean obtener resultados más específicos para este endpoint, se puede precisar la request agregando parámetros a la URL de la forma https://www.centry.cl/conexion/v1/brands.json?&lt;filter&gt;=&lt;valor&gt; como se muestra en el capítulo <strong>Filters</strong> al final de la documentación. Además, de ser necesario algunos filtros pueden ser concatenados de la forma https://www.centry.cl/conexion/v1/brands.json?&lt;filter&gt;=&lt;valor&gt;&amp;&lt;filter&gt;=&lt;valor&gt;&amp;&hellip;</p>
-
-<h3 id="filtros-especiales">Filtros especiales</h3>
-
-<p>Solo pueden ser ocupados para este endpoint en particular.</p>
-
-<table><thead>
-<tr>
-<th>Filtro</th>
-<th>Descripción</th>
-<th>Ejemplo</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">filtered_used_by_company</code></td>
-<td>Muestra sólo las marcas usadas actualmente por la empresa</td>
-<td>https://www.centry.cl/conexion/v1/brands.json?created_at=2017-09-13T21:00:00.000-03:00&amp;filtered_used_by_company</td>
-</tr>
-</tbody></table>
-
-<h2 id="obtener-una-marca-espec-fica">Obtener una Marca específica</h2>
-
-<p>Este endpoint entrega una marca específico.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/brands/&lt;brand_id&gt;.json"</span>/
- -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
-</code></pre>
-<blockquote>
-<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58124d68fd246926928fed3c"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZIKO"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T19:35:14.734Z"</span><span class="w">
+  </span><span class="s2">"failed_attempts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-19T08:28:50.880-08:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
 <div class="api-endpoint">
   <div class="endpoint-data">
-    <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/brands/&lt;brand_id&gt;.json </h6>
+    <i class="label label-get">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/<order_id>/order_status/confirmations.json </h6>
   </div>
 </div>
 
@@ -3901,12 +4209,317 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">brand_id</code></td>
-<td>El identificador de la marca a recuperar</td>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador de un pedido en Centry</td>
 </tr>
 </tbody></table>
 
-          <h1 id="colors">Colors</h1>
+<h3 id="body-request">Body request</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">boxes</code></td>
+<td>Listado de cajas, paquetes o bultos que componen el pedido</td>
+</tr>
+<tr>
+<td><code class="prettyprint">boxes.dimensions</code></td>
+<td>Diccionario con las longitudes y peso del bulto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">boxes.dimensions.length</code></td>
+<td>Largo del bulto medido en centrímetros</td>
+</tr>
+<tr>
+<td><code class="prettyprint">boxes.dimensions.width</code></td>
+<td>Ancho del bulto medido en centrímetros</td>
+</tr>
+<tr>
+<td><code class="prettyprint">boxes.dimensions.height</code></td>
+<td>Alto del bulto medido en centrímetros</td>
+</tr>
+<tr>
+<td><code class="prettyprint">boxes.dimensions.weight</code></td>
+<td>Peso del bulto medido en kilogramos</td>
+</tr>
+<tr>
+<td><code class="prettyprint">boxes.items</code></td>
+<td>Diccionario con el listado de todos los productos que componen el bulto. Cada llave es el SKU del producto y los valores son las unidades de cada SKU</td>
+</tr>
+</tbody></table>
+
+<h3 id="body-response">Body response</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>Identificador de la confirmación en Centry</td>
+</tr>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador del pedido asociado a esta confirmación</td>
+</tr>
+<tr>
+<td><code class="prettyprint">boxes</code></td>
+<td>Listado de cajas, paquetes o bultos que componen el pedido</td>
+</tr>
+<tr>
+<td><code class="prettyprint">success_response</code></td>
+<td>Diccionario con la respuesta entregada por la plataforma de origen del pedido. No existe un formato predefinido para este campo, depende de cada integración y puede cambiar sin previo aviso. Lo más relevante es que su presencia indica que la confirmación ha resultado exitosa.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">failed_attempts</code></td>
+<td>Listado con todos los intentos fallidos que ha tenido esta confirmación en la plataforma de origen del pedido.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>fecha de creación de la confirmación</td>
+</tr>
+</tbody></table>
+
+<h2 id="reagendamiento-de-un-pedido-pendiente">Reagendamiento de un pedido pendiente</h2>
+
+<p>Este endpoint permite reagendar un pedido pendiente para aquellas integraciones que así lo admiten. Estas integraciones son:</p>
+
+<ul>
+<li>Falabella Marketplace</li>
+</ul>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/orders/5eece46148f039166bf5ffad/order_status/reschedules.json"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span> <span class="se">\</span>
+     -d <span class="s1">'{
+    "date": "2021-02-31"
+}'</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eeba37348f03925389e5a20"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eeba0ad48f039354aa785ac"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"success_response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0f2ca23b-10be-4237-bf03-74f521fb1ee8"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DONE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"failed_attempts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-18T09:25:07.451-08:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/<order_id>/order_status/reschedules.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador de un pedido en Centry</td>
+</tr>
+</tbody></table>
+
+<h3 id="body-request">Body request</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">date</code></td>
+<td>Nueva fecha con la que se quiere reagendar el pedido.</td>
+</tr>
+</tbody></table>
+
+<h3 id="body-response">Body response</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>Identificador del reagendamiento en Centry</td>
+</tr>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador del pedido asociado a este reagendamiento</td>
+</tr>
+<tr>
+<td><code class="prettyprint">date</code></td>
+<td>Fecha solicidata para reagendar</td>
+</tr>
+<tr>
+<td><code class="prettyprint">success_response</code></td>
+<td>Diccionario con la respuesta entregada por la plataforma de origen del pedido. No existe un formato predefinido para este campo, depende de cada integración y puede cambiar sin previo aviso. Lo más relevante es que su presencia indica que el reagendamiento ha resultado exitoso.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">failed_attempts</code></td>
+<td>Listado con todos los intentos fallidos que ha tenido este reagendamiento en la plataforma de origen del pedido.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>fecha de creación del reagendamiento</td>
+</tr>
+</tbody></table>
+
+<h2 id="anulaci-n-de-un-pedido-pendiente">Anulación de un pedido pendiente</h2>
+
+<p>Este endpoint permite anular un pedido pendiente para aquellas integraciones que así lo admiten. Estas integraciones son:</p>
+
+<ul>
+<li>Falabella Marketplace</li>
+<li>Mercado Libre</li>
+<li>Dafiti</li>
+<li>Linio</li>
+<li>Shopify</li>
+</ul>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/orders/5eece46148f039166bf5ffad/order_status/cancellations.json"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span> <span class="se">\</span>
+     -d <span class="s1">'{
+    "buyer_rate_id": "5e45b03d48f0392442dbd1bc",
+    "reason_id": "5e45b03c48f0392442dbd1a6",
+    "message": "Solicitud del cliente",
+    "restock": true
+}'</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eeba37348f03925389e5a20"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buyer_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e45b03d48f0392442dbd1bc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eeba0ad48f039354aa785ac"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"reason_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e45b03c48f0392442dbd1a6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solicitud del cliente"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"restock"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"success_response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0f2ca23b-10be-4237-bf03-74f521fb1ee8"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DONE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"failed_attempts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-18T09:25:07.451-08:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/<order_id>/order_status/cancellations.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador de un pedido en Centry</td>
+</tr>
+</tbody></table>
+
+<h3 id="body-request">Body request</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">buyer_rate_id</code></td>
+<td>Identificado de la calificación del comprador <a href="#buyerrates">BuyerRates</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">reason_id</code></td>
+<td>Identificador del motivo de anulación <a href="#cancellationreasons">CancellationReasons</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">message</code></td>
+<td>Texto con la justificación de la anulación del pedido</td>
+</tr>
+<tr>
+<td><code class="prettyprint">restock</code></td>
+<td>Boolean que indica si se requiere reponer (<code class="prettyprint">true</code>) o no (<code class="prettyprint">false</code>) el stock. Está opción se puede usar dependiendo de si lo admite el motivo de anulación</td>
+</tr>
+</tbody></table>
+
+<h3 id="body-response">Body response</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>Identificador de la anulación en Centry</td>
+</tr>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador del pedido asociado a esta anulación</td>
+</tr>
+<tr>
+<td><code class="prettyprint">buyer_rate_id</code></td>
+<td>Identificado de la calificación del comprador</td>
+</tr>
+<tr>
+<td><code class="prettyprint">reason_id</code></td>
+<td>Identificador del motivo de anulación</td>
+</tr>
+<tr>
+<td><code class="prettyprint">message</code></td>
+<td>Texto con la justificación de la anulación del pedido</td>
+</tr>
+<tr>
+<td><code class="prettyprint">restock</code></td>
+<td>Boolean que indica si se requiere reponer (<code class="prettyprint">true</code>) o no (<code class="prettyprint">false</code>) el stock.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">success_response</code></td>
+<td>Diccionario con la respuesta entregada por la plataforma de origen del pedido. No existe un formato predefinido para este campo, depende de cada integración y puede cambiar sin previo aviso. Lo más relevante es que su presencia indica que la anulación ha resultado exitosa.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">failed_attempts</code></td>
+<td>Listado con todos los intentos fallidos que ha tenido esta anulación en la plataforma de origen del pedido.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>fecha de creación de la anulación</td>
+</tr>
+</tbody></table>
+
+          <h1 id="buyerrates">BuyerRates</h1>
 
 <h2 id="par-metros">Parámetros</h2>
 
@@ -3920,77 +4533,64 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 <tr>
 <td><code class="prettyprint">_id</code></td>
 <td>string</td>
-<td>Identificador del color <i class="label label-info">sólo lectura</i></td>
+<td>Identificador de la calificación del comprador <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">name</code></td>
 <td>string</td>
-<td>Nombre de color en Centry <i class="label label-info">sólo lectura</i></td>
+<td>Nombre de la calificación del comprador en Centry <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
-<td><code class="prettyprint">created_at</code></td>
+<td><code class="prettyprint">description</code></td>
 <td>string</td>
-<td>Registro de creación de color en Centry <i class="label label-info">sólo lectura</i></td>
-</tr>
-<tr>
-<td><code class="prettyprint">updated_at</code></td>
-<td>string</td>
-<td>Registro de última actualización <i class="label label-info">sólo lectura</i></td>
+<td>Texto que describe con mayor detalle cada item <i class="label label-info">sólo lectura</i></td>
 </tr>
 </tbody></table>
 
-<h2 id="todos-los-colores">Todos los Colores</h2>
+<h2 id="todas-las-calificaciones-de-comprador">Todas las calificaciones de comprador</h2>
 
-<p>Este endpoint entrega todos los colores de Centry.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/colors.json"</span>/
- -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+<p>Este endpoint entrega todas las calificaciones de comprador de Centry.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/buyer_rates.json"</span>/
+ -H <span class="s2">"Authorization: Bearer &lt;access_token&gt;"</span>
 </code></pre>
 <blockquote>
-<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+<p>Lo anterior retorna un Jcalificación del compradorSON estructurado de la siguiente manera:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"588a28c40fb756a249fd0c78"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Violeta oscuro"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e4d26431a61bb54b678a15b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Neutra"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No es posible calificar al comprador o es indiferente"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"588a28c40fb756a249fd0c77"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verde oscuro"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e4d26431a61bb54b678a15d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Negativa"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No es un un buen comprador."</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
 <div class="api-endpoint">
   <div class="endpoint-data">
     <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/colors.json </h6>
+    <h6> https://www.centry.cl/conexion/v1/buyer_rates.json </h6>
   </div>
 </div>
 
-<h3 id="filtros-comunes">Filtros comunes</h3>
+<h2 id="obtener-una-calificaci-n-de-comprador-espec-fica">Obtener una calificación de comprador específica</h2>
 
-<p>Si se desean obtener resultados más específicos para este endpoint, se puede precisar la request agregando parámetros a la URL de la forma https://www.centry.cl/conexion/v1/colors.json?&lt;filter&gt;=&lt;valor&gt; como se muestra en el capítulo <strong>Filters</strong> al final de la documentación. Además, de ser necesario algunos filtros pueden ser concatenados de la forma https://www.centry.cl/conexion/v1/colors.json?&lt;filter&gt;=&lt;valor&gt;&amp;&lt;filter&gt;=&lt;valor&gt;&amp;&hellip;</p>
-
-<h2 id="obtener-una-color-espec-fico">Obtener una Color específico</h2>
-
-<p>Este endpoint entrega un color específico.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/colors/&lt;color_id&gt;.json"</span>/
- -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+<p>Este endpoint entrega una calificación de comprador específica.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/buyer_rates/5e4d26431a61bb54b678a15b.json"</span>/
+ -H <span class="s2">"Authorization: Bearer &lt;access_token&gt;"</span>
 </code></pre>
 <blockquote>
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"588a28c40fb756a249fd0c78"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Violeta oscuro"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e4d26431a61bb54b678a15b"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Neutra"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No es posible calificar al comprador o es indiferente"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
@@ -3998,7 +4598,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 <div class="api-endpoint">
   <div class="endpoint-data">
     <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/colors/&lt;color_id&gt;.json </h6>
+    <h6> https://www.centry.cl/conexion/v1/buyer_rates/&lt;buyer_rate_id&gt;.json </h6>
   </div>
 </div>
 
@@ -4011,12 +4611,12 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">color_id</code></td>
-<td>El identificador del color a recuperar</td>
+<td><code class="prettyprint">buyer_rate_id</code></td>
+<td>El identificador de la calificación del comprador a recuperar</td>
 </tr>
 </tbody></table>
 
-          <h1 id="sizes">Sizes</h1>
+          <h1 id="cancellationreasons">CancellationReasons</h1>
 
 <h2 id="par-metros">Parámetros</h2>
 
@@ -4030,46 +4630,47 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 <tr>
 <td><code class="prettyprint">_id</code></td>
 <td>string</td>
-<td>Identificador de la talla <i class="label label-info">sólo lectura</i></td>
+<td>Identificador del motivo de la cancelación <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
 <td><code class="prettyprint">name</code></td>
 <td>string</td>
-<td>Nombre de la talla en Centry <i class="label label-info">sólo lectura</i></td>
+<td>Nombre del motivo de la cancelación en Centry <i class="label label-info">sólo lectura</i></td>
 </tr>
 <tr>
-<td><code class="prettyprint">created_at</code></td>
+<td><code class="prettyprint">description</code></td>
 <td>string</td>
-<td>Registro de creación de la talla en Centry <i class="label label-info">sólo lectura</i></td>
-</tr>
-<tr>
-<td><code class="prettyprint">updated_at</code></td>
-<td>string</td>
-<td>Registro de última actualización <i class="label label-info">sólo lectura</i></td>
+<td>Texto que describe con mayor detalle cada item <i class="label label-info">sólo lectura</i></td>
 </tr>
 </tbody></table>
 
-<h2 id="todas-las-tallas">Todas las Tallas</h2>
+<h2 id="todos-los-motivos-de-cancelaci-n">Todos los motivos de cancelación</h2>
 
-<p>Este endpoint entrega todas las tallas de Centry</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/sizes.json"</span>/
- -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+<p>Este endpoint entrega todos los motivos de cancelación de Centry.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/cancellation_reasons.json"</span>/
+ -H <span class="s2">"Authorization: Bearer &lt;access_token&gt;"</span>
 </code></pre>
 <blockquote>
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5851b0c2b2c85e8282262a3e"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tamaño Único"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e4d26431a61bb54b678a145"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_restock"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not_allowed"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sin stock"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"El producto se encuentra agotado."</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5851b0c2b2c85e8282262a3f"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXS"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e4d26431a61bb54b678a14c"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_restock"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optional"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solicitud del cliente"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Es el compardor el que ha decidido anular la compra"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e4d26431a61bb54b678a153"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_restock"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optional"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demora en la entrega"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Se ha retrasado en forma excesiva el despacho del pedido"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -4078,28 +4679,24 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 <div class="api-endpoint">
   <div class="endpoint-data">
     <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/sizes.json </h6>
+    <h6> https://www.centry.cl/conexion/v1/cancellation_reasons.json </h6>
   </div>
 </div>
 
-<h3 id="filtros-comunes">Filtros comunes</h3>
+<h2 id="obtener-un-motivo-de-cancelaci-n-espec-fico">Obtener un motivo de cancelación específico</h2>
 
-<p>Si se desean obtener resultados más específicos para este endpoint, se puede precisar la request agregando parámetros a la URL de la forma https://www.centry.cl/conexion/v1/sizes.json?&lt;filter&gt;=&lt;valor&gt; como se muestra en el capítulo <strong>Filters</strong> al final de la documentación. Además, de ser necesario algunos filtros pueden ser concatenados de la forma https://www.centry.cl/conexion/v1/sizes.json?&lt;filter&gt;=&lt;valor&gt;&amp;&lt;filter&gt;=&lt;valor&gt;&amp;&hellip;</p>
-
-<h2 id="obtener-una-talla-espec-fica">Obtener una Talla específica</h2>
-
-<p>Este endpoint entrega una talla  específica</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/sizes/&lt;size_id&gt;.json"</span>/
- -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+<p>Este endpoint entrega un motivo de cancelación específico.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/cancellation_reasons/5e4d26431a61bb54b678a145.json"</span>/
+ -H <span class="s2">"Authorization: Bearer &lt;access_token&gt;"</span>
 </code></pre>
 <blockquote>
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5851b0c2b2c85e8282262a3f"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXS"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-01T00:00:00.000Z"</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e4d26431a61bb54b678a145"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"_restock"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not_allowed"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sin stock"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"El producto se encuentra agotado."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
@@ -4107,7 +4704,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 <div class="api-endpoint">
   <div class="endpoint-data">
     <i class="label label-get">GET</i>
-    <h6> https://www.centry.cl/conexion/v1/sizes/&lt;size_id&gt;.json </h6>
+    <h6> https://www.centry.cl/conexion/v1/cancellation_reasons/&lt;cancellation_reason_id&gt;.json </h6>
   </div>
 </div>
 
@@ -4120,8 +4717,8 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">size_id</code></td>
-<td>El identificador de la talla a recuperar</td>
+<td><code class="prettyprint">cancellation_reason_id</code></td>
+<td>El identificador del motivo de la cancelación a recuperar</td>
 </tr>
 </tbody></table>
 
