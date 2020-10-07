@@ -588,7 +588,7 @@ Llave  | Descripción
 
 ## Confirmación de un pedido pendiente
 
-Este endpoint permite confirmar un pedido pendiente para aquellas integraciones que así lo admiten. Estas integraciones son:
+Este endpoint permite confirmar que se entregará un pedido pendiente para aquellas integraciones que así lo admiten. Estas integraciones son:
 
 * Falabella Marketplace
 
@@ -828,3 +828,83 @@ Parámetro  | Descripción
 `success_response` | Diccionario con la respuesta entregada por la plataforma de origen del pedido. No existe un formato predefinido para este campo, depende de cada integración y puede cambiar sin previo aviso. Lo más relevante es que su presencia indica que la anulación ha resultado exitosa.
 `failed_attempts` | Listado con todos los intentos fallidos que ha tenido esta anulación en la plataforma de origen del pedido.
 `created_at` | fecha de creación de la anulación
+
+## Confirmación de entrega de un pedido pendiente
+
+Este endpoint permite confirmar la entrega de un pedido pendiente para aquellas integraciones que así lo admiten. Estas integraciones son:
+
+* Mercado Libre
+
+```shell
+curl "https://www.centry.cl/conexion/v1/orders/5eece46148f039166bf5ffad/order_status/delivery_confirmations.json" \
+     -H "Authorization: Bearer  <access_token>" \
+     -d '{
+    "buyer_rate_id": "5e45b03d48f0392442dbd1bc",
+    "message": "Solicitud del cliente"
+}'
+```
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+{
+  "_id": "5eeba37348f03925389e5a20",
+  "buyer_rate_id": "5e45b03d48f0392442dbd1bc",
+  "order_id": "5eeba0ad48f039354aa785ac",
+  "message": "Solicitud del cliente",
+  "success_response": {
+     "reason": null,
+     "reply_status": null,
+     "date_created": "2020-10-07T13:34:29.601-04:00",
+     "fulfilled": true,
+     "rating": "NEUTRAL",
+     "visibility_date": null,
+     "message": "Solicitud del cliente",
+     "cust_role": "seller",
+     "site_id": "MLC",
+     "id": 9041211809440,
+     "cust_from": 526176909,
+     "reply": null,
+     "cust_to": 628867579,
+     "order_id": 4083462417,
+     "status": "hidden",
+     "reply_date": null
+  },
+  "failed_attempts": [],
+  "created_at": "2020-06-18T09:25:07.451-08:00"
+}
+```
+
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/<order_id>/order_status/delivery_confirmations.json </h6>
+  </div>
+</div>
+
+### Parámetros URL
+
+Parámetro  | Descripción
+---------- | ------------------------------------
+`order_id` | Identificador de un pedido en Centry
+
+### Body request
+
+Parámetro | Descripción
+----------| ------------------------------------
+`buyer_rate_id` | Identificado de la calificación del comprador [BuyerRates](#buyerrates)
+`message` | Texto con la justificación de la confirmación de entrega del pedido
+
+### Body response
+
+Parámetro  | Descripción
+---------- | ------------------------------------
+`_id` | Identificador de la confirmación de entrega en Centry
+`order_id` | Identificador del pedido asociado a esta confirmación de entrega
+`buyer_rate_id` | Identificado de la calificación del comprador
+`message` | Texto con la justificación de la confirmación de entrega del pedido
+`success_response` | Diccionario con la respuesta entregada por la plataforma de origen del pedido. No existe un formato predefinido para este campo, depende de cada integración y puede cambiar sin previo aviso. Lo más relevante es que su presencia indica que la confirmación de entrega ha resultado exitosa.
+`failed_attempts` | Listado con todos los intentos fallidos que ha tenido esta confirmación de entrega en la plataforma de origen del pedido.
+`created_at` | fecha de creación de la confirmación de entrega
