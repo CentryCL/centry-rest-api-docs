@@ -265,9 +265,9 @@ Parámetro    | Descripción
 
 
 
-## Todos los historiales de sincronización de una variante-bodega
+## Todos los historiales de sincronización de una variante
 
-Este endpoint entrega todos los historiales de sincronización de variante-bodega.
+Este endpoint entrega todos los historiales de sincronización de variante.
 
 ```shell
 curl -X GET https://www.centry.cl/conexion/v1/variants/<variant_id>/synchronization_histories.json \
@@ -346,9 +346,9 @@ Parámetro              | Descripción
 
 
 
-## Crear historiales de sincronización de una variante-bodega
+## Crear historiales de sincronización de una variante
 
-Este endpoint entrega todos los historiales de sincronización de variante-bodega.
+Este endpoint entrega todos los historiales de sincronización de variante.
 
 ```shell
 curl -L -X POST 'https://www.centry.cl/conexion/v1/variants/5a16c0bdf82f45273b000056/synchronization_histories.json' \
@@ -419,7 +419,7 @@ curl -L -X POST 'https://www.centry.cl/conexion/v1/variants/5a16c0bdf82f45273b00
 <div class="api-endpoint">
   <div class="endpoint-data">
     <i class="label label-post">POST</i>
-    <h6> https://www.centry.cl/conexion/v1/variants/&lt;variant_warehouse_id&gt;/synchronization_histories.json </h6>
+    <h6> https://www.centry.cl/conexion/v1/variants/&lt;variant_id&gt;/synchronization_histories.json </h6>
   </div>
 </div>
 
@@ -427,7 +427,7 @@ curl -L -X POST 'https://www.centry.cl/conexion/v1/variants/5a16c0bdf82f45273b00
 
 Parámetro              | Descripción
 ---------------------- | ----------------------------------------------------------
-`variant_warehouse_id` | El identificador de la relación variante-bodega de la que se desea obtener el historial de sincronizaciones
+`variant_warehouse_id` | El identificador de la relación variante de la que se desea obtener el historial de sincronizaciones
 
 ### Parámetros Data
 

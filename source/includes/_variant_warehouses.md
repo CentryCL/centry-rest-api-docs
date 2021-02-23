@@ -224,7 +224,7 @@ Este endpoint entrega todos los historiales de sincronización de variante-bodeg
 
 ```shell
 curl -X GET https://www.centry.cl/conexion/v1/variant_warehouses/<variant_warehouse_id>/synchronization_histories.json \
-    -H "Authorization: Bearer  <access_token> "
+    -H "Authorization: Bearer  <access_token>"
 ```
 
 > Lo anterior retorna un JSON estructurado de la siguiente manera:
