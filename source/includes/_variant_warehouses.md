@@ -371,6 +371,7 @@ Parámetro              | Descripción
 
 Parámetro              | Descripción
 ---------------------- | ----------------------------------------------------------
+`success`        | Indicado el estado de la petición, campo se calcula de manera automática de acuerdo a la presencia de `mistakes` <i class="label label-info">sólo lectura</i>
 `action` | Listado de acciones disponibles: ["Product save", "Product create", "Product update", "Product unpublish", "Product delete", "Image save", "Description update", "Active Meli Flex", "Deactive Meli Flex"]
 `mistakes` | Listado de errores de un campo en específico que no permitieron que la petición haya resultado exitosa
 `warnings` | Listado de advertencias u oportinidades de mejora de un campo en específico que ha pesar de no ser óptimas la petición se realizó de manera exitosa
