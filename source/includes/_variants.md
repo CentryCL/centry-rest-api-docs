@@ -262,3 +262,181 @@ true
 Parámetro    | Descripción
 ------------ | ------------------------------------------
 `variant_id` | El identificador de la variante a eliminar
+
+
+
+## Todos los historiales de sincronización de una variante
+
+Este endpoint entrega todos los historiales de sincronización de variante.
+
+```shell
+curl -X GET https://www.centry.cl/conexion/v1/variants/<variant_id>/synchronization_histories.json \
+    -H "Authorization: Bearer  <access_token> "
+```
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+{
+    "_id": "6034137c84c6e1418eb6d62a",
+    "action": "Product update",
+    "company_id": "5776daa1f82f454fa8000000",
+    "created_at": "2021-02-22T17:26:36.833-03:00",
+    "description_messages": {
+        "_id": "6034137c84c6e1418eb6d62b",
+        "mistakes": [
+            "error_description_1",
+            "error_description_2"
+        ],
+        "warnings": [
+            "warning_description_1",
+            "warning_description_1"
+        ]
+    },
+    "integration_config_id": "6012c3c784c6e179b53043f5",
+    "is_last": null,
+    "marketplace": "centry-test-local-v2",
+    "messages": {
+        "_id": "6034137c84c6e1418eb6d62c",
+        "mistakes": [
+            "mistake_1",
+            "mistake_2"
+        ],
+        "warnings": [
+            "warning_1",
+            "warning_2"
+        ]
+    },
+    "product_id": "5a16c0bcf82f45273b000054",
+    "request": "{}",
+    "request_response_id": null,
+    "response": "{\"_id\":\"6034137c84c6e1418eb6d62a\",\"action\":\"Product update\",\"company_id\":\"5776daa1f82f454fa8000000\",\"created_at\":null,\"description_messages\":{\"_id\":\"6034137c84c6e1418eb6d62b\",\"mistakes\":[\"error_description_1\",\"error_description_2\"],\"warnings\":[\"warning_description_1\",\"warning_description_1\"]},\"integration_config_id\":\"6012c3c784c6e179b53043f5\",\"is_last\":null,\"marketplace\":\"centry-test-local-v2\",\"messages\":{\"_id\":\"6034137c84c6e1418eb6d62c\",\"mistakes\":[\"error_general_1\",\"error_general_2\"],\"warnings\":[\"warning_general_1\",\"warning_general_2\"]},\"product_id\":\"5a16c0bcf82f45273b000054\",\"request\":\"{}\",\"request_response_id\":null,\"response\":null,\"sku_messages\":{\"_id\":\"6034137c84c6e1418eb6d62d\",\"mistakes\":[\"error_sku_1\",\"error_sku_2\"],\"warnings\":[\"warning_sku_1\",\"warning_sku_1\"]},\"success\":null,\"updated_at\":null,\"variant_id\":\"5a16c0bdf82f45273b000056\"}",
+    "sku_messages": {
+        "_id": "6034137c84c6e1418eb6d62d",
+        "mistakes": [
+            "error_sku_1",
+            "error_sku_2"
+        ],
+        "warnings": [
+            "warning_sku_1",
+            "warning_sku_2"
+        ]
+    },
+    "success": false,
+    "updated_at": "2021-02-22T17:26:36.833-03:00",
+    "variant_id": "5a16c0bdf82f45273b000056"
+}
+```
+
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/variants/&lt;variant_id&gt;/synchronization_histories.json </h6>
+  </div>
+</div>
+
+### Parámetros URL
+
+Parámetro              | Descripción
+---------------------- | ----------------------------------------------------------
+`variant_id` | El identificador de la relación variante de la que se desea obtener el historial de sincronizaciones
+
+
+
+
+## Crear historiales de sincronización de una variante
+
+Este endpoint entrega todos los historiales de sincronización de variante.
+
+```shell
+curl -L -X POST 'https://www.centry.cl/conexion/v1/variants/5a16c0bdf82f45273b000056/synchronization_histories.json' \
+-H 'Authorization: Bearer <access_token>' \
+-H 'Content-Type: application/json' \
+--data-raw '{
+    "action":"Product update",
+    "description_messages":{
+        "warnings":["warning_description_1","warning_description_1"],
+        "mistakes": ["error_description_1", "error_description_2"]
+    },
+    "sku_messages":{
+        "warnings":["warning_sku_1","warning_sku_1"],
+        "mistakes": ["error_sku_1", "error_sku_2"]
+    },
+    "messages":{
+        "warnings":["warning_general_1","warning_general_2"],
+        "mistakes": ["error_general_1", "error_general_2"]
+    }
+}'
+```
+
+
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+{
+  "_id": "603409fa84c6e1418eb6d5b7",
+  "action": "Product create",
+  "company_id": "5776daa1f82f454fa8000000",
+  "created_at": "2021-02-22T16:46:02.649-03:00",
+  "integration_config_id": "6012c3c784c6e179b53043f5",
+  "is_last": null,
+  "marketplace": "centry-test-local-v2",
+  "quantity_messages": {
+      "_id": "603409fa84c6e1418eb6d5b9",
+      "mistakes": [
+          "error_quantity_messages_1"
+      ],
+      "warnings": [
+          "warning_quantity_messages_1"
+      ]
+  },
+  "messages": {
+      "_id": "603409fa84c6e1418eb6d5b8",
+      "mistakes": [
+          "error_messages_1",
+          "error_messages_2"
+      ],
+      "warnings": [
+          "warning_messages_1"
+      ]
+  },
+  "product_id": "5a16c0bcf82f45273b000054",
+  "request": "{}",
+  "request_response_id": null,
+  "response": "{\"_id\":\"603409fa84c6e1418eb6d5b7\",\"action\":\"Product create\",\"company_id\":\"5776daa1f82f454fa8000000\",\"created_at\":null,\"integration_config_id\":\"6012c3c784c6e179b53043f5\",\"is_last\":null,\"marketplace\":\"centry-test-local-v2\",\"messages\":{\"_id\":\"603409fa84c6e1418eb6d5b8\",\"mistakes\":[\"error_messages_1\",\"error_messages_2\"],\"warnings\":[\"warning_messages_1\"]},\"product_id\":\"5a16c0bcf82f45273b000054\",\"quantity_messages\":{\"_id\":\"603409fa84c6e1418eb6d5b9\",\"mistakes\":[\"error_quantity_messages_1\",\"error_quantity_messages_2\",\"error_quantity_messages_3\"],\"warnings\":[\"warning_quantity_messages_1\"]},\"request\":\"{}\",\"request_response_id\":null,\"response\":null,\"success\":null,\"updated_at\":null,\"variant_id\":\"5a16c0bdf82f45273b000056\",\"variant_warehouse_id\":\"5a16d9a1f82f45273b001576\"}",
+  "success": false,
+  "updated_at": "2021-02-22T16:46:02.649-03:00",
+  "variant_id": "5a16c0bdf82f45273b000056",
+  "variant_warehouse_id": "5a16d9a1f82f45273b001576"
+}
+```
+
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-post">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/variants/&lt;variant_id&gt;/synchronization_histories.json </h6>
+  </div>
+</div>
+
+### Parámetros URL
+
+Parámetro              | Descripción
+---------------------- | ----------------------------------------------------------
+`variant_warehouse_id` | El identificador de la relación variante de la que se desea obtener el historial de sincronizaciones
+
+### Parámetros Data
+
+Parámetro              | Descripción
+---------------------- | ----------------------------------------------------------
+`success`        | Indicado el estado de la petición, campo se calcula de manera automática de acuerdo a la presencia de `mistakes` <i class="label label-info">sólo lectura</i>
+`action` | Listado de acciones disponibles: ["Product save", "Product create", "Product update", "Product unpublish", "Product delete", "Image save", "Description update", "Active Meli Flex", "Deactive Meli Flex"]
+`mistakes` | Listado de errores de un campo en específico que no permitieron que la petición haya resultado exitosa
+`warnings` | Listado de advertencias u oportinidades de mejora de un campo en específico que ha pesar de no ser óptimas la petición se realizó de manera exitosa
+`description_messages` | Objeto con el listado de `mistakes` y/o `warnings` relacionados con el atributo `description`
+`sku_messages` | Objeto con el listado de `mistakes` y/o `warnings` relacionados con el atributo `sku`
+`messages` | Objeto con el listado de `mistakes` y/o `warnings` relacionados en general con el modelo `variant_warehouse`
