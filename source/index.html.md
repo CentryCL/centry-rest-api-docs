@@ -14,6 +14,7 @@ includes:
   - variants
   - warehouses
   - variant_warehouses
+  - variant_assets
   - categories
   - brands
   - colors
@@ -43,4 +44,4 @@ información sobre los recursos registrados en nuestra base de datos.
 Puedes ver los códigos de ejemplo en la región oscura de la derecha y seleccionar el lenguaje de programación
 que más te acomode en las pestañas que se encuentran en la parte superior.
 
-Para descargar esta documentación y probarla vía postman descárgala en el siguiente link 
+Para descargar esta documentación y probarla vía postman descárgala en el siguiente link
