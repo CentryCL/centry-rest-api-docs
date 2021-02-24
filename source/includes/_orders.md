@@ -908,3 +908,176 @@ Parámetro  | Descripción
 `success_response` | Diccionario con la respuesta entregada por la plataforma de origen del pedido. No existe un formato predefinido para este campo, depende de cada integración y puede cambiar sin previo aviso. Lo más relevante es que su presencia indica que la confirmación de entrega ha resultado exitosa.
 `failed_attempts` | Listado con todos los intentos fallidos que ha tenido esta confirmación de entrega en la plataforma de origen del pedido.
 `created_at` | fecha de creación de la confirmación de entrega
+
+
+## Todas las notas de un pedido
+
+Este endpoint permite obtener todas las notas de pedido de un pedido en particular:
+
+
+```shell
+curl -L -X GET 'https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/order_notes.json' \
+-H 'Authorization: Bearer <access_token>'
+```
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+[
+    {
+        "_id": "6035671984c6e1147fa0dca2",
+        "created_at": "2021-02-23T17:35:37.060-03:00",
+        "order_id": "602bd13084c6e18fca85b820",
+        "text": "Nota pedido 4",
+        "updated_at": "2021-02-23T17:35:37.060-03:00",
+        "user_id": "5fd0e51784c6e117832602cd"
+    },
+    {
+        "_id": "6035665784c6e111b4d19f49",
+        "created_at": "2021-02-23T17:32:23.935-03:00",
+        "order_id": "602bd13084c6e18fca85b820",
+        "text": "Nota pedido 3",
+        "updated_at": "2021-02-23T17:32:23.935-03:00",
+        "user_id": "5fd0e51784c6e117832602cd"
+    },
+    {
+        "_id": "603565e184c6e111b4d19f44",
+        "created_at": "2021-02-23T17:30:25.049-03:00",
+        "order_id": "602bd13084c6e18fca85b820",
+        "text": "Nota pedido 2",
+        "updated_at": "2021-02-23T17:30:25.049-03:00",
+        "user_id": "5fd0e51784c6e117832602cd"
+    },
+    {
+        "_id": "603565d784c6e111b4d19f41",
+        "created_at": "2021-02-23T17:30:15.074-03:00",
+        "order_id": "602bd13084c6e18fca85b820",
+        "text": "Nota pedido 1",
+        "updated_at": "2021-02-23T17:30:15.074-03:00",
+        "user_id": "5fd0e51784c6e117832602cd"
+    }
+]
+```
+
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/order_notes.json </h6>
+  </div>
+</div>
+
+### Parámetros URL
+
+Parámetro  | Descripción
+---------- | ------------------------------------
+`order_id` | Identificador de un pedido en Centry
+
+
+### Body response
+
+Parámetro  | Descripción
+---------- | ------------------------------------
+`_id` | Identificador de la nota del pedido
+`order_id` | Identificador del pedido asociado a esta nota de pedido
+`user_id` | Identificador del usuario que realizó la nota de pedido <i class="label label-info">Asignado de manera automática</i>
+`text` | Texto correspondiente a la nota de pedido
+
+
+
+
+
+## Crear una nota de pedido
+
+Este endpoint permite crear una nota de pedido para un pedido en particular:
+
+
+```shell
+
+curl -L -X POST 'https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/order_notes.json' \
+-H 'Authorization: Bearer <access_token>' \
+-H 'Content-Type: application/json' \
+--data-raw '{
+    "text": "Nota pedido 5"
+}'
+
+```
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+[
+    {
+        "_id": "603567f384c6e1147fa0dcad",
+        "created_at": "2021-02-23T17:39:15.279-03:00",
+        "order_id": "602bd13084c6e18fca85b820",
+        "text": "Nota pedido 5",
+        "updated_at": "2021-02-23T17:39:15.279-03:00",
+        "user_id": "5fd0e51784c6e117832602cd"
+    },
+    {
+        "_id": "6035671984c6e1147fa0dca2",
+        "created_at": "2021-02-23T17:35:37.060-03:00",
+        "order_id": "602bd13084c6e18fca85b820",
+        "text": "Nota pedido 4",
+        "updated_at": "2021-02-23T17:35:37.060-03:00",
+        "user_id": "5fd0e51784c6e117832602cd"
+    },
+    {
+        "_id": "6035665784c6e111b4d19f49",
+        "created_at": "2021-02-23T17:32:23.935-03:00",
+        "order_id": "602bd13084c6e18fca85b820",
+        "text": "Nota pedido 3",
+        "updated_at": "2021-02-23T17:32:23.935-03:00",
+        "user_id": "5fd0e51784c6e117832602cd"
+    },
+    {
+        "_id": "603565e184c6e111b4d19f44",
+        "created_at": "2021-02-23T17:30:25.049-03:00",
+        "order_id": "602bd13084c6e18fca85b820",
+        "text": "Nota pedido 2",
+        "updated_at": "2021-02-23T17:30:25.049-03:00",
+        "user_id": "5fd0e51784c6e117832602cd"
+    },
+    {
+        "_id": "603565d784c6e111b4d19f41",
+        "created_at": "2021-02-23T17:30:15.074-03:00",
+        "order_id": "602bd13084c6e18fca85b820",
+        "text": "Nota pedido 1",
+        "updated_at": "2021-02-23T17:30:15.074-03:00",
+        "user_id": "5fd0e51784c6e117832602cd"
+    }
+]
+```
+
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/order_notes.json </h6>
+  </div>
+</div>
+
+### Parámetros URL
+
+Parámetro  | Descripción
+---------- | ------------------------------------
+`order_id` | Identificador de un pedido en Centry
+
+### Body request
+
+Parámetro | Descripción
+----------| ------------------------------------
+`text` | Texto correspondiente a la nota del pedido
+
+
+### Body response
+
+Parámetro  | Descripción
+---------- | ------------------------------------
+`_id` | Identificador de la nota del pedido
+`order_id` | Identificador del pedido asociado a esta nota de pedido
+`user_id` | Identificador del usuario que realizó la nota de pedido <i class="label label-info">Asignado de manera automática</i>
+`text` | Texto correspondiente a la nota de pedido
