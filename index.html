@@ -234,7 +234,7 @@ información sobre los recursos registrados en nuestra base de datos.</p>
 <p>Puedes ver los códigos de ejemplo en la región oscura de la derecha y seleccionar el lenguaje de programación
 que más te acomode en las pestañas que se encuentran en la parte superior.</p>
 
-<p>Para descargar esta documentación y probarla vía postman descárgala en el siguiente link </p>
+<p>Para descargar esta documentación y probarla vía postman descárgala en el siguiente link</p>
 
           <h1 id="aplicaciones-y-permisos">Aplicaciones y permisos</h1>
 
@@ -1111,6 +1111,924 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
   </div>
 </div>
 
+<h2 id="todos-los-historiales-de-sincronizaci-n-de-un-producto">Todos los historiales de sincronización de un producto</h2>
+
+<p>Este endpoint entrega todos los historiales de sincronización de un producto.</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;/synchronization_histories.json <span class="se">\</span>
+    -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d579"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Description update"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"barcode_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d57a"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_barcode_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_barcode_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"brand_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d57b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_brand_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_brand_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"category_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d57c"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_category_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_category_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5776daa1f82f454fa8000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"condition_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d57d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_condition_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_condition_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-22T16:16:14.393-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deliverytimesupplier_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d57e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_deliverytimesupplier_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_deliverytimesupplier_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"description_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d57f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_description_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_description_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"gender_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d580"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_gender_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_gender_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"integration_config_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6012c3c784c6e179b53043f5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_fullproductname_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d581"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_is_fullproductname_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_is_fullproductname_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"is_last"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"centry-test-local-v2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d582"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"name_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d583"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_name_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_name_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"packageheight_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d584"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_packageheight_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_packageheight_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"packagelength_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d585"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_packagelength_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_packagelength_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"packagewidth_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d586"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_packagewidth_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_packagewidth_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"price_compare_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d587"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_price_compare_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_price_compare_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"price_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d588"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_price_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_price_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a16c0bcf82f45273b000054"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"request_response_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d579</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">action</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Description update</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">barcode_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d57a</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_barcode_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_barcode_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">brand_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d57b</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_brand_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_brand_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">category_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d57c</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_category_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_category_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">company_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5776daa1f82f454fa8000000</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">condition_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d57d</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_condition_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_condition_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">created_at</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">deliverytimesupplier_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d57e</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_deliverytimesupplier_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_deliverytimesupplier_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">description_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d57f</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_description_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_description_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">gender_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d580</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_gender_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_gender_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">integration_config_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6012c3c784c6e179b53043f5</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">is_fullproductname_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d581</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_is_fullproductname_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_is_fullproductname_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">is_last</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">marketplace</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">centry-test-local-v2</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d582</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">name_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d583</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_name_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_name_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">packageheight_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d584</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_packageheight_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_packageheight_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">packagelength_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d585</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_packagelength_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_packagelength_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">packagewidth_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d586</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_packagewidth_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_packagewidth_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">price_compare_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d587</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_price_compare_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_price_compare_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">price_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d588</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_price_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_price_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">product_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5a16c0bcf82f45273b000054</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">request</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">{}</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">request_response_id</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">response</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">saleenddate_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d589</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_saleenddate_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_saleenddate_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">salestartdate_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d58a</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_salestartdate_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_salestartdate_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">season_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d58b</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_season_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_season_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">seasonyear_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d58c</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_seasonyear_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_seasonyear_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">seo_description_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d58d</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_seo_description_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_seo_description_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">seo_title_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d58e</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_seo_title_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_seo_title_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">shortdescription_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d58f</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_shortdescription_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_shortdescription_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">sku_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d590</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_sku_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_sku_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">status_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d591</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_status_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_status_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">success</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">updated_at</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">warranty_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603402fe84c6e1418eb6d592</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_warranty_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_warranty_messages_1</span><span class="se">\"</span><span class="s2">]}}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"saleenddate_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d589"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_saleenddate_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_saleenddate_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"salestartdate_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d58a"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_salestartdate_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_salestartdate_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"season_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d58b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_season_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_season_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"seasonyear_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d58c"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_seasonyear_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_seasonyear_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"seo_description_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d58d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_seo_description_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_seo_description_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"seo_title_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d58e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_seo_title_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_seo_title_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"shortdescription_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d58f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_shortdescription_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_shortdescription_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"sku_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d590"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_sku_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_sku_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"status_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d591"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_status_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_status_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-22T16:16:14.393-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"warranty_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603402fe84c6e1418eb6d592"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_warranty_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_warranty_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;/synchronization_histories.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">product_id</code></td>
+<td>El identificador de la relación producto de la que se desea obtener el historial de sincronizaciones</td>
+</tr>
+</tbody></table>
+
+<h2 id="crear-historiales-de-sincronizaci-n-de-un-producto">Crear historiales de sincronización de un producto</h2>
+
+<p>Este endpoint entrega todos los historiales de sincronización de producto.</p>
+<pre class="highlight shell tab-shell"><code>curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;/synchronization_histories.json'</span> <span class="se">\</span>
+-H <span class="s1">'Authorization: Bearer &lt;access_token&gt;'</span> <span class="se">\</span>
+-H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+--data-raw <span class="s1">'{
+    "action":"Product update",
+    "name_messages":{
+        "warnings":["warning_name_messages_1"],
+        "mistakes": ["error_name_messages_1"]
+    },
+    "description_messages":{
+        "warnings":["warning_description_messages_1"],
+        "mistakes": ["error_description_messages_1"]
+    },
+    "price_messages":{
+        "warnings":["warning_price_messages_1"],
+        "mistakes": ["error_price_messages_1"]
+    },
+    "price_compare_messages":{
+        "warnings":["warning_price_compare_messages_1"],
+        "mistakes": ["error_price_compare_messages_1"]
+    },
+    "barcode_messages":{
+        "warnings":["warning_barcode_messages_1"],
+        "mistakes": ["error_barcode_messages_1"]
+    },
+    "status_messages":{
+        "warnings":["warning_status_messages_1"],
+        "mistakes": ["error_status_messages_1"]
+    },
+    "seo_title_messages":{
+        "warnings":["warning_seo_title_messages_1"],
+        "mistakes": ["error_seo_title_messages_1"]
+    },
+    "seo_description_messages":{
+        "warnings":["warning_seo_description_messages_1"],
+        "mistakes": ["error_seo_description_messages_1"]
+    },
+    "packageheight_messages":{
+        "warnings":["warning_packageheight_messages_1"],
+        "mistakes": ["error_packageheight_messages_1"]
+    },
+    "packagewidth_messages":{
+        "warnings":["warning_packagewidth_messages_1"],
+        "mistakes": ["error_packagewidth_messages_1"]
+    },
+    "packagelength_messages":{
+        "warnings":["warning_packagelength_messages_1"],
+        "mistakes": ["error_packagelength_messages_1"]
+    },
+    "shortdescription_messages":{
+        "warnings":["warning_shortdescription_messages_1"],
+        "mistakes": ["error_shortdescription_messages_1"]
+    },
+    "salestartdate_messages":{
+        "warnings":["warning_salestartdate_messages_1"],
+        "mistakes": ["error_salestartdate_messages_1"]
+    },
+    "saleenddate_messages":{
+        "warnings":["warning_saleenddate_messages_1"],
+        "mistakes": ["error_saleenddate_messages_1"]
+    },
+    "condition_messages":{
+        "warnings":["warning_condition_messages_1"],
+        "mistakes": ["error_condition_messages_1"]
+    },
+    "seasonyear_messages":{
+        "warnings":["warning_seasonyear_messages_1"],
+        "mistakes": ["error_seasonyear_messages_1"]
+    },
+    "season_messages":{
+        "warnings":["warning_season_messages_1"],
+        "mistakes": ["error_season_messages_1"]
+    },
+    "sku_messages":{
+        "warnings":["warning_sku_messages_1"],
+        "mistakes": ["error_sku_messages_1"]
+    },
+    "deliverytimesupplier_messages":{
+        "warnings":["warning_deliverytimesupplier_messages_1"],
+        "mistakes": ["error_deliverytimesupplier_messages_1"]
+    },
+    "is_fullproductname_messages":{
+        "warnings":["warning_is_fullproductname_messages_1"],
+        "mistakes": ["error_is_fullproductname_messages_1"]
+    },
+    "category_messages":{
+        "warnings":["warning_category_messages_1"],
+        "mistakes": ["error_category_messages_1"]
+    },
+    "brand_messages":{
+        "warnings":["warning_brand_messages_1"],
+        "mistakes": ["error_brand_messages_1"]
+    },
+    "gender_messages":{
+        "warnings":["warning_gender_messages_1"],
+        "mistakes": ["error_gender_messages_1"]
+    },
+    "warranty_messages":{
+        "warnings":["warning_warranty_messages_1"],
+        "mistakes": ["error_warranty_messages_1"]
+    },
+    "messages":{
+        "warnings":["warning_messages_1"],
+        "mistakes": ["error_messages_1"]
+    }
+}'</span>
+</code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-post">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;/synchronization_histories.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">product</code></td>
+<td>El identificador de la relación producto de la que se desea obtener el historial de sincronizaciones</td>
+</tr>
+</tbody></table>
+
+<h3 id="par-metros-data">Parámetros Data</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">success</code></td>
+<td>Indicado el estado de la petición, campo se calcula de manera automática de acuerdo a la presencia de <code class="prettyprint">mistakes</code> <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">action</code></td>
+<td>Listado de acciones disponibles: [&ldquo;Product save&rdquo;, &ldquo;Product create&rdquo;, &ldquo;Product update&rdquo;, &ldquo;Product unpublish&rdquo;, &ldquo;Product delete&rdquo;, &ldquo;Image save&rdquo;, &ldquo;Description update&rdquo;, &ldquo;Active Meli Flex&rdquo;, &ldquo;Deactive Meli Flex&rdquo;]</td>
+</tr>
+<tr>
+<td><code class="prettyprint">mistakes</code></td>
+<td>Listado de errores de un campo en específico que no permitieron que la petición haya resultado exitosa</td>
+</tr>
+<tr>
+<td><code class="prettyprint">warnings</code></td>
+<td>Listado de advertencias u oportinidades de mejora de un campo en específico que ha pesar de no ser óptimas la petición se realizó de manera exitosa</td>
+</tr>
+<tr>
+<td><code class="prettyprint">name_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">name</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">description_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">description</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">price_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">price</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">price_compare_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">price_compare</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">barcode_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">barcode</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">status_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">status</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">seo_title_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">seo_title</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">seo_description_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">seo_description</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">packageheight_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">packageheight</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">packagewidth_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">packagewidth</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">packagelength_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">packagelength</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">shortdescription_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">shortdescription</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">salestartdate_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">salestartdate</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">saleenddate_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">saleenddate</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">condition_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">condition</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">seasonyear_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">seasonyear</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">season_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">season</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">sku_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">sku</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">deliverytimesupplier_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">deliverytimesupplier</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">is_fullproductname_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">is_fullproductname</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">category_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">category</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">brand_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">brand</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">gender_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">gender</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">warranty_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">warranty</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados en general con el modelo <code class="prettyprint">product</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="todos-los-assets-de-un-producto">Todos los assets de un producto</h2>
+
+<p>Este endpoint entrega todos los assets de un producto.</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;/assets.json <span class="se">\</span>
+    -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fe9fec484c6e1ec5a67d7b8"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"alt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-28T12:50:28.559-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"imagen.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">26136</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d3869297ae3e258fa302c1f6d37d54c"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_processing"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-28T12:50:30.831-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"integrations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">"locked_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"locked_until"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-12T13:11:27.404-03:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fe9fec484c6e1ec5a67d7c02"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"alt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-28T12:51:40.800-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"imagen_2/jpeg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"imagen_2.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">28465</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d3869297ae3e258fa302c1f6d37d56b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_processing"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-28T12:51:40.800-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"integrations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">"locked_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"locked_until"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-28T12:51:40.800-03:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;/assets.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">product_id</code></td>
+<td>El identificador de la relación producto de la que se desea obtener sus assets</td>
+</tr>
+</tbody></table>
+
+<h2 id="obtener-un-asset-espec-fico-de-un-producto">Obtener un asset específico de un producto</h2>
+
+<p>Este endpoint entrega un asset en específico de un producto.</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;/assets/&lt;asset_id&gt;.json <span class="se">\</span>
+    -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fe9fec484c6e1ec5a67d7b8"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"alt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-28T12:50:28.559-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"image_content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"image_file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"imagen.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"image_file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">26136</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"image_fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d3869297ae3e258fa302c1f6d37d54c"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"image_processing"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"image_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-28T12:50:30.831-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"integrations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"locked_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"locked_until"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-12T13:11:27.404-03:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;/assets/&lt;asset_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">product_id</code></td>
+<td>El identificador de la relación producto de la que se desea obtener sus assets</td>
+</tr>
+<tr>
+<td><code class="prettyprint">asset_id</code></td>
+<td>El identificador del asset que se quiere obtener del producto</td>
+</tr>
+</tbody></table>
+
+<h2 id="todos-los-historiales-de-sincronizaci-n-de-un-asset">Todos los historiales de sincronización de un asset</h2>
+
+<p>Este endpoint entrega todos los historiales de sincronización de un asset.</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;/assets/&lt;asset_id&gt;/synchronization_histories.json <span class="se">\</span>
+    -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6034fa2c84c6e1418eb6d79c"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product update"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"alt_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6034fa2c84c6e1418eb6d79d"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"errors_alt_messages_1"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"warning_alt_messages_1"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6034fa2c84c6e1418eb6d79e"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"errors_messages_1"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"warning_messages_1"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"name_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6034fa2c84c6e1418eb6d79f"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"errors_name_messages_1"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"warning_name_messages_1"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"position_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6034fa2c84c6e1418eb6d7a0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"errors_position_messages_1"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"warning_position_messages_1"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"url_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6034fa2c84c6e1418eb6d7a1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"errors_url_messages_1"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"warning_url_messages_1"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"asset_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fe9fec484c6e1ec5a67d7b8"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5776daa1f82f454fa8000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T09:50:52.992-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"integration_config_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6012c3c784c6e179b53043f5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"is_last"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"centry-test-local-v2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a16c0bcf82f45273b000054"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{}"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"request_response_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6034fa2c84c6e1418eb6d79c</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">action</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Product update</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">alt_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6034fa2c84c6e1418eb6d79d</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">errors_alt_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_alt_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">asset_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5fe9fec484c6e1ec5a67d7b8</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">company_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5776daa1f82f454fa8000000</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">created_at</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">integration_config_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6012c3c784c6e179b53043f5</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">is_last</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">marketplace</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">centry-test-local-v2</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6034fa2c84c6e1418eb6d79e</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">errors_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">name_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6034fa2c84c6e1418eb6d79f</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">errors_name_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_name_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">position_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6034fa2c84c6e1418eb6d7a0</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">errors_position_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_position_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">product_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5a16c0bcf82f45273b000054</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">request</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">{}</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">request_response_id</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">response</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">success</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">updated_at</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">url_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6034fa2c84c6e1418eb6d7a1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">errors_url_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_url_messages_1</span><span class="se">\"</span><span class="s2">]}}"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T09:50:52.992-03:00"</span><span class="w">
+
+    </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;/assets/&lt;asset_id&gt;/synchronization_histories.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">product_id</code></td>
+<td>El identificador de la relación producto de la que se desea obtener el historial de sincronizaciones de un asset</td>
+</tr>
+<tr>
+<td><code class="prettyprint">asset_id</code></td>
+<td>El identificador de la relación producto/asset de la que se desea obtener el historial de sincronizaciones de un asset específico</td>
+</tr>
+</tbody></table>
+
+<h2 id="crear-historial-de-sincronizaci-n-de-un-asset">Crear historial de sincronización de un asset</h2>
+
+<p>Este endpoint entrega todos los historiales de sincronización de un asset.</p>
+<pre class="highlight shell tab-shell"><code>curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;/assets/&lt;asset_id&gt;/synchronization_histories.json'</span> <span class="se">\</span>
+-H <span class="s1">'Authorization: Bearer c5b91075622352558f1cfcee548c524bcab3a63b67bdfae0883458f628f9ae0c'</span> <span class="se">\</span>
+-H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+--data-raw <span class="s1">'{
+    "action":"Product update",
+    "name_messages":{
+  "warnings":["warning_name_messages_1"],
+  "mistakes":["errors_name_messages_1"]
+},
+"alt_messages":{
+  "warnings":["warning_alt_messages_1"],
+  "mistakes":["errors_alt_messages_1"]
+},
+"position_messages":{
+  "warnings":["warning_position_messages_1"],
+  "mistakes":["errors_position_messages_1"]
+},
+"url_messages":{
+  "warnings":["warning_url_messages_1"],
+  "mistakes":["errors_url_messages_1"]
+},
+"messages":{
+  "warnings":["warning_messages_1"],
+  "mistakes":["errors_messages_1"]
+}
+}'</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6034fa2c84c6e1418eb6d79c"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product update"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"alt_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6034fa2c84c6e1418eb6d79d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"errors_alt_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_alt_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"asset_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fe9fec484c6e1ec5a67d7b8"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5776daa1f82f454fa8000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T09:50:52.992-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"integration_config_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6012c3c784c6e179b53043f5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_last"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"centry-test-local-v2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6034fa2c84c6e1418eb6d79e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"errors_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"name_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6034fa2c84c6e1418eb6d79f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"errors_name_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_name_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"position_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6034fa2c84c6e1418eb6d7a0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"errors_position_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_position_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a16c0bcf82f45273b000054"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"request_response_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6034fa2c84c6e1418eb6d79c</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">action</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Product update</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">alt_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6034fa2c84c6e1418eb6d79d</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">errors_alt_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_alt_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">asset_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5fe9fec484c6e1ec5a67d7b8</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">company_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5776daa1f82f454fa8000000</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">created_at</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">integration_config_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6012c3c784c6e179b53043f5</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">is_last</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">marketplace</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">centry-test-local-v2</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6034fa2c84c6e1418eb6d79e</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">errors_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">name_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6034fa2c84c6e1418eb6d79f</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">errors_name_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_name_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">position_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6034fa2c84c6e1418eb6d7a0</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">errors_position_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_position_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">product_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5a16c0bcf82f45273b000054</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">request</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">{}</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">request_response_id</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">response</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">success</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">updated_at</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">url_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6034fa2c84c6e1418eb6d7a1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">errors_url_messages_1</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_url_messages_1</span><span class="se">\"</span><span class="s2">]}}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T09:50:52.992-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6034fa2c84c6e1418eb6d7a1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"errors_url_messages_1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_url_messages_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-post">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;/assets/&lt;asset_id&gt;/synchronization_histories.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">product_id</code></td>
+<td>El identificador de la relación producto de la que se desea obtener el historial de sincronizaciones de un asset</td>
+</tr>
+<tr>
+<td><code class="prettyprint">asset_id</code></td>
+<td>El identificador de la relación producto/asset de la que se desea obtener el historial de sincronizaciones de un asset específico</td>
+</tr>
+</tbody></table>
+
+<h3 id="par-metros-data">Parámetros Data</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">success</code></td>
+<td>Indicado el estado de la petición, campo se calcula de manera automática de acuerdo a la presencia de <code class="prettyprint">mistakes</code> <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">action</code></td>
+<td>Listado de acciones disponibles: [&ldquo;Product save&rdquo;, &ldquo;Product create&rdquo;, &ldquo;Product update&rdquo;, &ldquo;Product unpublish&rdquo;, &ldquo;Product delete&rdquo;, &ldquo;Image save&rdquo;, &ldquo;Description update&rdquo;, &ldquo;Active Meli Flex&rdquo;, &ldquo;Deactive Meli Flex&rdquo;]</td>
+</tr>
+<tr>
+<td><code class="prettyprint">mistakes</code></td>
+<td>Listado de errores de un campo en específico que no permitieron que la petición haya resultado exitosa</td>
+</tr>
+<tr>
+<td><code class="prettyprint">warnings</code></td>
+<td>Listado de advertencias u oportinidades de mejora de un campo en específico que ha pesar de no ser óptimas la petición se realizó de manera exitosa</td>
+</tr>
+<tr>
+<td><code class="prettyprint">alt_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">alt</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">position_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">position</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">url_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">url</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados en general con el modelo <code class="prettyprint">asset</code></td>
+</tr>
+</tbody></table>
+
           <h1 id="variants">Variants</h1>
 
 <h2 id="par-metros">Parámetros</h2>
@@ -1485,6 +2403,211 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <tr>
 <td><code class="prettyprint">variant_id</code></td>
 <td>El identificador de la variante a eliminar</td>
+</tr>
+</tbody></table>
+
+<h2 id="todos-los-historiales-de-sincronizaci-n-de-una-variante">Todos los historiales de sincronización de una variante</h2>
+
+<p>Este endpoint entrega todos los historiales de sincronización de variante.</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://www.centry.cl/conexion/v1/variants/&lt;variant_id&gt;/synchronization_histories.json <span class="se">\</span>
+    -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6034137c84c6e1418eb6d62a"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product update"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5776daa1f82f454fa8000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-22T17:26:36.833-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6034137c84c6e1418eb6d62b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_description_1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"error_description_2"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_description_1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"warning_description_1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"integration_config_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6012c3c784c6e179b53043f5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_last"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"centry-test-local-v2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6034137c84c6e1418eb6d62c"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"mistake_1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"mistake_2"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"warning_2"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a16c0bcf82f45273b000054"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"request_response_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6034137c84c6e1418eb6d62a</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">action</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Product update</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">company_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5776daa1f82f454fa8000000</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">created_at</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">description_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6034137c84c6e1418eb6d62b</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_description_1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">error_description_2</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_description_1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">warning_description_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">integration_config_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6012c3c784c6e179b53043f5</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">is_last</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">marketplace</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">centry-test-local-v2</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6034137c84c6e1418eb6d62c</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_general_1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">error_general_2</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_general_1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">warning_general_2</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">product_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5a16c0bcf82f45273b000054</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">request</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">{}</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">request_response_id</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">response</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">sku_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6034137c84c6e1418eb6d62d</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_sku_1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">error_sku_2</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_sku_1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">warning_sku_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">success</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">updated_at</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">variant_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5a16c0bdf82f45273b000056</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sku_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6034137c84c6e1418eb6d62d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"error_sku_1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"error_sku_2"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"warning_sku_1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"warning_sku_2"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-22T17:26:36.833-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a16c0bdf82f45273b000056"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/variants/&lt;variant_id&gt;/synchronization_histories.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">variant_id</code></td>
+<td>El identificador de la relación variante de la que se desea obtener el historial de sincronizaciones</td>
+</tr>
+</tbody></table>
+
+<h2 id="crear-historiales-de-sincronizaci-n-de-una-variante">Crear historiales de sincronización de una variante</h2>
+
+<p>Este endpoint entrega todos los historiales de sincronización de variante.</p>
+<pre class="highlight shell tab-shell"><code>curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/variants/5a16c0bdf82f45273b000056/synchronization_histories.json'</span> <span class="se">\</span>
+-H <span class="s1">'Authorization: Bearer &lt;access_token&gt;'</span> <span class="se">\</span>
+-H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+--data-raw <span class="s1">'{
+    "action":"Product update",
+    "description_messages":{
+        "warnings":["warning_description_1","warning_description_1"],
+        "mistakes": ["error_description_1", "error_description_2"]
+    },
+    "sku_messages":{
+        "warnings":["warning_sku_1","warning_sku_1"],
+        "mistakes": ["error_sku_1", "error_sku_2"]
+    },
+    "messages":{
+        "warnings":["warning_general_1","warning_general_2"],
+        "mistakes": ["error_general_1", "error_general_2"]
+    }
+}'</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603409fa84c6e1418eb6d5b7"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product create"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5776daa1f82f454fa8000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-22T16:46:02.649-03:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"integration_config_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6012c3c784c6e179b53043f5"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_last"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"centry-test-local-v2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"quantity_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603409fa84c6e1418eb6d5b9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"error_quantity_messages_1"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"warning_quantity_messages_1"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603409fa84c6e1418eb6d5b8"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"error_messages_1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"error_messages_2"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"warning_messages_1"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a16c0bcf82f45273b000054"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{}"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"request_response_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603409fa84c6e1418eb6d5b7</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">action</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Product create</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">company_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5776daa1f82f454fa8000000</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">created_at</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">integration_config_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6012c3c784c6e179b53043f5</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">is_last</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">marketplace</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">centry-test-local-v2</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603409fa84c6e1418eb6d5b8</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_messages_1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">error_messages_2</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">product_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5a16c0bcf82f45273b000054</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">quantity_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603409fa84c6e1418eb6d5b9</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_quantity_messages_1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">error_quantity_messages_2</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">error_quantity_messages_3</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_quantity_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">request</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">{}</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">request_response_id</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">response</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">success</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">updated_at</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">variant_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5a16c0bdf82f45273b000056</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">variant_warehouse_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5a16d9a1f82f45273b001576</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-22T16:46:02.649-03:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a16c0bdf82f45273b000056"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"variant_warehouse_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a16d9a1f82f45273b001576"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-post">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/variants/&lt;variant_id&gt;/synchronization_histories.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">variant_warehouse_id</code></td>
+<td>El identificador de la relación variante de la que se desea obtener el historial de sincronizaciones</td>
+</tr>
+</tbody></table>
+
+<h3 id="par-metros-data">Parámetros Data</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">success</code></td>
+<td>Indicado el estado de la petición, campo se calcula de manera automática de acuerdo a la presencia de <code class="prettyprint">mistakes</code> <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">action</code></td>
+<td>Listado de acciones disponibles: [&ldquo;Product save&rdquo;, &ldquo;Product create&rdquo;, &ldquo;Product update&rdquo;, &ldquo;Product unpublish&rdquo;, &ldquo;Product delete&rdquo;, &ldquo;Image save&rdquo;, &ldquo;Description update&rdquo;, &ldquo;Active Meli Flex&rdquo;, &ldquo;Deactive Meli Flex&rdquo;]</td>
+</tr>
+<tr>
+<td><code class="prettyprint">mistakes</code></td>
+<td>Listado de errores de un campo en específico que no permitieron que la petición haya resultado exitosa</td>
+</tr>
+<tr>
+<td><code class="prettyprint">warnings</code></td>
+<td>Listado de advertencias u oportinidades de mejora de un campo en específico que ha pesar de no ser óptimas la petición se realizó de manera exitosa</td>
+</tr>
+<tr>
+<td><code class="prettyprint">description_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">description</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">sku_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">sku</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados en general con el modelo <code class="prettyprint">variant_warehouse</code></td>
 </tr>
 </tbody></table>
 
@@ -2069,11 +3192,11 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </tbody></table>
 
-<h2 id="eliminar-una-variante">Eliminar una Variante</h2>
+<h2 id="eliminar-una-variante-bodega">Eliminar una Variante-Bodega</h2>
 
 <p>Este endpoint elimina una relación variante-bodega.</p>
 <pre class="highlight shell tab-shell"><code>curl -X DELETE https://www.centry.cl/conexion/v1/variant_warehouses/&lt;variant_warehouse_id&gt;.json <span class="se">\</span>
-    -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+    -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span>
 </code></pre>
 <blockquote>
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
@@ -2100,6 +3223,429 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 <tr>
 <td><code class="prettyprint">variant_warehouse_id</code></td>
 <td>El identificador de la relación variante-bodega a eliminar</td>
+</tr>
+</tbody></table>
+
+<h2 id="todos-los-historiales-de-sincronizaci-n-de-una-variante-bodega">Todos los historiales de sincronización de una variante-bodega</h2>
+
+<p>Este endpoint entrega todos los historiales de sincronización de variante-bodega.</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://www.centry.cl/conexion/v1/variant_warehouses/&lt;variant_warehouse_id&gt;/synchronization_histories.json <span class="se">\</span>
+    -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603409fa84c6e1418eb6d5b7"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product create"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5776daa1f82f454fa8000000"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-22T16:46:02.649-03:00"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"integration_config_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6012c3c784c6e179b53043f5"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"is_last"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"centry-test-local-v2"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603409fa84c6e1418eb6d5b8"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+           </span><span class="s2">"error_messages_1"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"error_messages_2"</span><span class="w">
+       </span><span class="p">],</span><span class="w">
+       </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+           </span><span class="s2">"warning_messages_1"</span><span class="w">
+       </span><span class="p">]</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a16c0bcf82f45273b000054"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"quantity_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603409fa84c6e1418eb6d5b9"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+           </span><span class="s2">"error_quantity_messages_1"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"error_quantity_messages_2"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"error_quantity_messages_3"</span><span class="w">
+       </span><span class="p">],</span><span class="w">
+       </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+           </span><span class="s2">"warning_quantity_messages_1"</span><span class="w">
+       </span><span class="p">]</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{}"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"request_response_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603409fa84c6e1418eb6d5b7</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">action</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Product create</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">company_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5776daa1f82f454fa8000000</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">created_at</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">integration_config_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6012c3c784c6e179b53043f5</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">is_last</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">marketplace</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">centry-test-local-v2</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603409fa84c6e1418eb6d5b8</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_messages_1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">error_messages_2</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">product_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5a16c0bcf82f45273b000054</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">quantity_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603409fa84c6e1418eb6d5b9</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_quantity_messages_1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">error_quantity_messages_2</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">error_quantity_messages_3</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_quantity_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">request</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">{}</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">request_response_id</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">response</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">success</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">updated_at</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">variant_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5a16c0bdf82f45273b000056</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">variant_warehouse_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5a16d9a1f82f45273b001576</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-22T16:46:02.649-03:00"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a16c0bdf82f45273b000056"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"variant_warehouse_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a16d9a1f82f45273b001576"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/variants/&lt;variant_warehouse_id&gt;/synchronization_histories.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">variant_warehouse_id</code></td>
+<td>El identificador de la relación variante-bodega de la que se desea obtener el historial de sincronizaciones</td>
+</tr>
+</tbody></table>
+
+<h2 id="crear-historiales-de-sincronizaci-n-de-una-variante-bodega">Crear historiales de sincronización de una variante-bodega</h2>
+
+<p>Este endpoint entrega todos los historiales de sincronización de variante-bodega.</p>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s1">'https://www.centry.cl/conexion/v1/variant_warehouses/&lt;variant_warehouse_id&gt;/synchronization_histories.json'</span> <span class="se">\</span>
+--header <span class="s1">'Authorization: Bearer  &lt;access_token&gt;'</span> <span class="se">\</span>
+--header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+--data-raw <span class="s1">'{
+    "action":"Product create",
+    "quantity_messages":{
+        "warnings":["warning_quantity_messages_1"],
+        "mistakes": ["error_quantity_messages_1"]
+    },
+    "messages":{
+        "warnings":["warning_messages_1"],
+        "mistakes": ["error_messages_1"]
+    }
+}'</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603409fa84c6e1418eb6d5b7"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product create"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5776daa1f82f454fa8000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-22T16:46:02.649-03:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"integration_config_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6012c3c784c6e179b53043f5"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_last"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"centry-test-local-v2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"quantity_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603409fa84c6e1418eb6d5b9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"error_quantity_messages_1"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"warning_quantity_messages_1"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603409fa84c6e1418eb6d5b8"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mistakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"error_messages_1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"error_messages_2"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"warning_messages_1"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a16c0bcf82f45273b000054"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{}"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"request_response_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603409fa84c6e1418eb6d5b7</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">action</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Product create</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">company_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5776daa1f82f454fa8000000</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">created_at</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">integration_config_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">6012c3c784c6e179b53043f5</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">is_last</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">marketplace</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">centry-test-local-v2</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603409fa84c6e1418eb6d5b8</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_messages_1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">error_messages_2</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">product_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5a16c0bcf82f45273b000054</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">quantity_messages</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">603409fa84c6e1418eb6d5b9</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">mistakes</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">error_quantity_messages_1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">error_quantity_messages_2</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">error_quantity_messages_3</span><span class="se">\"</span><span class="s2">],</span><span class="se">\"</span><span class="s2">warnings</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">warning_quantity_messages_1</span><span class="se">\"</span><span class="s2">]},</span><span class="se">\"</span><span class="s2">request</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">{}</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">request_response_id</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">response</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">success</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">updated_at</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">variant_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5a16c0bdf82f45273b000056</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">variant_warehouse_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5a16d9a1f82f45273b001576</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-22T16:46:02.649-03:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a16c0bdf82f45273b000056"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"variant_warehouse_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a16d9a1f82f45273b001576"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-post">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/variants/&lt;variant_warehouse_id&gt;/synchronization_histories.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">variant_warehouse_id</code></td>
+<td>El identificador de la relación variante-bodega de la que se desea obtener el historial de sincronizaciones</td>
+</tr>
+</tbody></table>
+
+<h3 id="par-metros-data">Parámetros Data</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">success</code></td>
+<td>Indicado el estado de la petición, campo se calcula de manera automática de acuerdo a la presencia de <code class="prettyprint">mistakes</code> <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">action</code></td>
+<td>Listado de acciones disponibles: [&ldquo;Product save&rdquo;, &ldquo;Product create&rdquo;, &ldquo;Product update&rdquo;, &ldquo;Product unpublish&rdquo;, &ldquo;Product delete&rdquo;, &ldquo;Image save&rdquo;, &ldquo;Description update&rdquo;, &ldquo;Active Meli Flex&rdquo;, &ldquo;Deactive Meli Flex&rdquo;]</td>
+</tr>
+<tr>
+<td><code class="prettyprint">mistakes</code></td>
+<td>Listado de errores de un campo en específico que no permitieron que la petición haya resultado exitosa</td>
+</tr>
+<tr>
+<td><code class="prettyprint">warnings</code></td>
+<td>Listado de advertencias u oportinidades de mejora de un campo en específico que ha pesar de no ser óptimas la petición se realizó de manera exitosa</td>
+</tr>
+<tr>
+<td><code class="prettyprint">quantity_messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados con el atributo <code class="prettyprint">quantity</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">messages</code></td>
+<td>Objeto con el listado de <code class="prettyprint">mistakes</code> y/o <code class="prettyprint">warnings</code> relacionados en general con el modelo <code class="prettyprint">variant_warehouse</code></td>
+</tr>
+</tbody></table>
+
+          <h1 id="variantassets">VariantAssets</h1>
+
+<p>Este modelo es el encargado de relacionar las variantes de un producto con las
+imágenes del producto.</p>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador de la relación variante-imagen <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">variant_id</code></td>
+<td>string</td>
+<td>Identificador de la variante. Ver endpoint <a href="#variants">Variants</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">asset_id</code></td>
+<td>string</td>
+<td>Identificador de la imagen. Ver endpoint <a href="#warehouses">Warehouses</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">product_id</code></td>
+<td>integer</td>
+<td>Identificador del producto. Ver endpoint <a href="#products">Products</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">position</code></td>
+<td>string</td>
+<td>Posición de la imagen en la variante.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>string</td>
+<td>Fecha de creación del registro en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td>string</td>
+<td>Fecha de la última modificación del registro en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+</tbody></table>
+
+<h2 id="todas-las-variante-im-genes-de-la-variante">Todas las variante-imágenes de la variante</h2>
+
+<p>Este endpoint entrega todas las relaciones variante-imagen de una variante.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/variants/&lt;variant_id&gt;/assets.json"</span>/
+ -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ac23e71f82f455978672393"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-02T11:30:09.723-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-03T13:55:09.068-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ac23e71f82f455978672392"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000002"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"asset_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000001"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ac23e71f82f455978672394"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-02T11:30:09.723-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-03T13:55:09.068-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ac23e71f82f455978672392"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000002"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"asset_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000002"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ac23e71f82f455978672395"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-02T11:30:09.723-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-03T13:55:09.068-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ac23e71f82f455978672392"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000002"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"asset_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000003"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/variants/&lt;variant_id&gt;/assets.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">variant_id</code></td>
+<td>El identificador de la variante.</td>
+</tr>
+</tbody></table>
+
+<h3 id="filtros-comunes">Filtros comunes</h3>
+
+<p>Si se desean obtener resultados más específicos para este endpoint, se puede
+precisar el request agregando parámetros a la URL de la forma
+https://www.centry.cl/conexion/v1/variants/&lt;variant_id&gt;/assets.json?&lt;filter&gt;=&lt;valor&gt;
+como se muestra en el capítulo <a href="#filters">Filters</a> al final de la documentación.</p>
+
+<h2 id="crear-una-variante-imagen">Crear una variante-imagen</h2>
+
+<p>Este endpoint crea una relación variante-imagen.</p>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  https://www.centry.cl/conexion/v1/variants/&lt;variant_id&gt;/assets.json <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer &lt;access_token&gt;'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "asset_id": "577eb7b8f82f456ef4000001"
+}'</span>
+</code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-post">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/variants/&lt;variant_id&gt;/assets.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">variant_id</code></td>
+<td>El identificador de la variante.</td>
+</tr>
+</tbody></table>
+
+<h2 id="obtener-una-variante-imagen-espec-fica">Obtener una variante-imagen específica</h2>
+
+<p>Este endpoint entrega una relación variante-imagen en específica.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/variants/&lt;variant_id&gt;/assets/&lt;variant_asset_id&gt;.json"</span> -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ac23e71f82f455978672394"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-02T11:30:09.723-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-03T13:55:09.068-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ac23e71f82f455978672392"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000002"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"asset_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"577eb7b8f82f456ef4000002"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/variants/&lt;variant_id&gt;/assets/&lt;variant_asset_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">variant_id</code></td>
+<td>El identificador de la variante.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">variant_asset_id</code></td>
+<td>El identificador de la relación variante-imagen a recuperar</td>
+</tr>
+</tbody></table>
+
+<h2 id="eliminar-una-relacion-variante-imagen">Eliminar una relacion variante imagen</h2>
+
+<p>Este endpoint elimina una relación variante-imagen.</p>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE https://www.centry.cl/conexion/v1/variants/&lt;variant_id&gt;/assets/&lt;variant_asset_id&gt;.json <span class="se">\</span>
+    -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="kc">true</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-delete">DELETE</i>
+    <h6> https://www.centry.cl/conexion/v1/variants/&lt;variant_id&gt;/assets/&lt;variant_asset_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">variant_id</code></td>
+<td>El identificador de la variante.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">variant_asset_id</code></td>
+<td>El identificador de la relación variante-imagen a recuperar</td>
 </tr>
 </tbody></table>
 
@@ -4131,7 +5677,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 
 <h2 id="confirmaci-n-de-un-pedido-pendiente">Confirmación de un pedido pendiente</h2>
 
-<p>Este endpoint permite confirmar un pedido pendiente para aquellas integraciones que así lo admiten. Estas integraciones son:</p>
+<p>Este endpoint permite confirmar que se entregará un pedido pendiente para aquellas integraciones que así lo admiten. Estas integraciones son:</p>
 
 <ul>
 <li>Falabella Marketplace</li>
@@ -4516,6 +6062,343 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 <tr>
 <td><code class="prettyprint">created_at</code></td>
 <td>fecha de creación de la anulación</td>
+</tr>
+</tbody></table>
+
+<h2 id="confirmaci-n-de-entrega-de-un-pedido-pendiente">Confirmación de entrega de un pedido pendiente</h2>
+
+<p>Este endpoint permite confirmar la entrega de un pedido pendiente para aquellas integraciones que así lo admiten. Estas integraciones son:</p>
+
+<ul>
+<li>Mercado Libre</li>
+</ul>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/orders/5eece46148f039166bf5ffad/order_status/delivery_confirmations.json"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span> <span class="se">\</span>
+     -d <span class="s1">'{
+    "buyer_rate_id": "5e45b03d48f0392442dbd1bc",
+    "message": "Solicitud del cliente"
+}'</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eeba37348f03925389e5a20"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buyer_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e45b03d48f0392442dbd1bc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eeba0ad48f039354aa785ac"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solicitud del cliente"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"success_response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+     </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"reply_status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-07T13:34:29.601-04:00"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"fulfilled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEUTRAL"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"visibility_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solicitud del cliente"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"cust_role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"seller"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"site_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MLC"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9041211809440</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"cust_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">526176909</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"reply"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"cust_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">628867579</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4083462417</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hidden"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"reply_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"failed_attempts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-18T09:25:07.451-08:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/<order_id>/order_status/delivery_confirmations.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador de un pedido en Centry</td>
+</tr>
+</tbody></table>
+
+<h3 id="body-request">Body request</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">buyer_rate_id</code></td>
+<td>Identificado de la calificación del comprador <a href="#buyerrates">BuyerRates</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">message</code></td>
+<td>Texto con la justificación de la confirmación de entrega del pedido</td>
+</tr>
+</tbody></table>
+
+<h3 id="body-response">Body response</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>Identificador de la confirmación de entrega en Centry</td>
+</tr>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador del pedido asociado a esta confirmación de entrega</td>
+</tr>
+<tr>
+<td><code class="prettyprint">buyer_rate_id</code></td>
+<td>Identificado de la calificación del comprador</td>
+</tr>
+<tr>
+<td><code class="prettyprint">message</code></td>
+<td>Texto con la justificación de la confirmación de entrega del pedido</td>
+</tr>
+<tr>
+<td><code class="prettyprint">success_response</code></td>
+<td>Diccionario con la respuesta entregada por la plataforma de origen del pedido. No existe un formato predefinido para este campo, depende de cada integración y puede cambiar sin previo aviso. Lo más relevante es que su presencia indica que la confirmación de entrega ha resultado exitosa.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">failed_attempts</code></td>
+<td>Listado con todos los intentos fallidos que ha tenido esta confirmación de entrega en la plataforma de origen del pedido.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td>fecha de creación de la confirmación de entrega</td>
+</tr>
+</tbody></table>
+
+<h2 id="todas-las-notas-de-un-pedido">Todas las notas de un pedido</h2>
+
+<p>Este endpoint permite obtener todas las notas de pedido de un pedido en particular:</p>
+<pre class="highlight shell tab-shell"><code>curl -L -X GET <span class="s1">'https://www.centry.cl/conexion/v1/orders/&amp;lt;order_id&amp;gt;/order_notes.json'</span> <span class="se">\</span>
+-H <span class="s1">'Authorization: Bearer &lt;access_token&gt;'</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6035671984c6e1147fa0dca2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T17:35:37.060-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"602bd13084c6e18fca85b820"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nota pedido 4"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T17:35:37.060-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fd0e51784c6e117832602cd"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6035665784c6e111b4d19f49"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T17:32:23.935-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"602bd13084c6e18fca85b820"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nota pedido 3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T17:32:23.935-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fd0e51784c6e117832602cd"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603565e184c6e111b4d19f44"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T17:30:25.049-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"602bd13084c6e18fca85b820"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nota pedido 2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T17:30:25.049-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fd0e51784c6e117832602cd"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603565d784c6e111b4d19f41"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T17:30:15.074-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"602bd13084c6e18fca85b820"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nota pedido 1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T17:30:15.074-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fd0e51784c6e117832602cd"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/order_notes.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador de un pedido en Centry</td>
+</tr>
+</tbody></table>
+
+<h3 id="body-response">Body response</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>Identificador de la nota del pedido</td>
+</tr>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador del pedido asociado a esta nota de pedido</td>
+</tr>
+<tr>
+<td><code class="prettyprint">user_id</code></td>
+<td>Identificador del usuario que realizó la nota de pedido <i class="label label-info">Asignado de manera automática</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">text</code></td>
+<td>Texto correspondiente a la nota de pedido</td>
+</tr>
+</tbody></table>
+
+<h2 id="crear-una-nota-de-pedido">Crear una nota de pedido</h2>
+
+<p>Este endpoint permite crear una nota de pedido para un pedido en particular:</p>
+<pre class="highlight shell tab-shell"><code>
+curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/orders/&amp;lt;order_id&amp;gt;/order_notes.json'</span> <span class="se">\</span>
+-H <span class="s1">'Authorization: Bearer &lt;access_token&gt;'</span> <span class="se">\</span>
+-H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+--data-raw <span class="s1">'{
+    "text": "Nota pedido 5"
+}'</span>
+
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603567f384c6e1147fa0dcad"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T17:39:15.279-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"602bd13084c6e18fca85b820"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nota pedido 5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T17:39:15.279-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fd0e51784c6e117832602cd"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6035671984c6e1147fa0dca2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T17:35:37.060-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"602bd13084c6e18fca85b820"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nota pedido 4"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T17:35:37.060-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fd0e51784c6e117832602cd"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6035665784c6e111b4d19f49"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T17:32:23.935-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"602bd13084c6e18fca85b820"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nota pedido 3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T17:32:23.935-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fd0e51784c6e117832602cd"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603565e184c6e111b4d19f44"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T17:30:25.049-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"602bd13084c6e18fca85b820"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nota pedido 2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T17:30:25.049-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fd0e51784c6e117832602cd"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"603565d784c6e111b4d19f41"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T17:30:15.074-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"602bd13084c6e18fca85b820"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nota pedido 1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-23T17:30:15.074-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fd0e51784c6e117832602cd"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/order_notes.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador de un pedido en Centry</td>
+</tr>
+</tbody></table>
+
+<h3 id="body-request">Body request</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">text</code></td>
+<td>Texto correspondiente a la nota del pedido</td>
+</tr>
+</tbody></table>
+
+<h3 id="body-response">Body response</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>Identificador de la nota del pedido</td>
+</tr>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador del pedido asociado a esta nota de pedido</td>
+</tr>
+<tr>
+<td><code class="prettyprint">user_id</code></td>
+<td>Identificador del usuario que realizó la nota de pedido <i class="label label-info">Asignado de manera automática</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">text</code></td>
+<td>Texto correspondiente a la nota de pedido</td>
 </tr>
 </tbody></table>
 
