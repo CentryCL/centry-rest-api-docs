@@ -1055,7 +1055,7 @@ curl -L -X POST 'https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/order
 
 <div class="api-endpoint">
   <div class="endpoint-data">
-    <i class="label label-get">POST</i>
+    <i class="label label-post">POST</i>
     <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/order_notes.json </h6>
   </div>
 </div>
@@ -1081,3 +1081,239 @@ Parámetro  | Descripción
 `order_id` | Identificador del pedido asociado a esta nota de pedido
 `user_id` | Identificador del usuario que realizó la nota de pedido <i class="label label-info">Asignado de manera automática</i>
 `text` | Texto correspondiente a la nota de pedido
+
+
+
+## Todos los documentos de un pedido
+
+Este endpoint permite obtener todos los documentos de un pedido en particular:
+
+
+```shell
+curl -L -X GET 'https://www.centry.cl/conexion/v1/orders/<order_id>/documents.json' \
+-H 'Authorization: Bearer <access_token>'
+```
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+[
+    {
+        "_document_type": "invoice",
+        "_id": "6052202e84c6e19ccecb1966",
+        "c_at": "2021-03-17T12:28:46.171-03:00",
+        "file_content_type": "application/pdf",
+        "file_file_name": "nombre_archivo.pdf",
+        "file_file_size": 35517,
+        "file_fingerprint": "f69fd4473948e0bb7aa8e0d71610e1a5",
+        "file_updated_at": "2021-03-17T10:32:24.412-03:00",
+        "order_id": "6048df5184c6e187a31a6200"
+    },
+    {
+        "_document_type": "invoice",
+        "_id": "6052203884c6e19ccecb1968",
+        "c_at": "2021-03-17T12:28:56.384-03:00",
+        "file_content_type": "application/pdf",
+        "file_file_name": "nombre_archivo.pdf",
+        "file_file_size": 82419,
+        "file_fingerprint": "f69fd4473948e0bb7aa8e0d71610e1a5",
+        "file_updated_at": "2021-03-17T10:28:56.307-03:00",
+        "order_id": "6048df5184c6e187a31a6200"
+    }
+]
+```
+
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/documents.json </h6>
+  </div>
+</div>
+
+### Parámetros URL
+
+Parámetro  | Descripción
+------------ | ------------------------------------
+`order_id` | Identificador de un pedido en Centry
+
+
+### Body response
+
+Parámetro  | Descripción
+------------------ | ------------------------------------
+`_id` | Identificador de la nota del pedido
+`order_id` | Identificador del pedido asociado a esta nota de pedido
+`file_file_name` | Nombre del archivo del documento
+`_document_type` | Tipo de documento: [bill invoice credit_note debit_note shipping_guide other]
+`file_file_size` | Tamaño del archivo en KB
+
+
+## Mostrar un documento de un pedido
+
+Este endpoint permite obtener un documento específico de un pedido en particular:
+
+
+```shell
+curl -L -X GET 'https://www.centry.cl/conexion/v1/orders/<order_id>/documents/<document_id>.json' \
+-H 'Authorization: Bearer <access_token>'
+```
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+  {
+      "_document_type": "invoice",
+      "_id": "6052203884c6e19ccecb1968",
+      "c_at": "2021-03-17T12:28:56.384-03:00",
+      "file_content_type": "application/pdf",
+      "file_file_name": "nombre_archivo.pdf",
+      "file_file_size": 82419,
+      "file_fingerprint": "f69fd4473948e0bb7aa8e0d71610e1a5",
+      "file_updated_at": "2021-03-17T10:28:56.307-03:00",
+      "order_id": "6048df5184c6e187a31a6200"
+  }
+```
+
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/documents/&lt;document_id&gt;.json </h6>
+  </div>
+</div>
+
+### Parámetros URL
+
+Parámetro  | Descripción
+------------ | ------------------------------------
+`order_id` | Identificador de un pedido en Centry
+`document_id` | Identificador de un documento en Centry
+
+### Body response
+
+Parámetro  | Descripción
+------------------ | ------------------------------------
+`_id` | Identificador de la nota del pedido
+`order_id` | Identificador del pedido asociado a esta nota de pedido
+`file_file_name` | Nombre del archivo del documento
+`_document_type` | Tipo de documento: [bill invoice credit_note debit_note shipping_guide other]
+`file_file_size` | Tamaño del archivo en KB
+
+
+
+
+
+
+
+
+## Crear un documento de un pedido
+
+Este endpoint permite crear una nota de pedido para un pedido en particular:
+
+
+```shell
+
+curl -L -X POST 'www.centry.cl/conexion/v1/orders/<order_id>/documents.json' \
+-H 'Authorization: Bearer  <access_token>' \
+-F 'document_type=invoice' \
+-F 'file=@/Users/nameuser/Documents/nombre_archivo.pdf'
+
+
+
+```
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+
+{
+    "_document_type": "invoice",
+    "_id": "6052203884c6e19ccecb1968",
+    "c_at": "2021-03-17T12:28:56.384-03:00",
+    "file_content_type": "application/pdf",
+    "file_file_name": "nombre_archivo.pdf",
+    "file_file_size": 82419,
+    "file_fingerprint": "f69fd4473948e0bb7aa8e0d71610e1a5",
+    "file_updated_at": "2021-03-17T10:28:56.307-03:00",
+    "order_id": "6048df5184c6e187a31a6200"
+}
+
+```
+
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-post">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/documents.json </h6>
+  </div>
+</div>
+
+### Parámetros URL
+
+Parámetro  | Descripción
+------------ | ------------------------------------
+`order_id` | Identificador de un pedido en Centry
+
+### Body form-data
+
+Parámetro | Descripción | Tipo
+------------| ------------------------------------|----------
+`file` | Archivo del documento a anexar al pedido | File
+`document_type` | Tipo de documento: [bill, invoice, credit_note, debit_note, shipping_guide, other] | Text
+
+
+### Body response
+
+Parámetro  | Descripción
+---------------- | ---------------------------------
+`_id` | Identificador de la nota del pedido
+`order_id` | Identificador del pedido asociado a esta nota de pedido
+`file_file_name` | Nombre del archivo del documento
+`_document_type` | Tipo de documento: [bill invoice credit_note debit_note shipping_guide other]
+`file_file_size` | Tamaño del archivo en KB
+
+
+
+## Eliminar un documento de un pedido
+
+Este endpoint permite eliminar un documento específico de un pedido en particular:
+
+
+```shell
+curl -L -X DELETE 'https://www.centry.cl/conexion/v1/orders/<order_id>/documents/<document_id>.json' \
+-H 'Authorization: Bearer <access_token>'
+```
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+  {
+    "message": "Document deleted"
+  }
+```
+
+### HTTP Request
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-delete">DELETE</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/documents/&lt;document_id&gt;.json </h6>
+  </div>
+</div>
+
+### Parámetros URL
+
+Parámetro  | Descripción
+------------ | ------------------------------------
+`order_id` | Identificador de un pedido en Centry
+`document_id` | Identificador de un documento en Centry
+
+### Body response
+
+Parámetro  | Descripción
+------------------ | ------------------------------------
+`message` | Mensaje de respuesta del servidor
