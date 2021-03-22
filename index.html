@@ -6343,7 +6343,7 @@ curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/orders/&amp;
 
 <div class="api-endpoint">
   <div class="endpoint-data">
-    <i class="label label-get">POST</i>
+    <i class="label label-post">POST</i>
     <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/order_notes.json </h6>
   </div>
 </div>
@@ -6399,6 +6399,328 @@ curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/orders/&amp;
 <tr>
 <td><code class="prettyprint">text</code></td>
 <td>Texto correspondiente a la nota de pedido</td>
+</tr>
+</tbody></table>
+
+<h2 id="todos-los-documentos-de-un-pedido">Todos los documentos de un pedido</h2>
+
+<p>Este endpoint permite obtener todos los documentos de un pedido en particular:</p>
+<pre class="highlight shell tab-shell"><code>curl -L -X GET <span class="s1">'https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/documents.json'</span> <span class="se">\</span>
+-H <span class="s1">'Authorization: Bearer &lt;access_token&gt;'</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_document_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6052202e84c6e19ccecb1966"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"c_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-17T12:28:46.171-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"file_content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"file_file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nombre_archivo.pdf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"file_file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">35517</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"file_fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f69fd4473948e0bb7aa8e0d71610e1a5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"file_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-17T10:32:24.412-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6048df5184c6e187a31a6200"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_document_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6052203884c6e19ccecb1968"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"c_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-17T12:28:56.384-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"file_content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"file_file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nombre_archivo.pdf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"file_file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">82419</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"file_fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f69fd4473948e0bb7aa8e0d71610e1a5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"file_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-17T10:28:56.307-03:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6048df5184c6e187a31a6200"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/documents.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador de un pedido en Centry</td>
+</tr>
+</tbody></table>
+
+<h3 id="body-response">Body response</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>Identificador de la nota del pedido</td>
+</tr>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador del pedido asociado a esta nota de pedido</td>
+</tr>
+<tr>
+<td><code class="prettyprint">file_file_name</code></td>
+<td>Nombre del archivo del documento</td>
+</tr>
+<tr>
+<td><code class="prettyprint">_document_type</code></td>
+<td>Tipo de documento: [bill invoice credit_note debit_note shipping_guide other]</td>
+</tr>
+<tr>
+<td><code class="prettyprint">file_file_size</code></td>
+<td>Tamaño del archivo en KB</td>
+</tr>
+</tbody></table>
+
+<h2 id="mostrar-un-documento-de-un-pedido">Mostrar un documento de un pedido</h2>
+
+<p>Este endpoint permite obtener un documento específico de un pedido en particular:</p>
+<pre class="highlight shell tab-shell"><code>curl -L -X GET <span class="s1">'https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/documents/&lt;document_id&gt;.json'</span> <span class="se">\</span>
+-H <span class="s1">'Authorization: Bearer &lt;access_token&gt;'</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_document_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6052203884c6e19ccecb1968"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"c_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-17T12:28:56.384-03:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"file_content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"file_file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nombre_archivo.pdf"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"file_file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">82419</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"file_fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f69fd4473948e0bb7aa8e0d71610e1a5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"file_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-17T10:28:56.307-03:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6048df5184c6e187a31a6200"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/documents/&lt;document_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador de un pedido en Centry</td>
+</tr>
+<tr>
+<td><code class="prettyprint">document_id</code></td>
+<td>Identificador de un documento en Centry</td>
+</tr>
+</tbody></table>
+
+<h3 id="body-response">Body response</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>Identificador de la nota del pedido</td>
+</tr>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador del pedido asociado a esta nota de pedido</td>
+</tr>
+<tr>
+<td><code class="prettyprint">file_file_name</code></td>
+<td>Nombre del archivo del documento</td>
+</tr>
+<tr>
+<td><code class="prettyprint">_document_type</code></td>
+<td>Tipo de documento: [bill invoice credit_note debit_note shipping_guide other]</td>
+</tr>
+<tr>
+<td><code class="prettyprint">file_file_size</code></td>
+<td>Tamaño del archivo en KB</td>
+</tr>
+</tbody></table>
+
+<h2 id="crear-un-documento-de-un-pedido">Crear un documento de un pedido</h2>
+
+<p>Este endpoint permite crear una nota de pedido para un pedido en particular:</p>
+<pre class="highlight shell tab-shell"><code>
+curl -L -X POST <span class="s1">'www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/documents.json'</span> <span class="se">\</span>
+-H <span class="s1">'Authorization: Bearer  &lt;access_token&gt;'</span> <span class="se">\</span>
+-F <span class="s1">'document_type=invoice'</span> <span class="se">\</span>
+-F <span class="s1">'file=@/Users/nameuser/Documents/nombre_archivo.pdf'</span>
+
+
+
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_document_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6052203884c6e19ccecb1968"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"c_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-17T12:28:56.384-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nombre_archivo.pdf"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">82419</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f69fd4473948e0bb7aa8e0d71610e1a5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-17T10:28:56.307-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6048df5184c6e187a31a6200"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-post">POST</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/documents.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador de un pedido en Centry</td>
+</tr>
+</tbody></table>
+
+<h3 id="body-form-data">Body form-data</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+<th>Tipo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">file</code></td>
+<td>Archivo del documento a anexar al pedido</td>
+<td>File</td>
+</tr>
+<tr>
+<td><code class="prettyprint">document_type</code></td>
+<td>Tipo de documento: [bill, invoice, credit_note, debit_note, shipping_guide, other]</td>
+<td>Text</td>
+</tr>
+</tbody></table>
+
+<h3 id="body-response">Body response</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>Identificador de la nota del pedido</td>
+</tr>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador del pedido asociado a esta nota de pedido</td>
+</tr>
+<tr>
+<td><code class="prettyprint">file_file_name</code></td>
+<td>Nombre del archivo del documento</td>
+</tr>
+<tr>
+<td><code class="prettyprint">_document_type</code></td>
+<td>Tipo de documento: [bill invoice credit_note debit_note shipping_guide other]</td>
+</tr>
+<tr>
+<td><code class="prettyprint">file_file_size</code></td>
+<td>Tamaño del archivo en KB</td>
+</tr>
+</tbody></table>
+
+<h2 id="eliminar-un-documento-de-un-pedido">Eliminar un documento de un pedido</h2>
+
+<p>Este endpoint permite eliminar un documento específico de un pedido en particular:</p>
+<pre class="highlight shell tab-shell"><code>curl -L -X DELETE <span class="s1">'https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/documents/&lt;document_id&gt;.json'</span> <span class="se">\</span>
+-H <span class="s1">'Authorization: Bearer &lt;access_token&gt;'</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Document deleted"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-delete">DELETE</i>
+    <h6> https://www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/documents/&lt;document_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">order_id</code></td>
+<td>Identificador de un pedido en Centry</td>
+</tr>
+<tr>
+<td><code class="prettyprint">document_id</code></td>
+<td>Identificador de un documento en Centry</td>
+</tr>
+</tbody></table>
+
+<h3 id="body-response">Body response</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">message</code></td>
+<td>Mensaje de respuesta del servidor</td>
 </tr>
 </tbody></table>
 
