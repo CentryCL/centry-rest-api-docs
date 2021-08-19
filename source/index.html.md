@@ -27,6 +27,7 @@ includes:
   - buyer_rates
   - cancellation_reasons
   - integration_configs
+  - warehouse_priorities
   - company
   - user
   - webhooks
