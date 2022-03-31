@@ -5525,7 +5525,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
   "first_name":"Vía cUrl",
   "last_name":"Apellido Factura",
   "line1":"Dirección Cliente",
-  "line2":"Direccion alternativa",
+  "line2":"Dirección alternativa",
   "phone1":"89668063",
   "phone2":"75927583",
   "state":"EstadoFactura",
@@ -5535,7 +5535,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
   "city":"Santiago",
   "country":"Chile",
   "email":"Email@Envío.cl",
-  "first_name":"Nombre Envio",
+  "first_name":"Nombre Envío",
   "last_name":"Apellido Envío",
   "line1":"Dirección Cliente",
   "line2":"Dirección alternativa",
@@ -5667,11 +5667,11 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">orders</code></td>
-<td>Un arreglo de objetos con información de los los pedidos involucrados en los documentos adjuntos, esta información es: <code class="prettyprint">_id</code>: identificador del pedido en centry, <code class="prettyprint">origin</code>: Nombre de la plataforma de desde donde se origió el pedido, <code class="prettyprint">id_origin</code>: identificador del pedido en la plataforma de origen, <code class="prettyprint">extras</code> información relevante que pudiera servir para cada integración. Este último campo vaía de plataforma en plataforma, por ejemplo para mercado libre entrega un objeto <code class="prettyprint">shipping</code> con el identificador del despacho, mientras que en Dafiti o Linio entrega un arreglo llamado <code class="prettyprint">order_item_ids</code> con los identificadores de las líneas del pedido.</td>
+<td>Un arreglo de objetos con información de los los pedidos involucrados en los documentos adjuntos, esta información es: <code class="prettyprint">_id</code>: identificador del pedido en centry, <code class="prettyprint">origin</code>: Nombre de la plataforma de desde donde se originó el pedido, <code class="prettyprint">id_origin</code>: identificador del pedido en la plataforma de origen, <code class="prettyprint">extras</code> información relevante que pudiera servir para cada integración. Este último campo varía de plataforma en plataforma, por ejemplo para mercado libre entrega un objeto <code class="prettyprint">shipping</code> con el identificador del despacho, mientras que en Dafiti o Linio entrega un arreglo llamado <code class="prettyprint">order_item_ids</code> con los identificadores de las líneas del pedido.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">files</code></td>
-<td>un listado de objetos con los documentos asociados, estos objetos están compuesto de 3 campos: <code class="prettyprint">content_type</code> el mime type del archivo adjunto, <code class="prettyprint">filename</code> un nombre de fantasía que describe el documento, <code class="prettyprint">content_base_64</code> el contenidop del documento codifficado en base 64.</td>
+<td>un listado de objetos con los documentos asociados, estos objetos están compuesto de 3 campos: <code class="prettyprint">content_type</code> el mime type del archivo adjunto, <code class="prettyprint">filename</code> un nombre de fantasía que describe el documento, <code class="prettyprint">content_base_64</code> el contenido del documento codificado en base 64.</td>
 </tr>
 </tbody></table>
 
@@ -5681,6 +5681,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 
 <ul>
 <li>Falabella Marketplace</li>
+<li>Mercado Libre: división de paquetes (pronto)</li>
 </ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/orders/5eece46148f039166bf5ffad/order_status/confirmations.json"</span> <span class="se">\</span>
      -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span> <span class="se">\</span>
@@ -5724,7 +5725,8 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
       </span><span class="s2">"length"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="w">
+      </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reason_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e45b03c48f0392442dbd1a6"</span><span class="p">,</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eece46148f039166bf5ffad"</span><span class="p">,</span><span class="w">
@@ -5769,28 +5771,36 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 </thead><tbody>
 <tr>
+<td><code class="prettyprint">reason_id</code></td>
+<td>Identificador del motivo por el cual el pedido se requiere esta división. Sólo MercadoLibre admite este atributo y es obligatorio. <a href="#confirmationreasons-pronto">ConfirmationReasons</a></td>
+</tr>
+<tr>
 <td><code class="prettyprint">boxes</code></td>
-<td>Listado de cajas, paquetes o bultos que componen el pedido</td>
+<td>Listado de cajas, paquetes o bultos que componen el pedido.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">boxes.dimensions</code></td>
-<td>Diccionario con las longitudes y peso del bulto</td>
+<td>Diccionario con las longitudes y peso del bulto. Sólo Falabella admite este diccionario.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">boxes.dimensions.length</code></td>
-<td>Largo del bulto medido en centrímetros</td>
+<td>Largo del bulto medido en centímetros.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">boxes.dimensions.width</code></td>
-<td>Ancho del bulto medido en centrímetros</td>
+<td>Ancho del bulto medido en centímetros.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">boxes.dimensions.height</code></td>
-<td>Alto del bulto medido en centrímetros</td>
+<td>Alto del bulto medido en centímetros.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">boxes.dimensions.weight</code></td>
-<td>Peso del bulto medido en kilogramos</td>
+<td>Peso del bulto medido en kilogramos.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">boxes.package_id</code></td>
+<td>Código para identificar la caja. Sólo MercadoLibre admite este atributo y es opcional.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">boxes.items</code></td>
@@ -5915,7 +5925,7 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 </tr>
 <tr>
 <td><code class="prettyprint">date</code></td>
-<td>Fecha solicidata para reagendar</td>
+<td>Fecha solicitada para reagendar</td>
 </tr>
 <tr>
 <td><code class="prettyprint">success_response</code></td>
@@ -6570,20 +6580,15 @@ curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/orders/&amp;
 <h2 id="crear-un-documento-de-un-pedido">Crear un documento de un pedido</h2>
 
 <p>Este endpoint permite crear una nota de pedido para un pedido en particular:</p>
-<pre class="highlight shell tab-shell"><code>
-curl -L -X POST <span class="s1">'www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/documents.json'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -L -X POST <span class="s1">'www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/documents.json'</span> <span class="se">\</span>
 -H <span class="s1">'Authorization: Bearer  &lt;access_token&gt;'</span> <span class="se">\</span>
 -F <span class="s1">'document_type=invoice'</span> <span class="se">\</span>
 -F <span class="s1">'file=@/Users/nameuser/Documents/nombre_archivo.pdf'</span>
-
-
-
 </code></pre>
 <blockquote>
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">
-</span><span class="p">{</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"_document_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6052203884c6e19ccecb1968"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"c_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-17T12:28:56.384-03:00"</span><span class="p">,</span><span class="w">
@@ -6679,9 +6684,9 @@ curl -L -X POST <span class="s1">'www.centry.cl/conexion/v1/orders/&lt;order_id&
 <blockquote>
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Document deleted"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Document deleted"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
@@ -6721,6 +6726,118 @@ curl -L -X POST <span class="s1">'www.centry.cl/conexion/v1/orders/&lt;order_id&
 <tr>
 <td><code class="prettyprint">message</code></td>
 <td>Mensaje de respuesta del servidor</td>
+</tr>
+</tbody></table>
+
+          <h1 id="confirmationreasons-pronto">ConfirmationReasons (Pronto)</h1>
+
+<h2 id="par-metros">Parámetros</h2>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador del motivo de la confirmación/división de pedido <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>string</td>
+<td>Nombre del motivo de la confirmación/división en Centry <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">description</code></td>
+<td>string</td>
+<td>Texto que describe con mayor detalle cada item <i class="label label-info">sólo lectura</i></td>
+</tr>
+</tbody></table>
+
+<h2 id="todos-los-motivos-de-confirmaci-n-divisi-n">Todos los motivos de confirmación/división</h2>
+
+<p>Este endpoint entrega todos los motivos de confirmación/división de Centry.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/confirmation_reasons.json"</span>/
+ -H <span class="s2">"Authorization: Bearer &lt;access_token&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e4d26431a61bb54b678a145"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Frágil"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Productos frágiles."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e4d26431a61bb54b678a14c"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Otro centro de distribución"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Los productos tienen que ser despachados desde distintos orígenes."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e4d26431a61bb54b678a153"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forma irregular"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"La forma de los productos impide enviarlos en un mismo paquete."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e4d26431a61bb54b678a154"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dimensiones excedidas"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Los productos no caben todos en un mismo bulto."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e4d26431a61bb54b678a155"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Otro motivo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Existen otros motivos por los cuales no todos los productos pueden ir en un mismo bulto."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/confirmation_reasons.json </h6>
+  </div>
+</div>
+
+<h2 id="obtener-un-motivo-de-confirmaci-n-divisi-n-espec-fico">Obtener un motivo de confirmación/división específico</h2>
+
+<p>Este endpoint entrega un motivo de confirmación/división específico.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/confirmation_reasons/5e4d26431a61bb54b678a145.json"</span>/
+ -H <span class="s2">"Authorization: Bearer &lt;access_token&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e4d26431a61bb54b678a145"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Frágil"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Productos frágiles."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<div class="api-endpoint">
+  <div class="endpoint-data">
+    <i class="label label-get">GET</i>
+    <h6> https://www.centry.cl/conexion/v1/confirmation_reasons/&lt;confirmation_reason_id&gt;.json </h6>
+  </div>
+</div>
+
+<h3 id="par-metros-url">Parámetros URL</h3>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">confirmation_reason_id</code></td>
+<td>El identificador del motivo de la confirmación/división a recuperar</td>
 </tr>
 </tbody></table>
 
