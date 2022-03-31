@@ -24,6 +24,7 @@ includes:
   - location_cities
   - location_communes
   - orders
+  - confirmation_reasons
   - buyer_rates
   - cancellation_reasons
   - integration_configs

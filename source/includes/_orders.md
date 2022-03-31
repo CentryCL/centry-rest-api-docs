@@ -454,7 +454,7 @@ curl -X POST https://www.centry.cl/conexion/v1/orders.json \
   "first_name":"Vía cUrl",
   "last_name":"Apellido Factura",
   "line1":"Dirección Cliente",
-  "line2":"Direccion alternativa",
+  "line2":"Dirección alternativa",
   "phone1":"89668063",
   "phone2":"75927583",
   "state":"EstadoFactura",
@@ -464,7 +464,7 @@ curl -X POST https://www.centry.cl/conexion/v1/orders.json \
   "city":"Santiago",
   "country":"Chile",
   "email":"Email@Envío.cl",
-  "first_name":"Nombre Envio",
+  "first_name":"Nombre Envío",
   "last_name":"Apellido Envío",
   "line1":"Dirección Cliente",
   "line2":"Dirección alternativa",
@@ -583,14 +583,15 @@ La respuesta entrega un arreglo de objetos estructurados de la siguiente manera:
 
 Llave  | Descripción
 ---------- | ----------------------------------------
-`orders`      | Un arreglo de objetos con información de los los pedidos involucrados en los documentos adjuntos, esta información es: `_id`: identificador del pedido en centry, `origin`: Nombre de la plataforma de desde donde se origió el pedido, `id_origin`: identificador del pedido en la plataforma de origen, `extras` información relevante que pudiera servir para cada integración. Este último campo vaía de plataforma en plataforma, por ejemplo para mercado libre entrega un objeto `shipping` con el identificador del despacho, mientras que en Dafiti o Linio entrega un arreglo llamado `order_item_ids` con los identificadores de las líneas del pedido.
-`files` | un listado de objetos con los documentos asociados, estos objetos están compuesto de 3 campos: `content_type` el mime type del archivo adjunto, `filename` un nombre de fantasía que describe el documento, `content_base_64` el contenidop del documento codifficado en base 64.
+`orders`      | Un arreglo de objetos con información de los los pedidos involucrados en los documentos adjuntos, esta información es: `_id`: identificador del pedido en centry, `origin`: Nombre de la plataforma de desde donde se originó el pedido, `id_origin`: identificador del pedido en la plataforma de origen, `extras` información relevante que pudiera servir para cada integración. Este último campo varía de plataforma en plataforma, por ejemplo para mercado libre entrega un objeto `shipping` con el identificador del despacho, mientras que en Dafiti o Linio entrega un arreglo llamado `order_item_ids` con los identificadores de las líneas del pedido.
+`files` | un listado de objetos con los documentos asociados, estos objetos están compuesto de 3 campos: `content_type` el mime type del archivo adjunto, `filename` un nombre de fantasía que describe el documento, `content_base_64` el contenido del documento codificado en base 64.
 
 ## Confirmación de un pedido pendiente
 
 Este endpoint permite confirmar que se entregará un pedido pendiente para aquellas integraciones que así lo admiten. Estas integraciones son:
 
 * Falabella Marketplace
+* Mercado Libre: división de paquetes (pronto)
 
 ```shell
 curl "https://www.centry.cl/conexion/v1/orders/5eece46148f039166bf5ffad/order_status/confirmations.json" \
@@ -636,7 +637,8 @@ curl "https://www.centry.cl/conexion/v1/orders/5eece46148f039166bf5ffad/order_st
       "length": 10.0,
       "width": 11.0,
       "height": 12.0,
-      "weight": 1.5
+      "weight": 1.5,
+      "reason_id": "5e45b03c48f0392442dbd1a6",
     }
   ],
   "order_id": "5eece46148f039166bf5ffad",
@@ -669,12 +671,14 @@ Parámetro  | Descripción
 
 Parámetro | Descripción
 --------- | ------------------------------------
-`boxes` | Listado de cajas, paquetes o bultos que componen el pedido
-`boxes.dimensions` | Diccionario con las longitudes y peso del bulto
-`boxes.dimensions.length` | Largo del bulto medido en centrímetros
-`boxes.dimensions.width` | Ancho del bulto medido en centrímetros
-`boxes.dimensions.height` | Alto del bulto medido en centrímetros
-`boxes.dimensions.weight` | Peso del bulto medido en kilogramos
+`reason_id` | Identificador del motivo por el cual el pedido se requiere esta división. Sólo MercadoLibre admite este atributo y es obligatorio. [ConfirmationReasons](#confirmationreasons-pronto)
+`boxes` | Listado de cajas, paquetes o bultos que componen el pedido.
+`boxes.dimensions` | Diccionario con las longitudes y peso del bulto. Sólo Falabella admite este diccionario.
+`boxes.dimensions.length` | Largo del bulto medido en centímetros.
+`boxes.dimensions.width` | Ancho del bulto medido en centímetros.
+`boxes.dimensions.height` | Alto del bulto medido en centímetros.
+`boxes.dimensions.weight` | Peso del bulto medido en kilogramos.
+`boxes.package_id` | Código para identificar la caja. Sólo MercadoLibre admite este atributo y es opcional.
 `boxes.items` | Diccionario con el listado de todos los productos que componen el bulto. Cada llave es el SKU del producto y los valores son las unidades de cada SKU
 
 ### Body response
@@ -745,7 +749,7 @@ Parámetro | Descripción
 --------- | ------------------------------------
 `_id` | Identificador del reagendamiento en Centry
 `order_id` | Identificador del pedido asociado a este reagendamiento
-`date` | Fecha solicidata para reagendar
+`date` | Fecha solicitada para reagendar
 `success_response` | Diccionario con la respuesta entregada por la plataforma de origen del pedido. No existe un formato predefinido para este campo, depende de cada integración y puede cambiar sin previo aviso. Lo más relevante es que su presencia indica que el reagendamiento ha resultado exitoso.
 `failed_attempts` | Listado con todos los intentos fallidos que ha tenido este reagendamiento en la plataforma de origen del pedido.
 `created_at` | fecha de creación del reagendamiento
@@ -1202,33 +1206,20 @@ Parámetro  | Descripción
 `_document_type` | Tipo de documento: [bill invoice credit_note debit_note shipping_guide other]
 `file_file_size` | Tamaño del archivo en KB
 
-
-
-
-
-
-
-
 ## Crear un documento de un pedido
 
 Este endpoint permite crear una nota de pedido para un pedido en particular:
 
-
 ```shell
-
 curl -L -X POST 'www.centry.cl/conexion/v1/orders/<order_id>/documents.json' \
 -H 'Authorization: Bearer  <access_token>' \
 -F 'document_type=invoice' \
 -F 'file=@/Users/nameuser/Documents/nombre_archivo.pdf'
-
-
-
 ```
 
 > Lo anterior retorna un JSON estructurado de la siguiente manera:
 
 ```json
-
 {
     "_document_type": "invoice",
     "_id": "6052203884c6e19ccecb1968",
@@ -1265,7 +1256,6 @@ Parámetro | Descripción | Tipo
 `file` | Archivo del documento a anexar al pedido | File
 `document_type` | Tipo de documento: [bill, invoice, credit_note, debit_note, shipping_guide, other] | Text
 
-
 ### Body response
 
 Parámetro  | Descripción
@@ -1276,12 +1266,9 @@ Parámetro  | Descripción
 `_document_type` | Tipo de documento: [bill invoice credit_note debit_note shipping_guide other]
 `file_file_size` | Tamaño del archivo en KB
 
-
-
 ## Eliminar un documento de un pedido
 
 Este endpoint permite eliminar un documento específico de un pedido en particular:
-
 
 ```shell
 curl -L -X DELETE 'https://www.centry.cl/conexion/v1/orders/<order_id>/documents/<document_id>.json' \
@@ -1291,9 +1278,9 @@ curl -L -X DELETE 'https://www.centry.cl/conexion/v1/orders/<order_id>/documents
 > Lo anterior retorna un JSON estructurado de la siguiente manera:
 
 ```json
-  {
-    "message": "Document deleted"
-  }
+{
+  "message": "Document deleted"
+}
 ```
 
 ### HTTP Request
