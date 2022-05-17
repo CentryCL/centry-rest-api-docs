@@ -896,7 +896,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <h2 id="obtener-un-producto-espec-fico">Obtener un producto específico</h2>
 
 <p>Este endpoint entrega un producto en específico.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;.json"</span> -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.centry.cl/conexion/v1/products/597644781d41c846ea000006.json"</span> -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span>
 </code></pre>
 <blockquote>
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
@@ -1026,7 +1026,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <h2 id="actualizar-un-producto">Actualizar un producto</h2>
 
 <p>Este endpoint actualiza un producto.</p>
-<pre class="highlight shell tab-shell"><code>curl -X PUT https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;.json <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X PUT https://www.centry.cl/conexion/v1/products/597644781d41c846ea000006.json <span class="se">\</span>
     -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span><span class="se">\</span>
     -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
     -d <span class="s1">'{
@@ -1060,7 +1060,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <h2 id="eliminar-un-producto">Eliminar un producto</h2>
 
 <p>Este endpoint elimina un producto.</p>
-<pre class="highlight shell tab-shell"><code>curl -X DELETE https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;.json <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE https://www.centry.cl/conexion/v1/products/597644781d41c846ea000006.json <span class="se">\</span>
     -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt; "</span>
 </code></pre>
 <blockquote>
@@ -1114,7 +1114,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <h2 id="todos-los-historiales-de-sincronizaci-n-de-un-producto">Todos los historiales de sincronización de un producto</h2>
 
 <p>Este endpoint entrega todos los historiales de sincronización de un producto.</p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;/synchronization_histories.json <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://www.centry.cl/conexion/v1/products/5a16c0bcf82f45273b000054/synchronization_histories.json <span class="se">\</span>
     -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span>
 </code></pre>
 <blockquote>
@@ -1386,8 +1386,8 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 
 <h2 id="crear-historiales-de-sincronizaci-n-de-un-producto">Crear historiales de sincronización de un producto</h2>
 
-<p>Este endpoint entrega todos los historiales de sincronización de producto.</p>
-<pre class="highlight shell tab-shell"><code>curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;/synchronization_histories.json'</span> <span class="se">\</span>
+<p>Este endpoint crea un historial de sincronización de producto.</p>
+<pre class="highlight shell tab-shell"><code>curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/products/5a16c0bcf82f45273b000054/synchronization_histories.json'</span> <span class="se">\</span>
 -H <span class="s1">'Authorization: Bearer &lt;access_token&gt;'</span> <span class="se">\</span>
 -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 --data-raw <span class="s1">'{
@@ -1646,7 +1646,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <h2 id="todos-los-assets-de-un-producto">Todos los assets de un producto</h2>
 
 <p>Este endpoint entrega todos los assets de un producto.</p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;/assets.json <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://www.centry.cl/conexion/v1/products/5a16c0bcf82f45273b000054/assets.json <span class="se">\</span>
     -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span>
 </code></pre>
 <blockquote>
@@ -1715,7 +1715,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <h2 id="obtener-un-asset-espec-fico-de-un-producto">Obtener un asset específico de un producto</h2>
 
 <p>Este endpoint entrega un asset en específico de un producto.</p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;/assets/&lt;asset_id&gt;.json <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://www.centry.cl/conexion/v1/products/5a16c0bcf82f45273b000054/assets/5fe9fec484c6e1ec5a67d7b8.json <span class="se">\</span>
     -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span>
 </code></pre>
 <blockquote>
@@ -1769,7 +1769,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <h2 id="todos-los-historiales-de-sincronizaci-n-de-un-asset">Todos los historiales de sincronización de un asset</h2>
 
 <p>Este endpoint entrega todos los historiales de sincronización de un asset.</p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;/assets/&lt;asset_id&gt;/synchronization_histories.json <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://www.centry.cl/conexion/v1/products/5a16c0bcf82f45273b000054/assets/5fe9fec484c6e1ec5a67d7b8/synchronization_histories.json <span class="se">\</span>
     -H <span class="s2">"Authorization: Bearer  &lt;access_token&gt;"</span>
 </code></pre>
 <blockquote>
@@ -1867,8 +1867,8 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 
 <h2 id="crear-historial-de-sincronizaci-n-de-un-asset">Crear historial de sincronización de un asset</h2>
 
-<p>Este endpoint entrega todos los historiales de sincronización de un asset.</p>
-<pre class="highlight shell tab-shell"><code>curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/products/&lt;product_id&gt;/assets/&lt;asset_id&gt;/synchronization_histories.json'</span> <span class="se">\</span>
+<p>Este endpoint crea un historial de sincronización de un asset de un producto.</p>
+<pre class="highlight shell tab-shell"><code>curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/products/5a16c0bcf82f45273b000054/assets/5fe9fec484c6e1ec5a67d7b8/synchronization_histories.json'</span> <span class="se">\</span>
 -H <span class="s1">'Authorization: Bearer c5b91075622352558f1cfcee548c524bcab3a63b67bdfae0883458f628f9ae0c'</span> <span class="se">\</span>
 -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 --data-raw <span class="s1">'{
@@ -2009,7 +2009,7 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 </tr>
 <tr>
 <td><code class="prettyprint">warnings</code></td>
-<td>Listado de advertencias u oportinidades de mejora de un campo en específico que ha pesar de no ser óptimas la petición se realizó de manera exitosa</td>
+<td>Listado de advertencias u oportunidades de mejora de un campo en específico que ha pesar de no ser óptimas la petición se realizó de manera exitosa</td>
 </tr>
 <tr>
 <td><code class="prettyprint">alt_messages</code></td>
@@ -8455,14 +8455,19 @@ prioridades explicados en los párrafos anteriores</li>
 <td>https://www.centry.cl/conexion/v1/products.json?updated_at_lt=2017-09-13T21:00:00.000-03:00</td>
 </tr>
 <tr>
-<td><code class="prettyprint">offset</code></td>
-<td>Cantidad de resultados que debe saltarse</td>
-<td>https://www.centry.cl/conexion/v1/products.json?offset=20</td>
-</tr>
-<tr>
 <td><code class="prettyprint">limit</code></td>
 <td>Cantidad máxima de resultados que debe mostrar</td>
 <td>https://www.centry.cl/conexion/v1/products.json?offset=20&amp;limit=30 o https://www.centry.cl/conexion/v1/products.json?limit=20</td>
+</tr>
+<tr>
+<td><code class="prettyprint">after</code></td>
+<td>Mostrar los resultados con identificadores mayores que el señalado</td>
+<td>https://www.centry.cl/conexion/v1/products.json?limit=20&amp;after=597644781d41c846ea000006 o</td>
+</tr>
+<tr>
+<td><code class="prettyprint">offset</code></td>
+<td>Cantidad de resultados que debe saltarse. Prefiera paginar usando <code class="prettyprint">after</code> <i class="label label-info">Deprecado</i></td>
+<td>https://www.centry.cl/conexion/v1/products.json?offset=20</td>
 </tr>
 </tbody></table>
 
