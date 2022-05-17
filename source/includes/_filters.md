@@ -14,5 +14,6 @@ La siguiente tabla contiene parámetros URL útiles al momento de enviar un requ
 `updated_at_lte` | Fecha de actualización menor o igual al valor indicado | https://www.centry.cl/conexion/v1/products.json?updated_at_lte=2017-09-13T21:00:00.000-03:00
 `updated_at_gt` | Fecha de actualización mayor al valor indicado | https://www.centry.cl/conexion/v1/products.json?updated_at_gt=2017-09-13T21:00:00.000-03:00
 `updated_at_lt` | Fecha de actualización menor al valor indicado | https://www.centry.cl/conexion/v1/products.json?updated_at_lt=2017-09-13T21:00:00.000-03:00
-`offset` | Cantidad de resultados que debe saltarse | https://www.centry.cl/conexion/v1/products.json?offset=20
 `limit` | Cantidad máxima de resultados que debe mostrar | https://www.centry.cl/conexion/v1/products.json?offset=20&limit=30 o https://www.centry.cl/conexion/v1/products.json?limit=20
+`after` | Mostrar los resultados con identificadores mayores que el señalado | https://www.centry.cl/conexion/v1/products.json?limit=20&after=597644781d41c846ea000006 o
+`offset` | Cantidad de resultados que debe saltarse. Prefiera paginar usando `after` <i class="label label-info">Deprecado</i> | https://www.centry.cl/conexion/v1/products.json?offset=20

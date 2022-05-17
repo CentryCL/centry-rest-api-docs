@@ -167,7 +167,7 @@ Si se desean obtener resultados más específicos para este endpoint, se puede p
 Este endpoint entrega un producto en específico.
 
 ```shell
-curl "https://www.centry.cl/conexion/v1/products/<product_id>.json" -H "Authorization: Bearer  <access_token>"
+curl "https://www.centry.cl/conexion/v1/products/597644781d41c846ea000006.json" -H "Authorization: Bearer  <access_token>"
 ```
 
 > Lo anterior retorna un JSON estructurado de la siguiente manera:
@@ -296,7 +296,7 @@ curl -X POST https://www.centry.cl/conexion/v1/products.json \
 Este endpoint actualiza un producto.
 
 ```shell
-curl -X PUT https://www.centry.cl/conexion/v1/products/<product_id>.json \
+curl -X PUT https://www.centry.cl/conexion/v1/products/597644781d41c846ea000006.json \
     -H "Authorization: Bearer  <access_token> "\
     -H "Content-Type: application/json" \
     -d '{
@@ -325,7 +325,7 @@ Parámetro    | Descripción
 Este endpoint elimina un producto.
 
 ```shell
-curl -X DELETE https://www.centry.cl/conexion/v1/products/<product_id>.json \
+curl -X DELETE https://www.centry.cl/conexion/v1/products/597644781d41c846ea000006.json \
     -H "Authorization: Bearer  <access_token> "
 ```
 
@@ -382,7 +382,7 @@ curl -X GET https://www.centry.cl/conexion/v1/products/count.json \
 Este endpoint entrega todos los historiales de sincronización de un producto.
 
 ```shell
-curl -X GET https://www.centry.cl/conexion/v1/products/<product_id>/synchronization_histories.json \
+curl -X GET https://www.centry.cl/conexion/v1/products/5a16c0bcf82f45273b000054/synchronization_histories.json \
     -H "Authorization: Bearer  <access_token>"
 ```
 
@@ -651,10 +651,10 @@ Parámetro              | Descripción
 
 ## Crear historiales de sincronización de un producto
 
-Este endpoint entrega todos los historiales de sincronización de producto.
+Este endpoint crea un historial de sincronización de producto.
 
 ```shell
-curl -L -X POST 'https://www.centry.cl/conexion/v1/products/<product_id>/synchronization_histories.json' \
+curl -L -X POST 'https://www.centry.cl/conexion/v1/products/5a16c0bcf82f45273b000054/synchronization_histories.json' \
 -H 'Authorization: Bearer <access_token>' \
 -H 'Content-Type: application/json' \
 --data-raw '{
@@ -818,7 +818,7 @@ Parámetro              | Descripción
 Este endpoint entrega todos los assets de un producto.
 
 ```shell
-curl -X GET https://www.centry.cl/conexion/v1/products/<product_id>/assets.json \
+curl -X GET https://www.centry.cl/conexion/v1/products/5a16c0bcf82f45273b000054/assets.json \
     -H "Authorization: Bearer  <access_token>"
 ```
 
@@ -883,7 +883,7 @@ Parámetro              | Descripción
 Este endpoint entrega un asset en específico de un producto.
 
 ```shell
-curl -X GET https://www.centry.cl/conexion/v1/products/<product_id>/assets/<asset_id>.json \
+curl -X GET https://www.centry.cl/conexion/v1/products/5a16c0bcf82f45273b000054/assets/5fe9fec484c6e1ec5a67d7b8.json \
     -H "Authorization: Bearer  <access_token>"
 ```
 
@@ -931,7 +931,7 @@ Parámetro              | Descripción
 Este endpoint entrega todos los historiales de sincronización de un asset.
 
 ```shell
-curl -X GET https://www.centry.cl/conexion/v1/products/<product_id>/assets/<asset_id>/synchronization_histories.json \
+curl -X GET https://www.centry.cl/conexion/v1/products/5a16c0bcf82f45273b000054/assets/5fe9fec484c6e1ec5a67d7b8/synchronization_histories.json \
     -H "Authorization: Bearer  <access_token>"
 ```
 
@@ -1021,10 +1021,10 @@ Parámetro              | Descripción
 
 ## Crear historial de sincronización de un asset
 
-Este endpoint entrega todos los historiales de sincronización de un asset.
+Este endpoint crea un historial de sincronización de un asset de un producto.
 
 ```shell
-curl -L -X POST 'https://www.centry.cl/conexion/v1/products/<product_id>/assets/<asset_id>/synchronization_histories.json' \
+curl -L -X POST 'https://www.centry.cl/conexion/v1/products/5a16c0bcf82f45273b000054/assets/5fe9fec484c6e1ec5a67d7b8/synchronization_histories.json' \
 -H 'Authorization: Bearer c5b91075622352558f1cfcee548c524bcab3a63b67bdfae0883458f628f9ae0c' \
 -H 'Content-Type: application/json' \
 --data-raw '{
@@ -1142,7 +1142,7 @@ Parámetro              | Descripción
 `success`        | Indicado el estado de la petición, campo se calcula de manera automática de acuerdo a la presencia de `mistakes` <i class="label label-info">sólo lectura</i>
 `action` | Listado de acciones disponibles: ["Product save", "Product create", "Product update", "Product unpublish", "Product delete", "Image save", "Description update", "Active Meli Flex", "Deactive Meli Flex"]
 `mistakes` | Listado de errores de un campo en específico que no permitieron que la petición haya resultado exitosa
-`warnings` | Listado de advertencias u oportinidades de mejora de un campo en específico que ha pesar de no ser óptimas la petición se realizó de manera exitosa
+`warnings` | Listado de advertencias u oportunidades de mejora de un campo en específico que ha pesar de no ser óptimas la petición se realizó de manera exitosa
 `alt_messages` | Objeto con el listado de `mistakes` y/o `warnings` relacionados con el atributo `alt`
 `position_messages` | Objeto con el listado de `mistakes` y/o `warnings` relacionados con el atributo `position`
 `url_messages` | Objeto con el listado de `mistakes` y/o `warnings` relacionados con el atributo `url`
