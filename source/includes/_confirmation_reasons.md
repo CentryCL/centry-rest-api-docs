@@ -1,4 +1,4 @@
-# ConfirmationReasons (Pronto)
+# ConfirmationReasons
 
 ## Parámetros
 

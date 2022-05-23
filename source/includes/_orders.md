@@ -591,7 +591,7 @@ Llave  | Descripción
 Este endpoint permite confirmar que se entregará un pedido pendiente para aquellas integraciones que así lo admiten. Estas integraciones son:
 
 * Falabella Marketplace
-* Mercado Libre: división de paquetes (pronto)
+* Mercado Libre: división de paquetes
 
 ```shell
 curl "https://www.centry.cl/conexion/v1/orders/5eece46148f039166bf5ffad/order_status/confirmations.json" \
@@ -608,7 +608,8 @@ curl "https://www.centry.cl/conexion/v1/orders/5eece46148f039166bf5ffad/order_st
             "items": {
                 "sku_ejemplo_1": 1,
                 "sku_ejemplo_2": 1
-            }
+            },
+            "package_id": "10000"
         }
     ]
 }'
@@ -634,21 +635,222 @@ curl "https://www.centry.cl/conexion/v1/orders/5eece46148f039166bf5ffad/order_st
           "quantity": 1
         }
       ],
-      "length": 10.0,
-      "width": 11.0,
-      "height": 12.0,
-      "weight": 1.5,
+      "l": 10.0,
+      "w": 11.0,
+      "h": 12.0,
+      "e": 1.5,
+      "pid": "10000",
       "reason_id": "5e45b03c48f0392442dbd1a6",
     }
   ],
   "order_id": "5eece46148f039166bf5ffad",
   "success_response": {
-    "uuid": "e8352482-1acb-4997-9759-cf5f4b3ceb8b",
-    "status": "DONE",
-    "errors": []
+    any success response
   },
   "failed_attempts": [],
   "created_at": "2020-06-19T08:28:50.880-08:00"
+}
+```
+
+> Ejemplos de "any success response":
+
+> Para Falabella
+
+```json
+{
+	"uuid": "e8352482-1acb-4997-9759-cf5f4b3ceb8b",
+	"status": "DONE",
+	"errors": []
+},
+```
+
+> Para MercadoLibre
+
+```json
+{
+	"respose": "empty response"
+}
+```
+
+> Ejemplos de respuestas de error
+
+> El pedido ya fué confirmado/dividido a través de este endpoint:
+
+```json
+{
+    "error": "Order already confirmed",
+    "confirmation": {
+        "_id": "6286a6cc606d72463551d771",
+        "boxes": [
+            {
+                "_id": "6286a6cc606d72463551d772",
+                "e": 1.5,
+                "h": 12.0,
+                "l": 10.0,
+                "pid": "10000",
+                "skus": [
+                    {
+                        "_id": "6286a6cc606d72463551d773",
+                        "sku": "sku_ejemplo_1",
+                        "quantity": 1
+                    }
+                ],
+                "w": 11.0
+            },
+            {
+                "_id": "6286a6cc606d72463551d774",
+                "e": 1.5,
+                "h": 12.0,
+                "l": 10.0,
+                "pid": "10001",
+                "skus": [
+                    {
+                        "_id": "6286a6cc606d72463551d775",
+                        "sku": "sku_ejemplo_2",
+                        "quantity": 2
+                    }
+                ],
+                "w": 11.0
+            }
+        ],
+        "order_id": "6286a41f606d72638813ccf5",
+        "reason_id": "62617fda606d72ad5f126268",
+        "success_response": {
+            "respose": "empty response"
+        },
+        "failed_attempts": [],
+        "created_at": "2022-05-19T12:21:32.869-08:00"
+    }
+}
+```
+
+> Las cajas no contienen el total de los ítemes (existe ítemes que quedaron sin caja, o hay más ítemes en cajas que los contenidos en el pedido)
+
+```json
+{
+    "boxes": [
+        "Las cajas deben incluir exactamente todos los ítemes"
+    ]
+}
+```
+
+> (MercadoLibre) El pedido no puede dividirse, por que proviene ya de una división de un pedido padre.
+
+```json
+{
+    "_id": "628be852606d7224185748f4",
+    "boxes": [
+        {
+            "_id": "628be852606d7224185748f5",
+            "e": null,
+            "h": null,
+            "l": null,
+            "pid": "10000",
+            "skus": [
+                {
+                    "_id": "628be852606d7224185748f6",
+                    "sku": "sku_ejemplo_1",
+                    "quantity": 1
+                }
+            ],
+            "w": null
+        },
+        {
+            "_id": "628be852606d7224185748f6",
+            "e": null,
+            "h": null,
+            "l": null,
+            "pid": "10001",
+            "skus": [
+                {
+                    "_id": "628be852606d7224185748f6",
+                    "sku": "sku_ejemplo_2",
+                    "quantity": 1
+                }
+            ],
+            "w": null
+        }
+    ],
+    "order_id": "6286a77d606d72e6adb19ec2",
+    "reason_id": "62617fda606d72ad5f126268",
+    "success_response": null,
+    "failed_attempts": [
+        {
+            "timestamp": "2022-05-23T16:02:28-04:00",
+            "response": {
+                "error": "Shipment 41385645354 has only one item and can't be splitted"
+            }
+        }
+    ],
+    "created_at": "2022-05-23T12:02:26.830-08:00"
+}
+```
+
+
+> (MercadoLibre) La división de pedidos debe contener exactamente dos cajas (no es posible utilizar más cajas, por limitación de MercadoLibre)
+
+```json
+{
+    "_id": "628bec7f606d7224185748f8",
+    "boxes": [
+        {
+            "_id": "628bec7f606d7224185748f9",
+            "e": null,
+            "h": null,
+            "l": null,
+            "pid": "10000",
+            "skus": [
+                {
+                    "_id": "628bec7f606d7224185748fa",
+                    "sku": "sku_ejemplo_1",
+                    "quantity": 1
+                }
+            ],
+            "w": null
+        },
+        {
+            "_id": "628bec7f606d7224185748fb",
+            "e": null,
+            "h": null,
+            "l": null,
+            "pid": "10001",
+            "skus": [
+                {
+                    "_id": "628bec7f606d7224185748fc",
+                    "sku": "sku_ejemplo_2",
+                    "quantity": 2
+                }
+            ],
+            "w": null
+        },
+        {
+            "_id": "628bec7f606d7224185748fd",
+            "e": null,
+            "h": null,
+            "l": null,
+            "pid": "10002",
+            "skus": [
+                {
+                    "_id": "628bec7f606d7224185748fe",
+                    "sku": "sku_ejemplo_2",
+                    "quantity": 1
+                }
+            ],
+            "w": null
+        }
+    ],
+    "order_id": "628bec53606d7250f717ad7c",
+    "reason_id": "62617fda606d72ad5f126268",
+    "success_response": null,
+    "failed_attempts": [
+        {
+            "timestamp": "2022-05-23T16:20:17-04:00",
+            "response": {
+                "error": "Pack count should be between 2, 2"
+            }
+        }
+    ],
+    "created_at": "2022-05-23T12:20:15.727-08:00"
 }
 ```
 
