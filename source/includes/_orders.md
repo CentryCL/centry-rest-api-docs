@@ -597,6 +597,7 @@ Este endpoint permite confirmar que se entregará un pedido pendiente para aquel
 curl "https://www.centry.cl/conexion/v1/orders/5eece46148f039166bf5ffad/order_status/confirmations.json" \
      -H "Authorization: Bearer  <access_token>" \
      -d '{
+    "reason_id": "627d45751a61bb7eba979e95", 
     "boxes": [
         {
             "dimensions": {

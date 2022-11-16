@@ -1,8 +1,11 @@
 # Webhooks
 
-La API de Centry permite crear, ver, actualizar y eliminar webhooks individualmente.
+La API de Centry permite crear, ver, actualizar y eliminar webhooks
+individualmente.
 
-Los webhooks pueden ser administrados desde la [plataforma web de Centry](https://www.centry.cl/integraciones/webhooks) o usando los endpoints de la API REST.
+Los webhooks pueden ser administrados desde la
+[plataforma web de Centry](https://www.centry.cl/integraciones/webhooks) o
+usando los endpoints de la API REST.
 
 Todos los webhooks tienen los siguientes datos:
 
