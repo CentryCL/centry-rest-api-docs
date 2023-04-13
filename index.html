@@ -682,6 +682,11 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td>date-time</td>
 <td>Fecha de última actualización del producto en Centry <i class="label label-info">sólo lectura</i></td>
 </tr>
+<tr>
+<td><code class="prettyprint">category_attribute_values</code></td>
+<td>array</td>
+<td>Valores de atributos de categoría del producto en Centry. Ver <a href="#atributos-de-los-valores-de-atributos-de-categor-a">Atributos de los valores de atributos de categoria</a></td>
+</tr>
 </tbody></table>
 
 <h3 id="atributos-de-las-variantes">Atributos de las variantes</h3>
@@ -803,6 +808,37 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
 <td><code class="prettyprint">updated_at</code></td>
 <td>date-time</td>
 <td>Registro de actualización en fecha formato UTC <i class="label label-info">sólo lectura</i></td>
+</tr>
+</tbody></table>
+
+<h3 id="atributos-de-los-valores-de-atributos-de-categor-a">Atributos de los valores de atributos de categoría</h3>
+
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">_id</code></td>
+<td>string</td>
+<td>Identificador del valor del atributo de categoría. <i class="label label-info">sólo lectura</i></td>
+</tr>
+<tr>
+<td><code class="prettyprint">category_attribute_id</code></td>
+<td>string</td>
+<td>Identificador del atributo de categoría</td>
+</tr>
+<tr>
+<td><code class="prettyprint">value_filled</code></td>
+<td>string</td>
+<td>Es el valor rellenado para los atributos de tipo texto</td>
+</tr>
+<tr>
+<td><code class="prettyprint">value_selected_ids</code></td>
+<td>array</td>
+<td>Arreglo de identificadores correspondientes a las opciones seleccionadas para el atributo de tipo selección</td>
 </tr>
 </tbody></table>
 
@@ -962,7 +998,22 @@ para firmar todas las solicitudes que se hagan a la API, mientras que el segundo
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="s2">"2017-07-24T19:23:12.947Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"warranty"</span><span class="p">:</span><span class="s2">"2"</span><span class="w">
+  </span><span class="s2">"warranty"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"category_attribute_values"</span><span class="w"> </span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"597649201d41c846ea000129"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"category_attribute_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"597649201d41c846ea000021"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value_filled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Valor atributo."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"597649201d41c846ea000234"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"category_attribute_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"597649201d41c846ea000130"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value_selected_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"597649201d41c846ea000131"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"597649201d41c846ea000132"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
