@@ -2,45 +2,47 @@
 
 ## Parámetros
 
-| Atributo               | Tipo      | Descripción                                                                                              |
-| ---------------------- | --------- | -------------------------------------------------------------------------------------------------------- |
-| `id`                   | string    | Identificador del producto <i class="label label-info">sólo lectura</i>                                  |
-| `name`                 | string    | Nombre del producto                                                                                      |
-| `sku`                  | string    | SKU del producto                                                                                         |
-| `barcode`              | string    | Código de barras                                                                                         |
-| `description`          | string    | Descripción del producto                                                                                 |
-| `shortdescription`     | string    | Listado de características del producto del producto. Se recomienda el uso de viñetas HTML sin orden, ie, `<ul><li></li></ul>`. |
-| `condition`            | string    | Describe la condición del producto (Nuevo, usado, renovado)                                              |
-| `brand_id`             | string    | Identificador de la marca                                                                                |
-| `category_id`          | integer   | Identificador de categoría a la que pertenece                                                            |
-| `cover_content_type`   | string    | Extensión de la imagen principal <i class="label label-info">sólo lectura</i>                            |
-| `cover_file_name`      | string    | Nombre de la imagen principal <i class="label label-info">sólo lectura</i>                               |
-| `cover_file_size`      | integer   | Tamaño de la imagen principal <i class="label label-info">sólo lectura</i>                               |
-| `cover_fingerprint`    | string    | CheckSum de la imagen principal <i class="label label-info">sólo lectura</i>                             |
-| `cover_updated_at`     | date-time | Fecha de actualización de la imagen principal <i class="label label-info">sólo lectura</i>               |
-| `cover_url`            | string    | URL de la imagen principal.                                                                              |
-| `assets`               | array     | Listado de imágenes secundarias del producto. Ver [Atributos de imágenes](#atributos-de-las-im-genes)                                                                      |
-| `deliverytimesupplier` | integer   | Valor aproximado en días, de la llegada del producto al cliente                                          |
-| `gender_id`            | string    | Identificador del genero del producto                                                                    |
-| `is_fullproductname`   | boolean   | Indica si el nombre del producto está completo o acortado                                                |
-| `packageheight`        | integer   | Valor en centímetros de la altura del paquete                                                            |
-| `packagelength`        | integer   | Valor en centímetros del largo del paquete                                                               |
-| `packageweight`        | integer   | Valor en centímetros del ancho del paquete                                                               |
-| `packagewidth`         | integer   | Valor en kilogramos del peso del paquete                                                                 |
-| `price_compare`        | integer   | Precio normal                                                                                            |
-| `price`                | integer   | Precio de oferta                                                                                         |
-| `salestartdate`        | date-time | Fecha de término de la oferta                                                                            |
-| `saleenddate`          | date-time | Fecha de inicio del precio de oferta                                                                     |
-| `season`               | string    | Temporada a la que pertenece el producto. Ej "Invierno"                                                  |
-| `seasonyear`           | integer   | Indica el año del producto                                                                               |
-| `seo_title`            | string    | Meta título del producto. Usado para optimización SEO.                                                   |
-| `seo_description`      | string    | Meta descripción del producto. Usado para optimización SEO.                                              |
-| `status`               | boolean   | Estado del producto. `true`: Activo; `false`: Pausado.                                                   |
-| `variants`             | array     | Lista de variantes del producto. Ver [Atributos de variantes](#atributos-de-las-variantes)                   |
-| `warranty`             | integer   | Descripción de la garantía del producto                                                                  |
-| `company_id`           | integer   | Identificador de la compañía a la que pertenece el producto <i class="label label-info">sólo lectura</i> |
-| `created_at`           | date-time | Fecha de creación del producto en Centry <i class="label label-info">sólo lectura</i>                    |
-| `updated_at`           | date-time | Fecha de última actualización del producto en Centry <i class="label label-info">sólo lectura</i>        |
+| Atributo                    | Tipo      | Descripción                                                                                                    |
+| --------------------------- | --------- | -------------------------------------------------------------------------------------------------------------- |
+| `id`                        | string    | Identificador del producto <i class="label label-info">sólo lectura</i>                                        |
+| `name`                      | string    | Nombre del producto                                                                                            |
+| `sku`                       | string    | SKU del producto                                                                                               |
+| `barcode`                   | string    | Código de barras                                                                                               |
+| `description`               | string    | Descripción del producto                                                                                       |
+| `shortdescription`          | string    | Listado de características del producto del producto. Se recomienda el uso de viñetas HTML sin orden, ie, `<ul><li></li></ul>`. |
+| `condition`                 | string    | Describe la condición del producto (Nuevo, usado, renovado)                                                    |
+| `brand_id`                  | string    | Identificador de la marca                                                                                      |
+| `category_id`               | integer   | Identificador de categoría a la que pertenece                                                                  |
+| `cover_content_type`        | string    | Extensión de la imagen principal <i class="label label-info">sólo lectura</i>                                  |
+| `cover_file_name`           | string    | Nombre de la imagen principal <i class="label label-info">sólo lectura</i>                                     |      
+| `cover_file_size`           | integer   | Tamaño de la imagen principal <i class="label label-info">sólo lectura</i>                                     |
+| `cover_fingerprint`         | string    | CheckSum de la imagen principal <i class="label label-info">sólo lectura</i>                                   |
+| `cover_updated_at`          | date-time | Fecha de actualización de la imagen principal <i class="label label-info">sólo lectura</i>                     |
+| `cover_url`                 | string    | URL de la imagen principal.                                                                                    |
+| `assets`                    | array     | Listado de imágenes secundarias del producto. Ver [Atributos de imágenes](#atributos-de-las-im-genes)                                                                      |
+| `deliverytimesupplier`      | integer   | Valor aproximado en días, de la llegada del producto al cliente                                                |
+| `gender_id`                 | string    | Identificador del genero del producto                                                                          |
+| `is_fullproductname`        | boolean   | Indica si el nombre del producto está completo o acortado                                                      |
+| `packageheight`             | integer   | Valor en centímetros de la altura del paquete                                                                  |
+| `packagelength`             | integer   | Valor en centímetros del largo del paquete                                                                     |
+| `packageweight`             | integer   | Valor en centímetros del ancho del paquete                                                                     |
+| `packagewidth`              | integer   | Valor en kilogramos del peso del paquete                                                                       |
+| `price_compare`             | integer   | Precio normal                                                                                                  |
+| `price`                     | integer   | Precio de oferta                                                                                               |
+| `salestartdate`             | date-time | Fecha de término de la oferta                                                                                  |
+| `saleenddate`               | date-time | Fecha de inicio del precio de oferta                                                                           |
+| `season`                    | string    | Temporada a la que pertenece el producto. Ej "Invierno"                                                        |
+| `seasonyear`                | integer   | Indica el año del producto                                                                                     |
+| `seo_title`                 | string    | Meta título del producto. Usado para optimización SEO.                                                         |
+| `seo_description`           | string    | Meta descripción del producto. Usado para optimización SEO.                                                    |
+| `status`                    | boolean   | Estado del producto. `true`: Activo; `false`: Pausado.                                                         |
+| `variants`                  | array     | Lista de variantes del producto. Ver [Atributos de variantes](#atributos-de-las-variantes)                     |
+| `warranty`                  | integer   | Descripción de la garantía del producto                                                                        |
+| `company_id`                | integer   | Identificador de la compañía a la que pertenece el producto <i class="label label-info">sólo lectura</i>       |
+| `created_at`                | date-time | Fecha de creación del producto en Centry <i class="label label-info">sólo lectura</i>                          |
+| `updated_at`                | date-time | Fecha de última actualización del producto en Centry <i class="label label-info">sólo lectura</i>              |
+| `category_attribute_values` | array     | Valores de atributos de categoría del producto en Centry. Ver [Atributos de los valores de atributos de categoria](#atributos-de-los-valores-de-atributos-de-categor-a) |
+
 
 ###Atributos de las variantes
 
@@ -70,6 +72,14 @@
 | `position`            | integer   | Posición de la imagen en el arreglo de imágenes.                                                        |
 | `created_at`          | date-time | Fecha en formato UTC de la creación de la variante <i class="label label-info">sólo lectura</i>         |
 | `updated_at`          | date-time | Registro de actualización en fecha formato UTC <i class="label label-info">sólo lectura</i>             |
+
+###Atributos de los valores de atributos de categoría
+| Atributo               | Tipo      | Descripción                                                                                                |
+| ---------------------- | --------- | -----------------------------------------------------------------------------------------------------------|
+| `_id`                  | string    | Identificador del valor del atributo de categoría. <i class="label label-info">sólo lectura</i>            |
+| `category_attribute_id`| string    | Identificador del atributo de categoría                                                                    |                  
+| `value_filled`         | string    | Es el valor rellenado para los atributos de tipo texto                                                     |
+| `value_selected_ids`   | array     | Arreglo de identificadores correspondientes a las opciones seleccionadas para el atributo de tipo selección|
 
 ## Todos los productos de la cuenta
 
@@ -234,7 +244,22 @@ curl "https://www.centry.cl/conexion/v1/products/597644781d41c846ea000006.json" 
       "updated_at":"2017-07-24T19:23:12.947Z"
     }
   ],
-  "warranty":"2"
+  "warranty":"2",
+  "category_attribute_values" :[
+    {
+        "_id": "597649201d41c846ea000129",
+        "category_attribute_id": "597649201d41c846ea000021",
+        "value_filled": "Valor atributo."
+    },
+    {
+        "_id": "597649201d41c846ea000234",
+        "category_attribute_id": "597649201d41c846ea000130",
+        "value_selected_ids": [
+            "597649201d41c846ea000131",
+            "597649201d41c846ea000132"
+        ]
+    }
+  ]
 }
 ```
 
