@@ -6672,6 +6672,7 @@ curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/orders/&amp;
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"_document_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"800566"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6052202e84c6e19ccecb1966"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"c_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-17T12:28:46.171-03:00"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"file_content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
@@ -6683,6 +6684,7 @@ curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/orders/&amp;
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"_document_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6052203884c6e19ccecb1968"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"c_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-17T12:28:56.384-03:00"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"file_content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
@@ -6745,6 +6747,10 @@ curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/orders/&amp;
 <td><code class="prettyprint">file_file_size</code></td>
 <td>Tamaño del archivo en KB</td>
 </tr>
+<tr>
+<td><code class="prettyprint">number</code></td>
+<td>Número de folio del documento (Opcional)</td>
+</tr>
 </tbody></table>
 
 <h2 id="mostrar-un-documento-de-un-pedido">Mostrar un documento de un pedido</h2>
@@ -6758,6 +6764,7 @@ curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/orders/&amp;
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
       </span><span class="s2">"_document_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"800566"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6052203884c6e19ccecb1968"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"c_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-17T12:28:56.384-03:00"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"file_content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
@@ -6823,6 +6830,10 @@ curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/orders/&amp;
 <td><code class="prettyprint">file_file_size</code></td>
 <td>Tamaño del archivo en KB</td>
 </tr>
+<tr>
+<td><code class="prettyprint">number</code></td>
+<td>Número de folio del documento (Opcional)</td>
+</tr>
 </tbody></table>
 
 <h2 id="crear-un-documento-de-un-pedido">Crear un documento de un pedido</h2>
@@ -6832,12 +6843,14 @@ curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/orders/&amp;
 -H <span class="s1">'Authorization: Bearer  &lt;access_token&gt;'</span> <span class="se">\</span>
 -F <span class="s1">'document_type=invoice'</span> <span class="se">\</span>
 -F <span class="s1">'file=@/Users/nameuser/Documents/nombre_archivo.pdf'</span>
+-F <span class="s1">'number=800566'</span>
 </code></pre>
 <blockquote>
 <p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"_document_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"800566"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6052203884c6e19ccecb1968"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"c_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-17T12:28:56.384-03:00"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"file_content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
@@ -6891,6 +6904,11 @@ curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/orders/&amp;
 <td>Tipo de documento: [bill, invoice, credit_note, debit_note, shipping_guide, other]</td>
 <td>Text</td>
 </tr>
+<tr>
+<td><code class="prettyprint">number</code></td>
+<td>Número de folio del documento (Opcional)</td>
+<td>Text</td>
+</tr>
 </tbody></table>
 
 <h3 id="body-response">Body response</h3>
@@ -6920,6 +6938,10 @@ curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/orders/&amp;
 <tr>
 <td><code class="prettyprint">file_file_size</code></td>
 <td>Tamaño del archivo en KB</td>
+</tr>
+<tr>
+<td><code class="prettyprint">number</code></td>
+<td>Número de folio del documento (Opcional)</td>
 </tr>
 </tbody></table>
 
