@@ -1308,6 +1308,7 @@ curl -L -X GET 'https://www.centry.cl/conexion/v1/orders/<order_id>/documents.js
 [
     {
         "_document_type": "invoice",
+        "number": "800566",
         "_id": "6052202e84c6e19ccecb1966",
         "c_at": "2021-03-17T12:28:46.171-03:00",
         "file_content_type": "application/pdf",
@@ -1319,6 +1320,7 @@ curl -L -X GET 'https://www.centry.cl/conexion/v1/orders/<order_id>/documents.js
     },
     {
         "_document_type": "invoice",
+        "number": "",
         "_id": "6052203884c6e19ccecb1968",
         "c_at": "2021-03-17T12:28:56.384-03:00",
         "file_content_type": "application/pdf",
@@ -1356,6 +1358,7 @@ Parámetro  | Descripción
 `file_file_name` | Nombre del archivo del documento
 `_document_type` | Tipo de documento: [bill invoice credit_note debit_note shipping_guide other]
 `file_file_size` | Tamaño del archivo en KB
+`number` | Número de folio del documento (Opcional)
 
 
 ## Mostrar un documento de un pedido
@@ -1373,6 +1376,7 @@ curl -L -X GET 'https://www.centry.cl/conexion/v1/orders/<order_id>/documents/<d
 ```json
   {
       "_document_type": "invoice",
+      "number": "800566",
       "_id": "6052203884c6e19ccecb1968",
       "c_at": "2021-03-17T12:28:56.384-03:00",
       "file_content_type": "application/pdf",
@@ -1409,6 +1413,7 @@ Parámetro  | Descripción
 `file_file_name` | Nombre del archivo del documento
 `_document_type` | Tipo de documento: [bill invoice credit_note debit_note shipping_guide other]
 `file_file_size` | Tamaño del archivo en KB
+`number` | Número de folio del documento (Opcional)
 
 ## Crear un documento de un pedido
 
@@ -1419,6 +1424,7 @@ curl -L -X POST 'www.centry.cl/conexion/v1/orders/<order_id>/documents.json' \
 -H 'Authorization: Bearer  <access_token>' \
 -F 'document_type=invoice' \
 -F 'file=@/Users/nameuser/Documents/nombre_archivo.pdf'
+-F 'number=800566'
 ```
 
 > Lo anterior retorna un JSON estructurado de la siguiente manera:
@@ -1426,6 +1432,7 @@ curl -L -X POST 'www.centry.cl/conexion/v1/orders/<order_id>/documents.json' \
 ```json
 {
     "_document_type": "invoice",
+    "number": "800566",
     "_id": "6052203884c6e19ccecb1968",
     "c_at": "2021-03-17T12:28:56.384-03:00",
     "file_content_type": "application/pdf",
@@ -1459,6 +1466,7 @@ Parámetro | Descripción | Tipo
 ------------| ------------------------------------|----------
 `file` | Archivo del documento a anexar al pedido | File
 `document_type` | Tipo de documento: [bill, invoice, credit_note, debit_note, shipping_guide, other] | Text
+`number` | Número de folio del documento (Opcional) | Text
 
 ### Body response
 
@@ -1469,6 +1477,7 @@ Parámetro  | Descripción
 `file_file_name` | Nombre del archivo del documento
 `_document_type` | Tipo de documento: [bill invoice credit_note debit_note shipping_guide other]
 `file_file_size` | Tamaño del archivo en KB
+`number` | Número de folio del documento (Opcional)
 
 ## Eliminar un documento de un pedido
 
