@@ -7,8 +7,8 @@
 | `_id`                | string    | Identificador de orden  <i class="label label-info">sólo lectura</i>                                                                          |
 | `_status`            | string    | Estado de la orden. Las opciones son `pending`, `shipped`, `received`, `cancelled`, `cancelled_before_shipping` o `cancelled_after_shipping`. |
 | `status_origin`      | string    | Etiqueta con el estado del pedido según la plataforma de origen.                                                                              |
-| `address_billing`    | object    | Dirección de facturación. Ver [Formulario de direcciones](#formulario-de-direcciones)                                                             |
-| `address_shipping`   | object    | Dirección de despacho. Ver [Formulario de direcciones](#formulario-de-direcciones)                                                             |
+| `address_billing`    | object    | Dirección de facturación. Ver [Formulario de direcciones](#formulario-de-direcciones)                                                         |
+| `address_shipping`   | object    | Dirección de despacho. Ver [Formulario de direcciones](#formulario-de-direcciones)                                                            |
 | `buyer_dni`          | string    | Número de identificación nacional del cliente (ej. en Chile es el RUN)                                                                        |
 | `buyer_email`        | string    | Email de Cliente                                                                                                                              |
 | `buyer_first_name`   | string    | Nombre de Cliente                                                                                                                             |
@@ -34,6 +34,12 @@
 | `received_date`      | date-time | Fecha en el que el cliente recibe la orden                                                                                                    |
 | `shipped_date`       | date-time | Fecha en el que se despacha la orden                                                                                                          |
 | `cancelled_date`     | date-time | Fecha en que la orden fue anulada                                                                                                             |
+| `billable`           | boolean   | Indica si el pedido deber ser facturado por el seller (`true`) o no (`false`). <i class="label label-info">sólo lectura</i>                   |
+| `invoice_required`   | boolean   | Indica si el pedido requiere una factura (`true`) o no (`false`). <i class="label label-info">sólo lectura</i>                                |
+| `modify_stock`       | boolean   | Indica si el registro del pedido modificó el stock (`true`) o no (`false`). <i class="label label-info">sólo lectura</i>                      |
+| `own_shipment`       | boolean   | Indica si el pedido debe ser despachado con una flota propia del seller (`true`) o no (`false`). <i class="label label-info">sólo lectura</i> |
+| `fraud_risk_detected`| boolean   | Indica el el marketplace ha detectado que podría ser un fraude (`true`) o no (`false`). <i class="label label-info">sólo lectura</i>          |
+| `priority_shipping`  | boolean   | Indica si el pedido debe ser despachado con prioridad (`true`) o no (`false`). <i class="label label-info">sólo lectura</i>                   |
 | `company_id`         | string    | Identificador de la empresa <i class="label label-info">sólo lectura</i>                                                                      |
 | `created_at`         | date-time | Fecha de creación de la orden en Centry <i class="label label-info">sólo lectura</i>                                                          |
 | `updated_at`         | date-time | Fecha de la ultima actualización a la orden en Centry <i class="label label-info">sólo lectura</i>                                            |
