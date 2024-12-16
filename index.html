@@ -4960,6 +4960,36 @@ como se muestra en el capítulo <a href="#filters">Filters</a> al final de la do
 <td>Fecha en que la orden fue anulada</td>
 </tr>
 <tr>
+<td><code class="prettyprint">billable</code></td>
+<td>boolean</td>
+<td>Indica si el pedido deber ser facturado por el seller (<code class="prettyprint">true</code>) o no (<code class="prettyprint">false</code>).</td>
+</tr>
+<tr>
+<td><code class="prettyprint">invoice_required</code></td>
+<td>boolean</td>
+<td>Indica si el pedido requiere una factura (<code class="prettyprint">true</code>) o no (<code class="prettyprint">false</code>).</td>
+</tr>
+<tr>
+<td><code class="prettyprint">modify_stock</code></td>
+<td>boolean</td>
+<td>Indica si el registro del pedido modificó el stock (<code class="prettyprint">true</code>) o no (<code class="prettyprint">false</code>).</td>
+</tr>
+<tr>
+<td><code class="prettyprint">own_shipment</code></td>
+<td>boolean</td>
+<td>Indica si el pedido debe ser despachado con una flota propia del seller (<code class="prettyprint">true</code>) o no (<code class="prettyprint">false</code>).</td>
+</tr>
+<tr>
+<td><code class="prettyprint">fraud_risk_detected</code></td>
+<td>boolean</td>
+<td>Indica el el marketplace ha detectado que podría ser un fraude (<code class="prettyprint">true</code>) o no (<code class="prettyprint">false</code>).</td>
+</tr>
+<tr>
+<td><code class="prettyprint">priority_shipping</code></td>
+<td>boolean</td>
+<td>Indica si el pedido debe ser despachado con prioridad (<code class="prettyprint">true</code>) o no (<code class="prettyprint">false</code>).</td>
+</tr>
+<tr>
 <td><code class="prettyprint">company_id</code></td>
 <td>string</td>
 <td>Identificador de la empresa <i class="label label-info">sólo lectura</i></td>
@@ -6751,6 +6781,10 @@ curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/orders/&amp;
 <td><code class="prettyprint">number</code></td>
 <td>Número de folio del documento (Opcional)</td>
 </tr>
+<tr>
+<td><code class="prettyprint">confirmation_box_id</code></td>
+<td>Identificador de un bulto en caso de que el pedido haya sido confirmado parcialmente (Opcional)</td>
+</tr>
 </tbody></table>
 
 <h2 id="mostrar-un-documento-de-un-pedido">Mostrar un documento de un pedido</h2>
@@ -6772,7 +6806,8 @@ curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/orders/&amp;
       </span><span class="s2">"file_file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">82419</span><span class="p">,</span><span class="w">
       </span><span class="s2">"file_fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f69fd4473948e0bb7aa8e0d71610e1a5"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"file_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-17T10:28:56.307-03:00"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6048df5184c6e187a31a6200"</span><span class="w">
+      </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6048df5184c6e187a31a6200"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confirmation_box_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6048df5184c6e187a31b5673"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
@@ -6834,11 +6869,15 @@ curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/orders/&amp;
 <td><code class="prettyprint">number</code></td>
 <td>Número de folio del documento (Opcional)</td>
 </tr>
+<tr>
+<td><code class="prettyprint">confirmation_box_id</code></td>
+<td>Identificador de un bulto en caso de que el pedido haya sido confirmado parcialmente (Opcional)</td>
+</tr>
 </tbody></table>
 
 <h2 id="crear-un-documento-de-un-pedido">Crear un documento de un pedido</h2>
 
-<p>Este endpoint permite crear una nota de pedido para un pedido en particular:</p>
+<p>Este endpoint cargar un documento y asociarlo a un pedido en particular:</p>
 <pre class="highlight shell tab-shell"><code>curl -L -X POST <span class="s1">'www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/documents.json'</span> <span class="se">\</span>
 -H <span class="s1">'Authorization: Bearer  &lt;access_token&gt;'</span> <span class="se">\</span>
 -F <span class="s1">'document_type=invoice'</span> <span class="se">\</span>
@@ -6858,9 +6897,36 @@ curl -L -X POST <span class="s1">'https://www.centry.cl/conexion/v1/orders/&amp;
     </span><span class="s2">"file_file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">82419</span><span class="p">,</span><span class="w">
     </span><span class="s2">"file_fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f69fd4473948e0bb7aa8e0d71610e1a5"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"file_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-17T10:28:56.307-03:00"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6048df5184c6e187a31a6200"</span><span class="w">
+    </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6048df5184c6e187a31a6200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"confirmation_box"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
+</span></code></pre>
+<blockquote>
+<p>Mismo ejemplo anterior, pero ahora indicando un <code class="prettyprint">confirmation_box_id</code>:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -L -X POST <span class="s1">'www.centry.cl/conexion/v1/orders/&lt;order_id&gt;/documents.json'</span> <span class="se">\</span>
+-H <span class="s1">'Authorization: Bearer  &lt;access_token&gt;'</span> <span class="se">\</span>
+-F <span class="s1">'document_type=invoice'</span> <span class="se">\</span>
+-F <span class="s1">'file=@/Users/nameuser/Documents/nombre_archivo.pdf'</span>
+-F <span class="s1">'number=800566'</span>
+-F <span class="s1">'confirmation_box_id=6048df5184c6e187a31b5673'</span>
+</code></pre>
+<blockquote>
+<p>Lo anterior retorna un JSON estructurado de la siguiente manera:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_document_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"800566"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6052203884c6e19ccecb1968"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"c_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-17T12:28:56.384-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nombre_archivo.pdf"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">82419</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f69fd4473948e0bb7aa8e0d71610e1a5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-17T10:28:56.307-03:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6048df5184c6e187a31a6200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"confirmation_box"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6048df5184c6e187a31b5673"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
