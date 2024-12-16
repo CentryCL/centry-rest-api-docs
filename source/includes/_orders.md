@@ -1357,14 +1357,15 @@ Parámetro  | Descripción
 
 ### Body response
 
-Parámetro  | Descripción
------------------- | ------------------------------------
-`_id` | Identificador de la nota del pedido
-`order_id` | Identificador del pedido asociado a esta nota de pedido
-`file_file_name` | Nombre del archivo del documento
-`_document_type` | Tipo de documento: [bill invoice credit_note debit_note shipping_guide other]
-`file_file_size` | Tamaño del archivo en KB
-`number` | Número de folio del documento (Opcional)
+Parámetro             | Descripción
+--------------------- | ------------------------------------
+`_id`                 | Identificador de la nota del pedido
+`order_id`            | Identificador del pedido asociado a esta nota de pedido
+`file_file_name`      | Nombre del archivo del documento
+`_document_type`      | Tipo de documento: [bill invoice credit_note debit_note shipping_guide other]
+`file_file_size`      | Tamaño del archivo en KB
+`number`              | Número de folio del documento (Opcional)
+`confirmation_box_id` | Identificador de un bulto en caso de que el pedido haya sido confirmado parcialmente (Opcional)
 
 
 ## Mostrar un documento de un pedido
@@ -1390,7 +1391,8 @@ curl -L -X GET 'https://www.centry.cl/conexion/v1/orders/<order_id>/documents/<d
       "file_file_size": 82419,
       "file_fingerprint": "f69fd4473948e0bb7aa8e0d71610e1a5",
       "file_updated_at": "2021-03-17T10:28:56.307-03:00",
-      "order_id": "6048df5184c6e187a31a6200"
+      "order_id": "6048df5184c6e187a31a6200",
+      "confirmation_box_id": "6048df5184c6e187a31b5673"
   }
 ```
 
@@ -1412,18 +1414,19 @@ Parámetro  | Descripción
 
 ### Body response
 
-Parámetro  | Descripción
------------------- | ------------------------------------
-`_id` | Identificador de la nota del pedido
-`order_id` | Identificador del pedido asociado a esta nota de pedido
-`file_file_name` | Nombre del archivo del documento
-`_document_type` | Tipo de documento: [bill invoice credit_note debit_note shipping_guide other]
-`file_file_size` | Tamaño del archivo en KB
-`number` | Número de folio del documento (Opcional)
+Parámetro             | Descripción
+--------------------- | ------------------------------------
+`_id`                 | Identificador de la nota del pedido
+`order_id`            | Identificador del pedido asociado a esta nota de pedido
+`file_file_name`      | Nombre del archivo del documento
+`_document_type`      | Tipo de documento: [bill invoice credit_note debit_note shipping_guide other]
+`file_file_size`      | Tamaño del archivo en KB
+`number`              | Número de folio del documento (Opcional)
+`confirmation_box_id` | Identificador de un bulto en caso de que el pedido haya sido confirmado parcialmente (Opcional)
 
 ## Crear un documento de un pedido
 
-Este endpoint permite crear una nota de pedido para un pedido en particular:
+Este endpoint cargar un documento y asociarlo a un pedido en particular:
 
 ```shell
 curl -L -X POST 'www.centry.cl/conexion/v1/orders/<order_id>/documents.json' \
@@ -1446,9 +1449,38 @@ curl -L -X POST 'www.centry.cl/conexion/v1/orders/<order_id>/documents.json' \
     "file_file_size": 82419,
     "file_fingerprint": "f69fd4473948e0bb7aa8e0d71610e1a5",
     "file_updated_at": "2021-03-17T10:28:56.307-03:00",
-    "order_id": "6048df5184c6e187a31a6200"
+    "order_id": "6048df5184c6e187a31a6200",
+    "confirmation_box": null
 }
+```
 
+> Mismo ejemplo anterior, pero ahora indicando un `confirmation_box_id`:
+
+```shell
+curl -L -X POST 'www.centry.cl/conexion/v1/orders/<order_id>/documents.json' \
+-H 'Authorization: Bearer  <access_token>' \
+-F 'document_type=invoice' \
+-F 'file=@/Users/nameuser/Documents/nombre_archivo.pdf'
+-F 'number=800566'
+-F 'confirmation_box_id=6048df5184c6e187a31b5673'
+```
+
+> Lo anterior retorna un JSON estructurado de la siguiente manera:
+
+```json
+{
+    "_document_type": "invoice",
+    "number": "800566",
+    "_id": "6052203884c6e19ccecb1968",
+    "c_at": "2021-03-17T12:28:56.384-03:00",
+    "file_content_type": "application/pdf",
+    "file_file_name": "nombre_archivo.pdf",
+    "file_file_size": 82419,
+    "file_fingerprint": "f69fd4473948e0bb7aa8e0d71610e1a5",
+    "file_updated_at": "2021-03-17T10:28:56.307-03:00",
+    "order_id": "6048df5184c6e187a31a6200",
+    "confirmation_box": "6048df5184c6e187a31b5673"
+}
 ```
 
 ### HTTP Request
