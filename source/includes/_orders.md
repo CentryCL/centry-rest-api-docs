@@ -34,12 +34,12 @@
 | `received_date`      | date-time | Fecha en el que el cliente recibe la orden                                                                                                    |
 | `shipped_date`       | date-time | Fecha en el que se despacha la orden                                                                                                          |
 | `cancelled_date`     | date-time | Fecha en que la orden fue anulada                                                                                                             |
-| `billable`           | boolean   | Indica si el pedido deber ser facturado por el seller (`true`) o no (`false`). <i class="label label-info">sólo lectura</i>                   |
-| `invoice_required`   | boolean   | Indica si el pedido requiere una factura (`true`) o no (`false`). <i class="label label-info">sólo lectura</i>                                |
-| `modify_stock`       | boolean   | Indica si el registro del pedido modificó el stock (`true`) o no (`false`). <i class="label label-info">sólo lectura</i>                      |
-| `own_shipment`       | boolean   | Indica si el pedido debe ser despachado con una flota propia del seller (`true`) o no (`false`). <i class="label label-info">sólo lectura</i> |
-| `fraud_risk_detected`| boolean   | Indica el el marketplace ha detectado que podría ser un fraude (`true`) o no (`false`). <i class="label label-info">sólo lectura</i>          |
-| `priority_shipping`  | boolean   | Indica si el pedido debe ser despachado con prioridad (`true`) o no (`false`). <i class="label label-info">sólo lectura</i>                   |
+| `billable`           | boolean   | Indica si el pedido deber ser facturado por el seller (`true`) o no (`false`).                                                                |
+| `invoice_required`   | boolean   | Indica si el pedido requiere una factura (`true`) o no (`false`).                                                                             |
+| `modify_stock`       | boolean   | Indica si el registro del pedido modificó el stock (`true`) o no (`false`).                                                                   |
+| `own_shipment`       | boolean   | Indica si el pedido debe ser despachado con una flota propia del seller (`true`) o no (`false`).                                              |
+| `fraud_risk_detected`| boolean   | Indica el el marketplace ha detectado que podría ser un fraude (`true`) o no (`false`).                                                       |
+| `priority_shipping`  | boolean   | Indica si el pedido debe ser despachado con prioridad (`true`) o no (`false`).                                                                |
 | `company_id`         | string    | Identificador de la empresa <i class="label label-info">sólo lectura</i>                                                                      |
 | `created_at`         | date-time | Fecha de creación de la orden en Centry <i class="label label-info">sólo lectura</i>                                                          |
 | `updated_at`         | date-time | Fecha de la ultima actualización a la orden en Centry <i class="label label-info">sólo lectura</i>                                            |
