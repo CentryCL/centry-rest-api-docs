@@ -1322,7 +1322,8 @@ curl -L -X GET 'https://www.centry.cl/conexion/v1/orders/<order_id>/documents.js
         "file_file_size": 35517,
         "file_fingerprint": "f69fd4473948e0bb7aa8e0d71610e1a5",
         "file_updated_at": "2021-03-17T10:32:24.412-03:00",
-        "order_id": "6048df5184c6e187a31a6200"
+        "order_id": "6048df5184c6e187a31a6200",
+        "confirmation_box_id": null
     },
     {
         "_document_type": "invoice",
@@ -1334,7 +1335,8 @@ curl -L -X GET 'https://www.centry.cl/conexion/v1/orders/<order_id>/documents.js
         "file_file_size": 82419,
         "file_fingerprint": "f69fd4473948e0bb7aa8e0d71610e1a5",
         "file_updated_at": "2021-03-17T10:28:56.307-03:00",
-        "order_id": "6048df5184c6e187a31a6200"
+        "order_id": "6048df5184c6e187a31a6200",
+        "confirmation_box_id": "6048df5184c6e187a31b5673"
     }
 ]
 ```
@@ -1495,27 +1497,29 @@ curl -L -X POST 'www.centry.cl/conexion/v1/orders/<order_id>/documents.json' \
 ### Parámetros URL
 
 Parámetro  | Descripción
------------- | ------------------------------------
+---------- | ------------------------------------
 `order_id` | Identificador de un pedido en Centry
 
 ### Body form-data
 
-Parámetro | Descripción | Tipo
-------------| ------------------------------------|----------
-`file` | Archivo del documento a anexar al pedido | File
-`document_type` | Tipo de documento: [bill, invoice, credit_note, debit_note, shipping_guide, other] | Text
-`number` | Número de folio del documento (Opcional) | Text
+Parámetro             | Descripción                                                                                     | Tipo
+--------------------- | ----------------------------------------------------------------------------------------------- | ----
+`file`                | Archivo del documento a anexar al pedido                                                        | File
+`document_type`       | Tipo de documento: [bill, invoice, credit_note, debit_note, shipping_guide, other]              | Text
+`number`              | Número de folio del documento (Opcional)                                                        | Text
+`confirmation_box_id` | Identificador de un bulto en caso de que el pedido haya sido confirmado parcialmente (Opcional) | Text
 
 ### Body response
 
-Parámetro  | Descripción
----------------- | ---------------------------------
-`_id` | Identificador de la nota del pedido
-`order_id` | Identificador del pedido asociado a esta nota de pedido
-`file_file_name` | Nombre del archivo del documento
-`_document_type` | Tipo de documento: [bill invoice credit_note debit_note shipping_guide other]
-`file_file_size` | Tamaño del archivo en KB
-`number` | Número de folio del documento (Opcional)
+Parámetro             | Descripción
+--------------------- | ---------------------------------
+`_id`                 | Identificador de la nota del pedido
+`order_id`            | Identificador del pedido asociado a esta nota de pedido
+`file_file_name`      | Nombre del archivo del documento
+`_document_type`      | Tipo de documento: [bill invoice credit_note debit_note shipping_guide other]
+`file_file_size`      | Tamaño del archivo en KB
+`number`              | Número de folio del documento (Opcional)
+`confirmation_box_id` | Identificador de un bulto en caso de que el pedido haya sido confirmado parcialmente (Opcional)
 
 ## Eliminar un documento de un pedido
 
